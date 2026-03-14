@@ -2,25 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --brand-50: #F0F6F3;
-  --brand-100: #D9EAE0;
-  --brand-200: #B5D6C4;
-  --brand-300: #8CBFA2;
-  --brand-400: #57A278;
-  --brand-500: #2E8B57;
-  --brand-600: #277649;
-  --brand-700: #1F5E3B;
-  --brand-800: #164229;
-  --brand-900: #0E2C1B;
-  --brand-950: #08190F;
+  --brand-50: #FEF3E2;
+  --brand-100: #FDE4B8;
+  --brand-200: #FBD28A;
+  --brand-300: #F9BC5A;
+  --brand-400: #F7A832;
+  --brand-500: #E67E22;
+  --brand-600: #D4691A;
+  --brand-700: #B85514;
+  --brand-800: #9A430F;
+  --brand-900: #7A320B;
+  --brand-950: #5A2508;
 }
 
 @layer base {
   body {
-    @apply font-body text-gray-800 antialiased;
+    @apply font-sans text-gray-800 antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;

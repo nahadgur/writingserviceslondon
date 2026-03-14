@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   alternates: { canonical: siteConfig.url },
   robots: { index: true, follow: true },
-  verification: {
-    google: 'xDM_HCxlilOoedBIEonagUjSBoDAu7lkwQVvLjz7L0A',
-  },
+  // verification: {
+  //   google: 'ADD_GOOGLE_VERIFICATION_CODE_HERE',
+  // },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -89,8 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col">
+        {/* Analytics — uncomment and add your GA ID when ready
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YNVW7NT591"
+          src="https://www.googletagmanager.com/gtag/js?id=GA_ID"
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -98,9 +99,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-YNVW7NT591');
+            gtag('config', 'GA_ID');
           `}
         </Script>
+        */}
 
         {children}
       </body>

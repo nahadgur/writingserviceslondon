@@ -76,7 +76,7 @@ export function Header({ onOpenModal }: HeaderProps) {
               <Link href="/blog/" className="px-3 py-2 text-gray-600 hover:text-brand-600 font-medium transition-colors rounded-lg hover:bg-brand-50">Blog</Link>
 
               <button onClick={onOpenModal} className="ml-3 btn-primary text-sm !py-2.5 !px-5 rounded-full">
-                Find a Writer
+                Find a Specialist
               </button>
             </nav>
 
@@ -102,7 +102,7 @@ export function Header({ onOpenModal }: HeaderProps) {
               <Link href="/blog/" className="block px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Blog</Link>
 
               <div className="pt-4 px-3">
-                <button onClick={() => { onOpenModal?.(); setMobileOpen(false); }} className="block w-full btn-primary text-center">Find a Writer</button>
+                <button onClick={() => { onOpenModal?.(); setMobileOpen(false); }} className="block w-full btn-primary text-center">Find a Specialist</button>
               </div>
             </div>
           </div>

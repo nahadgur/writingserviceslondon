@@ -2,124 +2,124 @@
 export const serviceLocationContent: Record<string, {
   intro: (city: string) => string[]; steps: (city: string) => string[]; whyPoints: (city: string) => string[];
 }> = {
-  "business-copywriting": {
+  "single-will": {
     intro: (city) => [
-      `Business copywriting in ${city} requires writers who understand the local commercial landscape and the audiences your business is trying to reach. Whether you need a website rewrite, sales collateral, or ongoing content, the right copywriter understands how to position your business for London's sophisticated buyers.`,
-      `We match ${city} businesses with copywriters who have sector-specific experience, commercial track records, and the ability to work to the pace that London business demands.`
+      `Will writing in ${city} connects residents with qualified specialists who understand local estate values and the specific circumstances that London clients bring to will planning. Whether your estate is straightforward or complex, a professionally drafted will ensures your wishes are carried out and your loved ones are protected.`,
+      `We match ${city} residents with will writers who have experience with local property ownership, family circumstances common to London residents, and the pace that makes getting things done in the city essential.`
     ],
     steps: (city) => [
-      `Tell us about your ${city} business, the copy you need, your target audience, and your objectives`,
-      `We identify copywriters in our network with specific experience in your sector and format`,
-      `Introductions made within 24 hours — review writer profiles and portfolio samples`,
-      `Discovery conversation with your chosen writer to brief the project thoroughly`,
-      `Copy drafted, reviewed, and refined through agreed revision rounds`,
-      `Final copy delivered ready to use, with brand voice documentation for ongoing consistency`
+      `Tell us about your situation — your family, assets, wishes, and any specific requirements`,
+      `We identify will writers in our network with experience relevant to your type of estate`,
+      `Introductions made within 24 hours — review specialist profiles and qualifications`,
+      `Initial consultation in ${city} (at home, in office, or remotely) to discuss your wishes in detail`,
+      `Will drafted, reviewed, and amended until it precisely reflects your intentions`,
+      `Formal execution with proper witnessing — your will writer guides you through every step`
     ],
     whyPoints: (city) => [
-      `Writers with proven experience in ${city}'s key business sectors including finance, tech, law, and professional services`,
-      `Commercial focus — copy written to achieve business objectives, not just fill pages`,
-      `Fast, professional turnaround suited to ${city}'s business pace`,
-      `Free re-match guarantee if your first introduction isn't the right fit`
+      `Specialists with experience of ${city} estates including property ownership, investments, and family complexity`,
+      `Legally robust documents that satisfy the Wills Act 1837 requirements`,
+      `Clear explanation of every provision so you fully understand what you are signing`,
+      `Free re-match guarantee if your first introduction is not the right fit`
     ],
   },
-  "academic-writing-support": {
+  "mirror-wills": {
     intro: (city) => [
-      `Academic writing support in ${city} connects students and researchers with specialists who can help develop their work without compromising academic integrity. London's universities set high standards — the right support makes those standards achievable.`,
-      `Our matched academic writing specialists serving ${city} understand the expectations of UK institutions and can work with students across all disciplines and levels from undergraduate to doctoral.`
+      `Mirror wills in ${city} provide both partners with legally valid, matching protection — ensuring your estate passes to each other and then to your chosen beneficiaries. For cohabiting couples in particular, wills are the only way to protect each other from the intestacy rules.`,
+      `Our matched will writers serving ${city} conduct joint consultations, draft both wills simultaneously, and ensure both partners fully understand and approve every provision before execution.`
     ],
     steps: (city) => [
-      `Share details of your project — institution, level, discipline, what you need help with, and your deadline`,
-      `We match you with an academic writing specialist with relevant subject knowledge`,
-      `Initial session to review your work, identify priorities, and agree how support will be structured`,
-      `Working sessions focused on structure, argument, language, and referencing as needed`,
-      `Final review with written feedback to guide your revisions`,
-      `Follow-up support available as further drafts develop`
+      `Share details of your situation as a couple — family, assets, and shared wishes`,
+      `We match you with a will writer experienced in couples' estate planning`,
+      `Joint consultation in ${city} to discuss both partners' wishes and any differences`,
+      `Both wills drafted and provided for review simultaneously`,
+      `Any amendments incorporated — one revision round included`,
+      `Both wills formally executed with independent witnessing`
     ],
     whyPoints: (city) => [
-      `Specialists with postgraduate qualifications who understand ${city} university standards and expectations`,
-      `Subject-specific matching — not generic editorial support`,
-      `Development-focused approach that builds your skills, not dependency`,
-      `Flexible scheduling to work around ${city} student and professional commitments`
+      `Essential protection for unmarried couples who are not covered by intestacy rules`,
+      `Cost-effective — significantly cheaper than two independent wills`,
+      `Flexibility for both partners to update independently if circumstances change`,
+      `Experience with blended families and complex beneficiary arrangements in ${city}`
     ],
   },
-  "cv-cover-letter-writing": {
+  "lasting-power-of-attorney": {
     intro: (city) => [
-      `CV writing in ${city} requires professionals who understand the local job market — which sectors dominate, what recruiters in those sectors look for, and how to position candidates against the international competition that London attracts.`,
-      `Our matched CV writers know the ${city} recruitment landscape and produce CVs that get interviews, not just read.`
+      `Lasting Powers of Attorney in ${city} give you control over who manages your affairs if you lose mental capacity. Without them, your family has no legal authority to act on your behalf — regardless of your relationship — and must apply to the Court of Protection at significant cost and delay.`,
+      `Our matched LPA specialists serving ${city} ensure both types of LPA are properly drafted, correctly executed, and registered with the Office of the Public Guardian. They handle the entire process from initial consultation to confirmed registration.`
     ],
     steps: (city) => [
-      `Tell us your target role, sector, seniority level, and current situation`,
-      `We match you with a CV writer with specific experience in your sector and level`,
-      `Discovery conversation to understand your career story and target opportunity`,
-      `Full CV draft produced, reviewed against ${city} market expectations`,
-      `One revision round to refine and finalise`,
-      `Cover letter and optional LinkedIn profile review included`
+      `Discuss your circumstances — who you want as attorneys and any specific instructions`,
+      `We match you with an LPA specialist experienced with ${city} clients`,
+      `Consultation to explain both LPA types, attorney duties, and execution requirements`,
+      `Both LPAs drafted and sent for review with full explanation of each provision`,
+      `Execution coordinated — attorneys, certificate provider, and witnesses all guided through the process`,
+      `OPG registration submitted and managed — confirmed registration received in approximately 20 weeks`
     ],
     whyPoints: (city) => [
-      `Writers who understand ${city} recruitment across finance, tech, law, media, and other key sectors`,
-      `ATS optimisation alongside compelling human-readable narrative`,
-      `Proven track record placing professionals at all levels in ${city} roles`,
-      `Fast turnaround available for urgent applications`
+      `Essential protection against the Court of Protection process if you lose capacity`,
+      `Both LPA types handled together — often at a bundled discount`,
+      `Specialist guidance on choosing and briefing attorneys`,
+      `Full OPG registration management included in the service`
     ],
   },
-  "blog-seo-content": {
+  "trust-planning": {
     intro: (city) => [
-      `SEO content for ${city} businesses needs to compete in some of the UK's most contested search markets. Quality, consistency, and genuine expertise are what separate content that ranks from content that gets ignored.`,
-      `Our matched content writers serving ${city} understand search intent, topical authority, and how to produce content that serves both readers and search engines simultaneously.`
+      `Trust planning in ${city} addresses one of the most valuable estate planning opportunities for London residents — protecting assets from care fees, reducing inheritance tax, and ensuring assets pass to the right people at the right time. With London property values as they are, trust planning is relevant to far more families than realise it.`,
+      `Our matched trust planning specialists serving ${city} combine technical expertise with clear, jargon-free explanation. They recommend trust structures that are genuinely appropriate for your situation — not the most complex or the most expensive option.`
     ],
     steps: (city) => [
-      `Share your content goals, target keywords, publishing frequency, and brand voice guidelines`,
-      `We match you with a content writer experienced in your sector and comfortable with your subject matter`,
-      `Content strategy and calendar developed for ongoing work, or brief agreed for one-off projects`,
-      `Articles researched, written, and optimised to brief`,
-      `Review and revision round before final delivery`,
-      `Performance tracking available for retainer clients`
+      `Share your estate details — property, investments, family structure, and planning objectives`,
+      `We match you with a trust specialist with relevant experience for your situation`,
+      `Initial consultation to review your estate and identify appropriate trust structures`,
+      `Options presented with clear explanation of costs, benefits, and implications`,
+      `Trust documents drafted and reviewed — amendments incorporated as needed`,
+      `Execution and, where applicable, asset transfer into the trust structure`
     ],
     whyPoints: (city) => [
-      `Writers who understand the competitive search landscape in ${city}'s key sectors`,
-      `Both SEO expertise and genuine subject knowledge — not keyword stuffing`,
-      `Consistent brand voice maintained across all content`,
-      `Retainer arrangements available for businesses with regular content needs`
+      `Specialist understanding of ${city} property values and care fee protection planning`,
+      `Inheritance tax modelling to quantify the potential savings`,
+      `Trust structures recommended only where genuinely appropriate for your situation`,
+      `Ongoing trustee support available as circumstances evolve`
     ],
   },
-  "proofreading-editing": {
+  "estate-planning": {
     intro: (city) => [
-      `Professional proofreading and editing in ${city} ensures that every document you publish or submit reflects the quality of the work it represents. Errors and inconsistencies undermine credibility in London's high-stakes professional environment.`,
-      `Our matched editors working in ${city} bring subject-matter knowledge alongside editorial precision, ensuring corrections are accurate and appropriate for your specific context and audience.`
+      `Estate planning in ${city} brings together all aspects of your financial and personal situation to ensure your estate passes efficiently and tax-effectively to the people you intend. For London residents with property, pension assets, and investments, this is typically more complex — and more rewarding to address — than expected.`,
+      `Our matched estate planning specialists serving ${city} produce a comprehensive written review of your position and a prioritised action plan. Many clients are surprised both by the scale of their IHT exposure and by how much of it can be legitimately reduced with proper planning.`
     ],
     steps: (city) => [
-      `Share your document, intended audience, publication deadline, and any style guide requirements`,
-      `We match you with an editor with relevant subject knowledge for your content`,
-      `Editorial review completed with all changes tracked in your preferred format`,
-      `Style and consistency check against your guide or an agreed standard`,
-      `Edited document returned with editorial notes and a clean final version`,
-      `Follow-up questions answered promptly`
+      `Provide a complete picture of your assets — property, pensions, investments, business interests`,
+      `We match you with an estate planning specialist experienced with ${city} clients`,
+      `Comprehensive review meeting to discuss your estate, family, and planning objectives`,
+      `IHT position calculated and planning options assessed`,
+      `Written report produced with prioritised recommendations and suggested timeline`,
+      `Implementation support — will updates, trust establishment, gifting strategies — as needed`
     ],
     whyPoints: (city) => [
-      `Editors with subject expertise across ${city}'s key professional sectors`,
-      `Both proofreading and copy editing available depending on your needs`,
-      `Fast turnaround for urgent documents`,
-      `Consistent, reliable quality across all document types and lengths`
+      `Comprehensive review covering wills, LPAs, trusts, pensions, and gifting in one engagement`,
+      `IHT calculation showing your current exposure and the impact of recommended strategies`,
+      `Prioritised action plan — not everything needs to be done at once`,
+      `Specialist understanding of ${city} estate values and the London property market`
     ],
   },
-  "technical-grant-writing": {
+  "probate-support": {
     intro: (city) => [
-      `Technical and grant writing in ${city} requires specialists who combine domain expertise with the ability to communicate clearly for a specific audience — whether that is engineers reading documentation or funding panels assessing applications.`,
-      `Our matched specialists serving ${city} have genuine backgrounds in their subject areas and track records on the specific types of documents or applications you need.`
+      `Probate support in ${city} provides executors and families with professional guidance through the estate administration process after a bereavement. From obtaining the grant of probate to distributing the estate, specialist support ensures the process is handled correctly and as efficiently as possible.`,
+      `Our matched probate specialists serving ${city} combine legal expertise with compassionate client handling. They understand that executors are often dealing with grief alongside administrative responsibility, and they take the burden of the legal process firmly off your shoulders.`
     ],
     steps: (city) => [
-      `Describe your project — document type, subject matter, target audience, and timeline`,
-      `We match you with a technical or grant writer with relevant domain experience`,
-      `Scoping session with your subject matter experts to establish requirements`,
-      `Structure and outline agreed before drafting begins`,
-      `Draft produced and reviewed iteratively with your team`,
-      `Final document delivered polished and ready for its intended use`
+      `Contact us as soon as you are ready — there is no obligation to start immediately`,
+      `We match you with a probate specialist experienced with ${city} estates`,
+      `Initial consultation to assess the estate, identify requirements, and agree scope of support`,
+      `Asset valuations arranged, IHT position assessed, and HMRC returns prepared`,
+      `Grant of probate applied for — the OPG process is managed in full`,
+      `Estate collected, debts settled, distribution made, and full accounts provided to beneficiaries`
     ],
     whyPoints: (city) => [
-      `Domain specialists — not generalists attempting technical subjects`,
-      `Grant writers with track records on Innovate UK, UKRI, and charitable trust applications`,
-      `Accurate from the first draft due to genuine subject knowledge`,
-      `Structured, navigable documents that work as reference materials`
+      `Compassionate, experienced professionals who understand the sensitivity of bereavement administration`,
+      `Fixed-fee quotes for straightforward ${city} estates — no surprise costs`,
+      `HMRC compliance managed in full — IHT400 and all supporting schedules`,
+      `Experience with complex ${city} estates including property sales and investment portfolios`
     ],
-  }
+  },
 };

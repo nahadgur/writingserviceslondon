@@ -27,24 +27,24 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
   if (!service || !cityName) notFound();
 
   const allCities = Object.values(LOCATIONS).flat();
-  const content = serviceLocationContent[service.id] || serviceLocationContent['business-copywriting'];
+  const content = serviceLocationContent[service.id] || serviceLocationContent[services[0].id];
   const intro = content.intro(cityName);
   const steps = content.steps(cityName);
   const whyPoints = content.whyPoints(cityName);
 
   const benefits = [
-    { icon: <Award className="w-6 h-6" />, title: 'Vetted Writing Professionals', desc: `Every writing professional in our network has been vetted on portfolio quality and client references before receiving any referrals.` },
-    { icon: <Clock className="w-6 h-6" />, title: 'Response Within 24 Hours', desc: `Most writing professionals in our network respond within 24 hours and can arrange a free initial conversation to discuss your project.` },
-    { icon: <Shield className="w-6 h-6" />, title: 'Vetted and Insured', desc: `Professional indemnity insurance is required from every writing professional before we refer any enquiries.` },
-    { icon: <Users className="w-6 h-6" />, title: 'Matched to Your Brief', desc: `We connect you with writing professionals who have specific experience in your discipline and sector, not a generic list of whoever is available.` },
+    { icon: <Award className="w-6 h-6" />, title: 'Vetted Estate Planning Specialists', desc: `Every estate planning specialist in our network has been vetted on portfolio quality and client references before receiving any referrals.` },
+    { icon: <Clock className="w-6 h-6" />, title: 'Response Within 24 Hours', desc: `Most estate planning specialists in our network respond within 24 hours and can arrange a free initial conversation to discuss your project.` },
+    { icon: <Shield className="w-6 h-6" />, title: 'Vetted and Insured', desc: `Professional indemnity insurance is required from every estate planning specialist before we refer any enquiries.` },
+    { icon: <Users className="w-6 h-6" />, title: 'Matched to Your Brief', desc: `We connect you with estate planning specialists who have specific experience in your discipline and sector, not a generic list of whoever is available.` },
   ];
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': 'LegalService',
     name: `${service.title} in ${cityName}`,
     url: `${siteConfig.url}/services/${service.slug}/${params.locationSlug}/`,
-    description: `Find vetted writing professionals in ${cityName}. Free matching service, no obligation.`,
+    description: `Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation.`,
     areaServed: {
       '@type': 'City',
       name: cityName,
@@ -75,7 +75,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
               <div>
                 <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-brand-500/30">
-                  <MapPin className="w-4 h-4" /> Vetted Installers in {cityName}
+                  <MapPin className="w-4 h-4" /> Vetted Specialists in {cityName}
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
                   {service.title} in <span className="text-brand-400">{cityName}</span>
@@ -86,8 +86,8 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
                 <div className="space-y-4 mb-8">
                   {[
                     `${service.title} specialists in ${cityName}, verified and active`,
-                    'Up to three matched writing professionals, each providing a free initial conversation',
-                    'Insured, warranted, and commissioned to standard',
+                    'Up to three matched estate planning specialists, each providing a free initial conversation',
+                    'Qualified, insured, and experienced with estate planning',
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle className="w-6 h-6 text-brand-400 flex-shrink-0" />
@@ -135,7 +135,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
               <NearbyAreasGrid cityName={cityName} serviceSlug={service.slug} serviceName={service.title} />
 
               <section className="mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">How {service.title} Installation Works in {cityName}</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">How {service.title} Works in {cityName}</h2>
                 <div className="space-y-4">
                   {steps.map((step, i) => (
                     <div key={i} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
@@ -167,7 +167,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
               )}
 
               <section className="mt-12 mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Homeowners Are Saying</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Are Saying</h2>
                 <Testimonials limit={2} />
               </section>
             </div>
@@ -201,7 +201,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
                 </div>
                 <div className="bg-brand-900 text-white p-6 rounded-2xl shadow-lg">
                   <h3 className="text-lg font-display font-bold mb-3">From &pound;99/month</h3>
-                  <p className="text-brand-100 text-sm mb-4">Flexible payment arrangements available from most {cityName} writing professionals for larger projects.</p>
+                  <p className="text-brand-100 text-sm mb-4">Flexible payment arrangements available from most {cityName} estate planning specialists for larger projects.</p>
                   <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Get Free Quotes</button>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
 
           <div className="bg-brand-900 rounded-2xl p-8 md:p-12 text-center mt-12">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">Get {service.title} Quotes in {cityName}</h2>
-            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">Submit your brief in under two minutes. We will match you with up to three vetted {cityName} writing professionals with no obligation at any stage.</p>
+            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">Submit your brief in under two minutes. We will match you with up to three vetted {cityName} estate planning specialists with no obligation at any stage.</p>
             <button onClick={() => setIsModalOpen(true)} className="bg-white text-brand-900 font-bold text-lg py-4 px-10 rounded-xl hover:bg-brand-50 transition-colors">Get Your Free Quotes</button>
           </div>
         </div>

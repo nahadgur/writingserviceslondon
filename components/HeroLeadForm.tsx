@@ -75,7 +75,7 @@ export function HeroLeadForm({ city, service }: HeroLeadFormProps) {
         </div>
         <h3 className="text-2xl font-display font-bold">Request Received!</h3>
         <p className="text-gray-600">
-          We&apos;ve matched you with a vetted writing professional{city ? ` in ${city}` : ''}. Check your email for next steps.
+          We&apos;ve matched you with a vetted estate planning specialist{city ? ` in ${city}` : ''}. Check your email for next steps.
         </p>
       </div>
     );
@@ -91,7 +91,7 @@ export function HeroLeadForm({ city, service }: HeroLeadFormProps) {
           Get Matched{city ? ` in ${city}` : ''}
         </h3>
         <p className="text-gray-600 text-sm mt-1">
-          Up to 3 vetted writing professionals will contact you within 24 hours
+          Up to 3 vetted estate planning specialists will contact you within 24 hours
         </p>
       </div>
 

@@ -104,7 +104,7 @@ export function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                 <CheckCircle className="w-10 h-10" />
               </div>
               <h2 className="text-2xl font-display font-bold text-gray-900">Request Received!</h2>
-              <p className="text-gray-600">We&apos;ve matched you with a vetted writing professional. Check your email for next steps.</p>
+              <p className="text-gray-600">We&apos;ve matched you with a vetted estate planning specialist. Check your email for next steps.</p>
             </div>
           ) : (
             <>
@@ -112,8 +112,8 @@ export function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
                 <span className="inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">
                   Free Matching Service
                 </span>
-                <h2 className="text-2xl font-display font-bold text-gray-900">Find Your Installer</h2>
-                <p className="text-gray-600 text-sm mt-1">Fill in your details below and we will connect you with screened specialists.</p>
+                <h2 className="text-2xl font-display font-bold text-gray-900">Find Your Specialist</h2>
+                <p className="text-gray-600 text-sm mt-1">Fill in your details below and we will connect you with screened will writing specialists.</p>
               </div>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">

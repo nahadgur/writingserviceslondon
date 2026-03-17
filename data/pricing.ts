@@ -1,31 +1,31 @@
 // data/pricing.ts
 export interface PricingTier { treatment: string; slug: string; priceFrom: number; priceTo: number; typicalDuration: string; serviceIncludes: string; description: string; }
 export const pricingTiers: PricingTier[] = [
-  { "treatment": "Business Copywriting", "slug": "business-copywriting", "priceFrom": 300, "priceTo": 2500, "typicalDuration": "Per project", "serviceIncludes": "Brief consultation, copy drafts, two revision rounds, final delivery", "description": "Pricing reflects scope and experience level. A single landing page differs from a full website rewrite. Senior brand copywriters with agency backgrounds sit at the higher end but deliver measurably stronger commercial copy." },
-  { "treatment": "Academic Writing Support", "slug": "academic-writing-support", "priceFrom": 50, "priceTo": 120, "typicalDuration": "Per hour", "serviceIncludes": "Structural guidance, argument development, feedback sessions, editing", "description": "Hourly rates reflect the writer's academic background and subject specialism. Postgraduate-level support and STEM disciplines typically sit towards the higher end of the range." },
-  { "treatment": "CV and Cover Letter Writing", "slug": "cv-cover-letter-writing", "priceFrom": 150, "priceTo": 400, "typicalDuration": "Per CV package", "serviceIncludes": "Discovery call, full CV rewrite, tailored cover letter, one revision round", "description": "Rates vary by seniority level. Graduate CVs sit at the lower end while director and executive profiles with LinkedIn optimisation are priced higher. Most clients recoup the cost within their first month of job searching." },
-  { "treatment": "Blog and SEO Content", "slug": "blog-seo-content", "priceFrom": 80, "priceTo": 350, "typicalDuration": "Per article", "serviceIncludes": "Brief review, research, SEO-optimised draft, one revision round", "description": "Per-article pricing depends on word count, research depth, and whether keyword research is included. Monthly retainer arrangements offer better value for consistent content needs." },
-  { "treatment": "Proofreading and Editing", "slug": "proofreading-editing", "priceFrom": 0.01, "priceTo": 0.03, "typicalDuration": "Per word", "serviceIncludes": "Full proofread or copy edit, tracked changes, style notes", "description": "Industry-standard per-word pricing makes costs predictable for any document length. Copy editing (deeper structural work) sits at the higher end. Rush turnaround incurs an additional fee." },
-  { "treatment": "Technical and Grant Writing", "slug": "technical-grant-writing", "priceFrom": 60, "priceTo": 150, "typicalDuration": "Per hour", "serviceIncludes": "Project scoping, research, drafting, review rounds, final submission support", "description": "Technical writers charge by the hour given the unpredictable scope of documentation projects. Grant writers may offer fixed-fee packages for specific applications — discuss at matching stage." }
+  { "treatment": "Single Will", "slug": "single-will", "priceFrom": 150, "priceTo": 350, "typicalDuration": "One-off", "serviceIncludes": "Consultation, will drafting, review, signing guidance, secure storage advice", "description": "Pricing reflects complexity of wishes and estate. Standard wills with clear beneficiaries sit at the lower end. Wills involving specific bequests, excluded relatives, or business assets require more detailed drafting." },
+  { "treatment": "Mirror Wills", "slug": "mirror-wills", "priceFrom": 250, "priceTo": 550, "typicalDuration": "One-off (pair)", "serviceIncludes": "Joint consultation, two matching wills, review, signing guidance, storage advice", "description": "Priced as a pair. Most couples save 20-30% compared to two separate single wills. Complexity pricing applies where either partner has specific requirements around trusts, business assets, or blended family arrangements." },
+  { "treatment": "Lasting Power of Attorney", "slug": "lasting-power-of-attorney", "priceFrom": 300, "priceTo": 900, "typicalDuration": "One-off per LPA", "serviceIncludes": "Consultation, LPA drafting, certificate provider guidance, OPG registration support", "description": "Priced per LPA. Health and Welfare, and Property and Financial Affairs LPAs priced separately. Having both together typically attracts a bundled discount. OPG registration fee of £82 per LPA is separate." },
+  { "treatment": "Trust Planning", "slug": "trust-planning", "priceFrom": 500, "priceTo": 1500, "typicalDuration": "One-off", "serviceIncludes": "Estate review, trust recommendation, trust drafting, full explanation of implications", "description": "Pricing depends on trust type and complexity. Protective property trusts added to wills are at the lower end. Discretionary trusts for IHT planning, or trusts involving multiple properties or business assets, sit higher." },
+  { "treatment": "Estate Planning Review", "slug": "estate-planning", "priceFrom": 400, "priceTo": 1200, "typicalDuration": "One-off review", "serviceIncludes": "Full asset review, IHT calculation, wills/LPA/trust recommendations, written report", "description": "Comprehensive review of your complete estate position including inheritance tax exposure, available reliefs, gifting strategies, and recommended actions. Delivered as a written report with clear, prioritised recommendations." },
+  { "treatment": "Probate Support", "slug": "probate-support", "priceFrom": 1500, "priceTo": 3500, "typicalDuration": "3-12 months", "serviceIncludes": "Grant of probate application, asset collection, HMRC returns, estate distribution", "description": "Fixed-fee probate for straightforward estates. Complex estates with property sales, disputed assets, or international elements are quoted individually. OPG court fee of £300 is separate. Many clients prefer fixed fees for budget certainty." }
 ];
 export const servicePricingMap: Record<string, string[]> = {
-  "business-copywriting": ["business-copywriting"],
-  "academic-writing-support": ["academic-writing-support"],
-  "cv-cover-letter-writing": ["cv-cover-letter-writing"],
-  "blog-seo-content": ["blog-seo-content"],
-  "proofreading-editing": ["proofreading-editing"],
-  "technical-grant-writing": ["technical-grant-writing"]
+  "single-will": ["single-will"],
+  "mirror-wills": ["mirror-wills"],
+  "lasting-power-of-attorney": ["lasting-power-of-attorney"],
+  "trust-planning": ["trust-planning"],
+  "estate-planning": ["estate-planning"],
+  "probate-support": ["probate-support"]
 };
 export function getPricingForService(serviceId: string): PricingTier[] {
-  const slugs = servicePricingMap[serviceId] || ['business-copywriting'];
+  const slugs = servicePricingMap[serviceId] || ['single-will'];
   return pricingTiers.filter(p => slugs.includes(p.slug));
 }
 export const treatmentIncludes = [
-  "Brief consultation, copy drafts, two revision rounds, final delivery",
-  "Structural guidance, argument development, feedback sessions, editing",
-  "Discovery call, full CV rewrite, tailored cover letter, one revision round",
-  "Brief review, research, SEO-optimised draft, one revision round",
-  "Full proofread or copy edit, tracked changes, style notes",
-  "Project scoping, research, drafting, review rounds, final submission support"
+  "Consultation, will drafting, review, signing guidance, secure storage advice",
+  "Joint consultation, two matching wills, review, signing guidance, storage advice",
+  "Consultation, LPA drafting, certificate provider guidance, OPG registration support",
+  "Estate review, trust recommendation, trust drafting, full explanation of implications",
+  "Full asset review, IHT calculation, wills/LPA/trust recommendations, written report",
+  "Grant of probate application, asset collection, HMRC returns, estate distribution"
 ];
-export const financeInfo = { available: false, interestFree: false, monthlyFrom: 0, spreadOver: '', description: 'Most writers and agencies accept staged payments for larger projects. Discuss payment terms directly with your matched professional.' };
+export const financeInfo = { available: true, interestFree: true, monthlyFrom: 25, spreadOver: '6 to 24 months', description: 'Staged payment plans available from most specialists. Many clients prefer to spread the cost of comprehensive estate planning over 6-12 months.' };

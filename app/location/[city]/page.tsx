@@ -31,10 +31,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': 'LegalService',
     name: `${siteConfig.name} in ${cityName}`,
     url: `${siteConfig.url}/location/${params.city}/`,
-    description: `Find vetted writing professionals in ${cityName}. Free matching service, no obligation.`,
+    description: `Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation.`,
     areaServed: {
       '@type': 'City',
       name: cityName,
@@ -64,7 +64,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   {siteConfig.name.split(" ").slice(0, -1).join(" ") + " in"} <span className="text-brand-400">{cityName}</span>
                 </h1>
                 <p className="text-xl text-gray-300 leading-relaxed">
-                  {`Find vetted writing professionals in ${cityName}. Free matching service, no obligation to proceed.`}
+                  {`Find vetted estate planning specialists in ${cityName}. Free matching service, no obligation to proceed.`}
                 </p>
               </div>
               <div>
@@ -138,7 +138,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               <div className="mb-12"><FAQ faqs={cityFaqs} title={`${siteConfig.name} in ${cityName}: Common Questions`} /></div>
 
               <section className="mb-16">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Homeowners Are Saying</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Are Saying</h2>
                 <Testimonials limit={3} />
               </section>
             </div>
@@ -148,12 +148,12 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-4">{cityPageContent.sidebarCta(cityName).heading}</h3>
                   <p className="text-gray-600 text-sm mb-6">{cityPageContent.sidebarCta(cityName).description}</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Writing Professional</button>
+                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
                   <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                     {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Free survey within the week" },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "50+ verified projects" },
-                      { icon: <Star className="w-4 h-4 text-brand-500" />, text: "Insurance and warranty guaranteed" },
+                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Consultations available this week" },
+                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "50+ vetted specialists" },
+                      { icon: <Star className="w-4 h-4 text-brand-500" />, text: "Qualified and professionally insured" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <div className="bg-brand-100 p-1.5 rounded-full">{item.icon}</div>

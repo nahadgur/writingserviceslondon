@@ -20,10 +20,10 @@ export function Footer() {
               <span className="font-display font-bold text-lg text-white">{siteConfig.name}</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              Free matching service for London clients. We connect you with vetted writers, editors, and content agencies across London.
+              Free matching service for London clients. We connect you with vetted will writers and estate planning specialists across London.
             </p>
             <p className="text-xs text-gray-500 italic border-l-2 border-gray-700 pl-3">
-              We are a referral and matching service, not a writing agency. All work is carried out by independent writers and agencies in our vetted network.
+              We are a referral and matching service, not a will writing firm. All work is carried out by independent specialists in our vetted network.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-gray-800 pt-8 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. We are a matching service, not a writing agency.</p>
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. We are a matching service, not a will writing firm.</p>
           <div className="flex gap-6">
             <Link href="/sitemap.xml" className="hover:text-gray-300">Sitemap</Link>
             <Link href="/services/" className="hover:text-gray-300">Services</Link>

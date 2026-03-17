@@ -27,7 +27,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   const service = getServiceBySlug(params.serviceSlug);
   if (!service) notFound();
 
-  const content = serviceContent[service.id] || serviceContent['business-copywriting'];
+  const content = serviceContent[service.id] || serviceContent[services[0].id];
   const relatedServices = services.filter(s => s.id !== service.id);
 
   const filteredLocations = useMemo(() => {
@@ -67,7 +67,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">{service.description}</p>
                 <div className="space-y-3">
-                  {['Compare up to 3 free quotes', 'Every writer vetted and insured', `${totalCities}+ locations covered`].map((item, i) => (
+                  {['Compare up to 3 free quotes', 'Every specialist vetted and insured', `${totalCities}+ locations covered`].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-brand-400 flex-shrink-0" />
                       <span className="text-lg">{item}</span>
@@ -175,7 +175,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
               </section>
 
               <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Are {service.title} Right for Your Property?</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Is {service.title} Right for You?</h2>
                 <p className="text-gray-600 mb-4">{content.candidateIntro}</p>
                 <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
                   <ul className="space-y-3">
@@ -188,12 +188,12 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
                   </ul>
                 </div>
                 <p className="text-gray-600 text-sm mt-4">
-                  Our matched writing professionals will review your brief and requirements, then provide a clear quote and timeline before any work begins.
+                  Our matched estate planning specialists will review your brief and requirements, then provide a clear quote and timeline before any work begins.
                 </p>
               </section>
 
               <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">The Installation Process</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">How the Process Works</h2>
                 <div className="space-y-4">
                   {content.process.map((step, i) => (
                     <div key={i} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
@@ -214,7 +214,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
               </div>
 
               <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Homeowners Say</h2>
+                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Say</h2>
                 <Testimonials limit={3} />
               </section>
             </div>
@@ -223,12 +223,12 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
               <div className="sticky top-28 space-y-6">
                 <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                   <h3 className="text-lg font-display font-bold text-gray-900 mb-3">Get Matched for {service.title}</h3>
-                  <p className="text-gray-600 mb-5 text-sm">Free match with vetted writing professionals in your area.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Writing Professional</button>
+                  <p className="text-gray-600 mb-5 text-sm">Free match with vetted estate planning specialists in your area.</p>
+                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
                   <div className="mt-5 pt-5 border-t border-gray-100 space-y-3">
                     {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Surveys available this week" },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "Expert vetted writers" },
+                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: "Consultations available this week" },
+                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: "Expert vetted specialists" },
                       { icon: <Star className="w-4 h-4 text-brand-500" />, text: "4.9 average rating" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">

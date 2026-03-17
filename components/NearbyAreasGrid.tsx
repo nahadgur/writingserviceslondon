@@ -25,8 +25,8 @@ export function NearbyAreasGrid({ cityName, serviceSlug, serviceName, initialVis
     : `Areas We Cover Around ${cityName}`;
 
   const description = serviceName
-    ? `Looking for ${serviceName.toLowerCase()} near ${cityName}? Our vetted writers and agencies serve clients across ${cityName} and surrounding areas. We will match you with the right professional.`
-    : `Our writing professionals serve clients from across the surrounding area. If you are based in any of the nearby areas listed below, we can match you with the right writer or agency.`;
+    ? `Looking for ${serviceName.toLowerCase()} near ${cityName}? Our vetted specialists serve clients across ${cityName} and surrounding areas. We will match you with the right professional.`
+    : `Our estate planning specialists serve clients from across the surrounding area. If you are based in any of the nearby areas listed below, we can match you with the right specialist.`;
 
   return (
     <section className="mb-16">
@@ -75,10 +75,10 @@ export function NearbyAreasGrid({ cityName, serviceSlug, serviceName, initialVis
       {/* SEO paragraph */}
       <div className="mt-6 prose prose-sm max-w-none text-gray-500">
         <p>
-          Clients from {areas.slice(0, 5).join(', ')}, and other areas around {cityName} regularly use our service to find writing professionals.{' '}
+          Clients from {areas.slice(0, 5).join(', ')}, and other areas around {cityName} regularly use our service to find estate planning specialists.{' '}
           {serviceName
-            ? `If you need ${serviceName.toLowerCase()} and are based in or near ${cityName}, our vetted writing professionals can arrange a free initial conversation at a time that suits you.`
-            : `All of our ${cityName} partner writing professionals are vetted, insured, and responsive to your timeline and project needs.`
+            ? `If you need ${serviceName.toLowerCase()} and are based in or near ${cityName}, our vetted estate planning specialists can arrange a free initial conversation at a time that suits you.`
+            : `All of our ${cityName} partner estate planning specialists are vetted, insured, and responsive to your timeline and project needs.`
           }
         </p>
       </div>

@@ -7,7 +7,7 @@ import { siteConfig } from '@/data/site';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name + ' | Find Vetted Writers and Writing Agencies in London',
+    default: siteConfig.name + ' | Find Vetted Will Writing Specialists in London',
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,

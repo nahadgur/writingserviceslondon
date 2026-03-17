@@ -13,7 +13,7 @@ interface HeroLeadFormProps {
 
 
 const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbzPwtFtpK_ChLARoqlehndwwD_Gd6EMkiEN-NUvjp70D4753vkmnmLq5Ei9MvC__x6e/exec';
+  'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
 
 export function HeroLeadForm({ city, service }: HeroLeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);

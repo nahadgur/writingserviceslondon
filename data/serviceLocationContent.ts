@@ -1,125 +1,277 @@
 // data/serviceLocationContent.ts
-export const serviceLocationContent: Record<string, {
-  intro: (city: string) => string[]; steps: (city: string) => string[]; whyPoints: (city: string) => string[];
-}> = {
-  "single-will": {
-    intro: (city) => [
-      `Will writing in ${city} connects residents with qualified specialists who understand local estate values and the specific circumstances that London clients bring to will planning. Whether your estate is straightforward or complex, a professionally drafted will ensures your wishes are carried out and your loved ones are protected.`,
-      `We match ${city} residents with will writers who have experience with local property ownership, family circumstances common to London residents, and the pace that makes getting things done in the city essential.`
-    ],
-    steps: (city) => [
-      `Tell us about your situation — your family, assets, wishes, and any specific requirements`,
-      `We identify will writers in our network with experience relevant to your type of estate`,
-      `Introductions made within 24 hours — review specialist profiles and qualifications`,
-      `Initial consultation in ${city} (at home, in office, or remotely) to discuss your wishes in detail`,
-      `Will drafted, reviewed, and amended until it precisely reflects your intentions`,
-      `Formal execution with proper witnessing — your will writer guides you through every step`
-    ],
-    whyPoints: (city) => [
-      `Specialists with experience of ${city} estates including property ownership, investments, and family complexity`,
-      `Legally robust documents that satisfy the Wills Act 1837 requirements`,
-      `Clear explanation of every provision so you fully understand what you are signing`,
-      `Free re-match guarantee if your first introduction is not the right fit`
-    ],
+import { getLocationProfileByName, type LocationProfile } from './locationProfiles';
+
+function prof(city: string): LocationProfile | null { return getLocationProfileByName(city) || null; }
+function sizeLabel(p: LocationProfile): string {
+  switch (p.avgClientType) { case 'young-professional': return 'young professionals'; case 'family': return 'families'; case 'affluent': return 'high-value estate holders'; case 'elderly': return 'elderly residents'; case 'diverse': return 'local residents'; default: return 'residents'; }
+}
+function cityHash(city: string): number { let h = 0; for (let i = 0; i < city.length; i++) h = ((h << 5) - h + city.charCodeAt(i)) | 0; return Math.abs(h); }
+function pick<T>(city: string, options: T[]): T { return options[cityHash(city) % options.length]; }
+
+export interface ServiceLocationPageContent {
+  heroDesc: (city: string) => string;
+  heroBullets: (city: string) => string[];
+  trustLine: (city: string) => string;
+  benefits: (city: string) => { title: string; desc: string }[];
+  intro: (city: string) => string[];
+  introHeading: (city: string) => string;
+  stepsHeading: (city: string) => string;
+  whyHeading: (city: string) => string;
+  steps: (city: string) => string[];
+  whyPoints: (city: string) => string[];
+  faqs: (city: string) => { question: string; answer: string }[];
+}
+
+export const serviceLocationContent: Record<string, ServiceLocationPageContent> = {
+
+"single-will": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Single Will Writing in ${city}`; return pick(city, [`Why ${city} ${sizeLabel(p)} Cannot Afford to Die Without a Will`, `Single Will Drafting in ${city}: More Than a Template`, `Your ${city} Will: What Happens If You Don't Have One`, `Getting Your Will Done in ${city} — Properly, Not Just Quickly`, `A Will for ${city} ${sizeLabel(p)}: What It Actually Needs to Cover`]); },
+  stepsHeading: (city) => { const p = prof(city); return pick(city, [`How Will Writing Works for ${city} Clients`, `From First Call to Signed Will: The ${city} Process`, `Your ${city} Will in Three Straightforward Steps`, `Getting Your Will Done in ${city}: What to Expect`]); },
+  whyHeading: (city) => { const p = prof(city); return pick(city, [`Why ${city} Residents Use Our Will Writing Matching`, `What Matched Will Writing Gets ${city} Clients`, `The Advantage of Expert Will Writing for ${city} ${p ? sizeLabel(p) : 'Residents'}`]); },
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Single will writing specialists covering ${city}. Free matching, no obligation.`;
+    if (p.avgClientType === 'young-professional') return `You bought a flat, you got a mortgage, you might have a partner who isn't on the deeds. Without a will, the law decides who gets everything — and it might not be who you think. We match ${city} ${sizeLabel(p)} with will writers who handle first wills every week.`;
+    if (p.avgClientType === 'elderly') return `If your will is more than five years old — or if you have never made one — your estate could end up in the wrong hands. We match ${city} ${sizeLabel(p)} with will writers who visit you at home and handle everything with care and patience.`;
+    if (p.avgClientType === 'affluent') return `A standard will template does not work for ${city} estates with property, investments, business interests, and international connections. We match ${sizeLabel(p)} with specialists who draft wills that actually protect complex estates.`;
+    if (p.avgClientType === 'diverse') return `${city}'s diverse community needs will writers who understand different family structures, cultural expectations, and religious requirements. We match you with specialists who draft wills that are legally valid and culturally appropriate.`;
+    return `${city} families need wills that name guardians, protect the family home, and ensure the right people inherit. We match ${sizeLabel(p)} with will writers who handle family wills daily.`;
   },
-  "mirror-wills": {
-    intro: (city) => [
-      `Mirror wills in ${city} provide both partners with legally valid, matching protection — ensuring your estate passes to each other and then to your chosen beneficiaries. For cohabiting couples in particular, wills are the only way to protect each other from the intestacy rules.`,
-      `Our matched will writers serving ${city} conduct joint consultations, draft both wills simultaneously, and ensure both partners fully understand and approve every provision before execution.`
-    ],
-    steps: (city) => [
-      `Share details of your situation as a couple — family, assets, and shared wishes`,
-      `We match you with a will writer experienced in couples' estate planning`,
-      `Joint consultation in ${city} to discuss both partners' wishes and any differences`,
-      `Both wills drafted and provided for review simultaneously`,
-      `Any amendments incorporated — one revision round included`,
-      `Both wills formally executed with independent witnessing`
-    ],
-    whyPoints: (city) => [
-      `Essential protection for unmarried couples who are not covered by intestacy rules`,
-      `Cost-effective — significantly cheaper than two independent wills`,
-      `Flexibility for both partners to update independently if circumstances change`,
-      `Experience with blended families and complex beneficiary arrangements in ${city}`
-    ],
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Expert will writers covering your area', 'Legally valid, properly witnessed', 'Fixed-fee, no hidden costs']; return [
+    p.avgClientType === 'young-professional' ? `Will writers experienced with first wills for ${city} property buyers and cohabiting couples` : p.avgClientType === 'diverse' ? `Culturally sensitive will writers experienced with ${city}'s diverse community` : `Will writers experienced with ${p.clientMix[0]} estates in ${city}`,
+    `Legally valid, properly witnessed documents — not DIY templates that can be challenged`,
+    `Fixed-fee will writing with a free initial consultation to discuss your ${city} situation`,
+  ]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Trusted by ${sizeLabel(p)} across ${city}` : `Trusted will writers across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city);
+    if (p.avgClientType === 'young-professional') return [
+      { title: "Your Partner Is Not Automatically Protected", desc: `If you are not married, your partner inherits nothing under intestacy — regardless of how long you have lived together or whose name is on the mortgage. A will is the only way to protect an unmarried partner in ${city}.` },
+      { title: "Your Property Needs a Will", desc: `${p.estateProfile}. Your will specifies who gets your share of the property if you die, preventing your partner from being forced to sell by your family's legal claim under intestacy.` },
+      { title: "Guardianship Matters Now", desc: `If you have children and both parents die without naming guardians, the court decides who raises them. Your will names the people you trust. For ${city} ${sizeLabel(p)}, this is often the trigger for getting a will done.` },
+      { title: "It Costs Less Than You Think", desc: `A professionally drafted single will typically costs £150-£350. A DIY will from the internet that gets challenged in court costs thousands. For ${city} ${sizeLabel(p)}, professional drafting is the obvious choice.` },
+    ];
+    if (p.avgClientType === 'elderly') return [
+      { title: "Updating Outdated Wills", desc: `If your will was written before a marriage, divorce, grandchildren, or property purchase, it may not reflect your current wishes. For ${city} ${sizeLabel(p)}, a will review ensures your estate goes where you want it to — not where an outdated document directs it.` },
+      { title: "Home Visit Available", desc: `Your will writer comes to you in ${city}. No need to travel to an office. They bring everything needed, explain every clause clearly, and arrange proper witnessing at your home.` },
+      { title: "Capacity-Sensitive Drafting", desc: `${p.planningNeeds}. Your will writer documents your testamentary capacity clearly at the time of signing, protecting the will against future challenges from disappointed family members.` },
+      { title: "Executor Selection Guidance", desc: `Choosing the right executor matters enormously. Your will writer advises on whether family members, friends, or professional executors are appropriate for your ${city} estate and circumstances.` },
+    ];
+    if (p.avgClientType === 'affluent') return [
+      { title: "Beyond a Basic Template", desc: `${p.estateProfile}. A standard will template cannot handle this complexity. Your specialist drafts bespoke provisions that address every asset class and family scenario in your ${city} estate.` },
+      { title: "Trust Integration", desc: `${p.planningNeeds}. Your will may need to coordinate with existing or new trust structures. Your specialist ensures the will and trusts work together, not against each other.` },
+      { title: "International Coordination", desc: `If you have assets, family, or obligations outside the UK, your will must coordinate with overseas succession laws. Your ${city} specialist identifies where a UK will alone is insufficient.` },
+      { title: "IHT-Aware Drafting", desc: `Every clause in your will has IHT consequences. Your specialist drafts with tax efficiency built in — nil-rate band trusts, charitable legacies, and business property relief provisions — not bolted on afterwards.` },
+    ];
+    if (p.avgClientType === 'diverse') return [
+      { title: "Culturally Appropriate Drafting", desc: `${p.demographics}. Your will writer understands different cultural approaches to inheritance and family obligation, drafting a will that is both legally valid under English law and respectful of your cultural expectations.` },
+      { title: "Religious Compliance Available", desc: `${p.planningNeeds}. Whether you need Sharia-compliant provisions, halachic considerations, or other religious inheritance frameworks, your specialist drafts within both religious and legal requirements.` },
+      { title: "Overseas Property Provisions", desc: `If you own property in your country of origin, your will must address whether English law or local law governs that property. Your specialist coordinates the UK will with any overseas requirements.` },
+      { title: "Plain Language, Clear Explanation", desc: `Your will writer explains every clause in clear language, ensuring you understand exactly what your will does. For ${city}'s diverse community, accessibility and clarity are not optional extras.` },
+    ];
+    return [
+      { title: "Family Protection First", desc: `${p.planningNeeds}. Your will names guardians for children, protects the family home, and ensures your estate reaches the people you choose — not the people intestacy rules dictate.` },
+      { title: "Property-Appropriate Drafting", desc: `${p.estateProfile}. Your will writer ensures your property is dealt with correctly — joint tenancy versus tenancy in common, mortgage considerations, and any trust provisions needed to protect your family's home.` },
+      { title: "Future-Proofed for Change", desc: `Marriages, divorces, births, deaths — your will needs to accommodate future changes. Your specialist drafts with appropriate substitutional provisions so your will remains effective as circumstances evolve.` },
+      { title: "Fixed Fee, No Surprises", desc: `Your will writer quotes a fixed fee for your ${city} single will after the initial consultation. No hourly billing, no hidden extras, no surprise costs at the end.` },
+    ];
   },
-  "lasting-power-of-attorney": {
-    intro: (city) => [
-      `Lasting Powers of Attorney in ${city} give you control over who manages your affairs if you lose mental capacity. Without them, your family has no legal authority to act on your behalf — regardless of your relationship — and must apply to the Court of Protection at significant cost and delay.`,
-      `Our matched LPA specialists serving ${city} ensure both types of LPA are properly drafted, correctly executed, and registered with the Office of the Public Guardian. They handle the entire process from initial consultation to confirmed registration.`
-    ],
-    steps: (city) => [
-      `Discuss your circumstances — who you want as attorneys and any specific instructions`,
-      `We match you with an LPA specialist experienced with ${city} clients`,
-      `Consultation to explain both LPA types, attorney duties, and execution requirements`,
-      `Both LPAs drafted and sent for review with full explanation of each provision`,
-      `Execution coordinated — attorneys, certificate provider, and witnesses all guided through the process`,
-      `OPG registration submitted and managed — confirmed registration received in approximately 20 weeks`
-    ],
-    whyPoints: (city) => [
-      `Essential protection against the Court of Protection process if you lose capacity`,
-      `Both LPA types handled together — often at a bundled discount`,
-      `Specialist guidance on choosing and briefing attorneys`,
-      `Full OPG registration management included in the service`
-    ],
+  intro: (city) => { const p = prof(city); if (!p) return ['A professionally drafted will is the only way to ensure your wishes are carried out.', 'Without one, the law decides who inherits — and the answer may surprise you.']; 
+    if (p.avgClientType === 'young-professional') return [
+      `You probably know you need a will. You have probably been meaning to do it since you bought the flat or had the baby. The reason you haven't is that it feels morbid, complicated, and expensive. It is none of those things. A single will for a ${city} professional takes one consultation, costs £150-350, and takes the single most important financial protection task off your to-do list permanently.`,
+      `${p.estateProfile}. Without a will, intestacy rules decide who inherits — and if you are not married, your partner gets nothing. If you are married but have children from a previous relationship, the split may not be what you expect. A will takes 30 minutes to discuss and a week to draft. There is no good reason not to have one.`,
+    ];
+    if (p.avgClientType === 'elderly') return [
+      `If you made your will twenty years ago, your circumstances have almost certainly changed. Grandchildren have been born, properties have been sold or bought, family relationships have shifted. An outdated will is almost as dangerous as no will at all — it directs your estate based on a life you no longer live.`,
+      `${p.planningNeeds}. A will writer who visits ${city} ${sizeLabel(p)} at home handles the process gently and thoroughly. They review your current will if you have one, discuss your wishes in your own environment, and draft a new document that reflects your life as it is now — not as it was when you last visited a solicitor.`,
+    ];
+    if (p.avgClientType === 'affluent') return [
+      `A will for a ${city} estate worth seven figures is not a document you download from the internet. ${p.estateProfile}. Every clause has IHT consequences, every omission creates a potential challenge, and every ambiguity gives disappointed beneficiaries ammunition for litigation.`,
+      `${p.planningNeeds}. A specialist who works with ${city} ${sizeLabel(p)} drafts wills that coordinate with existing trust structures, address international assets, and build tax efficiency into every provision. This is legal architecture, not form-filling.`,
+    ];
+    if (p.avgClientType === 'diverse') return [
+      `${p.demographics}. Making a will in ${city}'s diverse community means finding a writer who understands that families don't all look the same, inheritance expectations differ across cultures, and religious considerations may affect how you want your estate distributed.`,
+      `${p.planningNeeds}. A culturally aware will writer handles these situations with sensitivity and legal precision — ensuring your will is both valid under English law and respectful of your family's traditions and expectations.`,
+    ];
+    return [
+      `${p.marketContext} For ${city} families, a will is not a luxury — it is the document that names who raises your children if you both die, who gets the family home, and how your estate is divided. Without one, the court decides all of these things, and the court doesn't know your family.`,
+      `${p.planningNeeds}. A will writer who handles ${city} family wills regularly knows the questions to ask, the provisions to include, and the pitfalls to avoid. They draft a document that protects your family properly — not a template with your name inserted.`,
+    ];
   },
-  "trust-planning": {
-    intro: (city) => [
-      `Trust planning in ${city} addresses one of the most valuable estate planning opportunities for London residents — protecting assets from care fees, reducing inheritance tax, and ensuring assets pass to the right people at the right time. With London property values as they are, trust planning is relevant to far more families than realise it.`,
-      `Our matched trust planning specialists serving ${city} combine technical expertise with clear, jargon-free explanation. They recommend trust structures that are genuinely appropriate for your situation — not the most complex or the most expensive option.`
-    ],
-    steps: (city) => [
-      `Share your estate details — property, investments, family structure, and planning objectives`,
-      `We match you with a trust specialist with relevant experience for your situation`,
-      `Initial consultation to review your estate and identify appropriate trust structures`,
-      `Options presented with clear explanation of costs, benefits, and implications`,
-      `Trust documents drafted and reviewed — amendments incorporated as needed`,
-      `Execution and, where applicable, asset transfer into the trust structure`
-    ],
-    whyPoints: (city) => [
-      `Specialist understanding of ${city} property values and care fee protection planning`,
-      `Inheritance tax modelling to quantify the potential savings`,
-      `Trust structures recommended only where genuinely appropriate for your situation`,
-      `Ongoing trustee support available as circumstances evolve`
-    ],
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city);
+    if (p.avgClientType === 'elderly') return [`Free initial consultation at your ${city} home — your will writer comes to you`, `Review of any existing will and discussion of your current wishes, family situation, and estate`, `Your will writer drafts the new will and sends it to you for review in clear, plain language`, `Home visit for signing with proper witnessing arranged by your will writer`, `Your signed will is stored securely with registration at the National Will Register`, `Your will writer provides guidance on when to review the will as circumstances change`];
+    return [`Free initial consultation — phone, video, or in person in ${city} — to discuss your situation`, `Your will writer takes detailed instructions covering assets, beneficiaries, guardians, and executors`, `A professionally drafted will is prepared and sent to you for review before signing`, `You review the draft, raise any questions, and confirm the final version`, `Signing appointment with proper witnessing — either at the will writer's office or your ${city} home`, `Your signed will is stored securely and registered, with guidance on when to review it`];
   },
-  "estate-planning": {
-    intro: (city) => [
-      `Estate planning in ${city} brings together all aspects of your financial and personal situation to ensure your estate passes efficiently and tax-effectively to the people you intend. For London residents with property, pension assets, and investments, this is typically more complex — and more rewarding to address — than expected.`,
-      `Our matched estate planning specialists serving ${city} produce a comprehensive written review of your position and a prioritised action plan. Many clients are surprised both by the scale of their IHT exposure and by how much of it can be legitimately reduced with proper planning.`
-    ],
-    steps: (city) => [
-      `Provide a complete picture of your assets — property, pensions, investments, business interests`,
-      `We match you with an estate planning specialist experienced with ${city} clients`,
-      `Comprehensive review meeting to discuss your estate, family, and planning objectives`,
-      `IHT position calculated and planning options assessed`,
-      `Written report produced with prioritised recommendations and suggested timeline`,
-      `Implementation support — will updates, trust establishment, gifting strategies — as needed`
-    ],
-    whyPoints: (city) => [
-      `Comprehensive review covering wills, LPAs, trusts, pensions, and gifting in one engagement`,
-      `IHT calculation showing your current exposure and the impact of recommended strategies`,
-      `Prioritised action plan — not everything needs to be done at once`,
-      `Specialist understanding of ${city} estate values and the London property market`
-    ],
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return pick(city, [
+    [`Will writers matched to your specific ${city} situation — not random assignation from a database`, `Professionally drafted documents that withstand legal challenge, unlike DIY templates`, `Fixed-fee quotes with no hidden costs — you know the price before you commit`, `Free initial consultation to discuss your situation before any obligation`],
+    [`Specialists experienced with ${p.clientMix[0]} estates in ${city}`, `Legally valid wills properly witnessed and stored — not templates from the internet`, `${p.avgClientType === 'elderly' ? 'Home visits available throughout ' + city : 'Flexible appointments including evenings and weekends for busy ' + city + ' professionals'}`, `National Will Register listing and secure storage arrangements included`],
+  ]); },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['single-will'](city);
+    if (p.avgClientType === 'young-professional') return [
+      { question: `How much does a single will cost in ${city}?`, answer: `A professionally drafted single will typically costs £150-£350 for ${city} ${sizeLabel(p)}. The exact price depends on complexity — a straightforward first will for a property buyer is at the lower end, while wills with business interests or international elements cost more. Your will writer quotes a fixed fee after the initial consultation.` },
+      { question: `I'm not married — do I really need a will in ${city}?`, answer: `Yes, urgently. Under intestacy rules, an unmarried partner inherits absolutely nothing — regardless of how long you have lived together, whether you have children, or whose name is on the mortgage. If you own property together in ${city} without a will, your partner could be forced to sell the home to pay your family their intestacy share. A will is the only protection.` },
+      { question: `How long does getting a will take in ${city}?`, answer: `The initial consultation takes 30-60 minutes. Drafting takes 5-10 working days. Review and signing can happen within a week of receiving the draft. Most ${city} ${sizeLabel(p)} have a completed, signed will within 2-3 weeks of first contact.` },
+    ];
+    if (p.avgClientType === 'elderly') return [
+      { question: `Can the will writer visit me at home in ${city}?`, answer: `Yes — most will writers in our ${city} network offer home visits as standard for ${sizeLabel(p)}. They bring everything needed, explain every clause clearly at your pace, and arrange witnessing at your home. There is no need to travel to an office.` },
+      { question: `My old will is very outdated — should I start from scratch?`, answer: `Usually yes. Codicils (amendments to existing wills) can create confusion and are more easily challenged. A clean new will that reflects your current wishes, family situation, and estate is clearer, cheaper to administer, and harder to contest. Your will writer reviews the old will to ensure nothing is missed.` },
+      { question: `What if someone challenges my will after I die?`, answer: `Professional drafting significantly reduces challenge risk. Your will writer documents your capacity at signing, explains the rationale for your distributions, and ensures proper witnessing. For ${city} ${sizeLabel(p)} concerned about potential family disputes, your specialist can include specific provision explanations that make challenges harder.` },
+    ];
+    return [
+      { question: `How much does a single will cost in ${city}?`, answer: `£150-£500 depending on complexity. A straightforward single will for a ${city} ${p.avgClientType === 'family' ? 'family' : 'resident'} with standard distribution is at the lower end. Wills with trust provisions, international elements, or business interests cost more. Fixed-fee quotes provided after the free initial consultation.` },
+      { question: `What makes a will legally valid in ${city}?`, answer: `The will must be in writing, signed by you in the presence of two witnesses (who also sign), and you must have testamentary capacity and be acting freely. Witnesses cannot be beneficiaries or their spouses. Your ${city} will writer ensures every legal requirement is met, making your will valid and resistant to challenge.` },
+      { question: `When should I update my will?`, answer: `After marriage (which revokes previous wills automatically), divorce, birth of children or grandchildren, property purchase or sale, significant change in assets, or change in your wishes about beneficiaries. For ${city} ${sizeLabel(p)}, a review every 3-5 years catches circumstances changes you might not have connected to your will.` },
+    ];
   },
-  "probate-support": {
-    intro: (city) => [
-      `Probate support in ${city} provides executors and families with professional guidance through the estate administration process after a bereavement. From obtaining the grant of probate to distributing the estate, specialist support ensures the process is handled correctly and as efficiently as possible.`,
-      `Our matched probate specialists serving ${city} combine legal expertise with compassionate client handling. They understand that executors are often dealing with grief alongside administrative responsibility, and they take the burden of the legal process firmly off your shoulders.`
-    ],
-    steps: (city) => [
-      `Contact us as soon as you are ready — there is no obligation to start immediately`,
-      `We match you with a probate specialist experienced with ${city} estates`,
-      `Initial consultation to assess the estate, identify requirements, and agree scope of support`,
-      `Asset valuations arranged, IHT position assessed, and HMRC returns prepared`,
-      `Grant of probate applied for — the OPG process is managed in full`,
-      `Estate collected, debts settled, distribution made, and full accounts provided to beneficiaries`
-    ],
-    whyPoints: (city) => [
-      `Compassionate, experienced professionals who understand the sensitivity of bereavement administration`,
-      `Fixed-fee quotes for straightforward ${city} estates — no surprise costs`,
-      `HMRC compliance managed in full — IHT400 and all supporting schedules`,
-      `Experience with complex ${city} estates including property sales and investment portfolios`
-    ],
+},
+
+"mirror-wills": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Mirror Wills in ${city}`; return pick(city, [`Mirror Wills for ${city} Couples: Matching Protection at Half the Effort`, `${city} Couples: Why Mirror Wills Are the Most Cost-Effective Estate Protection`, `His and Hers Wills for ${city} Couples — Identical Protection, One Consultation`, `Mirror Wills in ${city}: What Married Couples and Civil Partners Need to Know`]); },
+  stepsHeading: (city) => pick(city, [`Getting Mirror Wills for Your ${city} Household`, `How Mirror Wills Work for ${city} Couples`, `Your ${city} Mirror Wills: From Consultation to Completion`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Couples Choose Matched Mirror Wills`, `What Mirror Wills Get ${city} Families`, `The Value of Professional Mirror Wills for ${city} Couples`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Mirror will writing for ${city} couples. Free matching, no obligation.`; return `Mirror wills give ${city} couples matching protection — you leave everything to each other, then to your chosen beneficiaries. One consultation, two wills, typically 30-40% cheaper than two separate wills. We match couples with specialists who draft them together.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Mirror will specialists for couples', 'Cost-effective paired drafting', 'Guardianship and trust provisions']; return [`Mirror wills drafted together in one ${city} consultation — efficient and consistent`, `Matching provisions ensuring both partners are protected equally if either dies first`, `Guardianship, trust, and substitute beneficiary provisions covering every scenario`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Mirror wills for ${city} couples and families` : `Mirror will writing across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
+    { title: "One Consultation, Two Wills", desc: `You and your partner attend one consultation in ${city}, discuss everything together, and get two matching wills drafted from the same instructions. Faster, cheaper, and ensures you both have consistent provisions.` },
+    { title: "Survivor Protection", desc: `Each will leaves everything to the surviving partner first, then to your chosen beneficiaries if you both die. For ${city} ${sizeLabel(p)}, this ensures the survivor can continue living in the family home without disruption.` },
+    { title: "Guardian Nominations", desc: `Both wills name the same guardians for your children. If both parents die, the court follows your nomination. Without this, the court decides — and they don't know which of your friends and family you would choose.` },
+    { title: "Cost-Effective Protection", desc: `Mirror wills typically cost £250-£500 for both — roughly 30-40% less than two individual wills drafted separately. For ${city} couples, it is the most efficient way to get proper estate protection.` },
+  ]; },
+  intro: (city) => { const p = prof(city); if (!p) return ['Mirror wills give couples matching estate protection efficiently.', 'One consultation produces two consistent, legally valid documents.']; return [
+    `Most ${city} couples want the same thing from their wills: everything goes to the surviving partner, then to the children (or other chosen beneficiaries) if they both die. Mirror wills do exactly this — two matching documents drafted together from one conversation, ensuring complete consistency between partners.`,
+    `${p.planningNeeds}. For ${city} ${sizeLabel(p)}, mirror wills also name guardians, specify funeral wishes, and can include trust provisions that protect assets from remarriage, care fees, or sideways disinheritance. Your specialist drafts both wills to work together as a coordinated plan.`,
+  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Joint consultation — phone, video, or in person in ${city} — to discuss your combined wishes`, `Both wills drafted together from shared instructions, ensuring perfect consistency`, `Draft review: both partners check their respective wills and raise any questions`, `Joint signing appointment with proper witnessing for both wills simultaneously`, `Both wills stored securely and registered at the National Will Register`, `Guidance on when to review — marriage, divorce, children, property changes all trigger updates`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Mirror will specialists who handle ${city} couples efficiently in one consultation`, `Consistent provisions across both wills preventing contradictions or gaps`, `Guardian nominations, trust provisions, and substitute beneficiaries all coordinated`, `30-40% cost saving versus two separate individual wills`]; },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['mirror-wills'](city); return [
+    { question: `How much do mirror wills cost in ${city}?`, answer: `£250-£500 for both wills, depending on complexity. Straightforward mirror wills for a ${city} couple with standard distribution are at the lower end. If you need trust provisions, international elements, or business succession, the cost is higher. Your specialist quotes a fixed fee after the joint consultation.` },
+    { question: `Can we change our mirror wills independently later?`, answer: `Yes — each will is a separate legal document that either partner can change independently. However, changing one without telling the other can create inconsistencies. If circumstances change for one partner, your ${city} specialist advises on whether both wills need updating to remain coordinated.` },
+    { question: `Do mirror wills work for unmarried ${city} couples?`, answer: `Yes, and they are even more important for unmarried couples. Married partners have intestacy protection (though it may not match your wishes), but unmarried partners have none. Mirror wills for cohabiting ${city} couples are essential legal protection that no other arrangement provides.` },
+  ]; },
+},
+
+"lasting-power-of-attorney": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Lasting Power of Attorney in ${city}`; return pick(city, [`LPAs for ${city} ${sizeLabel(p)}: The Document You Hope You Never Need But Cannot Do Without`, `Lasting Power of Attorney in ${city}: Why Every Adult Should Have One`, `${city} LPA Services: Protecting Your Decisions Before You Can't Make Them`, `Who Decides for You If You Can't? ${city} LPA Planning Explained`]); },
+  stepsHeading: (city) => pick(city, [`Setting Up Your ${city} Lasting Power of Attorney`, `How LPAs Work for ${city} Residents`, `Your ${city} LPA: From Application to Registration`]),
+  whyHeading: (city) => pick(city, [`Why ${city} ${pick(city, ['Residents', 'Families', 'Professionals'])} Need LPAs Now`, `What LPA Planning Gets ${city} Families`, `The Case for Early LPA Registration in ${city}`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Lasting Power of Attorney services covering ${city}. Free matching, no obligation.`;
+    if (p.avgClientType === 'elderly') return `If you lose mental capacity without an LPA, your family must apply to the Court of Protection — costing thousands and taking months. For ${city} ${sizeLabel(p)}, setting up LPAs now, while you have capacity, is the single most important planning step you can take.`;
+    if (p.avgClientType === 'young-professional') return `LPAs aren't just for elderly people. An accident or illness can remove your ability to manage your finances or make medical decisions at any age. For ${city} ${sizeLabel(p)}, LPAs cost a fraction of what the Court of Protection charges if you don't have them.`;
+    return `An LPA lets someone you trust manage your finances or make healthcare decisions if you can't. Without one, your ${city} family faces court applications costing thousands. We match you with specialists who handle both property/financial and health/welfare LPAs.`;
   },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['LPA specialists covering your area', 'Property/financial and health/welfare', 'OPG registration managed']; return [`Property and financial affairs LPA — someone you trust manages your money if you can't`, `Health and welfare LPA — someone you trust makes medical decisions if you lose capacity`, `Complete OPG registration managed for your ${city} LPAs, including fee reductions if eligible`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `LPA planning for ${city} ${sizeLabel(p)}` : `LPA services across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
+    { title: "Before You Need It", desc: `You can only make an LPA while you have mental capacity. Once capacity is lost, the option disappears. For ${city} ${sizeLabel(p)}, the time to act is now — not after a diagnosis, accident, or sudden illness removes the choice.` },
+    { title: "Two Types, Both Essential", desc: `Property and financial affairs LPA lets your attorney pay bills, manage investments, and handle property. Health and welfare LPA lets them make medical decisions. Most ${city} clients set up both — they cost less together and cover everything.` },
+    { title: "Your Choice of Attorney", desc: `You choose who acts for you — spouse, children, trusted friends, or professionals. You set the conditions and restrictions. Your ${city} specialist advises on attorney selection, backup attorneys, and how to structure multiple attorneys.` },
+    { title: "Avoiding the Court of Protection", desc: `Without LPAs, your family must apply to the Court of Protection for deputyship — costing £1,000-£5,000, taking 3-6 months, and requiring annual supervision fees. LPAs cost a fraction and are ready immediately when needed.` },
+  ]; },
+  intro: (city) => { const p = prof(city); if (!p) return ['An LPA is essential planning that must be done while you have mental capacity.', 'Without one, your family faces expensive and slow Court of Protection applications.']; 
+    if (p.avgClientType === 'elderly') return [
+      `One in three people over 65 will develop a condition affecting mental capacity. If that happens without LPAs in place, your family cannot access your bank accounts, sell your property to fund care, or make medical decisions on your behalf — until the Court of Protection grants deputyship, which costs thousands and takes months.`,
+      `${p.planningNeeds}. For ${city} ${sizeLabel(p)}, setting up both property/financial and health/welfare LPAs now is the single most important planning step available. The process is straightforward, the cost is modest (£82 per LPA to register, plus your specialist's drafting fee), and the protection is immediate once registered.`,
+    ];
+    return [
+      `An LPA is not a document for old people. Strokes, accidents, and sudden illness can remove your ability to manage your own affairs at any age. Without an LPA, your partner cannot access your bank account, your family cannot manage your investments, and nobody can make medical decisions on your behalf — until the Court of Protection intervenes.`,
+      `${p.planningNeeds}. For ${city} ${sizeLabel(p)}, the cost of two LPAs (typically £400-£800 plus £82 each registration) is a fraction of what Court of Protection deputyship costs if you don't have them. And unlike deputyship, LPAs put you in control — you choose who acts, what powers they have, and when those powers take effect.`,
+    ];
+  },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Consultation to discuss which LPAs you need, who your attorneys should be, and any conditions or restrictions`, `Your specialist drafts both LPAs with your chosen attorneys, replacement attorneys, and any specific instructions`, `You review the documents, confirm the details, and sign in the presence of a certificate provider`, `Your attorneys sign their sections confirming they understand their duties`, `Your specialist submits both LPAs to the Office of the Public Guardian for registration`, `Registration takes 8-12 weeks. Once registered, your LPAs are ready to use whenever needed`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`LPA specialists who handle the complete process from drafting to OPG registration for ${city} clients`, `Both property/financial and health/welfare LPAs drafted together for comprehensive protection`, `Attorney selection guidance ensuring the right people are appointed with appropriate safeguards`, `Fee reduction applications managed for ${city} clients who qualify for reduced OPG registration fees`]; },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['lasting-power-of-attorney'](city); return [
+    { question: `How much do LPAs cost in ${city}?`, answer: `Specialist drafting fees for ${city} clients typically run £300-£500 per LPA, or £500-£800 for both types together. OPG registration costs £82 per LPA on top. Fee reductions or exemptions are available for people receiving certain benefits or earning below a threshold. Your specialist applies for any reductions you qualify for.` },
+    { question: `When should ${city} residents set up LPAs?`, answer: `Now. You can only make an LPA while you have mental capacity — once it's gone, the option disappears permanently. For ${city} ${sizeLabel(p)}, the ideal time is alongside making or updating your will. Most specialists offer combined will and LPA packages at reduced rates.` },
+    { question: `Can I change or cancel my ${city} LPA later?`, answer: `Yes — while you have mental capacity, you can revoke your LPA at any time. You can also make a new one with different attorneys or different terms. If your circumstances change — new partner, falling out with your chosen attorney, moving from ${city} — your specialist advises on whether to update or replace.` },
+  ]; },
+},
+
+"trust-planning": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Trust Planning in ${city}`; return pick(city, [`Trust Planning for ${city} ${sizeLabel(p)}: Protecting Assets Beyond a Simple Will`, `When a Will Is Not Enough: Trust Structures for ${city} Estates`, `${city} Trust Planning: Property Protection, Care Fee Shielding, and IHT Mitigation`, `Trusts for ${city} Families: What They Do and When You Need Them`]); },
+  stepsHeading: (city) => pick(city, [`Setting Up a Trust for Your ${city} Estate`, `How Trust Planning Works for ${city} Families`, `Your ${city} Trust: From Needs Assessment to Implementation`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Families Use Trust Structures`, `What Trust Planning Achieves for ${city} Estates`, `The Case for Professional Trust Advice in ${city}`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Trust planning for ${city} families. Free matching, no obligation.`; return `A will says who gets what. A trust controls when, how, and under what conditions they get it. For ${city} ${sizeLabel(p)} with property, vulnerable beneficiaries, or IHT exposure, trusts provide the control that wills alone cannot deliver.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Trust planning specialists', 'Property protection trusts', 'IHT mitigation structures']; return [`Trust structures tailored to ${city} ${sizeLabel(p)} — property protection, life interest, discretionary, and bare trusts`, `Care fee shielding, remarriage protection, and vulnerable beneficiary provision through trust planning`, `IHT mitigation through nil-rate band trusts, generation-skipping structures, and charitable remainder trusts`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Trust planning for ${city} estates` : `Trust planning across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
+    { title: "Property Protection", desc: `A property protection trust lets the surviving partner live in the family home for life while preserving the deceased's share for the children. Without one, the survivor could remarry, change their will, or lose the property to care fees — leaving your children with nothing from a ${city} home worth hundreds of thousands.` },
+    { title: "Care Fee Shielding", desc: `Assets in a properly structured trust may be protected from local authority means-testing for care fees. For ${city} ${sizeLabel(p)} concerned about the cost of future care eroding the family estate, trust planning provides a legitimate level of protection.` },
+    { title: "Vulnerable Beneficiary Protection", desc: `If a beneficiary has a disability, addiction, or financial vulnerability, leaving them an outright inheritance can be disastrous. A discretionary trust lets trustees manage the funds in the beneficiary's best interests while protecting both the money and the person.` },
+    { title: "IHT Reduction", desc: `Nil-rate band trusts, generation-skipping trusts, and charitable remainder trusts can all reduce IHT on ${city} estates. ${p.estateProfile}. Your specialist designs the trust structure that delivers the most effective tax reduction for your specific situation.` },
+  ]; },
+  intro: (city) => { const p = prof(city); if (!p) return ['Trust planning provides asset protection that goes beyond what a simple will can achieve.', 'Professional advice ensures the trust structure matches your specific family needs.']; return [
+    `A will is a set of instructions that takes effect on death. A trust is a legal structure that controls assets over time — protecting them from care fees, remarriage, creditors, and vulnerable beneficiaries who might lose an outright inheritance. For ${city} ${sizeLabel(p)} with ${p.estateProfile.toLowerCase().split(' — ')[0]}, a trust adds the layer of control that a will alone cannot provide.`,
+    `${p.planningNeeds}. Not every ${city} estate needs a trust — but if you have a family home worth protecting, a beneficiary who needs protecting, or an IHT bill worth reducing, trust planning delivers returns that far exceed its cost.`,
+  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Needs assessment: your specialist identifies whether trusts add value to your ${city} estate plan`, `Trust structure design: selecting the right trust type for your specific family and tax situation`, `Coordination with your will: ensuring trust provisions and will provisions work together seamlessly`, `Trust documentation drafted with clear trustee powers, beneficiary provisions, and letter of wishes`, `Trust implementation: property transfer, trustee appointment, and registration with HMRC if required`, `Ongoing guidance: trustee responsibilities, tax returns, and periodic trust reviews as circumstances change`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Trust specialists who design structures for ${city} estate situations, not off-the-shelf trust templates`, `Property protection, care fee shielding, and IHT mitigation assessed for your specific family and financial position`, `Will coordination ensuring trusts and wills work together as a coherent estate plan`, `Ongoing trustee guidance so your chosen trustees understand their obligations and powers`]; },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['trust-planning'](city); return [
+    { question: `How much does trust planning cost in ${city}?`, answer: `Trust structures within wills (such as property protection trusts) typically add £200-£500 to the will cost. Standalone lifetime trusts cost £500-£2,000+ depending on complexity. For ${city} ${sizeLabel(p)}, the cost of trust planning is typically recovered many times over through IHT savings, care fee protection, or asset preservation.` },
+    { question: `Can trusts protect my ${city} home from care fees?`, answer: `Trusts established well before any need for care can provide a level of protection, but the rules are complex and the local authority can challenge arrangements made to deliberately avoid paying for care. Your specialist advises on what is achievable and legitimate for your ${city} property situation. The earlier you plan, the stronger the protection.` },
+    { question: `What is the difference between a will trust and a lifetime trust?`, answer: `A will trust takes effect on death and is created within your will. A lifetime trust takes effect immediately and is created while you are alive. For ${city} ${sizeLabel(p)}, will trusts protect assets after death (property protection, discretionary), while lifetime trusts can provide IHT benefits during your lifetime. Your specialist advises which is appropriate.` },
+  ]; },
+},
+
+"estate-planning": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Estate Planning in ${city}`; return pick(city, [`Comprehensive Estate Planning for ${city} ${sizeLabel(p)}`, `Beyond a Will: Full Estate Planning for ${city} Families`, `${city} Estate Planning: Wills, Trusts, LPAs, and IHT in One Coordinated Plan`, `Your ${city} Estate Deserves a Plan, Not Just a Document`]); },
+  stepsHeading: (city) => pick(city, [`Building Your ${city} Estate Plan`, `How Comprehensive Estate Planning Works in ${city}`, `Your ${city} Estate Plan: From Assessment to Implementation`]),
+  whyHeading: (city) => pick(city, [`Why ${city} ${pick(city, ['Families', 'Residents', 'Estate Holders'])} Need Comprehensive Planning`, `What Full Estate Planning Gets ${city} Families`, `The Difference Between a Will and an Estate Plan for ${city} Residents`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Comprehensive estate planning for ${city} families. Free matching, no obligation.`; return `A will is one document. An estate plan is a coordinated strategy covering wills, trusts, LPAs, IHT, pension nominations, and asset protection — designed around your complete ${city} financial picture. We match ${sizeLabel(p)} with planning specialists who see the whole picture.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Estate planning specialists', 'Wills, trusts, LPAs coordinated', 'IHT mitigation strategies']; return [`Comprehensive planning covering wills, trusts, LPAs, IHT, and pension nominations for ${city} ${sizeLabel(p)}`, `IHT mitigation strategies tailored to your ${p.postcode} area property values and total estate`, `Coordinated approach ensuring every element of your estate plan works together, not in isolation`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Comprehensive estate planning for ${city} ${sizeLabel(p)}` : `Estate planning across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
+    { title: "Everything Connected", desc: `Your will, trusts, LPAs, pension nominations, life insurance, and asset ownership all affect each other. An estate plan coordinates every element so nothing contradicts, nothing is missed, and the overall IHT position is optimised for your ${city} situation.` },
+    { title: "IHT Strategy, Not Just Awareness", desc: `${p.estateProfile}. Your specialist doesn't just tell you about IHT — they design a strategy to reduce it. Nil-rate band planning, gift strategies, trust structures, charitable legacies, and business property relief are all assessed for your specific ${city} estate.` },
+    { title: "Pension Death Benefits Coordination", desc: `Pension death benefits don't pass through your will — they follow your nomination form. Your estate planner ensures your pension nominations coordinate with your will provisions, preventing the common situation where outdated nominations contradict current wishes.` },
+    { title: "Regular Review Built In", desc: `Estate plans need updating as circumstances change — property values move, tax rules change, family situations evolve. Your ${city} specialist builds in regular review points so your plan stays current and effective.` },
+  ]; },
+  intro: (city) => { const p = prof(city); if (!p) return ['Estate planning covers everything a will does and much more.', 'A coordinated plan ensures all elements work together to protect your family and minimise tax.']; return [
+    `A will tells people what you want. An estate plan makes it actually happen — efficiently, tax-effectively, and without the gaps that a standalone will inevitably leaves. For ${city} ${sizeLabel(p)} with ${p.estateProfile.toLowerCase().split(',')[0]}, the difference between a will and an estate plan can be tens of thousands of pounds in IHT savings and the certainty that every element of your financial life is coordinated.`,
+    `${p.planningNeeds}. An estate planning specialist who works with ${city} ${sizeLabel(p)} assesses your complete financial picture — property, pensions, investments, insurance, business interests — and designs a coordinated plan that protects your family and minimises the tax bill. This is strategic planning, not document production.`,
+  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Comprehensive financial review: your specialist maps every asset, liability, pension, and insurance policy in your ${city} estate`, `IHT exposure calculation: your total estate is assessed against current nil-rate bands and reliefs`, `Strategy design: your specialist recommends the combination of wills, trusts, LPAs, and gift strategies that optimises your position`, `Document drafting: all elements prepared as a coordinated package, not isolated documents`, `Implementation: wills signed, LPAs registered, trusts established, pension nominations updated`, `Review schedule: regular checkpoints built into your plan to catch changes in circumstances, tax rules, and property values`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Estate planning specialists who see your complete ${city} financial picture, not just one document`, `Coordinated strategy ensuring wills, trusts, LPAs, and nominations all work together`, `IHT reduction strategies tailored to your specific estate composition and family situation`, `Built-in review schedule keeping your plan current as circumstances and tax rules change`]; },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['estate-planning'](city); return [
+    { question: `How much does estate planning cost in ${city}?`, answer: `Comprehensive estate planning for ${city} ${sizeLabel(p)} typically costs £1,000-£5,000 depending on complexity. This includes everything — wills, LPAs, trust planning, IHT strategy, and pension coordination. For estates with IHT exposure, the planning cost is typically recovered many times over through tax savings alone.` },
+    { question: `When do ${city} families need estate planning versus just a will?`, answer: `If your total estate (property, pensions, savings, insurance) exceeds the IHT threshold (currently £325,000 or up to £1m with the residence nil-rate band for couples), you need a plan, not just a will. For ${city} ${sizeLabel(p)} with ${p.estateProfile.toLowerCase().split(',')[0]}, the threshold is usually exceeded by property alone.` },
+    { question: `How often should my ${city} estate plan be reviewed?`, answer: `Every 3-5 years, or sooner if you experience a significant change: marriage, divorce, birth, death, property purchase/sale, retirement, or receipt of inheritance. Tax rules also change — your specialist monitors relevant changes and contacts you when your plan needs updating.` },
+  ]; },
+},
+
+"probate-support": {
+  introHeading: (city) => { const p = prof(city); if (!p) return `Probate Support in ${city}`; return pick(city, [`Probate Support for ${city} Families: Compassionate Help at a Difficult Time`, `Navigating Probate in ${city}: From Grant to Estate Distribution`, `${city} Probate Services: Taking the Burden Off Bereaved Families`, `When Someone Dies in ${city}: The Probate Process Explained`]); },
+  stepsHeading: (city) => pick(city, [`How Probate Works for ${city} Estates`, `The ${city} Probate Process: Step by Step`, `From Death to Distribution: Probate in ${city}`]),
+  whyHeading: (city) => pick(city, [`Why ${city} Families Use Professional Probate Support`, `What Probate Support Gets ${city} Executors`, `The Case for Professional Help With ${city} Probate`]),
+  heroDesc: (city) => { const p = prof(city); if (!p) return `Probate support services for ${city} families. Free matching, no obligation.`; return `Dealing with probate while grieving is overwhelming. We match ${city} families with probate specialists who handle everything from applying for the grant to distributing the estate — compassionately, professionally, and at a pace that respects what you are going through.`; },
+  heroBullets: (city) => { const p = prof(city); if (!p) return ['Probate support specialists', 'Grant application to distribution', 'Compassionate professional service']; return [`Full probate administration or executor support — whatever level of help your ${city} family needs`, `Grant of probate application, asset collection, debt settlement, and beneficiary distribution managed professionally`, `Compassionate service at your pace — no pressure, no rushing, just reliable support when you need it`]; },
+  trustLine: (city) => { const p = prof(city); return p ? `Probate support for bereaved ${city} families` : `Probate support across ${city}`; },
+  benefits: (city) => { const p = prof(city); if (!p) return defBenefits(city); return [
+    { title: "As Much or As Little Help As You Need", desc: `Some executors want full administration — everything handled for them. Others want guidance while doing the work themselves. Your ${city} probate specialist offers both, adjusting the level of support to match what you need and what you can manage while grieving.` },
+    { title: "IHT Returns and Grant Application", desc: `The inheritance tax return must be filed before the grant of probate can be obtained. For ${city} estates with property, pensions, and investments, the IHT calculations and forms are complex. Your specialist handles the complete submission accurately.` },
+    { title: "Asset Collection and Debt Settlement", desc: `Bank accounts, investments, insurance policies, pensions — every asset must be identified, valued, and collected. Every debt must be settled. For ${city} estates, your specialist manages the complete process, protecting executors from personal liability.` },
+    { title: "Beneficiary Distribution", desc: `Once all assets are collected and debts settled, the estate is distributed according to the will (or intestacy rules). Your specialist prepares the final estate accounts and manages distribution to all beneficiaries with proper receipts and documentation.` },
+  ]; },
+  intro: (city) => { const p = prof(city); if (!p) return ['Probate is the legal process of dealing with someone\'s estate after they die.', 'Professional support takes the administrative burden off grieving families.']; return [
+    `When someone dies, their estate doesn't sort itself out. Bank accounts must be frozen and closed, property must be valued and sold or transferred, debts must be settled, IHT must be calculated and paid, and beneficiaries must receive their inheritance through a documented legal process. For ${city} families dealing with grief, handling this alone is overwhelming.`,
+    `${p.planningNeeds}. A probate specialist who handles ${city} estates provides the professional structure that executors need — from the initial IHT return and grant application through to final estate distribution. They protect executors from personal liability, ensure legal compliance, and handle the administrative burden at a pace that respects what the family is going through.`,
+  ]; },
+  steps: (city) => { const p = prof(city); if (!p) return defSteps(city); return [`Initial meeting with the executor to review the will, identify assets and debts, and plan the probate process`, `Estate valuation: every asset identified, valued, and documented for the IHT return`, `IHT return preparation and submission to HMRC, with tax payment arranged if applicable`, `Grant of probate application submitted to the Probate Registry`, `Asset collection: contacting banks, insurers, pension providers, and investment managers to collect the estate`, `Debt settlement and final expense payment from the estate`, `Final accounts preparation, beneficiary distribution, and executor discharge documentation`]; },
+  whyPoints: (city) => { const p = prof(city); if (!p) return defWhyPoints(city); return [`Probate specialists who handle ${city} estates with compassion and professional efficiency`, `IHT return accuracy protecting executors from HMRC penalties and personal liability`, `Asset collection across all providers — banks, insurers, pension companies, investment managers`, `Final distribution with proper accounts and documentation protecting executors from future claims`]; },
+  faqs: (city) => { const p = prof(city); if (!p) return defFaqs['probate-support'](city); return [
+    { question: `How much does probate cost in ${city}?`, answer: `Probate court fees are £300 for estates over £5,000. Professional probate administration typically costs 1-4% of the estate value, or fixed fees for specific services. For ${city} estates, your specialist quotes based on complexity — a straightforward estate with one property and a few bank accounts costs less than a complex estate with multiple properties and international assets.` },
+    { question: `How long does probate take in ${city}?`, answer: `Simple estates can be completed in 3-6 months. Complex estates with property to sell, IHT to settle, or disputes to resolve can take 12-18 months. For typical ${city} estates, expect 4-8 months from death to final distribution. Your specialist provides a realistic timeline at the outset.` },
+    { question: `Do all ${city} estates need probate?`, answer: `Not all. Jointly owned assets pass automatically to the surviving owner. Small bank balances (typically under £5,000-£50,000 depending on the bank) can be released without probate. But most ${city} estates involving property need a grant of probate before the property can be sold or transferred. Your specialist advises on whether probate is required for your specific situation.` },
+  ]; },
+},
+
+};
+
+function defBenefits(city: string) { return [{ title: "Expert Specialists", desc: `Every will writer in our ${city} network is qualified and insured.` }, { title: "Free Consultation", desc: `Discuss your situation with no obligation before committing.` }, { title: "Fixed Fees", desc: `Clear pricing with no hidden costs or hourly billing.` }, { title: "Matched to You", desc: `We match based on your specific needs and circumstances.` }]; }
+function defSteps(city: string) { return [`Free consultation to discuss your situation`, `Detailed instructions taken by your specialist`, `Professional drafting of your documents`, `Review and approval of draft`, `Signing with proper witnessing`, `Secure storage and registration`]; }
+function defWhyPoints(city: string) { return [`Qualified will writing specialists covering ${city}`, `Professionally drafted, legally valid documents`, `Fixed fees with no hidden costs`, `Free initial consultation`]; }
+const defFaqs: Record<string, (city: string) => { question: string; answer: string }[]> = {
+  'single-will': (c) => [{ question: `How much?`, answer: `£150-£350 for a single will. Fixed fee quoted after consultation.` }, { question: `How long?`, answer: `2-3 weeks from consultation to signed will.` }, { question: `When to update?`, answer: `After marriage, divorce, children, property changes, or every 3-5 years.` }],
+  'mirror-wills': (c) => [{ question: `Cost?`, answer: `£250-£500 for both wills. 30-40% saving versus separate wills.` }, { question: `Can we change independently?`, answer: `Yes, each will is a separate document.` }, { question: `Unmarried couples?`, answer: `Yes, even more important — no intestacy protection without a will.` }],
+  'lasting-power-of-attorney': (c) => [{ question: `Cost?`, answer: `£300-£500 per LPA plus £82 registration. Discounts for both types together.` }, { question: `When?`, answer: `Now. You can only make an LPA while you have capacity.` }, { question: `Can I cancel?`, answer: `Yes, while you have capacity.` }],
+  'trust-planning': (c) => [{ question: `Cost?`, answer: `£200-£500 for will trusts, £500-£2,000+ for lifetime trusts.` }, { question: `Care fees?`, answer: `Trusts can provide protection if set up well in advance of any care need.` }, { question: `Will trust vs lifetime?`, answer: `Will trusts on death, lifetime trusts now. Specialist advises which suits.` }],
+  'estate-planning': (c) => [{ question: `Cost?`, answer: `£1,000-£5,000 for comprehensive planning. Recovered through tax savings.` }, { question: `When needed?`, answer: `When total estate exceeds IHT threshold — usually when property is involved.` }, { question: `Review frequency?`, answer: `Every 3-5 years or after significant life changes.` }],
+  'probate-support': (c) => [{ question: `Cost?`, answer: `Court fee £300 plus 1-4% for administration or fixed fees for support.` }, { question: `How long?`, answer: `3-6 months simple, 12-18 months complex.` }, { question: `Always needed?`, answer: `Most estates with property need probate. Joint assets pass automatically.` }],
 };

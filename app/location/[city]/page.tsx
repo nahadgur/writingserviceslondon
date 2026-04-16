@@ -201,14 +201,15 @@ export default function CityPage({ params }: { params: { city: string } }) {
               </span>
             </div>
 
-            {/* H1 — Inter bold, matches screenshot */}
+            {/* H1 — Cormorant, site font, not changed */}
             <h1 style={{
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontSize: 'clamp(30px, 5vw, 52px)',
-              fontWeight: 700,
+              fontFamily: 'var(--font-cormorant), Georgia, serif',
+              fontSize: 'clamp(34px, 5vw, 58px)',
+              fontWeight: 400,
+              fontStyle: 'normal',
               color: '#ffffff',
               lineHeight: 1.08,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.01em',
               marginBottom: 16,
               maxWidth: 620,
             }}>

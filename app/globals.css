@@ -2,574 +2,243 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap');
+/* Fonts loaded via next/font in layout.tsx — no @import needed */
 
 :root {
-  --brand:        #D46919;
-  --brand-light:  #e8943a;
-  --brand-dark:   #b05514;
-  --ink:          #1c1814;
-  --ink-soft:     #2e2820;
-  --stone:        #6a6058;
-  --dust:         #a09080;
-  --parchment:    #faf7f3;
-  --parchment-2:  #f5f0e8;
-  --border:       #e2dbd0;
-  --border-soft:  #ede8e0;
+  --brand:       #D46919;
+  --brand-light: #e8943a;
+  --brand-dark:  #b05514;
+  --ink:         #1c1814;
+  --stone:       #6a6058;
+  --dust:        #a09080;
+  --parchment:   #faf7f3;
+  --parchment-2: #f5f0e8;
+  --border:      #e2dbd0;
+  --border-soft: #ede8e0;
 }
 
 @layer base {
-  html { -webkit-font-smoothing: antialiased; }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-weight: 300;
     color: var(--ink);
     background: var(--parchment);
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: var(--font-cormorant), Georgia, serif;
     font-weight: 400;
   }
 }
 
 @layer components {
+  /* Layout */
+  .container-width { @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-10; }
+  .section-padding  { @apply py-14 md:py-20 lg:py-24; }
 
-  /* ── Layout ───────────────────────────────── */
-  .container-width {
-    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-10;
-  }
-  .section-padding {
-    @apply py-14 md:py-20 lg:py-28;
-  }
-
-  /* ── Typography ───────────────────────────── */
-  .display-xl {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 5vw, 64px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-  }
-  .display-lg {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 3.5vw, 48px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.12;
-  }
-  .display-md {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 2.5vw, 30px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.2;
-  }
-  .display-sm {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 1.3;
-  }
-  .eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--dust);
-  }
-  .eyebrow-brand {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--brand);
-  }
-  .body-lg {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.78;
-    color: var(--stone);
-  }
-  .body-md {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.78;
-    color: var(--stone);
-  }
-  .body-sm {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    line-height: 1.65;
-    color: var(--dust);
-  }
-
-  /* ── Buttons ──────────────────────────────── */
+  /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2;
-    background: var(--brand);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    padding: 13px 24px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--brand); color: #fff;
+    font-family: var(--font-inter), sans-serif; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.02em; padding: 13px 26px; border-radius: 4px; border: none;
+    cursor: pointer; transition: background 0.15s; white-space: nowrap;
   }
-  .btn-primary:hover { background: var(--brand-light); }
-  .btn-primary:active { background: var(--brand-dark); }
+  .btn-primary:hover  { background: var(--brand-light); }
+  .btn-primary:active { background: var(--brand-dark);  }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2;
-    background: transparent;
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 12px 20px;
-    border-radius: 4px;
-    border: 0.5px solid var(--border);
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; color: var(--ink);
+    font-family: var(--font-inter), sans-serif; font-size: 13px; font-weight: 400;
+    padding: 12px 22px; border-radius: 4px; border: 0.5px solid var(--border);
+    cursor: pointer; transition: border-color 0.15s, background 0.15s; white-space: nowrap;
   }
-  .btn-secondary:hover {
-    border-color: var(--brand);
-    background: rgba(212, 105, 25, 0.04);
-  }
+  .btn-secondary:hover { border-color: var(--brand); background: rgba(212,105,25,0.04); }
 
-  .btn-ghost-light {
-    @apply inline-flex items-center justify-center gap-2;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.78);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 12px 20px;
-    border-radius: 4px;
-    border: 0.5px solid rgba(255,255,255,0.2);
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(255,255,255,0.09); color: rgba(255,255,255,0.82);
+    font-family: var(--font-inter), sans-serif; font-size: 13px; font-weight: 400;
+    padding: 12px 22px; border-radius: 4px; border: 0.5px solid rgba(255,255,255,0.22);
+    cursor: pointer; transition: background 0.15s; white-space: nowrap;
   }
-  .btn-ghost-light:hover { background: rgba(255,255,255,0.14); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.15); }
 
-  /* ── Nav ──────────────────────────────────── */
+  /* Typography helpers */
+  .eyebrow {
+    font-family: var(--font-inter), sans-serif; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--dust);
+  }
+  .eyebrow-brand {
+    font-family: var(--font-inter), sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand);
+  }
+  .body-lg  { font-family: var(--font-inter), sans-serif; font-size: 14px; font-weight: 300; line-height: 1.78; color: var(--stone); }
+  .body-md  { font-family: var(--font-inter), sans-serif; font-size: 13px; font-weight: 300; line-height: 1.78; color: var(--stone); }
+  .body-sm  { font-family: var(--font-inter), sans-serif; font-size: 11px; font-weight: 300; line-height: 1.65; color: var(--dust); }
+
+  /* Nav */
   .site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 16px 20px;
-    border-bottom: 0.5px solid var(--border);
-    background: var(--parchment);
+    border-bottom: 0.5px solid var(--border); background: var(--parchment);
+    position: sticky; top: 0; z-index: 40;
   }
-  @media (min-width: 640px) {
-    .site-nav { padding: 18px 40px; }
-  }
+  @media(min-width:640px) { .site-nav { padding: 18px 40px; } }
 
   .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: 0.02em;
-    text-decoration: none;
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-size: 17px; font-weight: 400; font-style: italic;
+    color: var(--ink); text-decoration: none; letter-spacing: 0.01em;
     line-height: 1.2;
   }
-  @media (min-width: 768px) {
-    .nav-logo { font-size: 17px; }
-  }
+  @media(max-width:640px) { .nav-logo { font-size: 15px; } }
 
   .nav-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--stone);
-    text-decoration: none;
-    transition: color 0.12s;
+    font-family: var(--font-inter), sans-serif; font-size: 12px; font-weight: 400;
+    color: var(--stone); text-decoration: none; transition: color 0.12s;
   }
   .nav-link:hover { color: var(--ink); }
 
   .nav-cta {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--ink);
-    border: 0.5px solid #c8b99a;
-    padding: 8px 18px;
-    border-radius: 4px;
-    background: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.12s;
+    font-family: var(--font-inter), sans-serif; font-size: 12px; font-weight: 400;
+    color: var(--ink); border: 0.5px solid #c8b99a; padding: 8px 18px;
+    border-radius: 4px; background: none; cursor: pointer; text-decoration: none;
+    transition: border-color 0.12s, color 0.12s;
   }
   .nav-cta:hover { border-color: var(--brand); color: var(--brand); }
 
-  /* ── Cards ────────────────────────────────── */
+  /* Cards */
   .card {
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
+    background: #fff; border: 0.5px solid var(--border); border-radius: 8px;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .card:hover {
-    border-color: #c8b99a;
-    box-shadow: 0 2px 16px rgba(28,24,20,0.06);
-  }
-  .card-parchment {
-    background: var(--parchment);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-  }
+  .card:hover { border-color: #c8b99a; box-shadow: 0 2px 16px rgba(28,24,20,0.06); }
+  .card-parchment { background: var(--parchment); border: 0.5px solid var(--border); border-radius: 8px; }
 
-  /* ── Form elements ────────────────────────── */
+  /* Forms */
   .field-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--dust);
-    display: block;
-    margin-bottom: 5px;
+    font-family: var(--font-inter), sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--dust);
+    display: block; margin-bottom: 5px;
   }
   .field-input {
-    width: 100%;
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
-    padding: 10px 12px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--ink);
-    transition: border-color 0.12s;
-    outline: none;
-    -webkit-appearance: none;
+    width: 100%; background: #fff; border: 0.5px solid var(--border); border-radius: 4px;
+    padding: 10px 12px; font-family: var(--font-inter), sans-serif;
+    font-size: 16px; /* 16px prevents iOS auto-zoom */
+    font-weight: 300; color: var(--ink); transition: border-color 0.12s;
+    outline: none; -webkit-appearance: none;
   }
   .field-input:focus { border-color: var(--brand); }
   .field-select {
-    width: 100%;
-    background: #fff;
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
-    padding: 10px 12px;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--ink);
-    outline: none;
-    appearance: none;
-    cursor: pointer;
-    -webkit-appearance: none;
+    width: 100%; background: #fff; border: 0.5px solid var(--border); border-radius: 4px;
+    padding: 10px 12px; font-family: var(--font-inter), sans-serif;
+    font-size: 16px; font-weight: 300; color: var(--ink);
+    outline: none; appearance: none; cursor: pointer; -webkit-appearance: none;
   }
 
-  /* ── Hero overlays ────────────────────────── */
-  .hero-dark {
-    background: #1c1814;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-gradient-top {
-    position: absolute;
-    inset: 0;
-    height: 50%;
+  /* Hero */
+  .hero-dark { background: #1c1814; position: relative; overflow: hidden; }
+  .g-top {
+    position: absolute; inset: 0; height: 50%;
     background: linear-gradient(to bottom, rgba(14,9,4,0.55), transparent);
     pointer-events: none;
   }
-  .hero-gradient-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 75%;
+  .g-bot {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 75%;
     background: linear-gradient(to top, rgba(10,6,2,0.94), transparent);
     pointer-events: none;
   }
 
-  /* ── Breadcrumbs ──────────────────────────── */
-  .breadcrumb {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.32);
-    letter-spacing: 0.03em;
-  }
+  /* Breadcrumbs */
+  .breadcrumb { font-family: var(--font-inter), sans-serif; font-size: 10px; font-weight: 400; color: rgba(255,255,255,0.32); letter-spacing: 0.03em; }
   .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
   .breadcrumb a:hover { color: rgba(255,255,255,0.75); }
-  .breadcrumb-light {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--dust);
-  }
+  .breadcrumb-light { font-family: var(--font-inter), sans-serif; font-size: 11px; font-weight: 400; color: var(--dust); }
   .breadcrumb-light a { color: var(--stone); text-decoration: none; }
 
-  /* ── Pull quote ───────────────────────────── */
-  .pull-quote {
-    border-left: 2px solid var(--brand);
-    padding: 14px 20px;
-    background: var(--parchment);
-    border-radius: 0 4px 4px 0;
-  }
-  .pull-quote p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.5;
+  /* Testimonial */
+  .testimonial-card { border-left: 2px solid var(--brand); padding: 16px 20px; background: var(--parchment); border-radius: 0 6px 6px 0; }
+  .testimonial-text { font-family: var(--font-cormorant), serif; font-size: 16px; font-style: italic; color: var(--ink); line-height: 1.6; margin-bottom: 8px; }
+  .testimonial-attr { font-family: var(--font-inter), sans-serif; font-size: 11px; font-weight: 300; color: var(--dust); }
+
+  /* Pull quote */
+  .pull-quote { border-left: 2px solid var(--brand); padding: 14px 20px; background: var(--parchment); border-radius: 0 4px 4px 0; }
+  .pull-quote p { font-family: var(--font-cormorant), serif; font-size: 18px; font-style: italic; color: var(--ink); line-height: 1.5; }
+
+  /* Location pill */
+  .loc-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(212,105,25,0.15); border: 0.5px solid rgba(212,105,25,0.3);
+    color: #e8943a; font-family: var(--font-inter), sans-serif;
+    font-size: 10px; font-weight: 400; letter-spacing: 0.04em;
+    padding: 4px 12px; border-radius: 20px;
   }
 
-  /* ── Testimonial ──────────────────────────── */
-  .testimonial-card {
-    border-left: 2px solid var(--brand);
-    padding: 16px 20px;
-    background: var(--parchment);
-    border-radius: 0 6px 6px 0;
-  }
-  .testimonial-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-  .testimonial-attr {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--dust);
-  }
-
-  /* ── Location pill ────────────────────────── */
-  .location-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(212, 105, 25, 0.15);
-    border: 0.5px solid rgba(212, 105, 25, 0.3);
-    color: #e8943a;
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    padding: 4px 12px;
-    border-radius: 20px;
-  }
-
-  /* ── Services dark card ───────────────────── */
-  .services-dark-card {
-    background: rgba(255,255,255,0.06);
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 6px;
-    padding: 20px;
-  }
-
-  /* ── Trust strip — responsive ─────────────── */
-  .trust-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 0.5px solid var(--border);
-    background: var(--parchment);
-  }
-  @media (min-width: 768px) {
-    .trust-strip { grid-template-columns: repeat(4, 1fr); }
-  }
-  .trust-item {
-    padding: 16px 18px;
-    border-right: 0.5px solid var(--border);
-    border-bottom: 0.5px solid var(--border);
-  }
-  @media (min-width: 768px) {
+  /* Trust strip */
+  .trust-strip { display: grid; grid-template-columns: 1fr 1fr; border-top: 0.5px solid var(--border); background: var(--parchment); }
+  @media(min-width:768px) { .trust-strip { grid-template-columns: repeat(4,1fr); } }
+  .trust-item { padding: 16px 18px; border-right: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+  .trust-item:nth-child(2n) { border-right: none; }
+  .trust-item:nth-child(3), .trust-item:nth-child(4) { border-bottom: none; }
+  @media(min-width:768px) {
     .trust-item { padding: 20px 24px; border-bottom: none; }
+    .trust-item:nth-child(2n) { border-right: 0.5px solid var(--border); }
     .trust-item:last-child { border-right: none; }
   }
-  /* Remove bottom border on last row (items 3 and 4 on mobile) */
-  .trust-item:nth-child(3),
-  .trust-item:nth-child(4) { border-bottom: none; }
-  /* Remove right border on every 2nd item on mobile */
-  .trust-item:nth-child(2n) { border-right: none; }
-  @media (min-width: 768px) {
-    .trust-item:nth-child(2n) { border-right: 0.5px solid var(--border); }
-  }
+  .trust-head { font-family: var(--font-cormorant), serif; font-size: 15px; color: var(--ink); margin-bottom: 3px; }
+  .trust-body { font-family: var(--font-inter), sans-serif; font-size: 11px; font-weight: 300; color: var(--dust); line-height: 1.5; }
 
-  .trust-item-head {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 3px;
-  }
-  @media (min-width: 768px) {
-    .trust-item-head { font-size: 15px; }
-  }
-  .trust-item-body {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    color: var(--dust);
-    line-height: 1.5;
-  }
+  /* Sub-areas */
+  .subarea-item { background: var(--parchment); border: 0.5px solid var(--border); border-radius: 4px; padding: 9px 10px; }
+  .subarea-name { font-family: var(--font-inter), sans-serif; font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 1px; }
+  .subarea-post { font-family: var(--font-inter), sans-serif; font-size: 10px; font-weight: 300; color: var(--dust); }
 
-  /* ── Sub-areas grid ───────────────────────── */
-  .subarea-item {
-    background: var(--parchment);
-    border: 0.5px solid var(--border);
-    border-radius: 4px;
-    padding: 9px 10px;
-  }
-  .subarea-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 1px;
-  }
-  .subarea-post {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 300;
-    color: var(--dust);
-  }
+  /* Sidebar */
+  .sidebar-box { background: var(--parchment); border: 0.5px solid var(--border); border-radius: 8px; padding: 20px 18px; margin-bottom: 14px; }
+  .sidebar-dark { background: var(--ink); border-radius: 8px; padding: 20px 18px; margin-bottom: 14px; }
 
-  /* ── Sidebar boxes ────────────────────────── */
-  .sidebar-box {
-    background: var(--parchment);
-    border: 0.5px solid var(--border);
-    border-radius: 8px;
-    padding: 20px 18px;
-    margin-bottom: 14px;
-  }
-  .sidebar-box-dark {
-    background: var(--ink);
-    border-radius: 8px;
-    padding: 20px 18px;
-    margin-bottom: 14px;
-  }
+  /* Step */
+  .step-row { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--parchment); border: 0.5px solid var(--border); border-radius: 6px; }
+  .step-num { font-family: var(--font-cormorant), serif; font-size: 22px; color: var(--brand); font-weight: 400; line-height: 1; flex-shrink: 0; width: 22px; }
 
-  /* ── Step row ─────────────────────────────── */
-  .step-row {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 14px 16px;
-    background: var(--parchment);
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-  }
-  .step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--brand);
-    font-weight: 400;
-    line-height: 1;
-    flex-shrink: 0;
-    width: 22px;
-  }
+  /* Benefit card */
+  .benefit-card { background: var(--parchment); border: 0.5px solid var(--border); border-radius: 6px; padding: 16px; }
+  .benefit-head { font-family: var(--font-cormorant), serif; font-size: 16px; color: var(--ink); margin-bottom: 5px; }
 
-  /* ── Benefit card ─────────────────────────── */
-  .benefit-card {
-    background: var(--parchment);
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    padding: 16px;
-  }
-  .benefit-card-head {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    color: var(--ink);
-    margin-bottom: 5px;
-  }
+  /* Article */
+  .article-lede { font-family: var(--font-cormorant), serif; font-size: clamp(18px,2.5vw,22px); font-weight: 400; line-height: 1.5; color: var(--ink); }
+  .article-h2   { font-family: var(--font-cormorant), serif; font-size: clamp(22px,3vw,28px); font-style: italic; color: var(--ink); margin: 30px 0 12px; }
+  .article-p    { font-family: var(--font-inter), sans-serif; font-size: 13px; font-weight: 300; line-height: 1.85; color: var(--stone); margin-bottom: 18px; }
+  .inline-cta   { background: var(--ink); border-radius: 6px; padding: 22px 20px; text-align: center; margin: 28px 0; }
 
-  /* ── Article typography ───────────────────── */
-  .article-lede {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(18px, 2.5vw, 21px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: var(--ink);
-  }
-  .article-h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 3vw, 28px);
-    font-style: italic;
-    color: var(--ink);
-    margin: 28px 0 12px;
-  }
-  .article-p {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--stone);
-    margin-bottom: 18px;
-  }
-
-  /* ── Inline CTA ───────────────────────────── */
-  .inline-cta {
-    background: var(--ink);
-    border-radius: 6px;
-    padding: 22px 20px;
-    text-align: center;
-    margin: 28px 0;
-  }
-
-  /* ── Service list row — responsive ───────── */
-  .service-list-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 20px 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  @media (min-width: 640px) {
-    .service-list-row {
-      grid-template-columns: 80px 1fr;
-      gap: 16px;
-    }
-  }
-  @media (min-width: 1024px) {
-    .service-list-row {
-      grid-template-columns: 96px 1fr auto auto;
-      gap: 24px;
-      align-items: center;
-    }
-  }
-  .service-list-row:last-child { border-bottom: none; }
+  /* Service list row — responsive */
+  .svc-row { padding: 20px 0; border-bottom: 0.5px solid var(--border); }
+  .svc-row:last-child { border-bottom: none; }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
-  .font-serif { font-family: 'Cormorant Garamond', serif; }
-  .italic-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .font-serif   { font-family: var(--font-cormorant), serif; }
 }
 
-/* ── Animations ───────────────────────────── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-up            { animation: fade-up 0.5s ease-out forwards; }
-.animate-fade-up-delay-1    { opacity: 0; animation: fade-up 0.5s ease-out 0.1s forwards; }
-.animate-fade-up-delay-2    { opacity: 0; animation: fade-up 0.5s ease-out 0.2s forwards; }
-.animate-fade-up-delay-3    { opacity: 0; animation: fade-up 0.5s ease-out 0.35s forwards; }
+.anim-0 { animation: fadeUp 0.55s ease-out forwards; }
+.anim-1 { opacity:0; animation: fadeUp 0.55s ease-out 0.12s forwards; }
+.anim-2 { opacity:0; animation: fadeUp 0.55s ease-out 0.24s forwards; }
+.anim-3 { opacity:0; animation: fadeUp 0.55s ease-out 0.38s forwards; }
 
-/* ── Modal ────────────────────────────────── */
-@keyframes backdrop-in  { from { opacity: 0; } to { opacity: 1; } }
-@keyframes backdrop-out { from { opacity: 1; } to { opacity: 0; } }
-@keyframes modal-in  { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-@keyframes modal-out { from { opacity: 1; transform: scale(1) translateY(0); } to { opacity: 0; transform: scale(0.96) translateY(8px); } }
-
-.animate-backdrop-in  { animation: backdrop-in  0.18s ease-out forwards; }
-.animate-backdrop-out { animation: backdrop-out 0.18s ease-in  forwards; }
-.animate-modal-in     { animation: modal-in     0.25s ease-out forwards; }
-.animate-modal-out    { animation: modal-out    0.18s ease-in  forwards; }
+/* Modal */
+@keyframes bdin  { from { opacity:0; } to { opacity:1; } }
+@keyframes bdout { from { opacity:1; } to { opacity:0; } }
+@keyframes min   { from { opacity:0; transform: scale(0.96) translateY(10px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes mout  { from { opacity:1; transform:scale(1) translateY(0); } to { opacity:0; transform: scale(0.96) translateY(10px); } }
+.anim-bdin  { animation: bdin  0.18s ease-out forwards; }
+.anim-bdout { animation: bdout 0.18s ease-in  forwards; }
+.anim-min   { animation: min   0.25s ease-out forwards; }
+.anim-mout  { animation: mout  0.18s ease-in  forwards; }

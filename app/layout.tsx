@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
 import Script from 'next/script';
+import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/data/site';
 
@@ -40,28 +40,20 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
-    type: 'website',
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    locale: 'en_GB',
-    images: [{ url: `${siteConfig.url}/android-chrome-512x512.png`, width: 512, height: 512, alt: siteConfig.name }],
+    type: 'website', url: siteConfig.url, siteName: siteConfig.name,
+    title: siteConfig.name, description: siteConfig.description, locale: 'en_GB',
+    images: [{ url: `${siteConfig.url}/android-chrome-512x512.png`, width: 512, height: 512 }],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
+    card: 'summary_large_image', title: siteConfig.name, description: siteConfig.description,
     images: [`${siteConfig.url}/android-chrome-512x512.png`],
   },
 };
 
 const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
+  '@context': 'https://schema.org', '@type': 'WebSite',
   '@id': `${siteConfig.url}/#website`,
-  name: siteConfig.name,
-  url: siteConfig.url,
+  name: siteConfig.name, url: siteConfig.url,
   potentialAction: {
     '@type': 'SearchAction',
     target: { '@type': 'EntryPoint', urlTemplate: `${siteConfig.url}/location/?q={search_term_string}` },
@@ -69,19 +61,13 @@ const websiteSchema = {
   },
 };
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
+const orgSchema = {
+  '@context': 'https://schema.org', '@type': 'Organization',
   '@id': `${siteConfig.url}/#organization`,
-  name: siteConfig.name,
-  url: siteConfig.url,
+  name: siteConfig.name, url: siteConfig.url,
   logo: `${siteConfig.url}/android-chrome-512x512.png`,
   description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists. We are not a law firm — we introduce clients to qualified professionals.',
-  areaServed: {
-    '@type': 'AdministrativeArea',
-    name: 'London',
-    containedInPlace: { '@type': 'Country', name: 'United Kingdom' },
-  },
+  areaServed: { '@type': 'AdministrativeArea', name: 'London', containedInPlace: { '@type': 'Country', name: 'United Kingdom' } },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -90,17 +76,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-GB" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="min-h-screen flex flex-col">
         {gaId && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
             <Script id="gtag-init" strategy="afterInteractive">{`
-              window.dataLayer = window.dataLayer || [];
+              window.dataLayer=window.dataLayer||[];
               function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}');
+              gtag('js',new Date());
+              gtag('config','${gaId}');
             `}</Script>
           </>
         )}

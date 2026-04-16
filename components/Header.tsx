@@ -4,14 +4,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-interface Props {
-  onOpenModal: () => void;
-}
+interface Props { onOpenModal?: () => void; }
 
-const navLinks = [
+const links = [
   { href: '/services/', label: 'Services' },
   { href: '/location/', label: 'Areas' },
-  { href: '/blog/', label: 'Blog' },
+  { href: '/blog/',     label: 'Blog' },
 ];
 
 export function Header({ onOpenModal }: Props) {
@@ -19,24 +17,27 @@ export function Header({ onOpenModal }: Props) {
 
   return (
     <header>
-      <nav className="site-nav" aria-label="Main navigation">
+      <nav className="site-nav" aria-label="Site navigation">
         <Link href="/" className="nav-logo">
           Will Writing Services London
         </Link>
 
-        {/* Desktop links */}
+        {/* Desktop */}
         <div className="hidden md:flex items-center gap-7">
-          {navLinks.map(l => (
+          {links.map(l => (
             <Link key={l.href} href={l.href} className="nav-link">{l.label}</Link>
           ))}
-          <button onClick={onOpenModal} className="nav-cta ml-2">
-            Speak to someone
-          </button>
+          {onOpenModal && (
+            <button onClick={onOpenModal} className="nav-cta ml-2">
+              Speak to someone
+            </button>
+          )}
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 -mr-2 text-stone"
+          className="md:hidden p-2 -mr-1"
+          style={{ color: 'var(--stone)' }}
           onClick={() => setOpen(v => !v)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
@@ -47,8 +48,11 @@ export function Header({ onOpenModal }: Props) {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-parchment border-b border-border px-6 py-5 space-y-4">
-          {navLinks.map(l => (
+        <div
+          className="md:hidden border-b px-5 py-5 space-y-4"
+          style={{ background: 'var(--parchment)', borderColor: 'var(--border)' }}
+        >
+          {links.map(l => (
             <Link
               key={l.href}
               href={l.href}
@@ -58,12 +62,14 @@ export function Header({ onOpenModal }: Props) {
               {l.label}
             </Link>
           ))}
-          <button
-            onClick={() => { onOpenModal(); setOpen(false); }}
-            className="btn-primary w-full justify-center mt-2"
-          >
-            Speak to someone
-          </button>
+          {onOpenModal && (
+            <button
+              onClick={() => { onOpenModal(); setOpen(false); }}
+              className="btn-primary w-full justify-center mt-2"
+            >
+              Speak to someone
+            </button>
+          )}
         </div>
       )}
     </header>

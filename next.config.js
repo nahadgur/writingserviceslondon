@@ -48,24 +48,8 @@ for (const service of SERVICE_SLUGS) {
   }
 }
 
-// Also redirect service×location pages for the 15 surviving hubs
-// (we removed the service×location combinatorial layer entirely in Phase 2)
-const SURVIVING_HUB_SLUGS = [
-  'mayfair','kensington','chelsea','hampstead','islington','hackney',
-  'canary-wharf','clapham','greenwich','richmond','camden',
-  'shoreditch','battersea','dulwich','stratford',
-];
-
-const survivingHubServiceRedirects = [];
-for (const service of SERVICE_SLUGS) {
-  for (const slug of SURVIVING_HUB_SLUGS) {
-    survivingHubServiceRedirects.push({
-      source: `/services/${service}/${slug}/`,
-      destination: `/services/${service}/`,
-      permanent: true,
-    });
-  }
-}
+// Note: the 15 surviving hubs now have full service x location pages
+// generated at build time, so no redirects apply to them.
 
 const nextConfig = {
   trailingSlash: true,
@@ -94,7 +78,6 @@ const nextConfig = {
     return [
       ...locationRedirects,
       ...serviceLocationRedirects,
-      ...survivingHubServiceRedirects,
     ];
   },
 };

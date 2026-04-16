@@ -55,8 +55,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // No service×location combinatorial pages in Phase 2 — removed entirely
-  // All those URLs now redirect to their parent service page via next.config.js
+  // Tier 6 — 90 service x location pages (0.5)
+  // 6 services x 15 hubs, each with unique per-hub per-service content
+  const serviceLocationPages: MetadataRoute.Sitemap = [];
+  for (const service of services) {
+    for (const hub of AREA_HUBS) {
+      serviceLocationPages.push({
+        url: `${base}/services/${service.slug}/${hub.slug}/`,
+        lastModified: LAST_CONTENT_UPDATE,
+        changeFrequency: 'yearly' as const,
+        priority: 0.5,
+      });
+    }
+  }
 
   return [
     ...staticPages,
@@ -64,5 +75,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...blogPages,
     ...locationPages,
+    ...serviceLocationPages,
   ];
 }

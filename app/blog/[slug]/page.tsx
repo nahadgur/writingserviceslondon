@@ -288,6 +288,43 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
                     </div>
                   </div>
                 )}
+
+                {(() => {
+                  const serviceMap: Record<string, { slug: string; title: string }> = {
+                    'will-writing-services-london-2026-guide-for-families':                { slug: 'single-will',               title: 'Single will writing' },
+                    'how-to-choose-a-will-writing-service-in-london':                      { slug: 'single-will',               title: 'Single will writing' },
+                    'solicitor-vs-will-writing-service-in-london-key-differences':         { slug: 'single-will',               title: 'Single will writing' },
+                    'home-visit-will-writing-services-in-london-explained':                { slug: 'single-will',               title: 'Single will writing' },
+                    'online-will-writing-services-for-london-residents':                   { slug: 'single-will',               title: 'Single will writing' },
+                    'will-writing-costs-in-london-in-2026':                                { slug: 'single-will',               title: 'Single will writing' },
+                    'is-will-writing-regulated-in-the-uk-what-london-clients-should-know': { slug: 'single-will',               title: 'Single will writing' },
+                    'mirror-wills-and-joint-wills-for-couples-in-london':                  { slug: 'mirror-wills',              title: 'Mirror wills for couples' },
+                    'updating-or-changing-your-will-in-london-when-and-how':               { slug: 'estate-planning',           title: 'Estate planning review' },
+                    'lasting-power-of-attorney-and-will-writing-services-in-london':       { slug: 'lasting-power-of-attorney', title: 'Lasting power of attorney' },
+                    'inheritance-tax-planning-and-will-writing-in-london':                 { slug: 'trust-planning',            title: 'Trust planning' },
+                    'will-writing-for-london-homeowners-with-multiple-properties':         { slug: 'trust-planning',            title: 'Trust planning' },
+                    'free-and-lowcost-will-writing-options-in-london':                     { slug: 'single-will',               title: 'Single will writing' },
+                    'will-writing-and-charitable-gifts-in-london':                         { slug: 'estate-planning',           title: 'Estate planning review' },
+                    'common-will-writing-mistakes-london-families-make':                   { slug: 'single-will',               title: 'Single will writing' },
+                    'will-reviews-and-second-opinions-in-london':                          { slug: 'estate-planning',           title: 'Estate planning review' },
+                    'emergency-will-writing-services-in-london':                           { slug: 'single-will',               title: 'Single will writing' },
+                    'what-to-expect-at-a-will-writing-home-visit-in-london':               { slug: 'single-will',               title: 'Single will writing' },
+                  };
+                  const svc = serviceMap[article.slug];
+                  if (!svc) return null;
+                  return (
+                    <div className="sidebar-box">
+                      <p className="eyebrow mb-3">Related service</p>
+                      <Link
+                        href={`/services/${svc.slug}/`}
+                        style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
+                        className="hover:text-brand-500"
+                      >
+                        {svc.title} →
+                      </Link>
+                    </div>
+                  );
+                })()}
               </div>
             </aside>
           </div>

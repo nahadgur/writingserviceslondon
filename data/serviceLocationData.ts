@@ -2481,7 +2481,7 @@ export const serviceLocationData: Record<string, Record<string, ServiceLocationC
 
     'stratford': {
       heroHeading: 'Stratford estate planning for lives that cross borders, languages, and generations',
-      heroParagraph: 'A Stratford family with property in Bangladesh, Nigeria, or Poland, children in UK schools, and expectations about family hierarchy need estate planning that takes each element seriously. Generic planning misses most of what matters for E15 households.',
+      heroParagraph: 'Stratford E15 households span first-generation UK settlers, second-generation owners of appreciated properties, and young professionals buying into an Olympic-legacy neighbourhood. Estate planning here is rarely standard -- it is cross-cultural, cross-jurisdictional, and often overdue.',
       heroBullets: [
         'Multi-jurisdictional estate planning coordinated with home-country advisors',
         'Sharia-aligned estate planning for Muslim Stratford families',

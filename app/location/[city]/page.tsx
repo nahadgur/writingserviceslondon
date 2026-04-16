@@ -12,6 +12,11 @@ import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 
+// Pre-build all 15 hub pages at deploy time
+export function generateStaticParams() {
+  return AREA_HUBS.map(hub => ({ city: hub.slug }));
+}
+
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
   fontFamily: 'var(--font-cormorant), Georgia, serif',
   fontSize: size,
@@ -34,7 +39,7 @@ function buildFaqs(hubName: string, subAreaNames: string[]) {
     },
     {
       question: `Do will writers offer home visits in ${hubName}?`,
-      answer: `Yes. Most specialists in our network offer home visits across ${hubName} and surrounding areas. For elderly clients or those with mobility issues, this is standard practice.`,
+      answer: `Yes. Most specialists in our network offer home visits across ${hubName} and surrounding areas. For elderly clients or those with mobility issues this is standard practice.`,
     },
     {
       question: `What estate planning services are available in ${hubName}?`,
@@ -50,7 +55,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
   if (!hub) notFound();
 
   const faqs = buildFaqs(hub.name, hub.subAreas.map(s => s.name));
-  const nearbyhubs = AREA_HUBS.filter(h => h.region === hub.region && h.slug !== hub.slug);
+  const nearbyHubs = AREA_HUBS.filter(h => h.region === hub.region && h.slug !== hub.slug);
 
   return (
     <>
@@ -78,18 +83,16 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 </div>
                 <h1 style={{ ...serif('clamp(34px,5vw,56px)' as any, { color: '#fff', marginBottom: 14 }) }}>
                   Will writing in{' '}
-                  <span style={{ color: 'var(--brand-light)' }}>{hub.name}</span>
+                  <span style={{ color: '#e8943a' }}>{hub.name}</span>
                 </h1>
                 <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.6)', maxWidth: 440, lineHeight: 1.75, marginBottom: 22 }}>
                   Free matching with vetted will writers and estate planning specialists
                   covering {hub.name} and all surrounding areas. Within 24 hours.
                 </p>
-                {/* Mobile CTA — form appears below hero on mobile */}
                 <button onClick={() => setModal(true)} className="btn-primary lg:hidden">
                   Find my specialist
                 </button>
               </div>
-              {/* Desktop form — only shown on lg+ */}
               <div className="hidden lg:block">
                 <HeroLeadForm city={hub.name} />
               </div>
@@ -97,7 +100,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
           </div>
         </section>
 
-        {/* Mobile form — below hero, hidden on desktop */}
+        {/* Mobile form */}
         <div className="lg:hidden px-5 py-6" style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)' }}>
           <HeroLeadForm city={hub.name} />
         </div>
@@ -139,8 +142,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
                         <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div style={{ minWidth: 0 }}>
-                        <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', marginBottom: 3, transition: 'color 0.12s', lineHeight: 1.2 }}
-                          className="group-hover:text-brand-500">
+                        <h3
+                          style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', marginBottom: 3, transition: 'color 0.12s', lineHeight: 1.2 }}
+                          className="group-hover:text-brand-500"
+                        >
                           {s.title} in {hub.name}
                         </h3>
                         <p className="body-sm line-clamp-2">{s.description}</p>
@@ -150,19 +155,25 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 </div>
               </section>
 
-              {/* Nearby hubs in same region */}
-              {nearbyhubs.length > 0 && (
+              {/* Nearby hubs */}
+              {nearbyHubs.length > 0 && (
                 <section className="mb-12">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 12 })}>
                     Nearby areas we cover
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {nearbyhubs.map(h => (
-                      <Link key={h.slug} href={`/location/${h.slug}/`} className="card p-3 group"
-                        style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    {nearbyHubs.map(h => (
+                      <Link
+                        key={h.slug}
+                        href={`/location/${h.slug}/`}
+                        className="card p-3 group"
+                        style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+                      >
                         <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
-                        <span style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', transition: 'color 0.12s' }}
-                          className="group-hover:text-brand-500">
+                        <span
+                          style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', transition: 'color 0.12s' }}
+                          className="group-hover:text-brand-500"
+                        >
                           {h.name}
                         </span>
                         <span className="body-sm ml-auto">{h.postcode}</span>
@@ -181,7 +192,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div className="sidebar-box">
                   <h3 style={serif(20, { marginBottom: 6 })}>Find a specialist</h3>
                   <p className="body-sm mb-4">
-                    Free match with vetted will writers covering {hub.name} and all surrounding areas.
+                    Free match with vetted will writers covering {hub.name} and surrounding areas.
                   </p>
                   <button onClick={() => setModal(true)} className="btn-primary w-full justify-center">
                     Get matched free
@@ -214,8 +225,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '20px 18px' }}>
                   <p style={serif(20, { color: '#fff', marginBottom: 4 })}>From £150</p>
                   <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Fixed-fee quotes, no hidden costs.</p>
-                  <button onClick={() => setModal(true)}
-                    style={{ width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+                  <button
+                    onClick={() => setModal(true)}
+                    style={{ width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer' }}
+                  >
                     Get free quotes
                   </button>
                 </div>
@@ -231,8 +244,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
             <p className="body-lg mb-6 mx-auto" style={{ maxWidth: 500, color: 'rgba(255,255,255,0.5)' }}>
               Free matching covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and all surrounding areas.
             </p>
-            <button onClick={() => setModal(true)}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+            <button
+              onClick={() => setModal(true)}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}
+            >
               Get your free match
             </button>
           </div>

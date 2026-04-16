@@ -2,26 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle, MapPin, Star, Clock, Shield, Award, Users } from 'lucide-react';
-import { services } from '@/data/services';
-import { toSlug } from '@/data/locations';
+import { CheckCircle, Star } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
-import { FAQ } from '@/components/FAQ';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Testimonials } from '@/components/Testimonials';
-import { LeadFormModal } from '@/components/LeadFormModal';
-import { PricingSection } from '@/components/PricingSection';
-import { NearbyAreasGrid } from '@/components/NearbyAreasGrid';
+import { FAQ } from '@/components/FAQ';
 import type { Service } from '@/data/services';
-
-const benefitIcons = [
-  <Award key="a" className="w-6 h-6" />,
-  <Clock key="c" className="w-6 h-6" />,
-  <Shield key="s" className="w-6 h-6" />,
-  <Users key="u" className="w-6 h-6" />,
-];
 
 interface Props {
   service: Service;
@@ -39,7 +28,7 @@ interface Props {
   whyPoints: string[];
   faqs: { question: string; answer: string }[];
   relatedServices: Service[];
-  allCities: string[];
+  nearbyCities: string[];
 }
 
 export default function ServiceLocationPageClient({
@@ -47,169 +36,197 @@ export default function ServiceLocationPageClient({
   heroDesc, heroBullets, trustLine,
   benefits, intro, introHeading,
   stepsHeading, whyHeading, steps, whyPoints, faqs,
-  relatedServices, allCities,
+  relatedServices, nearbyCities,
 }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={service.image} alt="" className="w-full h-full object-cover opacity-50" loading="eager" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/70 to-gray-900/30" />
-          </div>
-          <div className="container-width py-12 md:py-20 relative z-10">
-            <Breadcrumbs items={[
-              { label: 'Services', href: '/services/' },
-              { label: service.title, href: `/services/${service.slug}/` },
-              { label: cityName },
-            ]} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
+      <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} defaultService={service.title} defaultCity={cityName} />
+      <Header onOpenModal={() => setModalOpen(true)} />
+
+      <main>
+        {/* ── Hero ──────────────────────────────────── */}
+        <section className="hero-dark min-h-[380px] flex items-end">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${service.image}')`, opacity: 0.4 }}
+          />
+          <div className="hero-gradient-bottom" />
+
+          <div className="relative z-10 container-width w-full py-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 items-end">
               <div>
-                <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-brand-500/30">
-                  <MapPin className="w-4 h-4" /> Will Writing Specialists in {cityName}
+                <Breadcrumbs
+                  dark
+                  items={[
+                    { label: 'Services', href: '/services/' },
+                    { label: service.title, href: `/services/${service.slug}/` },
+                    { label: cityName },
+                  ]}
+                />
+                <div className="location-pill mt-5 mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand inline-block" />
+                  Will writing specialists in {cityName}
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-                  {service.title} in <span className="text-brand-400">{cityName}</span>
+                <h1 className="font-display text-5xl lg:text-6xl italic text-white mb-4 leading-tight">
+                  {service.title} in{' '}
+                  <span className="text-brand-light">{cityName}</span>
                 </h1>
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">{heroDesc}</p>
-                <div className="space-y-4 mb-8">
-                  {heroBullets.map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 text-brand-400 flex-shrink-0" />
-                      <span className="text-lg">{item}</span>
+                <p className="body-lg text-white/60 max-w-[420px] mb-5">{heroDesc}</p>
+                <div className="flex flex-col gap-2 mb-4">
+                  {heroBullets.map((b, i) => (
+                    <div key={i} className="flex items-center gap-2.5">
+                      <CheckCircle size={13} className="text-brand flex-shrink-0" />
+                      <span className="body-md text-white/70">{b}</span>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-400">
-                  <div className="flex text-yellow-400">
-                    {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-0.5">
+                    {[1,2,3,4,5].map(i => <Star key={i} size={12} className="fill-brand text-brand" />)}
                   </div>
-                  <span>{trustLine}</span>
+                  <span className="body-sm text-white/40">{trustLine}</span>
                 </div>
               </div>
-              <div>
-                <HeroLeadForm city={cityName} service={service.title} />
-              </div>
+              <HeroLeadForm city={cityName} service={service.title} />
             </div>
           </div>
         </section>
 
-        <div className="container-width py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100">
-                <div className="bg-brand-100 p-2 rounded-lg text-brand-600">{benefitIcons[idx % benefitIcons.length]}</div>
+        {/* ── Benefits row ──────────────────────────── */}
+        <div className="bg-white border-b border-border">
+          <div className="container-width py-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {benefits.map((b, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0 mt-1.5" />
                 <div>
-                  <h3 className="font-bold text-gray-900">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600">{benefit.desc}</p>
+                  <p className="font-sans font-medium text-xs text-ink mb-0.5">{b.title}</p>
+                  <p className="body-sm">{b.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-              <section className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">{introHeading}</h2>
-                <div className="prose prose-gray max-w-none text-gray-600 space-y-4">
-                  {intro.map((p, i) => <p key={i}>{p}</p>)}
-                </div>
-              </section>
+        {/* ── Body ──────────────────────────────────── */}
+        <div className="container-width py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
 
-              <NearbyAreasGrid cityName={cityName} serviceSlug={service.slug} serviceName={service.title} />
+            {/* Main */}
+            <div>
+              <h2 className="font-display text-3xl italic text-ink mb-5">{introHeading}</h2>
+              <div className="space-y-4 mb-12">
+                {intro.map((p, i) => <p key={i} className="body-md">{p}</p>)}
+              </div>
 
-              <section className="mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">{stepsHeading}</h2>
-                <div className="space-y-4">
-                  {steps.map((step, i) => (
-                    <div key={i} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                      <div className="flex-shrink-0 w-8 h-8 bg-brand-500 text-white rounded-full flex items-center justify-center font-bold text-sm">{i + 1}</div>
-                      <p className="text-gray-700 font-medium pt-1">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              <h2 className="font-display text-2xl italic text-ink mb-5">{stepsHeading}</h2>
+              <div className="space-y-3 mb-12">
+                {steps.map((step, i) => (
+                  <div key={i} className="step-row">
+                    <span className="step-num">{i + 1}</span>
+                    <p className="body-md font-medium text-ink">{step}</p>
+                  </div>
+                ))}
+              </div>
 
-              <PricingSection cityName={cityName} serviceId={service.id} serviceName={service.title} />
+              <h2 className="font-display text-2xl italic text-ink mb-5">{whyHeading}</h2>
+              <div className="space-y-2.5 mb-12">
+                {whyPoints.map((p, i) => (
+                  <div key={i} className="flex items-start gap-3 card-parchment p-4 rounded-md">
+                    <CheckCircle size={14} className="text-brand flex-shrink-0 mt-0.5" />
+                    <span className="body-md font-medium">{p}</span>
+                  </div>
+                ))}
+              </div>
 
-              <section className="mb-12">
-                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">{whyHeading}</h3>
-                <div className="space-y-3">
-                  {whyPoints.map((point, i) => (
-                    <div key={i} className="flex items-start gap-3 bg-brand-50 p-4 rounded-xl border border-brand-100">
-                      <CheckCircle className="w-5 h-5 text-brand-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-800 font-medium text-sm">{point}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {faqs.length > 0 && (
+              {/* Nearby areas */}
+              {nearbyCities.length > 0 && (
                 <div className="mb-12">
-                  <FAQ faqs={faqs} title={`${service.title} in ${cityName}: Common Questions`} />
+                  <h2 className="font-display text-2xl italic text-ink mb-4">
+                    {service.title} in nearby areas
+                  </h2>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {nearbyCities.slice(0, 6).map(city => (
+                      <Link
+                        key={city}
+                        href={`/services/${service.slug}/${city.toLowerCase().replace(/[^a-z0-9]+/g,'-')}/`}
+                        className="card p-3 body-md hover:text-brand transition-colors"
+                      >
+                        {service.title} in {city}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              <section className="mt-12 mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What London Clients Are Saying</h2>
+              <h2 className="font-display text-2xl italic text-ink mb-5">What clients say</h2>
+              <div className="mb-12">
                 <Testimonials limit={2} />
-              </section>
+              </div>
+
+              {faqs.length > 0 && (
+                <FAQ faqs={faqs} title={`${service.title} in ${cityName} — common questions`} />
+              )}
             </div>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28 space-y-8">
-                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4">Other Services in {cityName}</h3>
-                  <ul className="space-y-2 mb-8">
-                    {relatedServices.map(s => (
-                      <li key={s.id}>
-                        <Link href={`/services/${s.slug}/${locationSlug}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">
-                          {s.title} in {cityName}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4">{service.title} Elsewhere</h3>
-                  <ul className="space-y-2">
-                    {allCities.filter(c => c !== cityName).slice(0, 5).map(city => (
-                      <li key={city}>
-                        <Link href={`/services/${service.slug}/${toSlug(city)}/`} className="block px-4 py-3 rounded-lg bg-gray-50 border border-gray-100 hover:border-brand-300 hover:bg-brand-50 text-gray-700 hover:text-brand-700 transition-all text-sm font-medium">
-                          {service.title} in {city}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Sidebar */}
+            <aside>
+              <div className="sticky top-8 space-y-4">
+                <div className="sidebar-box">
+                  <h3 className="font-display text-xl italic text-ink mb-2">
+                    Get matched in {cityName}
+                  </h3>
+                  <p className="body-sm mb-4">
+                    Vetted {service.title.toLowerCase()} specialists covering {cityName}. Free, within 24 hours.
+                  </p>
+                  <button onClick={() => setModalOpen(true)} className="btn-primary w-full justify-center">
+                    Find a specialist
+                  </button>
                 </div>
 
-                <div className="bg-brand-900 text-white p-6 rounded-2xl shadow-lg">
-                  <h3 className="text-lg font-display font-bold mb-3">From &pound;150</h3>
-                  <p className="text-brand-100 text-sm mb-4">Fixed-fee will writing with no hidden costs.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">
-                    Get Free Quotes
-                  </button>
+                <div className="sidebar-box">
+                  <p className="eyebrow mb-3">Typical cost</p>
+                  <p className="font-display text-2xl text-ink mb-1">£150 – £550</p>
+                  <p className="body-sm">Fixed-fee quote before any work begins</p>
+                </div>
+
+                <div className="sidebar-box">
+                  <p className="eyebrow mb-3">Other services in {cityName}</p>
+                  <div className="space-y-2">
+                    {relatedServices.slice(0, 4).map(s => (
+                      <Link
+                        key={s.id}
+                        href={`/services/${s.slug}/${locationSlug}/`}
+                        className="block body-md hover:text-brand transition-colors"
+                      >
+                        {s.title} in {cityName}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </aside>
           </div>
 
-          <div className="bg-brand-900 rounded-2xl p-8 md:p-12 text-center mt-12">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-              Get {service.title} Advice in {cityName}
+          {/* Bottom CTA */}
+          <div className="bg-ink rounded-lg p-10 text-center mt-4">
+            <h2 className="font-display text-3xl italic text-white mb-3">
+              Get {service.title} advice in {cityName}
             </h2>
-            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">
-              Submit your enquiry in under two minutes. We match you with up to three vetted {cityName} will writing specialists with no obligation.
+            <p className="body-lg text-white/55 max-w-xl mx-auto mb-7">
+              Submit your enquiry in under two minutes. We match you with vetted specialists in {cityName} with no obligation.
             </p>
-            <button onClick={() => setIsModalOpen(true)} className="bg-white text-brand-900 font-bold text-lg py-4 px-10 rounded-xl hover:bg-brand-50 transition-colors">
-              Get Your Free Quotes
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-8 py-3.5 rounded"
+            >
+              Get your free quotes
             </button>
           </div>
         </div>
       </main>
+
       <Footer />
     </>
   );

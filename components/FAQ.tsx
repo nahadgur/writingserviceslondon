@@ -3,38 +3,42 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-type FAQItem = { question: string; answer: string };
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
-export function FAQ({ faqs, title = "Frequently Asked Questions" }: { faqs: FAQItem[]; title?: string }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface Props {
+  faqs: FAQItem[];
+  title?: string;
+}
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-    }))
-  };
+export function FAQ({ faqs, title }: Props) {
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6">{title}</h2>
-      <div className="space-y-3">
+      {title && (
+        <h2 className="font-display text-3xl italic text-ink mb-8">{title}</h2>
+      )}
+      <div className="divide-y divide-border">
         {faqs.map((faq, i) => (
-          <div key={i} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div key={i}>
             <button
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+              className="w-full flex items-start justify-between gap-4 py-5 text-left"
+              onClick={() => setOpen(open === i ? null : i)}
+              aria-expanded={open === i}
             >
-              <span className="pr-4">{faq.question}</span>
-              <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`} />
+              <span className="font-display text-lg text-ink">{faq.question}</span>
+              <ChevronDown
+                size={16}
+                className="flex-shrink-0 mt-1 text-dust transition-transform duration-200"
+                style={{ transform: open === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
             </button>
-            {openIndex === i && (
-              <div className="px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
-                {faq.answer}
+            {open === i && (
+              <div className="pb-5">
+                <p className="body-md leading-relaxed">{faq.answer}</p>
               </div>
             )}
           </div>

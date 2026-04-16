@@ -1,18 +1,21 @@
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, Inter } from 'next/font/google';
 import Script from 'next/script';
-import { Inter, Lora } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/data/site';
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 });
 
-const lora = Lora({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-lora',
+  weight: ['300', '400', '500'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -43,14 +46,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     locale: 'en_GB',
-    images: [
-      {
-        url: `${siteConfig.url}/android-chrome-512x512.png`,
-        width: 512,
-        height: 512,
-        alt: siteConfig.name,
-      },
-    ],
+    images: [{ url: `${siteConfig.url}/android-chrome-512x512.png`, width: 512, height: 512, alt: siteConfig.name }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -65,7 +61,6 @@ const websiteSchema = {
   '@type': 'WebSite',
   '@id': `${siteConfig.url}/#website`,
   name: siteConfig.name,
-  alternateName: siteConfig.tagline,
   url: siteConfig.url,
   potentialAction: {
     '@type': 'SearchAction',
@@ -81,48 +76,32 @@ const organizationSchema = {
   name: siteConfig.name,
   url: siteConfig.url,
   logo: `${siteConfig.url}/android-chrome-512x512.png`,
-  description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists. We are not a law firm or will writing practice — we introduce clients to qualified professionals.',
+  description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists. We are not a law firm — we introduce clients to qualified professionals.',
   areaServed: {
     '@type': 'AdministrativeArea',
     name: 'London',
     containedInPlace: { '@type': 'Country', name: 'United Kingdom' },
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    availableLanguage: 'English',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID ?? 'G-MKLSQNN51M';
   return (
-    <html lang="en-GB" className={`${inter.variable} ${lora.variable}`}>
+    <html lang="en-GB" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body className="min-h-screen flex flex-col">
         {gaId && (
           <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');
-              `}
-            </Script>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+            <Script id="gtag-init" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaId}');
+            `}</Script>
           </>
         )}
         {children}

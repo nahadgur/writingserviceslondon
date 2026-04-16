@@ -1,4 +1,4 @@
-// app/location/[city]/page.tsx — SERVER COMPONENT (Phase 2)
+// app/location/[city]/page.tsx — SERVER COMPONENT
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { AREA_HUBS, getAreaHubBySlug, getAllAreaSlugs } from '@/data/locations';
@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const content = getAreaContent(hub.slug);
   const title = `Will Writing Services ${hub.name} | Estate Planning Specialists`;
-  const description = content?.heroParagraph.slice(0, 155) + '...' ??
-    `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas. Free matching service.`;
+  const description = content?.heroParagraph.slice(0, 155) + '...'
+    ?? `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas.`;
   const url = `${siteConfig.url}/location/${hub.slug}/`;
 
   return {
@@ -40,34 +40,33 @@ export default function CityPage({ params }: Props) {
 
   const content = getAreaContent(hub.slug);
 
-  // Area-specific FAQs drawn from content
   const areaFaqs = content?.faqOverride ?? [
     {
       question: `How quickly can I be matched with a will writer covering ${hub.name}?`,
-      answer: `Most clients covering ${hub.name} and the surrounding ${hub.subAreas.slice(0, 3).map(s => s.name).join(', ')} area are matched within 24 hours. For urgent situations — serious illness, imminent surgery, or time-sensitive estate matters — we prioritise same-day introductions. Submit your enquiry and indicate your urgency.`,
+      answer: `Most clients covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0, 3).map(s => s.name).join(', ')} are matched within 24 hours. For urgent situations we prioritise same-day introductions.`,
     },
     {
       question: `Do will writers cover all the areas around ${hub.name}?`,
-      answer: `Yes. Our network covers ${hub.name} and all surrounding neighbourhoods including ${hub.subAreas.map(s => s.name).join(', ')}. Many specialists offer home visits, so your postcode within the area is rarely a limiting factor.`,
+      answer: `Yes. Our network covers ${hub.name} and all surrounding neighbourhoods including ${hub.subAreas.map(s => s.name).join(', ')}. Many specialists offer home visits, so your postcode is rarely a limiting factor.`,
     },
     {
       question: `Is the matching service free for ${hub.name} clients?`,
-      answer: `The matching service is completely free. You only pay the specialist directly for their work once introduced. Our service is funded by the professionals in our network, not by client fees.`,
+      answer: `The matching service is completely free. You only pay the specialist directly for their work once introduced. Our service is funded by the professionals in our network.`,
     },
     {
       question: `What estate planning services are available in ${hub.name}?`,
-      answer: `Our network covering ${hub.name} includes specialists in single wills, mirror wills for couples, both types of Lasting Power of Attorney, protective property trusts, discretionary trusts, comprehensive estate planning reviews, and probate support. Most specialists cover multiple areas, so one introduction often addresses several needs.`,
+      answer: `Our network covering ${hub.name} includes specialists in single wills, mirror wills, both types of Lasting Power of Attorney, protective property trusts, discretionary trusts, comprehensive estate planning reviews, and probate support.`,
     },
   ];
 
   const ldLocation = locationPageSchema(
     hub.name,
-    content?.heroParagraph ?? `Free matching service connecting ${hub.name} residents with vetted will writers and estate planning specialists.`,
+    content?.heroParagraph ?? `Free matching service connecting ${hub.name} residents with vetted will writers.`,
     ['Will Writing', 'Mirror Wills', 'Lasting Power of Attorney', 'Trust Planning', 'Estate Planning', 'Probate Support']
   );
   const ldFaq = faqSchema(areaFaqs);
   const ldBreadcrumb = breadcrumbSchema([
-    { label: 'Locations', href: '/location/' },
+    { label: 'Areas', href: '/location/' },
     { label: hub.name },
   ]);
 

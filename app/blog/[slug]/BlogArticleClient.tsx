@@ -2,72 +2,97 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Tag, Calendar } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { ServiceBanner } from '@/components/ServiceBanner';
-import { services, getServiceBySlug } from '@/data/services';
 import type { BlogArticle, ContentBlock } from '@/data/blog';
 
-const categoryServiceMap: Record<string, string> = {
-  'Will Writing': 'single-will',
-};
-
-function renderBlock(block: ContentBlock, index: number) {
+function renderBlock(block: ContentBlock, index: number, onOpenModal: () => void) {
   switch (block.type) {
     case 'p':
-      return <p key={index} className="text-gray-600 leading-relaxed mb-5">{block.text || ''}</p>;
+      return <p key={index} className="article-p">{block.text ?? ''}</p>;
+
     case 'h2':
-      return <h2 key={index} className="text-2xl md:text-3xl font-display font-bold text-gray-900 mt-10 mb-4">{block.text || ''}</h2>;
+      return <h2 key={index} className="article-h2">{block.text ?? ''}</h2>;
+
     case 'h3':
-      return <h3 key={index} className="text-xl font-display font-bold text-gray-900 mt-8 mb-3">{block.text || ''}</h3>;
+      return (
+        <h3 key={index} className="font-display text-xl italic text-ink mt-7 mb-3">
+          {block.text ?? ''}
+        </h3>
+      );
+
     case 'list':
       return (
-        <ul key={index} className="space-y-2 mb-6 pl-1">
-          {(block.items || []).map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-600">
-              <span className="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0 mt-2" />
+        <ul key={index} className="space-y-2.5 mb-6">
+          {(block.items ?? []).map((item, i) => (
+            <li key={i} className="flex items-start gap-3 article-p mb-0">
+              <span className="w-1 h-1 rounded-full bg-brand flex-shrink-0 mt-2.5" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       );
+
     case 'image':
       return (
         <figure key={index} className="my-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={block.src || ''} alt={block.alt || ''} className="w-full rounded-xl object-cover" loading="lazy" />
-          {block.alt && <figcaption className="text-xs text-gray-400 mt-2 text-center">{block.alt}</figcaption>}
+          <img
+            src={block.src ?? ''}
+            alt={block.alt ?? ''}
+            className="w-full rounded-lg object-cover"
+            loading="lazy"
+          />
+          {block.alt && (
+            <figcaption className="body-sm text-center mt-2">{block.alt}</figcaption>
+          )}
         </figure>
       );
+
     case 'cta':
       return (
-        <div key={index} className="bg-brand-50 border border-brand-100 rounded-xl p-6 my-8 text-center">
-          <p className="font-display font-bold text-gray-900 text-lg mb-2">{block.text || 'Get Your Free Will Writing Quote'}</p>
-          <p className="text-sm text-gray-600 mb-4">Speak to vetted will writing professionals in London. Free matching service.</p>
+        <div key={index} className="inline-cta">
+          <p className="font-display text-xl italic text-white mb-2">
+            {block.text ?? 'Get your free will writing match'}
+          </p>
+          <p className="body-sm text-white/50 mb-5">
+            Vetted will writing professionals in London. Free matching service.
+          </p>
+          <button onClick={onOpenModal} className="btn-primary">
+            Find my specialist
+          </button>
         </div>
       );
+
     case 'related-articles':
       return (
         <div key={index} className="my-8">
-          <h3 className="text-lg font-display font-bold text-gray-900 mb-4">Related Reading</h3>
-          <div className="grid gap-3">
-            {(block.articles || []).map((rel, i) => (
-              <Link key={i} href={`/blog/${rel.slug}/`} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-brand-200 hover:bg-brand-50 transition-all">
+          <h3 className="font-display text-lg italic text-ink mb-4">Related reading</h3>
+          <div className="space-y-2">
+            {(block.articles ?? []).map((rel, i) => (
+              <Link
+                key={i}
+                href={`/blog/${rel.slug}/`}
+                className="flex items-center gap-4 card-parchment p-3 rounded-md hover:border-brand/30 transition-colors group"
+              >
                 {rel.image && (
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                  <div className="w-12 h-10 rounded overflow-hidden flex-shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={rel.image} alt={rel.title} className="w-full h-full object-cover" loading="lazy" />
                   </div>
                 )}
-                <span className="font-medium text-gray-700 text-sm">{rel.title}</span>
+                <span className="font-display text-sm text-stone group-hover:text-brand transition-colors">
+                  {rel.title}
+                </span>
               </Link>
             ))}
           </div>
         </div>
       );
+
     default:
       return null;
   }
@@ -79,87 +104,107 @@ interface Props {
 }
 
 export default function BlogArticleClient({ article, relatedArticles }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const serviceSlug = categoryServiceMap[article.category] || 'single-will';
-  const matchedService = getServiceBySlug(serviceSlug) || services[0];
-
-  // Find index of 2nd h2 to inject service banner
+  // Find 2nd h2 to inject inline CTA
   let h2Count = 0;
-  let secondH2Index = -1;
+  let secondH2 = -1;
   for (let i = 0; i < article.content.length; i++) {
     if (article.content[i].type === 'h2') {
       h2Count++;
-      if (h2Count === 2) { secondH2Index = i; break; }
+      if (h2Count === 2) { secondH2 = i; break; }
     }
   }
 
   return (
     <>
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
+      <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <Header onOpenModal={() => setModalOpen(true)} />
 
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          {article.featuredImage ? (
-            <div className="absolute inset-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={article.featuredImage} alt="" className="w-full h-full object-cover opacity-30" loading="eager" />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/40" />
-            </div>
-          ) : (
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-900/40 via-gray-900/0 to-transparent pointer-events-none" />
+      <main>
+        {/* ── Article hero ──────────────────────────── */}
+        <section className="hero-dark min-h-[260px] flex items-end">
+          {article.featuredImage && (
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('${article.featuredImage}')`, opacity: 0.28 }}
+            />
           )}
-          <div className="container-width py-12 md:py-20 relative z-10">
-            <Breadcrumbs items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]} />
-            <div className="max-w-3xl mt-4">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="inline-flex items-center gap-1.5 text-sm text-brand-300">
-                  <Tag className="w-3.5 h-3.5" /> {article.category}
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-sm text-gray-400">
-                  <Calendar className="w-3.5 h-3.5" /> {article.publishDate}
-                </span>
-              </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight">
-                {article.title}
-              </h1>
+          <div className="hero-gradient-bottom" />
+
+          <div className="relative z-10 container-width py-12 w-full">
+            <Breadcrumbs
+              dark
+              items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]}
+            />
+            <div className="flex items-center gap-4 mt-5 mb-4">
+              <span className="location-pill">
+                <Tag size={10} /> {article.category}
+              </span>
+              <span className="eyebrow text-white/35 flex items-center gap-1.5">
+                <Calendar size={11} /> {article.publishDate}
+              </span>
             </div>
+            <h1 className="font-display text-4xl lg:text-5xl italic text-white max-w-2xl leading-tight">
+              {article.title}
+            </h1>
           </div>
         </section>
 
-        <div className="container-width py-12 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* ── Body ──────────────────────────────────── */}
+        <div className="container-width py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-12">
 
-            <article className="lg:col-span-2 max-w-none">
+            {/* Article */}
+            <article>
+              <Link
+                href="/blog/"
+                className="inline-flex items-center gap-2 body-sm text-dust hover:text-ink transition-colors mb-8"
+              >
+                <ArrowLeft size={12} /> All articles
+              </Link>
+
+              <p className="article-lede mb-8">{article.excerpt}</p>
+
               {article.content.map((block, i) => (
                 <div key={i}>
-                  {i === secondH2Index && <ServiceBanner service={matchedService} />}
-                  {renderBlock(block, i)}
+                  {i === secondH2 && (
+                    <div className="pull-quote mb-8">
+                      <p>Making a will is one of the most important things you can do for the people you love most.</p>
+                    </div>
+                  )}
+                  {renderBlock(block, i, () => setModalOpen(true))}
                 </div>
               ))}
             </article>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28 space-y-8">
-                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-3">Get a Free Quote</h3>
-                  <p className="text-gray-600 text-sm mb-5">
-                    Ready to write your will? We will match you with a vetted will writing professional in London at no cost.
+            {/* Sidebar */}
+            <aside>
+              <div className="sticky top-8 space-y-4">
+                <div className="sidebar-box">
+                  <h3 className="font-display text-xl italic text-ink mb-2">Get matched free</h3>
+                  <p className="body-sm mb-4">
+                    Ready to write your will? We match you with a vetted specialist in London at no cost.
                   </p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">
-                    Find a Will Writing Service
+                  <button onClick={() => setModalOpen(true)} className="btn-primary w-full justify-center">
+                    Find my specialist
                   </button>
                 </div>
 
                 {relatedArticles.length > 0 && (
-                  <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                    <h3 className="font-bold text-gray-900 text-sm mb-3">More Articles</h3>
+                  <div className="sidebar-box">
+                    <p className="eyebrow mb-3">More articles</p>
                     <div className="space-y-3">
                       {relatedArticles.map(rel => (
-                        <Link key={rel.slug} href={`/blog/${rel.slug}/`} className="block text-sm text-gray-600 hover:text-brand-600 transition-colors font-medium">
-                          {rel.title}
-                        </Link>
+                        <div key={rel.slug}>
+                          <p className="eyebrow-brand mb-0.5">{rel.category}</p>
+                          <Link
+                            href={`/blog/${rel.slug}/`}
+                            className="font-display text-sm text-stone hover:text-brand transition-colors"
+                          >
+                            {rel.title}
+                          </Link>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -167,14 +212,9 @@ export default function BlogArticleClient({ article, relatedArticles }: Props) {
               </div>
             </aside>
           </div>
-
-          <div className="mt-12 pt-8 border-t border-gray-100">
-            <Link href="/blog/" className="inline-flex items-center gap-2 text-brand-600 font-medium hover:underline">
-              <ArrowLeft className="w-4 h-4" /> Back to all articles
-            </Link>
-          </div>
         </div>
       </main>
+
       <Footer />
     </>
   );

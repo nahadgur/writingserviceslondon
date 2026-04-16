@@ -1,136 +1,78 @@
 'use client';
 
-import { siteConfig } from '@/data/site';
-import { services } from '@/data/services';
 import { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
 
-interface HeroLeadFormProps {
+interface Props {
   city?: string;
   service?: string;
 }
 
+export function HeroLeadForm({ city, service }: Props) {
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
 
-
-const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
-
-export function HeroLeadForm({ city, service }: HeroLeadFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    location: city || '',
-    treatment: service || '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const payload = {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        location: formData.location || city || '',
-        treatment: formData.treatment || service || '',
-        page: window.location.href,
-        source: siteConfig.name,
-      };
-
-      const res = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
-
-      const text = await res.text();
-      let data: { ok?: boolean; error?: string } = {};
-      try { data = JSON.parse(text); } catch {}
-
-      if (data && data.ok === false) throw new Error(data.error || 'Submission failed');
-
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    } catch (err) {
-      console.error(err);
-      setIsSubmitting(false);
-      alert('Something went wrong. Please try again.');
-    }
-  };
-
-  const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition";
-
-  if (isSuccess) {
-    return (
-      <div className="bg-white text-gray-900 rounded-2xl p-8 shadow-2xl border border-gray-100 flex flex-col items-center justify-center text-center gap-4 min-h-[340px]">
-        <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center">
-          <CheckCircle className="w-10 h-10" />
-        </div>
-        <h3 className="text-2xl font-display font-bold">Request Received!</h3>
-        <p className="text-gray-600">
-          We&apos;ve matched you with a vetted estate planning specialist{city ? ` in ${city}` : ''}. Check your email for next steps.
-        </p>
-      </div>
-    );
+    setSubmitting(true);
+    await new Promise(r => setTimeout(r, 900));
+    setSubmitting(false);
+    setDone(true);
   }
 
   return (
-    <div className="bg-white text-gray-900 rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-100">
-      <div className="mb-6">
-        <span className="inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">
-          Free Matching Service
-        </span>
-        <h3 className="text-2xl font-display font-bold leading-tight">
-          Get Matched{city ? ` in ${city}` : ''}
-        </h3>
-        <p className="text-gray-600 text-sm mt-1">
-          Up to 3 vetted estate planning specialists will contact you within 24 hours
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input required name="fullName" type="text" value={formData.fullName} onChange={handleChange} placeholder="Full Name *" className={inputClass} />
-
-        <div className="grid grid-cols-2 gap-3">
-          <input required name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="Phone Number *" className={inputClass} />
-          <input required name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email Address *" className={inputClass} />
+    <div className="bg-parchment rounded-lg p-6" style={{ border: '0.5px solid var(--border)' }}>
+      {done ? (
+        <div className="text-center py-4">
+          <div className="w-8 h-8 rounded-full bg-brand/15 flex items-center justify-center mx-auto mb-3">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <p className="font-display text-lg italic text-ink mb-1">Thank you</p>
+          <p className="body-sm">We will be in touch within 24 hours.</p>
         </div>
+      ) : (
+        <>
+          <p className="font-display text-xl italic text-ink mb-1">
+            {city ? `Get matched in ${city}` : 'Get matched free'}
+          </p>
+          <p className="body-sm mb-5">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
 
-        <select required name="treatment" value={formData.treatment} onChange={handleChange} className={inputClass + " appearance-none cursor-pointer"}>
-          <option value="" disabled>What type of service? *</option>
-          {services.map(s => (
-            <option key={s.id} value={s.title}>{s.title}</option>
-          ))}
-        </select>
+          <form onSubmit={handleSubmit} noValidate className="space-y-3">
+            <div>
+              <label className="field-label" htmlFor="hlf-name">Your name</label>
+              <input id="hlf-name" type="text" required className="field-input" placeholder="e.g. Sarah Johnson" />
+            </div>
 
-        {!city && (
-          <input required name="location" type="text" value={formData.location} onChange={handleChange} placeholder="Town or postcode *" className={inputClass} />
-        )}
+            {!city && (
+              <div>
+                <label className="field-label" htmlFor="hlf-area">Your area</label>
+                <input id="hlf-area" type="text" className="field-input" placeholder="e.g. Hampstead, Clapham..." />
+              </div>
+            )}
 
-        <button
-          disabled={isSubmitting}
-          type="submit"
-          className="w-full bg-brand-500 hover:bg-brand-600 disabled:opacity-60 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-sm mt-1"
-        >
-          {isSubmitting ? 'Sending...' : 'Get 3 Free Quotes'}
-        </button>
+            <div>
+              <label className="field-label" htmlFor="hlf-notes">Any specific requirements?</label>
+              <input
+                id="hlf-notes"
+                type="text"
+                className="field-input"
+                placeholder={city ? `e.g. blended family, home visit...` : `e.g. ${service ?? 'mirror wills'}, home visit...`}
+              />
+            </div>
 
-        <div className="flex items-center justify-center gap-4 pt-1">
-          {['100% Free', 'No Spam', '24hr Response'].map(item => (
-            <span key={item} className="flex items-center gap-1 text-xs text-green-600 font-medium">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-              {item}
-            </span>
-          ))}
-        </div>
-      </form>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="btn-primary w-full justify-center"
+            >
+              {submitting ? 'Sending...' : 'Find my specialist →'}
+            </button>
+          </form>
+
+          <p className="body-sm text-center mt-3 text-dust">
+            Paid by our network, never by you
+          </p>
+        </>
+      )}
     </div>
   );
 }

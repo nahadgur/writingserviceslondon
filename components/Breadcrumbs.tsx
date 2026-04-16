@@ -1,37 +1,38 @@
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { siteConfig } from '@/data/site';
 
-interface BreadcrumbItem {
+interface Crumb {
   label: string;
   href?: string;
 }
 
-export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
-  const allItems = [{ label: 'Home', href: '/' }, ...items];
+interface Props {
+  items: Crumb[];
+  dark?: boolean;
+}
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": allItems.map((item, i) => ({
-      "@type": "ListItem",
-      "position": i + 1,
-      "name": item.label,
-      ...(item.href ? { "item": `${siteConfig.url}${item.href}` } : {})
-    }))
-  };
+export function Breadcrumbs({ items, dark = false }: Props) {
+  const cls = dark ? 'breadcrumb' : 'breadcrumb-light';
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <ol className="flex items-center flex-wrap gap-1 text-sm text-gray-500">
-        {allItems.map((item, i) => (
-          <li key={i} className="flex items-center gap-1">
-            {i > 0 && <ChevronRight className="w-3.5 h-3.5 text-gray-300" />}
+    <nav aria-label="Breadcrumb" className={cls}>
+      <ol className="flex items-center gap-1.5 flex-wrap">
+        <li>
+          {dark
+            ? <a href="/" style={{ color: 'rgba(255,255,255,0.5)' }}>Home</a>
+            : <Link href="/" className="text-stone hover:text-ink transition-colors">Home</Link>
+          }
+        </li>
+        {items.map((item, i) => (
+          <li key={i} className="flex items-center gap-1.5">
+            <span style={{ color: dark ? 'rgba(255,255,255,0.22)' : 'var(--border)' }}>/</span>
             {item.href ? (
-              <Link href={item.href} className="hover:text-brand-600 transition-colors">{item.label}</Link>
+              dark
+                ? <a href={item.href} style={{ color: 'rgba(255,255,255,0.5)' }}>{item.label}</a>
+                : <Link href={item.href} className="text-stone hover:text-ink transition-colors">{item.label}</Link>
             ) : (
-              <span className="text-gray-900 font-medium">{item.label}</span>
+              <span style={{ color: dark ? 'rgba(255,255,255,0.7)' : 'var(--ink)' }} aria-current="page">
+                {item.label}
+              </span>
             )}
           </li>
         ))}

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
-import { siteConfig } from '@/data/site';
 import type { BlogArticle } from '@/data/blog';
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
 }
 
 export default function BlogIndexClient({ articles }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
 
   const categories = useMemo(() => {
@@ -28,46 +27,44 @@ export default function BlogIndexClient({ articles }: Props) {
 
   return (
     <>
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
+      <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <Header onOpenModal={() => setModalOpen(true)} />
 
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-900/40 via-gray-900/0 to-transparent pointer-events-none" />
-          <div className="container-width py-16 md:py-24 relative z-10">
-            <div className="max-w-2xl">
-              <span className="inline-block px-3 py-1 bg-brand-500/20 text-brand-300 text-xs font-bold uppercase tracking-wider rounded-full mb-4 border border-brand-500/30">
-                Blog
-              </span>
-              <h1 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4">
-                Will Writing and Estate Planning Guides
-              </h1>
-              <p className="text-xl text-gray-300 leading-relaxed">
-                Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate — written by people who understand how complex London estates actually work.
-              </p>
-            </div>
+      <main>
+        {/* ── Hero ──────────────────────────────────── */}
+        <section className="bg-parchment border-b border-border py-16 md:py-20">
+          <div className="container-width max-w-3xl">
+            <p className="eyebrow mb-4">Guides and advice</p>
+            <h1 className="font-display text-5xl italic text-ink mb-5 leading-tight">
+              Will writing and<br />estate planning guides
+            </h1>
+            <p className="body-lg max-w-xl">
+              Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate — written for people navigating these decisions for the first time.
+            </p>
           </div>
         </section>
 
+        {/* ── Articles ──────────────────────────────── */}
         <section className="section-padding">
           <div className="container-width">
 
             {articles.length === 0 ? (
               <div className="text-center py-16">
-                <p className="text-gray-500 text-lg">No articles yet. Check back soon.</p>
+                <p className="font-display text-2xl italic text-dust">No articles yet. Check back soon.</p>
               </div>
             ) : (
               <>
+                {/* Category filter */}
                 {categories.length > 2 && (
                   <div className="flex flex-wrap gap-2 mb-10">
                     {categories.map(cat => (
                       <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                        className={`font-sans text-xs font-medium px-4 py-2 rounded-full border transition-all ${
                           activeCategory === cat
-                            ? 'bg-brand-500 text-white'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            ? 'bg-ink text-white border-ink'
+                            : 'bg-white text-stone border-border hover:border-brand/40'
                         }`}
                       >
                         {cat}
@@ -76,53 +73,99 @@ export default function BlogIndexClient({ articles }: Props) {
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filtered.map(article => (
-                    <Link
-                      key={article.slug}
-                      href={`/blog/${article.slug}/`}
-                      className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
-                    >
-                      <div className="h-48 overflow-hidden bg-gray-100">
-                        {article.featuredImage ? (
-                          /* eslint-disable-next-line @next/next/no-img-element */
-                          <img
-                            src={article.featuredImage}
-                            alt={article.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-brand-200 via-brand-100 to-brand-50" />
+                {/* Featured article */}
+                {filtered.length > 0 && (
+                  <Link
+                    href={`/blog/${filtered[0].slug}/`}
+                    className="card group flex flex-col md:flex-row gap-0 overflow-hidden mb-6"
+                  >
+                    {filtered[0].featuredImage && (
+                      <div className="md:w-2/5 h-52 md:h-auto overflow-hidden bg-parchment-2 flex-shrink-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={filtered[0].featuredImage}
+                          alt={filtered[0].title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="eager"
+                        />
+                      </div>
+                    )}
+                    <div className="p-8 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="eyebrow-brand">{filtered[0].category}</span>
+                        <span className="body-sm">{filtered[0].publishDate}</span>
+                      </div>
+                      <h2 className="font-display text-3xl italic text-ink group-hover:text-brand transition-colors mb-3 leading-tight">
+                        {filtered[0].title}
+                      </h2>
+                      <p className="body-md line-clamp-3 mb-4">{filtered[0].excerpt}</p>
+                      <span className="eyebrow-brand text-xs">Read article →</span>
+                    </div>
+                  </Link>
+                )}
+
+                {/* Remaining articles grid */}
+                {filtered.length > 1 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {filtered.slice(1).map(article => (
+                      <Link
+                        key={article.slug}
+                        href={`/blog/${article.slug}/`}
+                        className="card group overflow-hidden"
+                      >
+                        {article.featuredImage && (
+                          <div className="h-44 overflow-hidden bg-parchment-2">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={article.featuredImage}
+                              alt={article.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              loading="lazy"
+                            />
+                          </div>
                         )}
-                      </div>
-                      <div className="p-5">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full">
-                            {article.category}
-                          </span>
-                          <span className="text-xs text-gray-400">{article.publishDate}</span>
+                        <div className="p-5">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="eyebrow-brand">{article.category}</span>
+                            <span className="body-sm">{article.publishDate}</span>
+                          </div>
+                          <h2 className="font-display text-xl italic text-ink group-hover:text-brand transition-colors mb-2 leading-snug">
+                            {article.title}
+                          </h2>
+                          <p className="body-sm line-clamp-2">{article.excerpt}</p>
                         </div>
-                        <h2 className="text-lg font-display font-bold text-gray-900 group-hover:text-brand-600 mb-2 line-clamp-2">
-                          {article.title}
-                        </h2>
-                        <p className="text-sm text-gray-500 line-clamp-3">{article.excerpt}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
 
                 {filtered.length === 0 && (
-                  <div className="text-center py-12">
-                    <p className="text-gray-500">No articles in this category yet.</p>
-                  </div>
+                  <p className="text-center body-md py-10 text-dust">No articles in this category yet.</p>
                 )}
               </>
             )}
+          </div>
+        </section>
 
+        {/* ── CTA ───────────────────────────────────── */}
+        <section className="bg-ink py-16">
+          <div className="container-width text-center">
+            <h2 className="font-display text-3xl italic text-white mb-4">
+              Ready to make your will?
+            </h2>
+            <p className="body-lg text-white/55 max-w-lg mx-auto mb-7">
+              Our free matching service connects you with the right specialist in London within 24 hours.
+            </p>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-8 py-3.5 rounded"
+            >
+              Find my specialist
+            </button>
           </div>
         </section>
       </main>
+
       <Footer />
     </>
   );

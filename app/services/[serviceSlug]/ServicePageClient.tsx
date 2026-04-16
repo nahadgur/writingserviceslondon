@@ -1,18 +1,15 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, Clock, Shield, Star, Search, CheckCircle, ArrowRight, ChevronDown, Award, Users, CreditCard } from 'lucide-react';
-import { LOCATIONS, toSlug } from '@/data/locations';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { TrustBadges } from '@/components/TrustBadges';
-import { Testimonials } from '@/components/Testimonials';
-import { FAQ } from '@/components/FAQ';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
-import { PricingSection } from '@/components/PricingSection';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Testimonials } from '@/components/Testimonials';
+import { FAQ } from '@/components/FAQ';
 import type { Service } from '@/data/services';
 
 interface Props {
@@ -25,231 +22,157 @@ interface Props {
     process: { title: string; desc: string }[];
   };
   relatedServices: Service[];
-  allCities: string[];
   combinedFaqs: { question: string; answer: string }[];
 }
 
-export default function ServicePageClient({ service, content, relatedServices, allCities, combinedFaqs }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showLocations, setShowLocations] = useState(false);
-
-  const filteredLocations = useMemo(() => {
-    if (!searchQuery) return LOCATIONS;
-    const result: Record<string, string[]> = {};
-    Object.entries(LOCATIONS).forEach(([region, cities]) => {
-      const filtered = cities.filter(city => city.toLowerCase().includes(searchQuery.toLowerCase()));
-      if (filtered.length > 0) result[region] = filtered;
-    });
-    return result;
-  }, [searchQuery]);
-
-  const totalCities = allCities.length;
+export default function ServicePageClient({ service, content, relatedServices, combinedFaqs }: Props) {
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={service.image} alt="" className="w-full h-full object-cover opacity-40" loading="eager" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/40" />
-          </div>
-          <div className="container-width py-12 md:py-20 relative z-10">
-            <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: service.title }]} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
+      <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} defaultService={service.title} />
+      <Header onOpenModal={() => setModalOpen(true)} />
+
+      <main>
+        {/* ── Hero ──────────────────────────────────── */}
+        <section className="hero-dark min-h-[360px] flex items-end">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${service.image}')`, opacity: 0.35 }}
+          />
+          <div className="hero-gradient-bottom" />
+
+          <div className="relative z-10 container-width pb-0 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 items-end py-14">
               <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
+                <Breadcrumbs
+                  dark
+                  items={[{ label: 'Services', href: '/services/' }, { label: service.title }]}
+                />
+                <h1 className="font-display text-5xl lg:text-6xl italic text-white mt-5 mb-4 leading-tight">
                   {service.title}
                 </h1>
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">{service.description}</p>
-                <div className="space-y-3">
-                  {['Compare up to 3 free quotes', 'Every specialist vetted and insured', `${totalCities}+ locations covered`].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-brand-400 flex-shrink-0" />
-                      <span className="text-lg">{item}</span>
+                <p className="body-lg text-white/60 max-w-[420px] mb-6">{service.description}</p>
+                <div className="flex flex-col gap-2">
+                  {['Compare up to 3 free quotes', 'Every specialist vetted and insured', 'Covering all London areas'].map((b, i) => (
+                    <div key={i} className="flex items-center gap-2.5">
+                      <CheckCircle size={14} className="text-brand flex-shrink-0" />
+                      <span className="body-md text-white/70">{b}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div>
-                <HeroLeadForm service={service.title} />
-              </div>
+              <HeroLeadForm service={service.title} />
             </div>
           </div>
         </section>
 
-        <TrustBadges />
-
+        {/* ── Body ──────────────────────────────────── */}
         <div className="container-width py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12">
 
-              <section className="mb-14">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6">{service.title}: What You Need to Know</h2>
-                <div className="prose prose-gray max-w-none text-gray-600 space-y-4">
-                  {content.intro.map((p, i) => <p key={i}>{p}</p>)}
-                </div>
-              </section>
+            {/* Main */}
+            <div>
+              <h2 className="font-display text-3xl italic text-ink mb-5">
+                {service.title}: what you need to know
+              </h2>
+              <div className="space-y-4 mb-14">
+                {content.intro.map((p, i) => (
+                  <p key={i} className="body-md">{p}</p>
+                ))}
+              </div>
 
-              <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">Benefits of {service.title}</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {content.benefits.map((b, i) => (
-                    <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100">
-                      <div className="bg-brand-100 p-2 rounded-lg text-brand-600 flex-shrink-0 h-fit">
-                        <CheckCircle className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 mb-1">{b.title}</h3>
-                        <p className="text-sm text-gray-600">{b.desc}</p>
-                      </div>
-                    </div>
+              <h2 className="font-display text-2xl italic text-ink mb-5">Why it matters</h2>
+              <div className="grid sm:grid-cols-2 gap-4 mb-14">
+                {content.benefits.map((b, i) => (
+                  <div key={i} className="benefit-card">
+                    <h3 className="benefit-card-head">{b.title}</h3>
+                    <p className="body-sm leading-relaxed">{b.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <h2 className="font-display text-2xl italic text-ink mb-5">
+                Is {service.title.toLowerCase()} right for you?
+              </h2>
+              <p className="body-md mb-4">{content.candidateIntro}</p>
+              <div className="card-parchment p-6 mb-14">
+                <ul className="space-y-3">
+                  {content.candidates.map((c, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="w-1 h-1 rounded-full bg-brand flex-shrink-0 mt-2" />
+                      <span className="body-md">{c}</span>
+                    </li>
                   ))}
-                </div>
-              </section>
+                </ul>
+              </div>
 
-              <section className="mb-14">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-2">Find {service.title} Professionals</h2>
-                    <p className="text-gray-600">
-                      Specialists for {service.title.toLowerCase()} covering {totalCities} areas across London.
-                    </p>
+              <h2 className="font-display text-2xl italic text-ink mb-5">How the process works</h2>
+              <div className="space-y-3 mb-14">
+                {content.process.map((step, i) => (
+                  <div key={i} className="step-row">
+                    <span className="step-num">{i + 1}</span>
+                    <div>
+                      <p className="font-sans font-medium text-sm text-ink mb-0.5">{step.title}</p>
+                      <p className="body-sm">{step.desc}</p>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setShowLocations(!showLocations)}
-                    className="flex items-center gap-2 text-brand-600 font-bold text-sm hover:underline self-start md:self-auto whitespace-nowrap"
-                  >
-                    {showLocations ? 'Hide locations' : `Show all ${totalCities}+ locations`}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${showLocations ? 'rotate-180' : ''}`} />
-                  </button>
-                </div>
+                ))}
+              </div>
 
-                <div className="mb-6 max-w-md">
-                  <div className="relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-                    <input
-                      type="text"
-                      placeholder="Search your town or area..."
-                      value={searchQuery}
-                      onChange={(e) => { setSearchQuery(e.target.value); if (!showLocations) setShowLocations(true); }}
-                      className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
-                    />
-                  </div>
-                </div>
+              <h2 className="font-display text-2xl italic text-ink mb-5">What our clients say</h2>
+              <div className="mb-14">
+                <Testimonials limit={2} />
+              </div>
 
-                <div
-                  className={`transition-all duration-500 overflow-hidden ${showLocations ? 'max-h-[9999px] opacity-100' : 'max-h-0 opacity-0'}`}
-                  aria-hidden={!showLocations}
-                >
-                  <div className="space-y-8 pb-4">
-                    {Object.entries(filteredLocations).map(([region, cities]) => (
-                      <div key={region}>
-                        <h3 className="text-lg font-display font-bold text-gray-900 mb-3">{region}</h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-                          {cities.map(city => (
-                            <Link
-                              key={city}
-                              href={`/services/${service.slug}/${toSlug(city)}/`}
-                              className="group flex items-center gap-2 p-2.5 bg-gray-50 rounded-lg hover:bg-brand-50 transition-all border border-gray-100 hover:border-brand-200"
-                            >
-                              <MapPin className="w-3 h-3 text-brand-400 flex-shrink-0" />
-                              <span className="text-gray-700 group-hover:text-brand-700 text-xs font-medium truncate">{city}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <FAQ faqs={combinedFaqs} title={`${service.title} — common questions`} />
+            </div>
 
-                {!showLocations && (
-                  <p className="text-sm text-gray-500">
-                    Search for your area above or <button onClick={() => setShowLocations(true)} className="text-brand-600 font-medium hover:underline">browse all locations</button> to find {service.title.toLowerCase()} professionals near you.
+            {/* Sidebar */}
+            <aside>
+              <div className="sticky top-8 space-y-4">
+                <div className="sidebar-box">
+                  <h3 className="font-display text-xl italic text-ink mb-2">
+                    Get matched free
+                  </h3>
+                  <p className="body-sm mb-4">
+                    Vetted specialists covering your area. Most introductions within 24 hours.
                   </p>
-                )}
-              </section>
-
-              <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">Is {service.title} Right for You?</h2>
-                <p className="text-gray-600 mb-4">{content.candidateIntro}</p>
-                <div className="bg-brand-50 rounded-xl p-6 border border-brand-100">
-                  <ul className="space-y-3">
-                    {content.candidates.map((c, i) => (
-                      <li key={i} className="flex items-start gap-3 text-gray-700">
-                        <CheckCircle className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{c}</span>
+                  <button onClick={() => setModalOpen(true)} className="btn-primary w-full justify-center">
+                    Find a specialist
+                  </button>
+                  <ul className="mt-4 space-y-2 pt-4 border-t border-border">
+                    {['Matched within 24 hours', 'Vetted and insured', 'Free to all clients'].map((p, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-brand flex-shrink-0" />
+                        <span className="body-sm">{p}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-                <p className="text-gray-600 text-sm mt-4">
-                  Our matched estate planning specialists will review your brief and requirements, then provide a clear quote and timeline before any work begins.
-                </p>
-              </section>
 
-              <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">How the Process Works</h2>
-                <div className="space-y-4">
-                  {content.process.map((step, i) => (
-                    <div key={i} className="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                      <div className="flex-shrink-0 w-8 h-8 bg-brand-500 text-white rounded-full flex items-center justify-center font-bold text-sm">{i + 1}</div>
-                      <div>
-                        <h3 className="font-bold text-gray-900 mb-0.5">{step.title}</h3>
-                        <p className="text-sm text-gray-600">{step.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              <PricingSection serviceId={service.id} serviceName={service.title} />
-
-              <div className="mb-14">
-                <FAQ faqs={combinedFaqs} title={`${service.title} FAQs`} />
-              </div>
-
-              <section className="mb-14">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Say</h2>
-                <Testimonials limit={3} />
-              </section>
-            </div>
-
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28 space-y-6">
-                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-3">Get Matched for {service.title}</h3>
-                  <p className="text-gray-600 mb-5 text-sm">Free match with vetted estate planning specialists in your area.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
-                  <div className="mt-5 pt-5 border-t border-gray-100 space-y-3">
-                    {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: 'Consultations available this week' },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: 'Vetted and insured specialists' },
-                      { icon: <Star className="w-4 h-4 text-brand-500" />, text: '4.9 average rating' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="bg-brand-100 p-1.5 rounded-full">{item.icon}</div>
-                        <span className="text-sm font-medium text-gray-700">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="sidebar-box-dark p-5 rounded-lg">
+                  <p className="font-display text-xl italic text-white mb-1">From £150</p>
+                  <p className="body-sm text-white/50 mb-4">Fixed-fee quotes before any work begins.</p>
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="w-full bg-white text-ink font-sans font-medium text-xs py-2.5 rounded"
+                  >
+                    Get free quotes
+                  </button>
                 </div>
 
-                <div className="bg-brand-900 text-white p-6 rounded-2xl">
-                  <h3 className="font-display font-bold mb-2">From &pound;150</h3>
-                  <p className="text-brand-100 text-sm mb-4">Fixed-fee will writing with no hidden costs.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Get Free Quotes</button>
-                </div>
-
-                <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                  <h3 className="font-bold text-gray-900 text-sm mb-3">Other Services</h3>
+                <div className="sidebar-box">
+                  <p className="eyebrow mb-3">Other services</p>
                   <div className="space-y-2">
                     {relatedServices.map(s => (
-                      <Link key={s.id} href={`/services/${s.slug}/`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-600 transition-colors">
-                        <ArrowRight className="w-3 h-3" /> {s.title}
+                      <Link
+                        key={s.id}
+                        href={`/services/${s.slug}/`}
+                        className="flex items-center gap-2 body-md hover:text-brand transition-colors"
+                      >
+                        <ArrowRight size={10} className="flex-shrink-0 text-dust" />
+                        {s.title}
                       </Link>
                     ))}
                   </div>
@@ -259,6 +182,7 @@ export default function ServicePageClient({ service, content, relatedServices, a
           </div>
         </div>
       </main>
+
       <Footer />
     </>
   );

@@ -6,7 +6,7 @@ import { breadcrumbSchema } from '@/lib/schema';
 import BlogIndexClient from './BlogIndexClient';
 
 export const metadata: Metadata = {
-  title: `Will Writing Blog | Guides and Advice | ${siteConfig.name}`,
+  title: `Will Writing Guides and Advice | ${siteConfig.name}`,
   description: 'Practical guides on will writing, estate planning, lasting power of attorney, trust planning, and probate for London residents.',
   alternates: { canonical: `${siteConfig.url}/blog/` },
 };

@@ -1,76 +1,92 @@
-// components/Footer.tsx
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
-import { services } from '@/data/services';
-import { siteConfig } from '@/data/site';
-import { topAreas } from '@/data/homepage';
-import { toSlug } from '@/data/locations';
+
+const serviceLinks = [
+  { href: '/services/single-will/', label: 'Single will' },
+  { href: '/services/mirror-wills/', label: 'Mirror wills' },
+  { href: '/services/lasting-power-of-attorney/', label: 'Lasting power of attorney' },
+  { href: '/services/trust-planning/', label: 'Trust planning' },
+  { href: '/services/estate-planning/', label: 'Estate planning review' },
+  { href: '/services/probate-support/', label: 'Probate support' },
+];
+
+const areaLinks = [
+  { href: '/location/mayfair/', label: 'Mayfair' },
+  { href: '/location/hampstead/', label: 'Hampstead' },
+  { href: '/location/islington/', label: 'Islington' },
+  { href: '/location/clapham/', label: 'Clapham' },
+  { href: '/location/canary-wharf/', label: 'Canary Wharf' },
+  { href: '/location/', label: 'All areas →' },
+];
 
 export function Footer() {
-  const footerLocations = topAreas.slice(0, 6);
-
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8">
-      <div className="container-width">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-brand-500 rounded-md flex items-center justify-center text-white font-bold">LOGO</div>
-              <span className="font-display font-bold text-lg text-white">{siteConfig.name}</span>
-            </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              Free matching service for London clients. We connect you with vetted will writers and estate planning specialists across London.
-            </p>
-            <p className="text-xs text-gray-500 italic border-l-2 border-gray-700 pl-3">
-              We are a referral and matching service, not a will writing firm. All work is carried out by independent specialists in our vetted network.
-            </p>
-          </div>
+    <footer className="bg-ink text-white/70 mt-auto">
+      <div className="container-width py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm">
-              {services.map(s => (
-                <li key={s.id}>
-                  <Link href={`/services/${s.slug}/`} className="hover:text-brand-400 transition-colors">{s.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Popular Locations */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Popular Locations</h4>
-            <ul className="space-y-2 text-sm">
-              {footerLocations.map(area => (
-                <li key={area}>
-                  <Link href={`/location/${toSlug(area)}/`} className="hover:text-brand-400 transition-colors">{area}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Info */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Service Area</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-gray-400">
-                <MapPin className="w-4 h-4 text-brand-500" /> {siteConfig.name}
-              </li>
-            </ul>
-          </div>
+        <div className="md:col-span-1">
+          <p className="font-display text-lg text-white mb-4 leading-tight">
+            Will Writing Services London
+          </p>
+          <p className="body-sm text-white/50 leading-relaxed mb-6">
+            Free matching service connecting London residents with vetted will writers and estate planning specialists.
+          </p>
+          <p className="body-sm text-white/30 leading-relaxed">
+            We are not a law firm or will writing practice. We introduce clients to qualified professionals and are paid by the professionals in our network — never by clients.
+          </p>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-gray-800 pt-8 text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. We are a matching service, not a will writing firm.</p>
-          <div className="flex gap-6">
-            <Link href="/sitemap.xml" className="hover:text-gray-300">Sitemap</Link>
-            <Link href="/services/" className="hover:text-gray-300">Services</Link>
-            <Link href="/location/" className="hover:text-gray-300">Locations</Link>
-            <Link href="/blog/" className="hover:text-gray-300">Blog</Link>
-          </div>
+        <div>
+          <p className="eyebrow text-white/40 mb-4">Services</p>
+          <ul className="space-y-2.5">
+            {serviceLinks.map(l => (
+              <li key={l.href}>
+                <Link href={l.href} className="font-display text-sm text-white/60 hover:text-white transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="eyebrow text-white/40 mb-4">London areas</p>
+          <ul className="space-y-2.5">
+            {areaLinks.map(l => (
+              <li key={l.href}>
+                <Link href={l.href} className="font-display text-sm text-white/60 hover:text-white transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="eyebrow text-white/40 mb-4">Information</p>
+          <ul className="space-y-2.5">
+            {[
+              { href: '/blog/', label: 'Guides and articles' },
+              { href: '/about/', label: 'About the service' },
+              { href: '/privacy/', label: 'Privacy policy' },
+            ].map(l => (
+              <li key={l.href}>
+                <Link href={l.href} className="font-display text-sm text-white/60 hover:text-white transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/8">
+        <div className="container-width py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+          <p className="body-sm text-white/30">
+            &copy; {new Date().getFullYear()} Will Writing Services London. All rights reserved.
+          </p>
+          <p className="body-sm text-white/20 max-w-lg">
+            Will Writing Services London is a referral and introduction service. We do not provide legal advice. All professionals in our network hold appropriate qualifications and professional indemnity insurance.
+          </p>
         </div>
       </div>
     </footer>

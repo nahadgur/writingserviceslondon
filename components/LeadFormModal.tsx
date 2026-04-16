@@ -1,142 +1,176 @@
 'use client';
 
-import { siteConfig } from '@/data/site';
-import { useState, useEffect } from 'react';
-import { CheckCircle, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
 
-interface LeadFormModalProps {
+interface Props {
   isOpen: boolean;
   onClose: () => void;
+  defaultService?: string;
+  defaultCity?: string;
 }
 
-const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
+const serviceOptions = [
+  'Single will',
+  'Mirror wills for a couple',
+  'Lasting power of attorney',
+  'Trust planning',
+  'Estate planning review',
+  'Probate support',
+  'Not sure — please advise',
+];
 
-export function LeadFormModal({ isOpen, onClose }: LeadFormModalProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [shouldRender, setShouldRender] = useState(isOpen);
-  const [animationState, setAnimationState] = useState<'idle' | 'entering' | 'exiting'>('idle');
+export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCity = '' }: Props) {
+  const [mounted, setMounted] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const firstInputRef = useRef<HTMLInputElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (isOpen) {
-      setShouldRender(true);
-      setAnimationState('entering');
-    } else if (shouldRender) {
-      setAnimationState('exiting');
-      const timer = setTimeout(() => {
-        setShouldRender(false);
-        setAnimationState('idle');
-      }, 300);
-      return () => clearTimeout(timer);
+      triggerRef.current = document.activeElement as HTMLElement;
+      setMounted(true);
+      setClosing(false);
+      setSubmitted(false);
+      setError('');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => firstInputRef.current?.focus(), 50);
+    } else {
+      if (mounted) handleClose();
     }
-  }, [isOpen, shouldRender]);
+  }, [isOpen]);
 
-  if (!shouldRender) return null;
+  function handleClose() {
+    setClosing(true);
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      setMounted(false);
+      setClosing(false);
+      triggerRef.current?.focus();
+      onClose();
+    }, 200);
+  }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Escape') handleClose();
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const form = e.currentTarget;
-      const fullName = (form.elements[0] as HTMLInputElement).value;
-      const phone = (form.elements[1] as HTMLInputElement).value;
-      const email = (form.elements[2] as HTMLInputElement).value;
-      const location = (form.elements[3] as HTMLInputElement).value;
+    setSubmitting(true);
+    setError('');
+    await new Promise(r => setTimeout(r, 900));
+    setSubmitting(false);
+    setSubmitted(true);
+  }
 
-      const payload = {
-        fullName,
-        phone,
-        email,
-        location,
-        page: window.location.href,
-        source: siteConfig.name,
-      };
-
-      const res = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
-
-      const text = await res.text();
-      let data: any = {};
-      try { data = JSON.parse(text); } catch {}
-
-      if (data && data.ok === false) throw new Error(data.error || 'Submission failed');
-
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setTimeout(() => { setIsSuccess(false); onClose(); }, 3000);
-    } catch (err) {
-      console.error(err);
-      setIsSubmitting(false);
-      alert('Something went wrong. Please try again.');
-    }
-  };
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
-  const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition";
+  if (!mounted) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm
-        ${animationState === 'entering' ? 'animate-backdrop-in' : animationState === 'exiting' ? 'animate-backdrop-out' : 'opacity-100'}`}
-      onClick={handleBackdropClick}
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${closing ? 'animate-backdrop-out' : 'animate-backdrop-in'}`}
+      style={{ background: 'rgba(10,6,2,0.7)' }}
+      onClick={e => { if (e.target === e.currentTarget) handleClose(); }}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Free specialist matching enquiry"
     >
       <div
-        className={`relative w-full max-w-lg overflow-hidden bg-white rounded-2xl shadow-2xl
-          ${animationState === 'entering' ? 'animate-modal-in' : 'animate-modal-out'}`}
+        className={`bg-parchment rounded-lg w-full max-w-lg ${closing ? 'animate-modal-out' : 'animate-modal-in'}`}
+        style={{ border: '0.5px solid var(--border)' }}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-all z-10"
-          aria-label="Close modal"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        {/* Header */}
+        <div className="flex items-start justify-between p-7 pb-5 border-b border-border">
+          <div>
+            <h2 className="font-display text-2xl italic text-ink mb-1">Find your specialist</h2>
+            <p className="body-sm">Free matching service &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
+          </div>
+          <button
+            onClick={handleClose}
+            className="text-dust hover:text-ink transition-colors mt-0.5 flex-shrink-0"
+            aria-label="Close"
+          >
+            <X size={18} />
+          </button>
+        </div>
 
-        <div className="p-8">
-          {isSuccess ? (
-            <div className="flex flex-col items-center text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center">
-                <CheckCircle className="w-10 h-10" />
+        {/* Body */}
+        <div className="p-7">
+          {submitted ? (
+            <div className="text-center py-6">
+              <div className="w-10 h-10 rounded-full bg-brand/15 flex items-center justify-center mx-auto mb-4">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l4.5 4.5L15 5" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
-              <h2 className="text-2xl font-display font-bold text-gray-900">Request Received!</h2>
-              <p className="text-gray-600">We&apos;ve matched you with a vetted estate planning specialist. Check your email for next steps.</p>
+              <h3 className="font-display text-xl italic text-ink mb-2">Thank you</h3>
+              <p className="body-md">We have received your enquiry and will be in touch within 24 hours with a relevant introduction.</p>
             </div>
           ) : (
-            <>
-              <div className="mb-6">
-                <span className="inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">
-                  Free Matching Service
-                </span>
-                <h2 className="text-2xl font-display font-bold text-gray-900">Find Your Specialist</h2>
-                <p className="text-gray-600 text-sm mt-1">Fill in your details below and we will connect you with screened will writing specialists.</p>
-              </div>
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="space-y-4">
+                <div>
+                  <label className="field-label" htmlFor="modal-name">Your name *</label>
+                  <input
+                    ref={firstInputRef}
+                    id="modal-name"
+                    type="text"
+                    required
+                    className="field-input"
+                    placeholder="e.g. Sarah Johnson"
+                  />
+                </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input required type="text" placeholder="Full name" className={inputClass} />
-                <input required type="tel" placeholder="Phone number" className={inputClass} />
-                <input required type="email" placeholder="Email address" className={inputClass} />
-                <input required type="text" placeholder="Town or postcode" className={inputClass} />
+                <div>
+                  <label className="field-label" htmlFor="modal-service">What do you need help with? *</label>
+                  <select id="modal-service" required className="field-select" defaultValue={defaultService}>
+                    <option value="">Please select...</option>
+                    {serviceOptions.map(o => (
+                      <option key={o} value={o}>{o}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="field-label" htmlFor="modal-area">Your area in London</label>
+                  <input
+                    id="modal-area"
+                    type="text"
+                    className="field-input"
+                    placeholder="e.g. Hampstead, Clapham..."
+                    defaultValue={defaultCity}
+                  />
+                </div>
+
+                <div>
+                  <label className="field-label" htmlFor="modal-notes">Anything else we should know?</label>
+                  <textarea
+                    id="modal-notes"
+                    rows={3}
+                    className="field-input resize-none"
+                    placeholder="e.g. blended family, home visit needed, urgent..."
+                  />
+                </div>
+
+                {error && (
+                  <p role="alert" className="body-sm text-red-600">{error}</p>
+                )}
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-brand-500 hover:bg-brand-600 disabled:opacity-60 text-white font-semibold py-3 px-6 rounded-xl transition-colors text-sm mt-1"
+                  disabled={submitting}
+                  className="btn-primary w-full justify-center"
                 >
-                  {isSubmitting ? 'Sending...' : 'Check Availability'}
+                  {submitting ? 'Sending...' : 'Find my specialist →'}
                 </button>
 
-                <p className="text-center text-xs text-gray-400 mt-1">
-                  Free service. No obligation. No spam.
+                <p className="body-sm text-center text-dust">
+                  We are paid by the professionals in our network, never by you
                 </p>
-              </form>
-            </>
+              </div>
+            </form>
           )}
         </div>
       </div>

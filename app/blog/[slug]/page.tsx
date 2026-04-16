@@ -17,7 +17,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
   if (!article) return {};
-
   const url = `${siteConfig.url}/blog/${article.slug}/`;
   return {
     title: article.metaTitle,
@@ -53,12 +52,8 @@ export default function BlogArticlePage({ params }: Props) {
       '@type': 'Organization',
       '@id': `${siteConfig.url}/#organization`,
       name: siteConfig.name,
-      url: siteConfig.url,
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${siteConfig.url}/blog/${article.slug}/`,
-    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteConfig.url}/blog/${article.slug}/` },
   };
 
   const ldBreadcrumb = breadcrumbSchema([

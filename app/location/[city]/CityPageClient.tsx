@@ -2,16 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, ArrowRight, CheckCircle, Clock, Shield, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { FAQ } from '@/components/FAQ';
-import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { LeadFormModal } from '@/components/LeadFormModal';
-import { PricingSection } from '@/components/PricingSection';
-import { Testimonials } from '@/components/Testimonials';
+import { HeroLeadForm } from '@/components/HeroLeadForm';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { SubAreasGrid } from '@/components/SubAreasGrid';
+import { Testimonials } from '@/components/Testimonials';
+import { FAQ } from '@/components/FAQ';
 import type { AreaHub } from '@/data/locations';
 import type { AreaContent } from '@/data/areaContent';
 import type { Service } from '@/data/services';
@@ -24,51 +23,59 @@ interface Props {
 }
 
 export default function CityPageClient({ hub, content, services, areaFaqs }: Props) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  const heroHeading = content?.heroHeading ?? `Will Writing Services in ${hub.name}`;
-  const heroParagraph = content?.heroParagraph ?? `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas. Free matching service, no obligation.`;
+  const heroParagraph = content?.heroParagraph ??
+    `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas. Free matching, no obligation.`;
 
   return (
     <>
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
+      <LeadFormModal isOpen={modalOpen} onClose={() => setModalOpen(false)} defaultCity={hub.name} />
+      <Header onOpenModal={() => setModalOpen(true)} />
 
-        {/* Hero */}
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-900/30 via-gray-900/0 to-transparent pointer-events-none" />
-          <div className="container-width py-12 md:py-20 relative z-10">
-            <Breadcrumbs items={[{ label: 'Locations', href: '/location/' }, { label: hub.name }]} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
+      <main>
+        {/* ── Hero ──────────────────────────────────── */}
+        <section className="hero-dark min-h-[340px] flex items-end">
+          <div className="absolute inset-0" style={{ background: '#1a1410' }} />
+          <div className="hero-gradient-bottom" />
+
+          <div className="relative z-10 container-width w-full py-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 items-end">
               <div>
-                <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-brand-500/30">
-                  <MapPin className="w-4 h-4" /> {hub.postcode} &middot; {hub.region} London
+                <Breadcrumbs
+                  dark
+                  items={[{ label: 'Areas', href: '/location/' }, { label: hub.name }]}
+                />
+                <div className="flex items-center gap-2 mt-5 mb-4">
+                  <span className="eyebrow text-white/38">{hub.postcode}</span>
+                  <span className="text-white/18 text-xs">&middot;</span>
+                  <span className="eyebrow text-white/38">{hub.region} London</span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-                  Will Writing in <span className="text-brand-400">{hub.name}</span>
+                <h1 className="font-display text-5xl lg:text-6xl italic text-white mb-4 leading-tight">
+                  Will writing in{' '}
+                  <span className="text-brand-light">{hub.name}</span>
                 </h1>
-                <p className="text-xl text-gray-300 leading-relaxed">{heroParagraph}</p>
+                <p className="body-lg text-white/60 max-w-[440px]">{heroParagraph}</p>
               </div>
-              <div>
-                <HeroLeadForm city={hub.name} />
-              </div>
+              <HeroLeadForm city={hub.name} />
             </div>
           </div>
         </section>
 
+        {/* ── Body ──────────────────────────────────── */}
         <div className="container-width py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
 
+            {/* Main */}
+            <div>
               {/* Intro */}
               {content && (
-                <section className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">
-                    {content.introHeading}
-                  </h2>
-                  <div className="prose prose-gray max-w-none text-gray-600 space-y-4">
-                    {content.introParagraphs.map((p, i) => <p key={i}>{p}</p>)}
+                <section className="mb-14">
+                  <h2 className="font-display text-3xl italic text-ink mb-5">{content.introHeading}</h2>
+                  <div className="space-y-4">
+                    {content.introParagraphs.map((p, i) => (
+                      <p key={i} className="body-md">{p}</p>
+                    ))}
                   </div>
                 </section>
               )}
@@ -78,45 +85,36 @@ export default function CityPageClient({ hub, content, services, areaFaqs }: Pro
 
               {/* Why specialist matters */}
               {content?.whySpecialistMatters && (
-                <section className="mb-12">
-                  <div className="bg-brand-50 rounded-2xl p-6 border border-brand-100">
-                    <h3 className="font-display font-bold text-gray-900 mb-3 text-lg">
-                      Why the Match Matters in {hub.name}
-                    </h3>
-                    <p className="text-gray-700 leading-relaxed">{content.whySpecialistMatters}</p>
-                  </div>
-                </section>
+                <div className="pull-quote mb-12">
+                  <p>{content.whySpecialistMatters}</p>
+                </div>
               )}
 
-              {/* Services available */}
-              <section className="mb-16">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
-                  Services Available in {hub.name}
+              {/* Services */}
+              <section className="mb-14">
+                <h2 className="font-display text-2xl italic text-ink mb-6">
+                  Services available in {hub.name}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {services.map(service => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {services.map(s => (
                     <Link
-                      key={service.id}
-                      href={`/services/${service.slug}/`}
-                      className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                      key={s.id}
+                      href={`/services/${s.slug}/`}
+                      className="card group overflow-hidden flex gap-4 p-4"
                     >
-                      <div className="h-36 overflow-hidden">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <div className="w-20 h-16 rounded overflow-hidden flex-shrink-0 bg-parchment-2">
                         <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          src={s.image}
+                          alt={s.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
                           loading="lazy"
                         />
                       </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-display font-bold text-gray-900 group-hover:text-brand-600 mb-1.5">
-                          {service.title}
+                      <div>
+                        <h3 className="font-display text-base text-ink group-hover:text-brand transition-colors mb-1">
+                          {s.title} in {hub.name}
                         </h3>
-                        <p className="text-sm text-gray-500 mb-3 line-clamp-2">{service.description}</p>
-                        <span className="text-brand-600 font-medium text-sm flex items-center">
-                          Find a specialist <ArrowRight className="w-4 h-4 ml-1" />
-                        </span>
+                        <p className="body-sm line-clamp-2">{s.description}</p>
                       </div>
                     </Link>
                   ))}
@@ -125,15 +123,15 @@ export default function CityPageClient({ hub, content, services, areaFaqs }: Pro
 
               {/* Who we match */}
               {content?.clientProfile && (
-                <section className="mb-12">
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
+                <section className="mb-14">
+                  <h2 className="font-display text-2xl italic text-ink mb-5">
                     {content.clientProfile.heading}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-3">
-                    {content.clientProfile.points.map((point, i) => (
-                      <div key={i} className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                        <CheckCircle className="w-4 h-4 text-brand-500 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-gray-700">{point}</span>
+                    {content.clientProfile.points.map((p, i) => (
+                      <div key={i} className="flex items-start gap-3 card-parchment p-4 rounded-md">
+                        <span className="w-1 h-1 rounded-full bg-brand flex-shrink-0 mt-2" />
+                        <span className="body-md">{p}</span>
                       </div>
                     ))}
                   </div>
@@ -142,98 +140,77 @@ export default function CityPageClient({ hub, content, services, areaFaqs }: Pro
 
               {/* Common triggers */}
               {content?.commonTriggers && content.commonTriggers.length > 0 && (
-                <section className="mb-12">
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">
-                    When {hub.name} Residents Get in Touch
+                <section className="mb-14">
+                  <h2 className="font-display text-2xl italic text-ink mb-4">
+                    When {hub.name} residents get in touch
                   </h2>
-                  <p className="text-gray-600 mb-4 text-sm">
-                    Estate planning conversations in {hub.name} are usually triggered by one of these moments:
-                  </p>
-                  <ul className="space-y-3">
-                    {content.commonTriggers.map((trigger, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 bg-brand-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">{i + 1}</span>
-                        <span className="text-gray-700 text-sm">{trigger}</span>
-                      </li>
+                  <p className="body-md mb-5">Estate planning conversations here are usually triggered by one of these moments:</p>
+                  <div className="space-y-2.5">
+                    {content.commonTriggers.map((t, i) => (
+                      <div key={i} className="step-row">
+                        <span className="step-num">{i + 1}</span>
+                        <p className="body-md">{t}</p>
+                      </div>
                     ))}
-                  </ul>
-                </section>
-              )}
-
-              {/* Local context */}
-              {content?.localContext && (
-                <section className="mb-12">
-                  <div className="flex gap-3 p-5 bg-gray-50 rounded-xl border border-gray-100">
-                    <MapPin className="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-600 text-sm leading-relaxed">{content.localContext}</p>
                   </div>
                 </section>
               )}
 
-              <PricingSection cityName={hub.name} />
-
-              <div className="mb-12">
-                <FAQ faqs={areaFaqs} title={`Will Writing in ${hub.name}: Your Questions Answered`} />
+              <h2 className="font-display text-2xl italic text-ink mb-5">What our clients say</h2>
+              <div className="mb-14">
+                <Testimonials limit={3} />
               </div>
 
-              <section className="mb-12">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Say</h2>
-                <Testimonials limit={3} />
-              </section>
+              <FAQ faqs={areaFaqs} title={`Will writing in ${hub.name} — your questions`} />
             </div>
 
             {/* Sidebar */}
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28 space-y-6">
-                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-3">
-                    Find a Will Writer in {hub.name}
+            <aside>
+              <div className="sticky top-8 space-y-4">
+                <div className="sidebar-box">
+                  <h3 className="font-display text-xl italic text-ink mb-2">
+                    Find a specialist
                   </h3>
-                  <p className="text-gray-600 text-sm mb-5">
-                    Free match with vetted specialists covering {hub.name} and all surrounding areas. Most introductions within 24 hours.
+                  <p className="body-sm mb-4">
+                    Free match with vetted will writers covering {hub.name} and all surrounding areas.
                   </p>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="block w-full btn-primary text-center"
-                  >
-                    Get Your Free Match
+                  <button onClick={() => setModalOpen(true)} className="btn-primary w-full justify-center">
+                    Get matched free
                   </button>
-                  <div className="mt-5 pt-5 border-t border-gray-100 space-y-3">
-                    {[
-                      { icon: <Clock className="w-4 h-4 text-brand-500" />, text: 'Matched within 24 hours' },
-                      { icon: <Shield className="w-4 h-4 text-brand-500" />, text: 'Vetted and insured specialists' },
-                      { icon: <Star className="w-4 h-4 text-brand-500" />, text: 'Free matching — no client charge' },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="bg-brand-100 p-1.5 rounded-full">{item.icon}</div>
-                        <span className="text-sm font-medium text-gray-700">{item.text}</span>
-                      </div>
+                  <ul className="mt-4 space-y-1.5 pt-4 border-t border-border">
+                    {['Matched within 24 hours', 'Vetted and insured specialists', 'Free to all clients'].map((p, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-brand flex-shrink-0" />
+                        <span className="body-sm">{p}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                {/* Sub-areas compact list */}
-                <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                  <h3 className="font-bold text-gray-900 text-sm mb-3">Areas We Cover</h3>
+                {/* Postcodes covered */}
+                <div className="sidebar-box">
+                  <p className="eyebrow mb-3">Postcodes covered</p>
                   <div className="space-y-1.5">
-                    {hub.subAreas.map(area => (
-                      <div key={area.name} className="flex items-center gap-2 text-sm text-gray-600">
-                        <MapPin className="w-3 h-3 text-brand-400 flex-shrink-0" />
-                        <span>{area.name}</span>
-                        {area.postcode && <span className="text-gray-400 text-xs">({area.postcode})</span>}
+                    {hub.subAreas.map(a => (
+                      <div key={a.name} className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-brand/40 flex-shrink-0" />
+                        <span className="body-sm">
+                          {a.postcode && <span className="font-medium text-ink">{a.postcode}</span>}
+                          {a.postcode && ' · '}{a.name}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="bg-brand-900 text-white p-6 rounded-2xl">
-                  <h3 className="font-display font-bold mb-2">From &pound;150</h3>
-                  <p className="text-brand-100 text-sm mb-4">Fixed-fee will writing with no hidden costs. Transparent quotes before any work begins.</p>
+                <div className="sidebar-box-dark p-5 rounded-lg">
+                  <p className="font-display text-xl italic text-white mb-1">From £150</p>
+                  <p className="body-sm text-white/50 mb-4">Fixed-fee quotes, no hidden costs.</p>
                   <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm"
+                    onClick={() => setModalOpen(true)}
+                    className="w-full bg-white text-ink font-sans font-medium text-xs py-2.5 rounded"
                   >
-                    Get Free Quotes
+                    Get free quotes
                   </button>
                 </div>
               </div>
@@ -241,22 +218,23 @@ export default function CityPageClient({ hub, content, services, areaFaqs }: Pro
           </div>
 
           {/* Bottom CTA */}
-          <div className="bg-brand-900 rounded-2xl p-8 md:p-12 text-center mt-12">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-              Find a Will Writing Specialist in {hub.name}
+          <div className="bg-ink rounded-lg p-10 text-center mt-4">
+            <h2 className="font-display text-3xl italic text-white mb-3">
+              Find a will writing specialist in {hub.name}
             </h2>
-            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">
-              Free matching with vetted specialists covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and surrounding areas. No obligation.
+            <p className="body-lg text-white/55 max-w-xl mx-auto mb-7">
+              Free matching covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and surrounding areas.
             </p>
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-white text-brand-900 font-bold text-lg py-4 px-10 rounded-xl hover:bg-brand-50 transition-colors"
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-8 py-3.5 rounded"
             >
-              Get Your Free Match
+              Get your free match
             </button>
           </div>
         </div>
       </main>
+
       <Footer />
     </>
   );

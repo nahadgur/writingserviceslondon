@@ -35,7 +35,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   const combinedFaqs = [...(service.faqs || []), ...FAQS_SERVICES];
   const pricing   = pricingMap[service.slug];
 
-  const h = (size: number, style?: React.CSSProperties) => ({
+  const h = (size: number | string, style?: React.CSSProperties) => ({
     fontFamily: 'var(--font-cormorant), Georgia, serif',
     fontSize: size,
     fontStyle: 'italic' as const,

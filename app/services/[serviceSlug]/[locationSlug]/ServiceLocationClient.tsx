@@ -218,6 +218,15 @@ export function ServiceLocationClient({ service, hub, content, areaContent }: Pr
                 </div>
 
                 <div className="sidebar-box">
+                  <p className="eyebrow mb-3">Will writing in {cityName}</p>
+                  <Link href={`/location/${hub.slug}/`}
+                    style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
+                    className="hover:text-brand-500">
+                    All estate planning services in {cityName} →
+                  </Link>
+                </div>
+
+                <div className="sidebar-box">
                   <p className="eyebrow mb-3">Other services in {cityName}</p>
                   <div className="space-y-2">
                     {related.slice(0, 4).map(s => (

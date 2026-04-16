@@ -130,7 +130,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {services.map(s => (
-                    <Link key={s.id} href={`/services/${s.slug}/`} className="card group flex gap-3 p-4 items-start">
+                    <Link key={s.id} href={`/services/${s.slug}/${hub.slug}/`} className="card group flex gap-3 p-4 items-start">
                       <div style={{ width: 64, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)' }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />

@@ -222,6 +222,29 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
                 </div>
 
                 <div className="sidebar-box mt-4">
+                  <p className="eyebrow mb-3">Further reading</p>
+                  {(() => {
+                    const blogMap: Record<string, { slug: string; title: string }> = {
+                      'single-will':               { slug: 'will-writing-services-london-2026-guide-for-families', title: 'Will Writing Guide for London Families' },
+                      'mirror-wills':              { slug: 'mirror-wills-and-joint-wills-for-couples-in-london', title: 'Mirror Wills and Joint Wills for Couples' },
+                      'lasting-power-of-attorney': { slug: 'lasting-power-of-attorney-and-will-writing-services-in-london', title: 'LPA and Will Writing Services in London' },
+                      'trust-planning':            { slug: 'inheritance-tax-planning-and-will-writing-in-london', title: 'Inheritance Tax Planning and Will Writing' },
+                      'estate-planning':           { slug: 'will-reviews-and-second-opinions-in-london', title: 'Will Reviews and Second Opinions in London' },
+                      'probate-support':           { slug: 'common-will-writing-mistakes-london-families-make', title: 'Common Will Writing Mistakes London Families Make' },
+                    };
+                    const article = blogMap[service.slug];
+                    if (!article) return null;
+                    return (
+                      <Link href={`/blog/${article.slug}/`}
+                        style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
+                        className="hover:text-brand-500">
+                        {article.title} →
+                      </Link>
+                    );
+                  })()}
+                </div>
+
+                <div className="sidebar-box mt-4">
                   <p className="eyebrow mb-3">Other services</p>
                   <div className="space-y-2">
                     {related.map(s => (

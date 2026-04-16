@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { getArticleBySlug, blogArticles } from '@/data/blog';
+import { FAQ } from '@/components/FAQ';
 import { siteConfig } from '@/data/site';
 import type { ContentBlock } from '@/data/blog';
 
@@ -199,16 +200,60 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
 
               <p className="article-lede" style={{ marginBottom: 28 }}>{article.excerpt}</p>
 
-              {article.content.map((block, i) => (
-                <div key={i}>
-                  {i === secondH2 && (
-                    <div className="pull-quote" style={{ marginBottom: 24 }}>
-                      <p>Making a will is one of the most important things you can do for the people you love most.</p>
+              {(() => {
+                const blocks = article.content;
+                const rendered: React.ReactNode[] = [];
+                let i = 0;
+                while (i < blocks.length) {
+                  const block = blocks[i];
+
+                  // Detect FAQ section: h2 with "Frequently Asked Questions"
+                  if (block.type === 'h2' && (block.text || '').includes('Frequently Asked Questions')) {
+                    // Collect all h3+p pairs that follow
+                    const faqs: { question: string; answer: string }[] = [];
+                    let j = i + 1;
+                    while (j < blocks.length) {
+                      const q = blocks[j];
+                      const a = blocks[j + 1];
+                      if (q && q.type === 'h3' && a && a.type === 'p') {
+                        faqs.push({ question: q.text || '', answer: a.text || '' });
+                        j += 2;
+                      } else if (q && q.type === 'h3') {
+                        // h3 with no following p — skip it
+                        j += 1;
+                      } else {
+                        break;
+                      }
+                    }
+                    if (faqs.length > 0) {
+                      rendered.push(
+                        <div key={i} style={{ marginTop: 40 }}>
+                          <FAQ faqs={faqs} title="Frequently Asked Questions" />
+                        </div>
+                      );
+                      i = j;
+                      continue;
+                    }
+                  }
+
+                  // Pull quote before second h2
+                  if (i === secondH2) {
+                    rendered.push(
+                      <div key={`pq-${i}`} className="pull-quote" style={{ marginBottom: 24 }}>
+                        <p>Making a will is one of the most important things you can do for the people you love most.</p>
+                      </div>
+                    );
+                  }
+
+                  rendered.push(
+                    <div key={i}>
+                      {renderBlock(block, i, () => setModal(true))}
                     </div>
-                  )}
-                  {renderBlock(block, i, () => setModal(true))}
-                </div>
-              ))}
+                  );
+                  i++;
+                }
+                return rendered;
+              })()}
             </article>
 
             {/* Sidebar */}

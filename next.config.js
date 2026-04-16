@@ -1,4 +1,69 @@
 /** @type {import('next').NextConfig} */
+
+// ── Culled city slugs → redirect to parent service page ─────────────────────
+// These were the 68 location pages removed in Phase 2 (83 → 15).
+// Each redirects permanently (308) to preserve any inbound link equity.
+const CULLED_LOCATION_SLUGS = [
+  'soho','covent-garden','fitzrovia','bloomsbury','marylebone','oxford-street',
+  'piccadilly','tottenham-court-road','king-s-cross','euston','russell-square',
+  'shoreditch','hoxton','bethnal-green','bow','stratford','canary-wharf',
+  'poplar','stepney','whitechapel','wapping','bermondsey','peckham',
+  'new-cross','lewisham','deptford','elephant-and-castle','borough',
+  'brixton','stockwell','battersea','herne-hill',
+  'hammersmith','fulham','chiswick','ealing','acton','shepherd-s-bush',
+  'notting-hill','bayswater','putney','wimbledon','kingston','twickenham',
+  'islington','angel','camden','kentish-town','highbury','archway',
+  'finsbury-park','crouch-end','muswell-hill','highgate','finchley',
+  'golders-green','barnet','stoke-newington','dalston',
+  'clerkenwell','farringdon','holborn','chancery-lane','temple','blackfriars',
+  'bank','monument','moorgate','bishopsgate','aldgate','liverpool-street',
+  'barbican','city-of-london',
+];
+
+// Service slugs — used to build service×location redirect rules
+const SERVICE_SLUGS = [
+  'single-will','mirror-wills','lasting-power-of-attorney',
+  'trust-planning','estate-planning','probate-support',
+];
+
+// Build location page redirects: /location/[culled-slug]/ → /location/
+const locationRedirects = CULLED_LOCATION_SLUGS.map(slug => ({
+  source: `/location/${slug}/`,
+  destination: '/location/',
+  permanent: true,
+}));
+
+// Build service×location redirects: /services/[service]/[culled-slug]/ → /services/[service]/
+const serviceLocationRedirects = [];
+for (const service of SERVICE_SLUGS) {
+  for (const slug of CULLED_LOCATION_SLUGS) {
+    serviceLocationRedirects.push({
+      source: `/services/${service}/${slug}/`,
+      destination: `/services/${service}/`,
+      permanent: true,
+    });
+  }
+}
+
+// Also redirect service×location pages for the 15 surviving hubs
+// (we removed the service×location combinatorial layer entirely in Phase 2)
+const SURVIVING_HUB_SLUGS = [
+  'mayfair','kensington','chelsea','hampstead','islington','hackney',
+  'canary-wharf','clapham','greenwich','richmond','camden',
+  'shoreditch','battersea','dulwich','stratford',
+];
+
+const survivingHubServiceRedirects = [];
+for (const service of SERVICE_SLUGS) {
+  for (const slug of SURVIVING_HUB_SLUGS) {
+    survivingHubServiceRedirects.push({
+      source: `/services/${service}/${slug}/`,
+      destination: `/services/${service}/`,
+      permanent: true,
+    });
+  }
+}
+
 const nextConfig = {
   trailingSlash: true,
   images: {
@@ -20,6 +85,13 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
+    ];
+  },
+  async redirects() {
+    return [
+      ...locationRedirects,
+      ...serviceLocationRedirects,
+      ...survivingHubServiceRedirects,
     ];
   },
 };

@@ -1,95 +1,107 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { MapPin, Search } from 'lucide-react';
-import { toSlug } from '@/data/locations';
-import { siteConfig } from '@/data/site';
+import { MapPin } from 'lucide-react';
+import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Hero } from '@/components/Hero';
-import { FAQ } from '@/components/FAQ';
 import { LeadFormModal } from '@/components/LeadFormModal';
+import { FAQ } from '@/components/FAQ';
+import type { AreaHub } from '@/data/locations';
+
+const regionOrder: Record<string, number> = { Central: 0, North: 1, East: 2, South: 3, West: 4 };
 
 interface Props {
-  locations: Record<string, string[]>;
+  hubs: AreaHub[];
   faqs: { question: string; answer: string }[];
 }
 
-export default function LocationIndexClient({ locations, faqs }: Props) {
+export default function LocationIndexClient({ hubs, faqs }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredLocations = useMemo(() => {
-    if (!searchQuery) return locations;
-    const result: Record<string, string[]> = {};
-    Object.entries(locations).forEach(([region, cities]) => {
-      const filtered = cities.filter(city =>
-        city.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      if (filtered.length > 0) result[region] = filtered;
-    });
-    return result;
-  }, [searchQuery, locations]);
+  const byRegion = hubs.reduce<Record<string, AreaHub[]>>((acc, hub) => {
+    if (!acc[hub.region]) acc[hub.region] = [];
+    acc[hub.region].push(hub);
+    return acc;
+  }, {});
+
+  const sortedRegions = Object.keys(byRegion).sort((a, b) => (regionOrder[a] ?? 9) - (regionOrder[b] ?? 9));
 
   return (
     <>
       <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <Header onOpenModal={() => setIsModalOpen(true)} />
       <main className="flex-grow">
-        <Hero
-          title="Will Writing Services by London Area"
-          subtitle="We cover all London boroughs and areas. Search for your location to find vetted will writing and estate planning specialists near you."
-          image="/images/hero-main.png"
-          onOpenModal={() => setIsModalOpen(true)}
-        />
+
+        <section className="bg-gray-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-900/30 via-gray-900/0 to-transparent pointer-events-none" />
+          <div className="container-width py-16 md:py-24 relative z-10">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4">
+                Will Writing Services Across London
+              </h1>
+              <p className="text-xl text-gray-300 leading-relaxed">
+                Our network of vetted will writers and estate planning specialists covers all of London.
+                Each area page includes specific information about local estate planning needs and the
+                neighbourhoods we serve.
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="section-padding">
           <div className="container-width">
-            <div className="max-w-xl mx-auto mb-12">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search your town or area..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
-                />
-              </div>
-            </div>
-
-            {Object.keys(filteredLocations).length === 0 ? (
-              <p className="text-center text-gray-500 py-8">No areas found for &ldquo;{searchQuery}&rdquo;. Try a different search term.</p>
-            ) : (
-              <div className="space-y-12">
-                {Object.entries(filteredLocations).map(([region, cities]) => (
-                  <div key={region}>
-                    <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">{region}</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                      {cities.map(city => (
-                        <Link
-                          key={city}
-                          href={`/location/${toSlug(city)}/`}
-                          className="group block bg-gray-50 hover:bg-brand-50 border border-gray-100 hover:border-brand-200 rounded-xl p-4 transition-all"
-                        >
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-brand-500 flex-shrink-0" />
-                            <span className="font-medium text-gray-700 group-hover:text-brand-700 text-sm">{city}</span>
+            <div className="space-y-14">
+              {sortedRegions.map(region => (
+                <div key={region}>
+                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">
+                    {region} London
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {byRegion[region].map(hub => (
+                      <Link
+                        key={hub.slug}
+                        href={`/location/${hub.slug}/`}
+                        className="group block bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-lg transition-all p-5"
+                      >
+                        <div className="flex items-start gap-3 mb-3">
+                          <div className="bg-brand-100 p-2 rounded-lg flex-shrink-0">
+                            <MapPin className="w-4 h-4 text-brand-600" />
                           </div>
-                        </Link>
-                      ))}
-                    </div>
+                          <div>
+                            <h3 className="font-display font-bold text-gray-900 group-hover:text-brand-600">
+                              {hub.name}
+                            </h3>
+                            <p className="text-xs text-gray-400 mt-0.5">{hub.postcode}</p>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {hub.subAreas.slice(0, 4).map(sub => (
+                            <span
+                              key={sub.name}
+                              className="text-xs text-gray-500 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-100"
+                            >
+                              {sub.name}
+                            </span>
+                          ))}
+                          {hub.subAreas.length > 4 && (
+                            <span className="text-xs text-brand-600 px-2 py-0.5">
+                              +{hub.subAreas.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </Link>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="section-padding bg-gray-50">
           <div className="container-width max-w-3xl">
-            <FAQ faqs={faqs} />
+            <FAQ faqs={faqs} title="Will Writing Services Across London: Your Questions" />
           </div>
         </section>
       </main>

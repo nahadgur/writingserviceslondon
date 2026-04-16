@@ -3,16 +3,19 @@
 // ── Culled city slugs → redirect to parent service page ─────────────────────
 // These were the 68 location pages removed in Phase 2 (83 → 15).
 // Each redirects permanently (308) to preserve any inbound link equity.
+// NOTE: 6 surviving hubs (islington, camden, canary-wharf, shoreditch,
+// stratford, battersea) were previously in this list — removed so the
+// dynamic /location/[city] route can serve them.
 const CULLED_LOCATION_SLUGS = [
   'soho','covent-garden','fitzrovia','bloomsbury','marylebone','oxford-street',
   'piccadilly','tottenham-court-road','king-s-cross','euston','russell-square',
-  'shoreditch','hoxton','bethnal-green','bow','stratford','canary-wharf',
+  'hoxton','bethnal-green','bow',
   'poplar','stepney','whitechapel','wapping','bermondsey','peckham',
   'new-cross','lewisham','deptford','elephant-and-castle','borough',
-  'brixton','stockwell','battersea','herne-hill',
+  'brixton','stockwell','herne-hill',
   'hammersmith','fulham','chiswick','ealing','acton','shepherd-s-bush',
   'notting-hill','bayswater','putney','wimbledon','kingston','twickenham',
-  'islington','angel','camden','kentish-town','highbury','archway',
+  'angel','kentish-town','highbury','archway',
   'finsbury-park','crouch-end','muswell-hill','highgate','finchley',
   'golders-green','barnet','stoke-newington','dalston',
   'clerkenwell','farringdon','holborn','chancery-lane','temple','blackfriars',

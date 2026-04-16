@@ -3,36 +3,80 @@ export const siteConfig = {
   "name": "Will Writing Services London",
   "tagline": "Connect with Expert Will Writers and Estate Planning Specialists in London",
   "url": "https://www.willwritingserviceslondon.co.uk",
-  "description": "Find vetted will writers and estate planning specialists in London for single wills, mirror wills, lasting power of attorney, trust planning, and probate support. Free matching service connecting you with the right professional for your needs."
+  "description": "Free matching service connecting London families with vetted will writers and estate planning specialists. Single wills, mirror wills, LPAs, trust planning and probate support — matched to your situation within 24 hours."
 };
+
 export const TESTIMONIALS = [
-  { "id": "testimonial-1", "name": "Patricia H", "location": "Hampstead", "service": "Mirror Wills", "rating": 5, "text": "My husband and I had been meaning to sort our wills for years. The will writer they matched us with made the whole process straightforward — she explained everything clearly, came to our home in Hampstead, and we had our mirror wills signed within two weeks. Couldn't be easier." },
-  { "id": "testimonial-2", "name": "David C", "location": "Canary Wharf", "service": "Lasting Power of Attorney", "rating": 5, "text": "After my father's health scare, I realised we needed LPAs in place urgently. The specialist matched to us understood the urgency, explained both types of LPA clearly, and had everything registered within the timeframe we needed. Professional and reassuring throughout." },
+  { "id": "testimonial-1", "name": "Patricia H", "location": "Hampstead", "service": "Mirror Wills", "rating": 5, "text": "My husband and I had been meaning to sort our wills for years. The will writer they matched us with made the whole process straightforward — she explained everything clearly, came to our home in Hampstead, and we had our mirror wills signed within two weeks. Couldn\'t be easier." },
+  { "id": "testimonial-2", "name": "David C", "location": "Canary Wharf", "service": "Lasting Power of Attorney", "rating": 5, "text": "After my father\'s health scare, I realised we needed LPAs in place urgently. The specialist matched to us understood the urgency, explained both types of LPA clearly, and had everything registered within the timeframe we needed. Professional and reassuring throughout." },
   { "id": "testimonial-3", "name": "Sunita P", "location": "Islington", "service": "Trust Planning", "rating": 5, "text": "We needed a protective property trust to ensure our home would pass to our children rather than be used for care fees. The specialist was knowledgeable, patient, and explained every option. We felt completely informed before making any decisions." },
   { "id": "testimonial-4", "name": "Robert M", "location": "Richmond", "service": "Estate Planning", "rating": 5, "text": "Our estate situation was complex — property, business interests, and assets across different categories. The estate planning specialist they matched us with had seen it all before and provided a genuinely strategic review that saved us considerable inheritance tax." },
-  { "id": "testimonial-5", "name": "Angela T", "location": "Clapham", "service": "Probate Support", "rating": 5, "text": "Dealing with my mother's estate while grieving was overwhelming. The probate specialist was compassionate, clear, and handled the entire process professionally. I can't imagine managing it without expert support." }
+  { "id": "testimonial-5", "name": "Angela T", "location": "Clapham", "service": "Probate Support", "rating": 5, "text": "Dealing with my mother\'s estate while grieving was overwhelming. The probate specialist was compassionate, clear, and handled the entire process professionally. I can\'t imagine managing it without expert support." }
 ];
+
 export const TRUST_BADGES = [
   { "icon": "Award", "title": "Vetted Will Writing Specialists", "description": "Every will writer and estate planning specialist in our London network is thoroughly checked for qualifications, professional memberships, and client feedback before joining." },
   { "icon": "ShieldCheck", "title": "Legally Compliant Documents", "description": "All matched professionals produce legally valid, properly witnessed documents that comply with the Wills Act 1837 and current estate planning legislation." },
-  { "icon": "UserCheck", "title": "Matched to Your Situation", "description": "We don't send you a generic list. We read your circumstances and connect you with specialists who have specific experience with your type of estate and family situation." },
-  { "icon": "PoundSterling", "title": "Transparent Fixed Fees", "description": "Get clear upfront quotes before committing. No hidden fees, no surprise charges — just honest pricing from London's best will writing professionals." }
+  { "icon": "UserCheck", "title": "Matched to Your Situation", "description": "We don\'t send you a generic list. We read your circumstances and connect you with specialists who have specific experience with your type of estate and family situation." },
+  { "icon": "PoundSterling", "title": "Transparent Fixed Fees", "description": "Get clear upfront quotes before committing. No hidden fees, no surprise charges — just honest pricing from London\'s best will writing professionals." }
 ];
+
 export const FAQS_HOME = [
-  { "question": "How does the Will Writing Services London matching service work?", "answer": "Tell us about your situation — your family circumstances, assets, wishes, and any specific requirements such as trust planning or LPAs. We connect you with will writers and estate planning specialists from our vetted London network who have proven experience with exactly that kind of estate. The matching service is completely free." },
-  { "question": "How quickly can I be matched with a will writer in London?", "answer": "Most clients are matched within 24 hours. For urgent situations — for example, where someone is seriously ill and needs a will drawn up quickly — we can often make same-day introductions. We maintain relationships with specialists across all disciplines who understand the sensitivity and urgency involved." },
-  { "question": "Is there a cost for using the matching service?", "answer": "No, our matching service is completely free for clients. You only pay the will writer or specialist directly for their work once you've been introduced and agreed terms. We are paid by the professionals in our network." }
+  {
+    "question": "What happens if I die without a will in London?",
+    "answer": "You die intestate, and the Intestacy Rules distribute your estate — not your wishes. Unmarried partners receive nothing regardless of how long you\'ve lived together. Children from previous relationships may be excluded. Your home could pass to the wrong person. A will is the only mechanism that ensures your estate goes where you intend."
+  },
+  {
+    "question": "How does the Will Writing Services London matching service work?",
+    "answer": "Tell us about your situation — family circumstances, assets, wishes, and any specific requirements such as trust planning or LPAs. We connect you with will writers from our vetted London network who have proven experience with exactly that kind of estate. The matching service is completely free. Most clients are introduced within 24 hours."
+  },
+  {
+    "question": "How much does a will cost in London?",
+    "answer": "A professionally drafted single will in London typically costs £150–£350. Mirror wills for couples range from £250–£550 for the pair. Costs depend on complexity — straightforward wills sit at the lower end, while those involving trusts, business assets, or blended families require more detailed drafting. All specialists in our network provide fixed-fee quotes before any work begins."
+  },
+  {
+    "question": "How quickly can I be matched with a will writer in London?",
+    "answer": "Most clients are matched within 24 hours. For urgent situations — serious illness, imminent surgery, or time-sensitive estate matters — we can often make same-day introductions. We maintain relationships with specialists across all disciplines who understand that urgency in estate planning is real and sometimes critical."
+  },
+  {
+    "question": "Is the matching service genuinely free?",
+    "answer": "Yes, completely free for clients. You only pay the will writer or specialist directly for their work once introduced and agreed. We are paid by the professionals in our network — there is no referral fee charged to you at any point."
+  },
+  {
+    "question": "Do I need a solicitor or a specialist will writer?",
+    "answer": "Both can produce valid wills. Solicitors are regulated by the SRA and carry professional indemnity insurance. Specialist will writers may hold memberships such as the Society of Will Writers. For straightforward wills, either is appropriate. For complex estates involving trusts, business assets, or international property, a solicitor is generally advisable. We\'ll recommend the right fit based on your situation."
+  }
 ];
+
 export const FAQS_SERVICES = [
-  { "question": "What will writing and estate planning services do London specialists provide?", "answer": "Our London network covers the full range: single wills, mirror wills for couples, lasting powers of attorney (both property/financial and health/welfare), protective property trusts, discretionary trusts, comprehensive estate planning reviews, and probate support. Most specialists cover multiple areas, which is why matching to your specific situation matters." },
-  { "question": "Can I work with a will writer remotely or do they need to visit in person?", "answer": "Many will writing services can be handled remotely, including initial consultations and document review. However, for the formal signing and witnessing of wills and LPAs, a professional visit or notarised process is usually required. We can match you with specialists who offer home visits across London." },
-  { "question": "What is the difference between a will writer and a solicitor for will writing?", "answer": "Solicitors are regulated by the Solicitors Regulation Authority and carry professional indemnity insurance. Specialist will writers may be members of bodies like the Society of Will Writers. Both can produce valid wills, but for complex estates involving trusts, business assets, or international property, a solicitor is generally advisable. We'll recommend the right fit based on your situation." },
-  { "question": "How do I know my will and estate planning documents will be legally valid?", "answer": "All professionals in our network produce documents that comply with the Wills Act 1837 and current legislation. They ensure proper execution, witnessing, and attestation. You can also request to see professional membership details and indemnity insurance before committing to any work." }
+  {
+    "question": "What will writing and estate planning services do London specialists provide?",
+    "answer": "Our London network covers the full range: single wills, mirror wills for couples, lasting powers of attorney (both property/financial and health/welfare), protective property trusts, discretionary trusts, comprehensive estate planning reviews, and probate support. Most specialists cover multiple areas, which is why matching to your specific situation matters."
+  },
+  {
+    "question": "Can I work with a will writer remotely or do they need to visit in person?",
+    "answer": "Many will writing services can be handled remotely, including initial consultations and document review. However, for the formal signing and witnessing of wills and LPAs, a professional visit or notarised process is usually required. We can match you with specialists who offer home visits across London."
+  },
+  {
+    "question": "How do I know my will and estate planning documents will be legally valid?",
+    "answer": "All professionals in our network produce documents that comply with the Wills Act 1837 and current legislation. They ensure proper execution, witnessing, and attestation. You can also request to see professional membership details and indemnity insurance before committing to any work."
+  }
 ];
+
 export const FAQS_LOCATION = [
-  { "question": "Do you cover all areas of London?", "answer": "Yes, our network includes will writers and estate planning specialists across all London boroughs from the City and Canary Wharf to South London, East London, and the outer boroughs. Many also offer home visits, making location within London rarely a limiting factor." },
-  { "question": "Why use a London-based will writer rather than an online service?", "answer": "London specialists understand local property values, estate complexity, and the specific needs of London residents — including those with complex assets, business interests, or properties in multiple locations. Face-to-face advice ensures your specific circumstances are properly understood before documents are drafted." },
-  { "question": "Can you match specialists for ongoing estate planning reviews?", "answer": "Absolutely. Estate planning is not a one-time exercise — circumstances change and your documents should reflect that. We can match you with specialists who offer ongoing review arrangements and update services as your situation evolves." }
+  {
+    "question": "Do you cover all areas of London?",
+    "answer": "Yes. Our network includes will writers and estate planning specialists across all London areas — from the City and Canary Wharf to South London, East London, and the outer boroughs. Many specialists offer home visits, making location within London rarely a limiting factor. We serve 15 major area hubs, each covering multiple surrounding neighbourhoods."
+  },
+  {
+    "question": "Why use a London-based will writer rather than an online service?",
+    "answer": "London specialists understand local property values, estate complexity, and the specific needs of London residents — including those with complex assets, business interests, or properties in multiple locations. Face-to-face advice ensures your specific circumstances are properly understood before documents are drafted. An online template cannot account for your individual situation."
+  },
+  {
+    "question": "Can you match specialists for ongoing estate planning reviews?",
+    "answer": "Absolutely. Estate planning is not a one-time exercise — circumstances change and your documents should reflect that. We can match you with specialists who offer ongoing review arrangements and update services as your situation evolves."
+  }
 ];
+
 export const testimonials = TESTIMONIALS;
 export const trustBadges = TRUST_BADGES;

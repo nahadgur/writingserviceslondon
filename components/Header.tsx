@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -18,11 +19,22 @@ export function Header({ onOpenModal }: Props) {
   return (
     <header>
       <nav className="site-nav" aria-label="Site navigation">
-        <Link href="/" className="nav-logo">
-          Will Writing Services London
+        {/* Logo + wordmark */}
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+          <Image
+            src="/logo.png"
+            alt="Will Writing Services London"
+            width={32}
+            height={32}
+            style={{ objectFit: 'contain', flexShrink: 0 }}
+            priority
+          />
+          <span className="nav-logo" style={{ fontStyle: 'italic' }}>
+            Will Writing Services London
+          </span>
         </Link>
 
-        {/* Desktop */}
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-7">
           {links.map(l => (
             <Link key={l.href} href={l.href} className="nav-link">{l.label}</Link>
@@ -37,7 +49,7 @@ export function Header({ onOpenModal }: Props) {
         {/* Mobile toggle */}
         <button
           className="md:hidden p-2 -mr-1"
-          style={{ color: 'var(--stone)' }}
+          style={{ color: 'var(--stone)', background: 'none', border: 'none', cursor: 'pointer' }}
           onClick={() => setOpen(v => !v)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}

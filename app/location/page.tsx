@@ -35,25 +35,23 @@ export default function LocationIndexPage() {
         <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
           <div className="container-width max-w-3xl">
             <p className="eyebrow mb-4">Coverage across London</p>
-            <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
+            <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
               Will writing across every<br className="hidden sm:block" /> London area
             </h1>
             <p className="body-lg max-w-xl">
-              Our network of vetted specialists covers all of London. Each area page
-              includes specific information about local estate planning needs, the
-              surrounding neighbourhoods served, and what triggers most residents
-              in that area to get in touch.
+              Our network of vetted specialists covers all of London. Select your area
+              to see specialists, postcodes covered, and local estate planning information.
             </p>
           </div>
         </section>
 
-        {/* Hub grid */}
+        {/* Hub grid — every card links to a real page */}
         <section className="section-padding">
           <div className="container-width space-y-12 md:space-y-14">
             {sortedRegions.map(region => (
               <div key={region}>
                 <div className="flex items-center gap-4 mb-6">
-                  <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(18px,2vw,24px)', fontStyle: 'italic', color: 'var(--ink)', whiteSpace: 'nowrap' }}>
+                  <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(18px,2vw,24px)', fontStyle: 'italic', color: 'var(--ink)', whiteSpace: 'nowrap', fontWeight: 400 }}>
                     {region} London
                   </h2>
                   <div style={{ flex: 1, height: '0.5px', background: 'var(--border)' }} />
@@ -62,12 +60,11 @@ export default function LocationIndexPage() {
                   {byRegion[region].map(hub => (
                     <Link key={hub.slug} href={`/location/${hub.slug}/`} className="card p-4 md:p-5 group">
                       <div className="flex items-start gap-3 mb-3">
-                        <div style={{ width: 30, height: 30, borderRadius: 5, background: 'var(--parchment-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'background 0.15s' }}
-                          className="group-hover:bg-brand-50">
+                        <div style={{ width: 30, height: 30, borderRadius: 5, background: 'var(--parchment-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           <MapPin size={12} style={{ color: 'var(--brand)' }} />
                         </div>
                         <div>
-                          <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 18, color: 'var(--ink)', transition: 'color 0.12s', lineHeight: 1.2 }}
+                          <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 18, color: 'var(--ink)', transition: 'color 0.12s', lineHeight: 1.2, fontWeight: 400 }}
                             className="group-hover:text-brand-500">
                             {hub.name}
                           </h3>
@@ -83,7 +80,7 @@ export default function LocationIndexPage() {
                         ))}
                         {hub.subAreas.length > 3 && (
                           <span className="body-sm" style={{ color: 'var(--brand)', fontWeight: 400, padding: '0 2px' }}>
-                            +{hub.subAreas.length - 3}
+                            +{hub.subAreas.length - 3} more
                           </span>
                         )}
                       </div>
@@ -105,14 +102,16 @@ export default function LocationIndexPage() {
         {/* CTA */}
         <section style={{ background: 'var(--ink)', padding: '64px 0' }}>
           <div className="container-width text-center">
-            <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(26px,3.5vw,40px)', fontStyle: 'italic', color: '#fff', marginBottom: 14, lineHeight: 1.2 }}>
-              Not sure which area page to visit?
+            <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(26px,3.5vw,40px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', marginBottom: 14, lineHeight: 1.2 }}>
+              Not sure which area to choose?
             </h2>
             <p className="body-lg mb-7 mx-auto" style={{ maxWidth: 440, color: 'rgba(255,255,255,0.5)' }}>
-              Tell us your postcode and situation — we will match you with the right specialist directly.
+              Leave your contact details and we will match you directly regardless of area.
             </p>
-            <button onClick={() => setModal(true)}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+            <button
+              onClick={() => setModal(true)}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}
+            >
               Find my specialist
             </button>
           </div>

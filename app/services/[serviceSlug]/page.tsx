@@ -33,15 +33,18 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   const pricing = pricingMap[service.slug];
   const schema = {
     '@context': 'https://schema.org',
-    '@type': ['Service', 'WebPage'],
+    '@type': 'WebPage',
     '@id': `${siteConfig.url}/services/${service.slug}/#service`,
     name: `${service.title} -- London`,
     description: service.description,
     url: `${siteConfig.url}/services/${service.slug}/`,
-    provider: { '@id': `${siteConfig.url}/#organization` },
-    areaServed: { '@type': 'City', name: 'London' },
-    serviceType: service.title,
-    ...(pricing ? { offers: { '@type': 'AggregateOffer', priceCurrency: 'GBP', lowPrice: pricing.from.replace('£',''), highPrice: pricing.to.replace('£',''), offerCount: '10+' } } : {}),
+    about: {
+      '@type': 'Service',
+      name: service.title,
+      provider: { '@id': `${siteConfig.url}/#organization` },
+      areaServed: { '@type': 'City', name: 'London' },
+      serviceType: 'Will Writing Referral and Matching Service',
+    },
     mainEntityOfPage: `${siteConfig.url}/services/${service.slug}/`,
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -57,6 +60,16 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   const related   = services.filter(s => s.id !== service.id);
   const combinedFaqs = [...(service.faqs || []), ...FAQS_SERVICES];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: combinedFaqs.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+
   const h = (size: number | string, style?: React.CSSProperties) => ({
     fontFamily: 'var(--font-cormorant), Georgia, serif',
     fontSize: size,
@@ -70,6 +83,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} defaultService={service.title} />
       <Header onOpenModal={() => setModal(true)} />
 

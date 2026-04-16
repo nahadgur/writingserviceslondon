@@ -51,17 +51,19 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'WebPage'],
-    '@id': `${siteConfig.url}/location/${hub.slug}/#localbusiness`,
-    name: `Will Writing Services -- ${hub.name}`,
+    '@type': 'WebPage',
+    '@id': `${siteConfig.url}/location/${hub.slug}/#webpage`,
+    name: `Will Writing Referral Service -- ${hub.name}`,
     description: `Free matching with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0,3).map(a => a.name).join(', ')}.`,
     url: `${siteConfig.url}/location/${hub.slug}/`,
-    areaServed: {
-      '@type': 'City',
-      name: hub.name,
-      containedInPlace: { '@type': 'City', name: 'London' },
+    isPartOf: { '@id': `${siteConfig.url}/#website` },
+    about: {
+      '@type': 'Service',
+      name: `Will Writing Referral Service -- ${hub.name}`,
+      provider: { '@id': `${siteConfig.url}/#organization` },
+      areaServed: { '@type': 'City', name: hub.name, containedInPlace: { '@type': 'City', name: 'London' } },
+      serviceType: 'Will Writing Referral and Matching Service',
     },
-    address: { '@type': 'PostalAddress', addressLocality: hub.name, addressRegion: 'London', addressCountry: 'GB', postalCode: hub.postcode },
     mainEntityOfPage: `${siteConfig.url}/location/${hub.slug}/`,
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -76,9 +78,20 @@ export default function CityPage({ params }: { params: { city: string } }) {
   const faqs = buildFaqs(hub.name, hub.subAreas.map(s => s.name));
   const nearbyHubs = AREA_HUBS.filter(h => h.region === hub.region && h.slug !== hub.slug);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
 
       <main>

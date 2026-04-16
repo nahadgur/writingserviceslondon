@@ -48,14 +48,19 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': ['Service', 'WebPage'],
-    '@id': `${siteConfig.url}/services/${service.slug}/${hub.slug}/#service`,
-    name: `${service.title} in ${hub.name} -- London`,
+    '@type': 'WebPage',
+    '@id': `${siteConfig.url}/services/${service.slug}/${hub.slug}/#webpage`,
+    name: `${service.title} in ${hub.name} -- Free Specialist Matching`,
     description: content.heroParagraph,
     url: `${siteConfig.url}/services/${service.slug}/${hub.slug}/`,
-    provider: { '@id': `${siteConfig.url}/#organization` },
-    areaServed: { '@type': 'City', name: hub.name, containedInPlace: { '@type': 'City', name: 'London' } },
-    serviceType: service.title,
+    isPartOf: { '@id': `${siteConfig.url}/#website` },
+    about: {
+      '@type': 'Service',
+      name: `${service.title} Referral Service -- ${hub.name}`,
+      provider: { '@id': `${siteConfig.url}/#organization` },
+      areaServed: { '@type': 'City', name: hub.name },
+      serviceType: 'Will Writing Referral and Matching Service',
+    },
     mainEntityOfPage: `${siteConfig.url}/services/${service.slug}/${hub.slug}/`,
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -66,7 +71,12 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
         { '@type': 'ListItem', position: 4, name: hub.name, item: `${siteConfig.url}/services/${service.slug}/${hub.slug}/` },
       ],
     },
-    hasFAQ: content.faqs.map(faq => ({
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: content.faqs.map(faq => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -76,6 +86,7 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <ServiceLocationClient service={service} hub={hub} content={content} areaContent={areaContent} />
     </>
   );

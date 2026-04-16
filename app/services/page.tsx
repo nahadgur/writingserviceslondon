@@ -24,23 +24,18 @@ export default function ServicesIndexPage() {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${siteConfig.url}/services/#service`,
+    '@type': 'WebPage',
+    '@id': `${siteConfig.url}/services/#webpage`,
     name: 'Will Writing and Estate Planning Matching -- London',
-    description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists across all London areas.',
+    description: 'Free referral service connecting London residents with vetted will writers and estate planning specialists. We introduce clients to professionals -- we are not a law firm or will writing practice.',
     url: `${siteConfig.url}/services/`,
-    provider: { '@id': `${siteConfig.url}/#organization` },
-    areaServed: { '@type': 'City', name: 'London', '@id': 'https://www.wikidata.org/wiki/Q84' },
-    serviceType: 'Will Writing Referral Service',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Estate Planning Services',
-      itemListElement: services.map((s, i) => ({
-        '@type': 'Offer',
-        position: i + 1,
-        itemOffered: { '@type': 'Service', name: s.title, description: s.description, url: `${siteConfig.url}/services/${s.slug}/` },
-      })),
-    },
+    isPartOf: { '@id': `${siteConfig.url}/#website` },
+    mentions: services.map(s => ({
+      '@type': 'Service',
+      name: s.title,
+      description: s.description,
+      url: `${siteConfig.url}/services/${s.slug}/`,
+    })),
   };
 
   return (

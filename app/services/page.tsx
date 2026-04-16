@@ -48,7 +48,7 @@ export default function ServicesIndexPage() {
               {services.map(s => {
                 const p = pricing[s.slug];
                 return (
-                  <div key={s.id} className="svc-row">
+                  <Link key={s.id} href={`/services/${s.slug}/`} className="svc-row" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
                     {/* Mobile: image + title stacked */}
                     <div className="flex gap-4 items-start mb-3 lg:hidden">
                       <div style={{ width: 72, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)' }}>
@@ -82,19 +82,19 @@ export default function ServicesIndexPage() {
                           <p className="body-sm">{p.note}</p>
                         </div>
                       )}
-                      <Link href={`/services/${s.slug}/`} className="btn-secondary" style={{ whiteSpace: 'nowrap' }}>
+                      <span className="btn-secondary" style={{ whiteSpace: 'nowrap' }}>
                         Find a specialist <ArrowRight size={11} />
-                      </Link>
+                      </span>
                     </div>
 
                     {/* Mobile CTA */}
                     <div className="flex flex-wrap gap-3 lg:hidden">
-                      <Link href={`/services/${s.slug}/`} className="btn-primary">
+                      <span className="btn-primary">
                         Find a specialist <ArrowRight size={11} />
-                      </Link>
+                      </span>
                       {p && <p className="body-sm self-center">{p.note}</p>}
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

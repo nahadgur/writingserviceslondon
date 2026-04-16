@@ -425,28 +425,52 @@ export const blogArticles: BlogArticle[] = [
             "text": "Frequently Asked Questions"
         },
         {
-            "type": "p",
-            "text": "Will Writing Services London – 2026 Guide for Families provides expert assistance in drafting legally binding wills tailored for London residents. This guide is crucial for families as it incorporates upcoming 2026 UK inheritance law updates, ensuring your assets, property, and guardianship wishes are protected amid rising property prices and tax changes in the capital. Professional services prevent costly disputes and invalid wills."
+            "type": "h3",
+            "text": "What should a will in London cover?"
         },
         {
             "type": "p",
-            "text": "According to the Will Writing Services London – 2026 Guide for Families, basic single wills start at £150-£250, mirror wills for couples at £300-£500, and complex estates with trusts from £800+. Prices vary by provider, but regulated services ensure value. Always compare Society of Will Writers members for transparency and fixed fees updated for 2026 inflation."
+            "text": "A professionally drafted London will should name your executors, appoint guardians for any children under 18, list specific bequests (property, cash, possessions), set out how the residue of the estate is distributed, and express any funeral wishes. For London residents, provisions for digital assets, online accounts, and cryptocurrency are increasingly important and should be included where relevant."
+        },
+        {
+            "type": "h3",
+            "text": "How much does will writing cost in London?"
         },
         {
             "type": "p",
-            "text": "The Will Writing Services London – 2026 Guide for Families recommends solicitor-led services for complex family situations like blended families or high-value London properties, as they offer lifetime validity checks. Online DIY options are cheaper (£50-£100) but risk invalidation under 2026 digital witnessing rules. Hybrid services combine affordability with legal review for peace of mind."
+            "text": "A professionally drafted single will in London typically costs between \u00a3150 and \u00a3350. Mirror wills for couples range from \u00a3250 to \u00a3550 for the pair. Wills involving trusts, complex family arrangements, or business interests sit higher. All specialists in our network provide fixed-fee quotes before any work begins."
+        },
+        {
+            "type": "h3",
+            "text": "Should I use a solicitor or a specialist will writer?"
         },
         {
             "type": "p",
-            "text": "Will Writing Services London – 2026 Guide for Families advises covering executors, guardians for minors, specific legacies (e.g., London flats), residue distribution, and funeral wishes. Key 2026 updates include provisions for digital assets (crypto, online accounts) and carer trusts amid NHS changes. Include letters of wishes for flexibility without altering the will."
+            "text": "Both can produce a legally valid will. Solicitors are regulated by the Solicitors Regulation Authority and carry mandatory professional indemnity insurance. Specialist will writers may hold membership of the Society of Will Writers. For straightforward wills, either is appropriate. For complex estates involving trusts, business assets, or blended families, a solicitor is generally the safer choice."
+        },
+        {
+            "type": "h3",
+            "text": "How long does it take to have a will drafted in London?"
         },
         {
             "type": "p",
-            "text": "As outlined in the Will Writing Services London – 2026 Guide for Families, simple wills take 1-2 weeks from consultation to signing, with same-day options for urgent cases via video witnessing (post-2026 rules). Complex wills with probate research may take 4-6 weeks. Expedited services are ideal for families facing health issues or property sales."
+            "text": "Most straightforward wills can be drafted within 3 to 7 working days from the initial consultation. Once you have reviewed and approved the draft, the formal signing and witnessing is arranged. The entire process from first contact to signed will typically takes one to two weeks. For urgent situations, same-day and next-day services are available."
+        },
+        {
+            "type": "h3",
+            "text": "Will my will be valid if I move out of London or abroad?"
         },
         {
             "type": "p",
-            "text": "The Will Writing Services London – 2026 Guide for Families confirms that wills drafted by qualified London providers remain valid UK-wide, provided they meet the Wills Act 1837 standards, including 2026 witnessing reforms. However, if relocating abroad, review for international laws. Services often include free reviews every 5 years or after life events like births or divorces."
+            "text": "A will drafted by a qualified London solicitor or will writer is valid throughout England and Wales as long as it meets the requirements of the Wills Act 1837. If you relocate abroad, your UK will may still cover UK assets, but you should take legal advice on how the destination country treats foreign wills, particularly for property held overseas."
+        },
+        {
+            "type": "h3",
+            "text": "How often should I review my will?"
+        },
+        {
+            "type": "p",
+            "text": "Estate planning professionals recommend reviewing your will after any major life event: marriage, divorce, the birth of a child or grandchild, a significant change in assets, the death of a named executor or beneficiary, or a substantial change in property value. As a minimum, a review every three to five years is advisable even if nothing has changed."
         }
     ]
   },

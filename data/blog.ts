@@ -19,7 +19,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/article(yqxp)_4.jpeg',
-    excerpt: 'Imagine your family\'s future unraveling due to an outdated will amid 2026\'s tightened inheritance tax rules. For London families, securing a robust will isn\'t optional—it\'s essential to protect assets...',
+    excerpt: 'Imagine your family\'s future unraveling due to an outdated will amid 2026\'s tightened inheritance tax rules. For London families, securing a robust will isn\'t optional --it\'s essential to protect assets...',
     content: [
         {
             "type": "h2",
@@ -456,7 +456,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_4.jpeg',
-    excerpt: 'Imagine discovering, too late, that your estate falls into legal limbo due to a flawed will—leaving loved ones burdened and disputes unresolved. In London, where estates demand precision amid rising c...',
+    excerpt: 'Imagine discovering, too late, that your estate falls into legal limbo due to a flawed will --leaving loved ones burdened and disputes unresolved. In London, where estates demand precision amid rising c...',
     content: [
         {
             "type": "h2",
@@ -831,8 +831,8 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover solicitor vs will writing service in London – key differences in qualifications, costs, services, and complexity handling. Avoid invalid wills and protect your legacy with expert insights. Choose wisely today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
-    excerpt: 'Imagine discovering your will is invalid after you\'re gone—leaving loved ones in legal limbo. In London, choosing between a solicitor and a will writing service can make or break your legacy. This mat...',
+    featuredImage: '/images/single-will.png',
+    excerpt: 'Imagine discovering your will is invalid after you\'re gone --leaving loved ones in legal limbo. In London, choosing between a solicitor and a will writing service can make or break your legacy. This mat...',
     content: [
         {
             "type": "h2",
@@ -1259,7 +1259,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover home visit will writing services in London explained: perfect for busy pros and mobility-limited clients. Learn the process, from consultation to review, key benefits, and UK legal requirements. Secure your legacy conveniently today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
+    featuredImage: '/images/hero-main.png',
     excerpt: 'Imagine safeguarding your legacy from the comfort of your own home, without the hassle of office visits. In bustling London, home visit will writing services offer a tailored solution for busy profess...',
     content: [
         {
@@ -1741,7 +1741,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Secure your legacy with online will writing services for London residents. Learn UK Wills Act compliance, key benefits, top features, step-by-step process, and how to choose the best service today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
+    featuredImage: '/images/single-will.png',
     excerpt: 'In London, where life moves at a relentless pace, a single oversight in estate planning can upend legacies. Online will writing services offer a swift, compliant solution tailored for busy residents. ...',
     content: [
         {
@@ -2675,7 +2675,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/article(73ln)_4.jpeg',
-    excerpt: 'Imagine discovering your loved one\'s will is invalid after they\'re gone—devastating, yet preventable. In the UK, will writing remains largely unregulated, leaving London clients vulnerable to costly e...',
+    excerpt: 'Imagine discovering your loved one\'s will is invalid after they\'re gone --devastating, yet preventable. In the UK, will writing remains largely unregulated, leaving London clients vulnerable to costly e...',
     content: [
         {
             "type": "h2",
@@ -3126,7 +3126,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_4.jpeg',
-    excerpt: 'Imagine safeguarding your shared legacy with precision—yet one overlooked detail unravels it all. For London couples, mirror wills and joint wills offer tailored estate planning amid England\'s intrica...',
+    excerpt: 'Imagine safeguarding your shared legacy with precision --yet one overlooked detail unravels it all. For London couples, mirror wills and joint wills offer tailored estate planning amid England\'s intrica...',
     content: [
         {
             "type": "h2",
@@ -3555,8 +3555,8 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Learn when to update your will in London due to marriage, divorce, new assets or life events under English law. Explore codicils, new wills via solicitors, costs and expert steps to safeguard your legacy today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
-    excerpt: 'A sudden life change—like marriage or a new child—could unintentionally disinherit loved ones if your will isn\'t updated. In London, under English law, safeguarding your legacy demands timely action. ...',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'A sudden life change --like marriage or a new child --could unintentionally disinherit loved ones if your will isn\'t updated. In London, under English law, safeguarding your legacy demands timely action. ...',
     content: [
         {
             "type": "h2",
@@ -3953,8 +3953,8 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Secure your future with expert Lasting Power of Attorney and Will Writing Services in London. Learn LPA types, will essentials, avoid pitfalls, and get professional drafting plus registration. Trust local specialists for peace of mind today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
-    excerpt: 'Imagine facing illness or incapacity without a trusted voice to act on your behalf—what then? Safeguarding your future demands precise Lasting Power of Attorney (LPA) and will planning, especially ami...',
+    featuredImage: '/images/lasting-power-of-attorney.png',
+    excerpt: 'Imagine facing illness or incapacity without a trusted voice to act on your behalf --what then? Safeguarding your future demands precise Lasting Power of Attorney (LPA) and will planning, especially ami...',
     content: [
         {
             "type": "h2",
@@ -4408,8 +4408,8 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Master UK inheritance tax thresholds, exemptions, gifting rules, trusts, and will writing essentials for London properties. Safeguard your estate from 40% tax. Get expert strategies to minimise liabilities today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
-    excerpt: 'Imagine safeguarding your family\'s future from a 40% inheritance tax bite on estates exceeding £325,000. With UK thresholds frozen until 2028, proactive planning is essential—especially in London\'s so...',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'Imagine safeguarding your family\'s future from a 40% inheritance tax bite on estates exceeding £325,000. With UK thresholds frozen until 2028, proactive planning is essential --especially in London\'s so...',
     content: [
         {
             "type": "h2",
@@ -4772,7 +4772,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'London homeowners with multiple properties face huge Inheritance Tax risks up to £265,000+. Learn specialist will writing strategies for complex estates, joint ownership, tax minimisation, and London laws. Secure your legacy with expert tips today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
+    featuredImage: '/images/trust-planning.png',
     excerpt: 'Owning multiple properties in London? A single misstep in your will could trigger £265,000+ in Inheritance Tax alone, per HMRC thresholds, fracturing your legacy. As property prices soar and ownership...',
     content: [
         {
@@ -5086,8 +5086,8 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover 12 free and low-cost will writing options in London, from FreeWill UK and charity schemes to local clinics and DIY kits under £20. Safeguard your legacy without high costs. Find the best fit for your needs today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
-    excerpt: 'Imagine your legacy unraveling due to an absent will—a risk faced by over half of UK adults, per recent Law Society data. In London, safeguarding your wishes needn\'t break the bank.This guide explores...',
+    featuredImage: '/images/hero-services.png',
+    excerpt: 'Imagine your legacy unraveling due to an absent will --a risk faced by over half of UK adults, per recent Law Society data. In London, safeguarding your wishes needn\'t break the bank.This guide explores...',
     content: [
         {
             "type": "h2",
@@ -5524,7 +5524,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Craft a valid will in London with ease. Avoid common mistakes, add charitable bequests to top London charities, and claim inheritance tax relief. Discover solicitor vs. DIY processes, costs, and updates that secure your legacy today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: '',
+    featuredImage: '/images/probate-support.png',
     excerpt: '\'\'\'Imagine discovering your will is invalid after your passing, leaving loved ones in legal limbo. In London, crafting a valid will is essential for safeguarding your estate and legacy. This guide exp...',
     content: [
         {
@@ -6295,7 +6295,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_4.jpeg',
-    excerpt: 'Imagine discovering a flaw in your will after it\'s too late—costing your loved ones thousands in disputes. In London, unchecked wills pose real risks to your legacy. This article explores what will re...',
+    excerpt: 'Imagine discovering a flaw in your will after it\'s too late --costing your loved ones thousands in disputes. In London, unchecked wills pose real risks to your legacy. This article explores what will re...',
     content: [
         {
             "type": "h2",
@@ -6752,7 +6752,7 @@ export const blogArticles: BlogArticle[] = [
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: 'https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_4.jpeg',
-    excerpt: 'Imagine a sudden illness or accident leaving your loved ones unprotected—without a will, chaos ensues. In London\'s fast-paced environment, emergency will writing services provide urgent peace of mind,...',
+    excerpt: 'Imagine a sudden illness or accident leaving your loved ones unprotected --without a will, chaos ensues. In London\'s fast-paced environment, emergency will writing services provide urgent peace of mind,...',
     content: [
         {
             "type": "h2",

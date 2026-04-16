@@ -5,6 +5,24 @@ import { AREA_HUBS, getAreaHubBySlug } from '@/data/locations';
 import { serviceLocationData } from '@/data/serviceLocationData';
 import { getAreaContent } from '@/data/areaContent';
 import { ServiceLocationClient } from './ServiceLocationClient';
+import { serviceLocationMeta } from '@/data/serviceLocationMeta';
+import type { Metadata } from 'next';
+
+// Unique meta per page — derived from heroHeading + heroParagraph
+export async function generateMetadata(
+  { params }: { params: { serviceSlug: string; locationSlug: string } }
+): Promise<Metadata> {
+  const meta = serviceLocationMeta[params.serviceSlug]?.[params.locationSlug];
+  if (!meta) return { title: 'Will Writing Services London' };
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+    },
+  };
+}
 
 // Pre-build all 90 service x location pages at build time
 export function generateStaticParams() {

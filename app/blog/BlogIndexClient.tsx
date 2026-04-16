@@ -32,14 +32,14 @@ export default function BlogIndexClient({ articles }: Props) {
 
       <main>
         {/* ── Hero ──────────────────────────────────── */}
-        <section className="bg-parchment border-b border-border py-16 md:py-20">
+        <section className="bg-parchment border-b border-border py-12 md:py-20">
           <div className="container-width max-w-3xl">
             <p className="eyebrow mb-4">Guides and advice</p>
-            <h1 className="font-display text-5xl italic text-ink mb-5 leading-tight">
-              Will writing and<br />estate planning guides
+            <h1 className="font-display text-4xl md:text-5xl italic text-ink mb-4 leading-tight">
+              Will writing and<br className="hidden sm:block" />estate planning guides
             </h1>
             <p className="body-lg max-w-xl">
-              Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate — written for people navigating these decisions for the first time.
+              Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate.
             </p>
           </div>
         </section>
@@ -49,14 +49,14 @@ export default function BlogIndexClient({ articles }: Props) {
           <div className="container-width">
 
             {articles.length === 0 ? (
-              <div className="text-center py-16">
+              <div className="text-center py-14">
                 <p className="font-display text-2xl italic text-dust">No articles yet. Check back soon.</p>
               </div>
             ) : (
               <>
                 {/* Category filter */}
                 {categories.length > 2 && (
-                  <div className="flex flex-wrap gap-2 mb-10">
+                  <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
                     {categories.map(cat => (
                       <button
                         key={cat}
@@ -77,10 +77,10 @@ export default function BlogIndexClient({ articles }: Props) {
                 {filtered.length > 0 && (
                   <Link
                     href={`/blog/${filtered[0].slug}/`}
-                    className="card group flex flex-col md:flex-row gap-0 overflow-hidden mb-6"
+                    className="card group flex flex-col sm:flex-row gap-0 overflow-hidden mb-5"
                   >
                     {filtered[0].featuredImage && (
-                      <div className="md:w-2/5 h-52 md:h-auto overflow-hidden bg-parchment-2 flex-shrink-0">
+                      <div className="sm:w-2/5 h-48 sm:h-auto overflow-hidden bg-parchment-2 flex-shrink-0">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={filtered[0].featuredImage}
@@ -90,31 +90,27 @@ export default function BlogIndexClient({ articles }: Props) {
                         />
                       </div>
                     )}
-                    <div className="p-8 flex flex-col justify-center">
-                      <div className="flex items-center gap-3 mb-4">
+                    <div className="p-5 md:p-7 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-3">
                         <span className="eyebrow-brand">{filtered[0].category}</span>
                         <span className="body-sm">{filtered[0].publishDate}</span>
                       </div>
-                      <h2 className="font-display text-3xl italic text-ink group-hover:text-brand transition-colors mb-3 leading-tight">
+                      <h2 className="font-display text-2xl md:text-3xl italic text-ink group-hover:text-brand transition-colors mb-3 leading-tight">
                         {filtered[0].title}
                       </h2>
-                      <p className="body-md line-clamp-3 mb-4">{filtered[0].excerpt}</p>
+                      <p className="body-md line-clamp-2 md:line-clamp-3 mb-4">{filtered[0].excerpt}</p>
                       <span className="eyebrow-brand text-xs">Read article →</span>
                     </div>
                   </Link>
                 )}
 
-                {/* Remaining articles grid */}
+                {/* Grid */}
                 {filtered.length > 1 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
                     {filtered.slice(1).map(article => (
-                      <Link
-                        key={article.slug}
-                        href={`/blog/${article.slug}/`}
-                        className="card group overflow-hidden"
-                      >
+                      <Link key={article.slug} href={`/blog/${article.slug}/`} className="card group overflow-hidden">
                         {article.featuredImage && (
-                          <div className="h-44 overflow-hidden bg-parchment-2">
+                          <div className="h-40 md:h-44 overflow-hidden bg-parchment-2">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={article.featuredImage}
@@ -124,12 +120,12 @@ export default function BlogIndexClient({ articles }: Props) {
                             />
                           </div>
                         )}
-                        <div className="p-5">
-                          <div className="flex items-center gap-3 mb-3">
+                        <div className="p-4 md:p-5">
+                          <div className="flex items-center gap-3 mb-2.5">
                             <span className="eyebrow-brand">{article.category}</span>
                             <span className="body-sm">{article.publishDate}</span>
                           </div>
-                          <h2 className="font-display text-xl italic text-ink group-hover:text-brand transition-colors mb-2 leading-snug">
+                          <h2 className="font-display text-lg md:text-xl italic text-ink group-hover:text-brand transition-colors mb-2 leading-snug">
                             {article.title}
                           </h2>
                           <p className="body-sm line-clamp-2">{article.excerpt}</p>
@@ -148,9 +144,9 @@ export default function BlogIndexClient({ articles }: Props) {
         </section>
 
         {/* ── CTA ───────────────────────────────────── */}
-        <section className="bg-ink py-16">
+        <section className="bg-ink py-14 md:py-16">
           <div className="container-width text-center">
-            <h2 className="font-display text-3xl italic text-white mb-4">
+            <h2 className="font-display text-3xl md:text-4xl italic text-white mb-4">
               Ready to make your will?
             </h2>
             <p className="body-lg text-white/55 max-w-lg mx-auto mb-7">
@@ -158,7 +154,7 @@ export default function BlogIndexClient({ articles }: Props) {
             </p>
             <button
               onClick={() => setModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-8 py-3.5 rounded"
+              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-7 py-3.5 rounded"
             >
               Find my specialist
             </button>

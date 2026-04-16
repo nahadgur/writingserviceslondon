@@ -47,33 +47,33 @@ export default function ServiceLocationPageClient({
 
       <main>
         {/* ── Hero ──────────────────────────────────── */}
-        <section className="hero-dark min-h-[380px] flex items-end">
+        <section className="hero-dark">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${service.image}')`, opacity: 0.4 }}
           />
           <div className="hero-gradient-bottom" />
 
-          <div className="relative z-10 container-width w-full py-14">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 items-end">
+          <div className="relative z-10 container-width py-10 md:py-14">
+            <Breadcrumbs
+              dark
+              items={[
+                { label: 'Services', href: '/services/' },
+                { label: service.title, href: `/services/${service.slug}/` },
+                { label: cityName },
+              ]}
+            />
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-10 mt-5 items-start">
               <div>
-                <Breadcrumbs
-                  dark
-                  items={[
-                    { label: 'Services', href: '/services/' },
-                    { label: service.title, href: `/services/${service.slug}/` },
-                    { label: cityName },
-                  ]}
-                />
-                <div className="location-pill mt-5 mb-4">
+                <div className="location-pill mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand inline-block" />
                   Will writing specialists in {cityName}
                 </div>
-                <h1 className="font-display text-5xl lg:text-6xl italic text-white mb-4 leading-tight">
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl italic text-white mb-4 leading-tight">
                   {service.title} in{' '}
                   <span className="text-brand-light">{cityName}</span>
                 </h1>
-                <p className="body-lg text-white/60 max-w-[420px] mb-5">{heroDesc}</p>
+                <p className="body-lg text-white/60 max-w-[420px] mb-4">{heroDesc}</p>
                 <div className="flex flex-col gap-2 mb-4">
                   {heroBullets.map((b, i) => (
                     <div key={i} className="flex items-center gap-2.5">
@@ -82,23 +82,33 @@ export default function ServiceLocationPageClient({
                     </div>
                   ))}
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mb-6">
                   <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map(i => <Star key={i} size={12} className="fill-brand text-brand" />)}
+                    {[1,2,3,4,5].map(i => <Star key={i} size={11} className="fill-brand text-brand" />)}
                   </div>
                   <span className="body-sm text-white/40">{trustLine}</span>
                 </div>
+                <button onClick={() => setModalOpen(true)} className="btn-primary lg:hidden">
+                  Find my specialist
+                </button>
               </div>
-              <HeroLeadForm city={cityName} service={service.title} />
+              <div className="hidden lg:block">
+                <HeroLeadForm city={cityName} service={service.title} />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── Benefits row ──────────────────────────── */}
+        {/* Mobile form */}
+        <div className="lg:hidden bg-parchment border-b border-border px-5 py-6">
+          <HeroLeadForm city={cityName} service={service.title} />
+        </div>
+
+        {/* ── Benefits bar ──────────────────────────── */}
         <div className="bg-white border-b border-border">
-          <div className="container-width py-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="container-width py-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {benefits.map((b, i) => (
-              <div key={i} className="flex items-start gap-3">
+              <div key={i} className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0 mt-1.5" />
                 <div>
                   <p className="font-sans font-medium text-xs text-ink mb-0.5">{b.title}</p>
@@ -110,18 +120,17 @@ export default function ServiceLocationPageClient({
         </div>
 
         {/* ── Body ──────────────────────────────────── */}
-        <div className="container-width py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-12">
+        <div className="container-width py-12 md:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-10 lg:gap-12">
 
-            {/* Main */}
             <div>
-              <h2 className="font-display text-3xl italic text-ink mb-5">{introHeading}</h2>
-              <div className="space-y-4 mb-12">
+              <h2 className="font-display text-2xl md:text-3xl italic text-ink mb-4">{introHeading}</h2>
+              <div className="space-y-4 mb-10">
                 {intro.map((p, i) => <p key={i} className="body-md">{p}</p>)}
               </div>
 
-              <h2 className="font-display text-2xl italic text-ink mb-5">{stepsHeading}</h2>
-              <div className="space-y-3 mb-12">
+              <h2 className="font-display text-xl md:text-2xl italic text-ink mb-4">{stepsHeading}</h2>
+              <div className="space-y-3 mb-10">
                 {steps.map((step, i) => (
                   <div key={i} className="step-row">
                     <span className="step-num">{i + 1}</span>
@@ -130,38 +139,38 @@ export default function ServiceLocationPageClient({
                 ))}
               </div>
 
-              <h2 className="font-display text-2xl italic text-ink mb-5">{whyHeading}</h2>
-              <div className="space-y-2.5 mb-12">
+              <h2 className="font-display text-xl md:text-2xl italic text-ink mb-4">{whyHeading}</h2>
+              <div className="space-y-2.5 mb-10">
                 {whyPoints.map((p, i) => (
                   <div key={i} className="flex items-start gap-3 card-parchment p-4 rounded-md">
-                    <CheckCircle size={14} className="text-brand flex-shrink-0 mt-0.5" />
+                    <CheckCircle size={13} className="text-brand flex-shrink-0 mt-0.5" />
                     <span className="body-md font-medium">{p}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Nearby areas */}
+              {/* Nearby cities */}
               {nearbyCities.length > 0 && (
-                <div className="mb-12">
-                  <h2 className="font-display text-2xl italic text-ink mb-4">
+                <div className="mb-10">
+                  <h2 className="font-display text-xl italic text-ink mb-4">
                     {service.title} in nearby areas
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {nearbyCities.slice(0, 6).map(city => (
                       <Link
                         key={city}
-                        href={`/services/${service.slug}/${city.toLowerCase().replace(/[^a-z0-9]+/g,'-')}/`}
-                        className="card p-3 body-md hover:text-brand transition-colors"
+                        href={`/services/${service.slug}/${city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`}
+                        className="card p-3 body-md hover:text-brand transition-colors text-sm"
                       >
-                        {service.title} in {city}
+                        {city}
                       </Link>
                     ))}
                   </div>
                 </div>
               )}
 
-              <h2 className="font-display text-2xl italic text-ink mb-5">What clients say</h2>
-              <div className="mb-12">
+              <h2 className="font-display text-xl md:text-2xl italic text-ink mb-4">What clients say</h2>
+              <div className="mb-10">
                 <Testimonials limit={2} />
               </div>
 
@@ -172,7 +181,7 @@ export default function ServiceLocationPageClient({
 
             {/* Sidebar */}
             <aside>
-              <div className="sticky top-8 space-y-4">
+              <div className="lg:sticky lg:top-8 space-y-4">
                 <div className="sidebar-box">
                   <h3 className="font-display text-xl italic text-ink mb-2">
                     Get matched in {cityName}
@@ -186,7 +195,7 @@ export default function ServiceLocationPageClient({
                 </div>
 
                 <div className="sidebar-box">
-                  <p className="eyebrow mb-3">Typical cost</p>
+                  <p className="eyebrow mb-2">Typical cost</p>
                   <p className="font-display text-2xl text-ink mb-1">£150 – £550</p>
                   <p className="body-sm">Fixed-fee quote before any work begins</p>
                 </div>
@@ -210,16 +219,16 @@ export default function ServiceLocationPageClient({
           </div>
 
           {/* Bottom CTA */}
-          <div className="bg-ink rounded-lg p-10 text-center mt-4">
-            <h2 className="font-display text-3xl italic text-white mb-3">
+          <div className="bg-ink rounded-lg p-7 md:p-10 text-center mt-6">
+            <h2 className="font-display text-2xl md:text-3xl italic text-white mb-3">
               Get {service.title} advice in {cityName}
             </h2>
-            <p className="body-lg text-white/55 max-w-xl mx-auto mb-7">
-              Submit your enquiry in under two minutes. We match you with vetted specialists in {cityName} with no obligation.
+            <p className="body-lg text-white/55 max-w-xl mx-auto mb-6">
+              Submit your enquiry in under two minutes. Free matching, no obligation.
             </p>
             <button
               onClick={() => setModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-8 py-3.5 rounded"
+              className="inline-flex items-center gap-2 bg-white text-ink font-sans font-medium text-sm px-7 py-3.5 rounded"
             >
               Get your free quotes
             </button>

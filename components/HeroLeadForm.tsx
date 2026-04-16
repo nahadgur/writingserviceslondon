@@ -20,11 +20,13 @@ export function HeroLeadForm({ city, service }: Props) {
   }
 
   return (
-    <div className="bg-parchment rounded-lg p-6" style={{ border: '0.5px solid var(--border)' }}>
+    <div className="bg-parchment rounded-lg p-5 md:p-6" style={{ border: '0.5px solid var(--border)' }}>
       {done ? (
         <div className="text-center py-4">
           <div className="w-8 h-8 rounded-full bg-brand/15 flex items-center justify-center mx-auto mb-3">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7l3.5 3.5L12 3" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
           <p className="font-display text-lg italic text-ink mb-1">Thank you</p>
           <p className="body-sm">We will be in touch within 24 hours.</p>
@@ -34,18 +36,32 @@ export function HeroLeadForm({ city, service }: Props) {
           <p className="font-display text-xl italic text-ink mb-1">
             {city ? `Get matched in ${city}` : 'Get matched free'}
           </p>
-          <p className="body-sm mb-5">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
+          <p className="body-sm mb-4">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
 
           <form onSubmit={handleSubmit} noValidate className="space-y-3">
             <div>
               <label className="field-label" htmlFor="hlf-name">Your name</label>
-              <input id="hlf-name" type="text" required className="field-input" placeholder="e.g. Sarah Johnson" />
+              {/* font-size 16px prevents iOS auto-zoom on focus */}
+              <input
+                id="hlf-name"
+                type="text"
+                required
+                className="field-input"
+                style={{ fontSize: 16 }}
+                placeholder="e.g. Sarah Johnson"
+              />
             </div>
 
             {!city && (
               <div>
                 <label className="field-label" htmlFor="hlf-area">Your area</label>
-                <input id="hlf-area" type="text" className="field-input" placeholder="e.g. Hampstead, Clapham..." />
+                <input
+                  id="hlf-area"
+                  type="text"
+                  className="field-input"
+                  style={{ fontSize: 16 }}
+                  placeholder="e.g. Hampstead, Clapham..."
+                />
               </div>
             )}
 
@@ -55,15 +71,12 @@ export function HeroLeadForm({ city, service }: Props) {
                 id="hlf-notes"
                 type="text"
                 className="field-input"
-                placeholder={city ? `e.g. blended family, home visit...` : `e.g. ${service ?? 'mirror wills'}, home visit...`}
+                style={{ fontSize: 16 }}
+                placeholder={city ? 'e.g. blended family, home visit...' : `e.g. ${service ?? 'mirror wills'}, home visit...`}
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="btn-primary w-full justify-center"
-            >
+            <button type="submit" disabled={submitting} className="btn-primary w-full justify-center">
               {submitting ? 'Sending...' : 'Find my specialist →'}
             </button>
           </form>

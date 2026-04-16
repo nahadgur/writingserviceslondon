@@ -1,7 +1,7 @@
 // app/location/[city]/page.tsx — SERVER COMPONENT
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { AREA_HUBS, getAreaHubBySlug, getAllAreaSlugs } from '@/data/locations';
+import { getAreaHubBySlug, getAllAreaSlugs } from '@/data/locations';
 import { getAreaContent } from '@/data/areaContent';
 import { services } from '@/data/services';
 import { siteConfig } from '@/data/site';
@@ -22,8 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const content = getAreaContent(hub.slug);
   const title = `Will Writing Services ${hub.name} | Estate Planning Specialists`;
-  const description = content?.heroParagraph.slice(0, 155) + '...'
-    ?? `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas.`;
+
+  // Fix: ?? can't follow a non-nullable expression — compute description explicitly
+  const description = content
+    ? content.heroParagraph.slice(0, 155) + '...'
+    : `Connect with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas.`;
+
   const url = `${siteConfig.url}/location/${hub.slug}/`;
 
   return {
@@ -59,9 +63,13 @@ export default function CityPage({ params }: Props) {
     },
   ];
 
+  const descriptionForSchema = content
+    ? content.heroParagraph
+    : `Free matching service connecting ${hub.name} residents with vetted will writers.`;
+
   const ldLocation = locationPageSchema(
     hub.name,
-    content?.heroParagraph ?? `Free matching service connecting ${hub.name} residents with vetted will writers.`,
+    descriptionForSchema,
     ['Will Writing', 'Mirror Wills', 'Lasting Power of Attorney', 'Trust Planning', 'Estate Planning', 'Probate Support']
   );
   const ldFaq = faqSchema(areaFaqs);

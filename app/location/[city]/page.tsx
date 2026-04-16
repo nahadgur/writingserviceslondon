@@ -9,7 +9,6 @@ import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 
-// Pre-build all hub pages at deploy time (fixes dynamic-route 404s)
 export function generateStaticParams() {
   return AREA_HUBS.map(hub => ({ city: hub.slug }));
 }
@@ -57,51 +56,202 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <Header />
 
       <main>
-        {/* ── Hero ──────────────────────────────────────────────── */}
-        <section className="hero-dark" style={{ minHeight: 320 }}>
-          <div className="absolute inset-0" style={{ background: '#18120a' }} />
-          <div className="g-bot" />
+        {/* ── Hero — dark with geometric skyline SVG ─────────── */}
+        <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden', minHeight: 200 }}>
 
-          <div className="relative z-10 container-width py-12 md:py-14 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-10 items-end">
-              <div>
-                <Breadcrumbs dark items={[{ label: 'Areas', href: '/location/' }, { label: hub.name }]} />
-                <div className="flex items-center gap-2 mt-4 mb-4">
-                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.4)' }}>
-                    {hub.postcode}
-                  </span>
-                  <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 10 }}>&middot;</span>
-                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.4)' }}>
-                    {hub.region} London
-                  </span>
-                </div>
-                <h1 style={{ ...serif('clamp(34px,5vw,56px)' as any, { color: '#fff', marginBottom: 14 }) }}>
-                  Will writing in{' '}
-                  <span style={{ color: '#e8943a' }}>{hub.name}</span>
-                </h1>
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.6)', maxWidth: 440, lineHeight: 1.75, marginBottom: 22 }}>
-                  Free matching with vetted will writers and estate planning specialists
-                  covering {hub.name} and all surrounding areas. Within 24 hours.
-                </p>
-                <a href="#get-matched" className="btn-primary lg:hidden">
-                  Find my specialist
-                </a>
-              </div>
-              <div id="get-matched" className="hidden lg:block">
-                <HeroLeadForm city={hub.name} />
-              </div>
+          {/* Decorative skyline — right aligned, low opacity */}
+          <svg
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              opacity: 0.15,
+              pointerEvents: 'none',
+              display: 'block',
+            }}
+            width="380" height="220" viewBox="0 0 380 220"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Building 1 — short */}
+            <rect x="10"  y="140" width="34" height="80"  fill="white"/>
+            <rect x="18"  y="152" width="7"  height="9"   fill="#1c1814"/>
+            <rect x="30"  y="152" width="7"  height="9"   fill="#1c1814"/>
+            <rect x="18"  y="168" width="7"  height="9"   fill="#1c1814"/>
+            <rect x="30"  y="168" width="7"  height="9"   fill="#1c1814"/>
+
+            {/* Building 2 — medium */}
+            <rect x="52"  y="100" width="30" height="120" fill="white"/>
+            <rect x="59"  y="112" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="70"  y="112" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="59"  y="128" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="70"  y="128" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="59"  y="144" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="70"  y="144" width="6"  height="8"   fill="#1c1814"/>
+
+            {/* Building 3 — tall */}
+            <rect x="90"  y="60"  width="40" height="160" fill="white"/>
+            <rect x="99"  y="74"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="113" y="74"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="99"  y="92"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="113" y="92"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="99"  y="110" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="113" y="110" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="99"  y="128" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="113" y="128" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="99"  y="146" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="113" y="146" width="8"  height="10"  fill="#1c1814"/>
+
+            {/* Building 4 — short wide */}
+            <rect x="138" y="128" width="26" height="92"  fill="white"/>
+            <rect x="145" y="140" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="155" y="140" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="145" y="154" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="155" y="154" width="5"  height="7"   fill="#1c1814"/>
+
+            {/* Building 5 — medium tall */}
+            <rect x="172" y="80"  width="32" height="140" fill="white"/>
+            <rect x="180" y="94"  width="6"  height="8"   fill="#1c1814"/>
+            <rect x="191" y="94"  width="6"  height="8"   fill="#1c1814"/>
+            <rect x="180" y="110" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="191" y="110" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="180" y="126" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="191" y="126" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="180" y="142" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="191" y="142" width="6"  height="8"   fill="#1c1814"/>
+
+            {/* Building 6 — narrow short */}
+            <rect x="212" y="148" width="22" height="72"  fill="white"/>
+            <rect x="218" y="158" width="4"  height="6"   fill="#1c1814"/>
+            <rect x="226" y="158" width="4"  height="6"   fill="#1c1814"/>
+
+            {/* Building 7 — tallest */}
+            <rect x="242" y="40"  width="44" height="180" fill="white"/>
+            <rect x="252" y="56"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="56"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="252" y="74"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="74"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="252" y="92"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="92"  width="8"  height="10"  fill="#1c1814"/>
+            <rect x="252" y="110" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="110" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="252" y="128" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="128" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="252" y="146" width="8"  height="10"  fill="#1c1814"/>
+            <rect x="266" y="146" width="8"  height="10"  fill="#1c1814"/>
+
+            {/* Building 8 — right edge */}
+            <rect x="294" y="110" width="36" height="110" fill="white"/>
+            <rect x="303" y="124" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="315" y="124" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="303" y="140" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="315" y="140" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="303" y="156" width="6"  height="8"   fill="#1c1814"/>
+            <rect x="315" y="156" width="6"  height="8"   fill="#1c1814"/>
+
+            <rect x="338" y="130" width="30" height="90"  fill="white"/>
+            <rect x="346" y="142" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="357" y="142" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="346" y="157" width="5"  height="7"   fill="#1c1814"/>
+            <rect x="357" y="157" width="5"  height="7"   fill="#1c1814"/>
+          </svg>
+
+          {/* Hero content */}
+          <div
+            className="container-width"
+            style={{ position: 'relative', zIndex: 10, paddingTop: 44, paddingBottom: 52 }}
+          >
+            {/* Breadcrumb */}
+            <div style={{ marginBottom: 20 }}>
+              <Breadcrumbs dark items={[{ label: 'Areas', href: '/location/' }, { label: hub.name }]} />
             </div>
+
+            {/* Pills */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18, flexWrap: 'wrap' as const }}>
+              <span style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                background: 'rgba(212,105,25,0.18)',
+                border: '0.5px solid rgba(212,105,25,0.45)',
+                color: '#e8943a',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: 12,
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                padding: '5px 14px',
+                borderRadius: 20,
+              }}>
+                {hub.region} London
+              </span>
+              <span style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                background: 'rgba(212,105,25,0.18)',
+                border: '0.5px solid rgba(212,105,25,0.45)',
+                color: '#e8943a',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: 12,
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                padding: '5px 14px',
+                borderRadius: 20,
+              }}>
+                {hub.postcode}
+              </span>
+            </div>
+
+            {/* H1 — Inter bold, matches screenshot */}
+            <h1 style={{
+              fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              fontSize: 'clamp(30px, 5vw, 52px)',
+              fontWeight: 700,
+              color: '#ffffff',
+              lineHeight: 1.08,
+              letterSpacing: '-0.02em',
+              marginBottom: 16,
+              maxWidth: 620,
+            }}>
+              Will writing in {hub.name}
+            </h1>
+
+            {/* Subtext */}
+            <p style={{
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: 14,
+              fontWeight: 300,
+              color: 'rgba(255,255,255,0.58)',
+              lineHeight: 1.65,
+              maxWidth: 520,
+            }}>
+              Free matching with vetted estate planning specialists covering {hub.postcode} and surrounding areas.
+            </p>
           </div>
         </section>
 
-        {/* Mobile form (also serves as anchor target on mobile) */}
-        <div id="get-matched-mobile" className="lg:hidden px-5 py-6" style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)' }}>
+        {/* Mobile form */}
+        <div className="lg:hidden px-5 py-6" style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)' }}>
           <HeroLeadForm city={hub.name} />
+        </div>
+
+        {/* ── Trust strip ──────────────────────────────────────── */}
+        <div className="trust-strip">
+          {[
+            { head: 'Matched in 24 hours',     body: 'A relevant introduction, not a list' },
+            { head: 'Every specialist vetted', body: 'Qualifications and insurance checked' },
+            { head: 'Free to all clients',     body: 'Paid by our network, never by you' },
+            { head: 'Home visits available',   body: 'Most specialists will come to you' },
+          ].map((t, i) => (
+            <div key={i} className="trust-item">
+              <p className="trust-head">{t.head}</p>
+              <p className="trust-body">{t.body}</p>
+            </div>
+          ))}
         </div>
 
         {/* ── Body ──────────────────────────────────────────────── */}
         <div className="container-width py-12 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_250px] gap-10 lg:gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14">
 
             <div>
               {/* Sub-areas */}
@@ -183,22 +333,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
             {/* Sidebar */}
             <aside>
               <div className="lg:sticky" style={{ top: 28 }}>
-                <div className="sidebar-box">
-                  <h3 style={serif(20, { marginBottom: 6 })}>Find a specialist</h3>
-                  <p className="body-sm mb-4">
-                    Free match with vetted will writers covering {hub.name} and surrounding areas.
-                  </p>
-                  <a href="#get-matched" className="btn-primary w-full justify-center">
-                    Get matched free
-                  </a>
-                  <ul className="mt-4 space-y-1.5 pt-4" style={{ borderTop: '0.5px solid var(--border)' }}>
-                    {['Matched within 24 hours', 'Vetted and insured', 'Free to all clients'].map((p, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
-                        <span className="body-sm">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                {/* Desktop form */}
+                <div className="hidden lg:block mb-4">
+                  <HeroLeadForm city={hub.name} />
                 </div>
 
                 <div className="sidebar-box">
@@ -221,7 +359,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Fixed-fee quotes, no hidden costs.</p>
                   <a
                     href="#get-matched"
-                    style={{ display: 'block', textAlign: 'center', textDecoration: 'none', width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer' }}
+                    style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4 }}
                   >
                     Get free quotes
                   </a>
@@ -240,7 +378,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
             </p>
             <a
               href="#get-matched"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4 }}
             >
               Get your free match
             </a>

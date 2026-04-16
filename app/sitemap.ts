@@ -3,6 +3,7 @@ import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
 import { siteConfig } from '@/data/site';
 import { blogArticles } from '@/data/blog';
+import { guides } from '@/data/guides';
 
 const SITE_LAUNCH = '2025-01-01';
 const LAST_CONTENT_UPDATE = '2026-01-15';
@@ -29,6 +30,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     });
   }
+
+  // Tier — Guides hub (0.8)
+  const guidesHub: MetadataRoute.Sitemap = [
+    { url: `${base}/guides/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'monthly', priority: 0.8 },
+  ];
+
+  // Tier — Individual guide pages (0.7)
+  const guidePages: MetadataRoute.Sitemap = guides.map(g => ({
+    url: `${base}/guides/${g.slug}/`,
+    lastModified: g.publishDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
 
   // Tier 3 — Service pages (0.7)
   const servicePages: MetadataRoute.Sitemap = services.map(s => ({
@@ -72,6 +86,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages,
     ...hubPages,
+    ...guidesHub,
+    ...guidePages,
     ...servicePages,
     ...blogPages,
     ...locationPages,

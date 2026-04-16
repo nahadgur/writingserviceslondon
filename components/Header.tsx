@@ -10,6 +10,7 @@ interface Props { onOpenModal?: () => void; }
 const links = [
   { href: '/services/', label: 'Services' },
   { href: '/location/', label: 'Areas' },
+  { href: '/guides/',   label: 'Guides' },
   { href: '/blog/',     label: 'Blog' },
 ];
 

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
+/* Fonts are loaded via next/font in layout.tsx — no @import needed */
 
 :root {
   --brand-50: #FEF3E2;

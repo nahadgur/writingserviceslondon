@@ -1,192 +1,77 @@
-// app/location/[city]/page.tsx - TEMPLATE
-'use client';
-
-import { useState } from 'react';
+// app/location/[city]/page.tsx — SERVER COMPONENT
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { MapPin, ArrowRight, CheckCircle, Clock, Shield, Star } from 'lucide-react';
-import { services } from '@/data/services';
-import { getCityBySlug } from '@/data/locations';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { FAQ } from '@/components/FAQ';
-import { HeroLeadForm } from '@/components/HeroLeadForm';
-import { LeadFormModal } from '@/components/LeadFormModal';
-import { PricingSection } from '@/components/PricingSection';
-import { NearbyAreasGrid } from '@/components/NearbyAreasGrid';
-import { Testimonials } from '@/components/Testimonials';
-import { siteConfig } from '@/data/site';
+import { LOCATIONS, getCityBySlug, toSlug } from '@/data/locations';
+import { siteConfig, FAQS_LOCATION } from '@/data/site';
 import { cityPageContent } from '@/data/cityContent';
+import { locationPageSchema, faqSchema, breadcrumbSchema } from '@/lib/schema';
+import CityPageClient from './CityPageClient';
 
-export default function CityPage({ params }: { params: { city: string } }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface Props {
+  params: { city: string };
+}
+
+export async function generateStaticParams() {
+  const allCities = Object.values(LOCATIONS).flat();
+  return allCities.map(city => ({ city: toSlug(city) }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const cityName = getCityBySlug(params.city);
+  if (!cityName) return {};
+
+  const title = `Will Writing Services ${cityName} | Find Vetted Specialists`;
+  const description = cityPageContent.heroDesc(cityName);
+  const url = `${siteConfig.url}/location/${params.city}/`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url },
+  };
+}
+
+export default function CityPage({ params }: Props) {
   const cityName = getCityBySlug(params.city);
   if (!cityName) notFound();
 
+  // Pre-compute server-side
   const cityFaqs = cityPageContent.faqs(cityName);
   const whyCards = cityPageContent.matchingCards(cityName);
   const introParagraphs = cityPageContent.introParagraphs(cityName);
+  const introHeading = cityPageContent.introHeading(cityName);
+  const matchingHeading = cityPageContent.matchingHeading(cityName);
+  const heroDesc = cityPageContent.heroDesc(cityName);
+  const sidebarCta = cityPageContent.sidebarCta(cityName);
+  const sidebarFinance = cityPageContent.sidebarFinance(cityName);
+  const sidebarTrustPoints = cityPageContent.sidebarTrustPoints(cityName);
 
-  const localBusinessSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LegalService',
-    name: `${siteConfig.name} in ${cityName}`,
-    url: `${siteConfig.url}/location/${params.city}/`,
-    description: cityPageContent.heroDesc(cityName),
-    areaServed: {
-      '@type': 'City',
-      name: cityName,
-      containedInPlace: { '@type': 'AdministrativeArea', name: 'London' },
-    },
-    serviceType: cityPageContent.schemaServiceTypes,
-    priceRange: '\u00a3\u00a3',
-  };
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: cityFaqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-    })),
-  };
+  const ldLocation = locationPageSchema(cityName, heroDesc, cityPageContent.schemaServiceTypes);
+  const ldFaq = faqSchema([...cityFaqs, ...FAQS_LOCATION]);
+  const ldBreadcrumb = breadcrumbSchema([
+    { label: 'Locations', href: '/location/' },
+    { label: cityName },
+  ]);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <LeadFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <Header onOpenModal={() => setIsModalOpen(true)} />
-      <main className="flex-grow">
-
-        <section className="bg-gray-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-900/30 via-gray-900/0 to-transparent pointer-events-none" />
-          <div className="container-width py-12 md:py-20 relative z-10">
-            <Breadcrumbs items={[{ label: 'Locations', href: '/location/' }, { label: cityName }]} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-6">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-brand-500/20 text-brand-300 px-3 py-1 rounded-full text-sm font-medium mb-6 border border-brand-500/30">
-                  <MapPin className="w-4 h-4" /> {siteConfig.name.split(" ").slice(0, -1).join(" ") + " in"} {cityName}
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-                  {siteConfig.name.split(" ").slice(0, -1).join(" ") + " in"} <span className="text-brand-400">{cityName}</span>
-                </h1>
-                <p className="text-xl text-gray-300 leading-relaxed">
-                  {cityPageContent.heroDesc(cityName)}
-                </p>
-              </div>
-              <div>
-                <HeroLeadForm city={cityName} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="container-width py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-
-              <section className="mb-12">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">
-                  {cityPageContent.introHeading(cityName)}
-                </h2>
-                <div className="prose prose-gray max-w-none text-gray-600 space-y-4">
-                  {introParagraphs.map((p, i) => (
-                    <p key={i}>{p}</p>
-                  ))}
-                </div>
-              </section>
-
-              <section className="mb-16">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">Services Available in {cityName}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {services.map(service => (
-                    <Link key={service.id} href={`/services/${service.slug}/${params.city}/`} className="block group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                      <div className="h-36 overflow-hidden">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                      </div>
-                      <div className="p-5">
-                        <h3 className="text-lg font-display font-bold text-gray-900 group-hover:text-brand-600 mb-1.5">{service.title} in {cityName}</h3>
-                        <p className="text-sm text-gray-500 mb-3 line-clamp-2">{service.description}</p>
-                        <span className="text-brand-600 font-medium text-sm flex items-center">Get free quotes <ArrowRight className="w-4 h-4 ml-1" /></span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-
-              <PricingSection cityName={cityName} />
-
-              <section className="mb-16">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-6">What You Get When We Match You in {cityName}</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {whyCards.map((item, i) => {
-                    const icons: Record<string, React.ReactNode> = {
-                      Star: <Star className="w-5 h-5" />,
-                      Shield: <Shield className="w-5 h-5" />,
-                      Clock: <Clock className="w-5 h-5" />,
-                      CheckCircle: <CheckCircle className="w-5 h-5" />,
-                    };
-                    return (
-                      <div key={i} className="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-100">
-                        <div className="bg-brand-100 p-2 rounded-lg text-brand-600 flex-shrink-0 h-fit">{icons[item.iconName] || <Star className="w-5 h-5" />}</div>
-                        <div>
-                          <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                          <p className="text-sm text-gray-600">{item.desc}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-
-              <NearbyAreasGrid cityName={cityName} />
-
-              <div className="mb-12"><FAQ faqs={cityFaqs} title={`${siteConfig.name} in ${cityName}: Common Questions`} /></div>
-
-              <section className="mb-16">
-                <h2 className="text-2xl font-display font-bold text-gray-900 mb-6">What Our Clients Are Saying</h2>
-                <Testimonials limit={3} />
-              </section>
-            </div>
-
-            <aside className="lg:col-span-1">
-              <div className="sticky top-28 space-y-8">
-                <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-lg font-display font-bold text-gray-900 mb-4">{cityPageContent.sidebarCta(cityName).heading}</h3>
-                  <p className="text-gray-600 text-sm mb-6">{cityPageContent.sidebarCta(cityName).description}</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full btn-primary text-center">Find a Specialist</button>
-                  <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
-                    {cityPageContent.sidebarTrustPoints(cityName).map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <div className="bg-brand-100 p-1.5 rounded-full">
-                          {[<Clock key="c" className="w-4 h-4 text-brand-500" />, <Shield key="s" className="w-4 h-4 text-brand-500" />, <Star key="st" className="w-4 h-4 text-brand-500" />][i % 3]}
-                        </div>
-                        <span className="text-sm font-medium text-gray-700">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="bg-brand-900 text-white p-6 rounded-2xl shadow-lg">
-                  <h3 className="text-lg font-display font-bold mb-3">{cityPageContent.sidebarFinance(cityName).heading}</h3>
-                  <p className="text-brand-100 text-sm mb-4">{cityPageContent.sidebarFinance(cityName).description}</p>
-                  <button onClick={() => setIsModalOpen(true)} className="block w-full bg-white text-brand-900 text-center font-bold py-3 px-6 rounded-xl hover:bg-brand-50 transition-colors text-sm">Check Eligibility</button>
-                </div>
-              </div>
-            </aside>
-          </div>
-
-          <div className="bg-brand-900 rounded-2xl p-8 md:p-12 text-center mt-12">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">{cityPageContent.bottomCta(cityName).heading}</h2>
-            <p className="text-brand-200 mb-8 max-w-2xl mx-auto">{cityPageContent.bottomCta(cityName).description}</p>
-            <button onClick={() => setIsModalOpen(true)} className="bg-white text-brand-900 font-bold text-lg py-4 px-10 rounded-xl hover:bg-brand-50 transition-colors">Get Your Free Quotes</button>
-          </div>
-        </div>
-      </main>
-      <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldLocation) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldFaq) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }} />
+      <CityPageClient
+        cityName={cityName}
+        citySlug={params.city}
+        heroDesc={heroDesc}
+        introHeading={introHeading}
+        introParagraphs={introParagraphs}
+        matchingHeading={matchingHeading}
+        whyCards={whyCards}
+        cityFaqs={cityFaqs}
+        sidebarCta={sidebarCta}
+        sidebarFinance={sidebarFinance}
+        sidebarTrustPoints={sidebarTrustPoints}
+      />
     </>
   );
 }

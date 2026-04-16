@@ -19,9 +19,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        // CSS vars injected by next/font in layout.tsx
+        display: ['var(--font-lora)', 'Georgia', 'serif'],
+        sans:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        body:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
     },
   },

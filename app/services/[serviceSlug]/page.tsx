@@ -13,7 +13,6 @@ import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 
 const pricingMap: Record<string, { from: string; to: string; note: string }> = {
@@ -175,12 +174,6 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
                     <span className="body-sm ml-auto">{hub.postcode}</span>
                   </Link>
                 ))}
-              </div>
-
-              {/* Testimonials */}
-              <h2 style={h('clamp(20px,2vw,26px)', { marginBottom: 16 })}>What our clients say</h2>
-              <div className="mb-12">
-                <Testimonials limit={2} />
               </div>
 
               <FAQ faqs={combinedFaqs} title={`${service.title} — common questions`} />

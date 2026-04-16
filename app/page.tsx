@@ -6,7 +6,6 @@ import { MapPin, CheckCircle, ArrowRight, Shield, Clock, Star, Users } from 'luc
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
-import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
@@ -241,28 +240,22 @@ export default function HomePage() {
         {/* ── PROCESS + TESTIMONIALS ───────────────────────────── */}
         <section className="section-padding" style={{ background: 'var(--parchment)' }}>
           <div className="container-width">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16 items-start">
-              <div>
-                <p className="eyebrow mb-3">How it works</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 28 })}>Three steps to the<br />right specialist</h2>
-                <div className="space-y-4 mb-10">
-                  {processSteps.map(step => (
-                    <div key={step.n} className="step-row">
-                      <span className="step-num">{step.n}</span>
-                      <div>
-                        <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, color: 'var(--ink)', marginBottom: 3 }}>{step.head}</p>
-                        <p className="body-sm leading-relaxed">{step.body}</p>
-                      </div>
+            <div className="max-w-2xl">
+              <p className="eyebrow mb-3">How it works</p>
+              <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 28 })}>Three steps to the<br />right specialist</h2>
+              <div className="space-y-4 mb-10">
+                {processSteps.map(step => (
+                  <div key={step.n} className="step-row">
+                    <span className="step-num">{step.n}</span>
+                    <div>
+                      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, color: 'var(--ink)', marginBottom: 3 }}>{step.head}</p>
+                      <p className="body-sm leading-relaxed">{step.body}</p>
                     </div>
-                  ))}
-                </div>
-                <button onClick={() => setModal(true)} className="btn-primary">Start your free enquiry</button>
-                <p className="body-sm mt-3" style={{ color: 'var(--dust)' }}>No obligation. Free re-matching if the first introduction is not right.</p>
+                  </div>
+                ))}
               </div>
-              <div>
-                <p className="eyebrow mb-4">What clients say</p>
-                <Testimonials limit={3} />
-              </div>
+              <button onClick={() => setModal(true)} className="btn-primary">Start your free enquiry</button>
+              <p className="body-sm mt-3" style={{ color: 'var(--dust)' }}>No obligation. Free re-matching if the first introduction is not right.</p>
             </div>
           </div>
         </section>

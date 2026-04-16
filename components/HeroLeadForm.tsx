@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface Props { city?: string; service?: string; }
+
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
 
 const serviceOptions = [
   'Single will',
@@ -16,14 +18,39 @@ const serviceOptions = [
 
 export function HeroLeadForm({ city, service }: Props) {
   const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState(false);
+  const [done,       setDone]       = useState(false);
+  const [error,      setError]      = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
-    // TODO: replace with real webhook/CRM endpoint
-    await new Promise(r => setTimeout(r, 800));
-    setSubmitting(false); setDone(true);
+    setError('');
+
+    const form = formRef.current!;
+    const payload = {
+      name:    (form.querySelector('#hlf-name')  as HTMLInputElement).value.trim(),
+      email:   (form.querySelector('#hlf-email') as HTMLInputElement).value.trim(),
+      phone:   (form.querySelector('#hlf-phone') as HTMLInputElement).value.trim(),
+      service: (form.querySelector('#hlf-svc')   as HTMLSelectElement).value,
+      message: (form.querySelector('#hlf-msg')   as HTMLTextAreaElement).value.trim(),
+      page:    typeof window !== 'undefined' ? window.location.pathname : '',
+      source:  'hero-form',
+    };
+
+    try {
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      setDone(true);
+    } catch {
+      setError('Something went wrong. Please try the button below.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -47,42 +74,24 @@ export function HeroLeadForm({ city, service }: Props) {
           </p>
           <p className="body-sm mb-4">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
 
-          <form onSubmit={submit} noValidate className="space-y-3">
+          <form ref={formRef} onSubmit={submit} noValidate className="space-y-3">
 
             <div>
               <label className="field-label" htmlFor="hlf-name">Your name *</label>
-              <input
-                id="hlf-name"
-                type="text"
-                required
-                className="field-input"
-                placeholder="e.g. Sarah Johnson"
-                autoComplete="name"
-              />
+              <input id="hlf-name" type="text" required className="field-input"
+                placeholder="e.g. Sarah Johnson" autoComplete="name" />
             </div>
 
             <div>
               <label className="field-label" htmlFor="hlf-email">Email address *</label>
-              <input
-                id="hlf-email"
-                type="email"
-                required
-                className="field-input"
-                placeholder="your@email.com"
-                autoComplete="email"
-              />
+              <input id="hlf-email" type="email" required className="field-input"
+                placeholder="your@email.com" autoComplete="email" />
             </div>
 
             <div>
               <label className="field-label" htmlFor="hlf-phone">Phone number *</label>
-              <input
-                id="hlf-phone"
-                type="tel"
-                required
-                className="field-input"
-                placeholder="07700 900000"
-                autoComplete="tel"
-              />
+              <input id="hlf-phone" type="tel" required className="field-input"
+                placeholder="07700 900000" autoComplete="tel" />
             </div>
 
             <div>
@@ -102,13 +111,13 @@ export function HeroLeadForm({ city, service }: Props) {
               <label className="field-label" htmlFor="hlf-msg">
                 Message <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
               </label>
-              <textarea
-                id="hlf-msg"
-                rows={2}
-                className="field-input resize-none"
-                placeholder="e.g. blended family, home visit needed, urgent..."
-              />
+              <textarea id="hlf-msg" rows={2} className="field-input resize-none"
+                placeholder="e.g. blended family, home visit needed, urgent..." />
             </div>
+
+            {error && (
+              <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
+            )}
 
             <button type="submit" disabled={submitting} className="btn-primary w-full justify-center">
               {submitting ? 'Sending...' : 'Find my specialist →'}

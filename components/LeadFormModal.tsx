@@ -10,6 +10,8 @@ interface Props {
   defaultCity?: string;
 }
 
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
+
 const serviceOptions = [
   'Single will',
   'Mirror wills for a couple',
@@ -25,13 +27,14 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
   const [closing,    setClosing]    = useState(false);
   const [submitted,  setSubmitted]  = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error,      setError]      = useState('');
   const nameRef    = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (isOpen) {
       triggerRef.current = document.activeElement as HTMLElement;
-      setMounted(true); setClosing(false); setSubmitted(false);
+      setMounted(true); setClosing(false); setSubmitted(false); setError('');
       document.body.style.overflow = 'hidden';
       setTimeout(() => nameRef.current?.focus(), 60);
     } else if (mounted) {
@@ -53,9 +56,33 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
-    // TODO: replace with real webhook/CRM endpoint
-    await new Promise(r => setTimeout(r, 800));
-    setSubmitting(false); setSubmitted(true);
+    setError('');
+
+    const form = e.currentTarget;
+    const payload = {
+      name:    (form.querySelector('#m-name')    as HTMLInputElement).value.trim(),
+      email:   (form.querySelector('#m-email')   as HTMLInputElement).value.trim(),
+      phone:   (form.querySelector('#m-phone')   as HTMLInputElement).value.trim(),
+      service: (form.querySelector('#m-svc')     as HTMLSelectElement).value,
+      message: (form.querySelector('#m-msg')     as HTMLTextAreaElement).value.trim(),
+      page:    window.location.pathname,
+      source:  'modal',
+    };
+
+    try {
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      // no-cors means we can't read the response — assume success if no throw
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try calling us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (!mounted) return null;
@@ -113,39 +140,20 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
 
                 <div>
                   <label className="field-label" htmlFor="m-name">Your name *</label>
-                  <input
-                    ref={nameRef}
-                    id="m-name"
-                    type="text"
-                    required
-                    className="field-input"
-                    placeholder="e.g. Sarah Johnson"
-                    autoComplete="name"
-                  />
+                  <input ref={nameRef} id="m-name" type="text" required className="field-input"
+                    placeholder="e.g. Sarah Johnson" autoComplete="name" />
                 </div>
 
                 <div>
                   <label className="field-label" htmlFor="m-email">Email address *</label>
-                  <input
-                    id="m-email"
-                    type="email"
-                    required
-                    className="field-input"
-                    placeholder="your@email.com"
-                    autoComplete="email"
-                  />
+                  <input id="m-email" type="email" required className="field-input"
+                    placeholder="your@email.com" autoComplete="email" />
                 </div>
 
                 <div>
                   <label className="field-label" htmlFor="m-phone">Phone number *</label>
-                  <input
-                    id="m-phone"
-                    type="tel"
-                    required
-                    className="field-input"
-                    placeholder="07700 900000"
-                    autoComplete="tel"
-                  />
+                  <input id="m-phone" type="tel" required className="field-input"
+                    placeholder="07700 900000" autoComplete="tel" />
                 </div>
 
                 <div>
@@ -165,14 +173,14 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                   <label className="field-label" htmlFor="m-msg">
                     Message <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
                   </label>
-                  <textarea
-                    id="m-msg"
-                    rows={3}
-                    className="field-input resize-none"
+                  <textarea id="m-msg" rows={3} className="field-input resize-none"
                     placeholder="e.g. blended family, home visit needed, urgent..."
-                    defaultValue={defaultCity ? `Enquiring from ${defaultCity}` : ''}
-                  />
+                    defaultValue={defaultCity ? `Enquiring from ${defaultCity}` : ''} />
                 </div>
+
+                {error && (
+                  <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
+                )}
 
                 <button type="submit" disabled={submitting} className="btn-primary w-full justify-center" style={{ marginTop: 4 }}>
                   {submitting ? 'Sending...' : 'Find my specialist →'}

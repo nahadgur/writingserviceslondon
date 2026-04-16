@@ -25,7 +25,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
   const [closing,    setClosing]    = useState(false);
   const [submitted,  setSubmitted]  = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const emailRef   = useRef<HTMLInputElement>(null);
+  const nameRef    = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
       triggerRef.current = document.activeElement as HTMLElement;
       setMounted(true); setClosing(false); setSubmitted(false);
       document.body.style.overflow = 'hidden';
-      setTimeout(() => emailRef.current?.focus(), 60);
+      setTimeout(() => nameRef.current?.focus(), 60);
     } else if (mounted) {
       doClose();
     }
@@ -87,11 +87,8 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
             </h2>
             <p className="body-sm">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; We call you back within 24hrs</p>
           </div>
-          <button
-            onClick={doClose}
-            aria-label="Close"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--dust)', padding: 4, marginRight: -4 }}
-          >
+          <button onClick={doClose} aria-label="Close"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--dust)', padding: 4, marginRight: -4 }}>
             <X size={18} />
           </button>
         </div>
@@ -114,11 +111,22 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
             <form onSubmit={submit} noValidate>
               <div className="space-y-4">
 
-                {/* Email */}
+                <div>
+                  <label className="field-label" htmlFor="m-name">Your name *</label>
+                  <input
+                    ref={nameRef}
+                    id="m-name"
+                    type="text"
+                    required
+                    className="field-input"
+                    placeholder="e.g. Sarah Johnson"
+                    autoComplete="name"
+                  />
+                </div>
+
                 <div>
                   <label className="field-label" htmlFor="m-email">Email address *</label>
                   <input
-                    ref={emailRef}
                     id="m-email"
                     type="email"
                     required
@@ -128,7 +136,6 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                   />
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label className="field-label" htmlFor="m-phone">Phone number *</label>
                   <input
@@ -141,27 +148,22 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                   />
                 </div>
 
-                {/* Service */}
                 <div>
-                  <label className="field-label" htmlFor="m-svc">What do you need help with? *</label>
+                  <label className="field-label" htmlFor="m-svc">Type of service *</label>
                   <div style={{ position: 'relative' }}>
-                    <select
-                      id="m-svc"
-                      required
-                      className="field-select"
-                      defaultValue={defaultService}
-                    >
+                    <select id="m-svc" required className="field-select" defaultValue={defaultService}>
                       <option value="">Please select...</option>
                       {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <svg style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--dust)' }} width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <svg style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--dust)' }} width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                 </div>
 
-                {/* Optional message */}
                 <div>
                   <label className="field-label" htmlFor="m-msg">
-                    Anything we should know? <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+                    Message <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
                   </label>
                   <textarea
                     id="m-msg"
@@ -172,12 +174,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="btn-primary w-full justify-center"
-                  style={{ marginTop: 4 }}
-                >
+                <button type="submit" disabled={submitting} className="btn-primary w-full justify-center" style={{ marginTop: 4 }}>
                   {submitting ? 'Sending...' : 'Find my specialist →'}
                 </button>
 

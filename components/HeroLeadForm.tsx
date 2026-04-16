@@ -50,6 +50,18 @@ export function HeroLeadForm({ city, service }: Props) {
           <form onSubmit={submit} noValidate className="space-y-3">
 
             <div>
+              <label className="field-label" htmlFor="hlf-name">Your name *</label>
+              <input
+                id="hlf-name"
+                type="text"
+                required
+                className="field-input"
+                placeholder="e.g. Sarah Johnson"
+                autoComplete="name"
+              />
+            </div>
+
+            <div>
               <label className="field-label" htmlFor="hlf-email">Email address *</label>
               <input
                 id="hlf-email"
@@ -76,16 +88,13 @@ export function HeroLeadForm({ city, service }: Props) {
             <div>
               <label className="field-label" htmlFor="hlf-svc">Type of service *</label>
               <div style={{ position: 'relative' }}>
-                <select
-                  id="hlf-svc"
-                  required
-                  className="field-select"
-                  defaultValue={service ?? ''}
-                >
+                <select id="hlf-svc" required className="field-select" defaultValue={service ?? ''}>
                   <option value="">Please select...</option>
                   {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
-                <svg style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--dust)' }} width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'var(--dust)' }} width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
             </div>
 

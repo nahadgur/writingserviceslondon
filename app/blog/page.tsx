@@ -6,6 +6,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { blogArticles } from '@/data/blog';
+import { siteConfig } from '@/data/site';
 
 export default function BlogIndexPage() {
   const [modal, setModal] = useState(false);
@@ -21,8 +22,27 @@ export default function BlogIndexPage() {
     return blogArticles.filter(a => a.category === activeCategory);
   }, [activeCategory]);
 
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${siteConfig.url}/blog/#blog`,
+    name: 'Will Writing and Estate Planning Guides -- London',
+    description: 'Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate.',
+    url: `${siteConfig.url}/blog/`,
+    publisher: { '@id': `${siteConfig.url}/#organization` },
+    blogPost: blogArticles.slice(0, 10).map(a => ({
+      '@type': 'BlogPosting',
+      headline: a.title,
+      url: `${siteConfig.url}/blog/${a.slug}/`,
+      datePublished: a.publishDate,
+      description: a.metaDescription,
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 

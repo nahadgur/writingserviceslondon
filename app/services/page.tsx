@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
 import { Header } from '@/components/Header';
+import { siteConfig } from '@/data/site';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 
@@ -20,8 +21,31 @@ const pricing: Record<string, { range: string; note: string }> = {
 export default function ServicesIndexPage() {
   const [modal, setModal] = useState(false);
 
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteConfig.url}/services/#service`,
+    name: 'Will Writing and Estate Planning Matching -- London',
+    description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists across all London areas.',
+    url: `${siteConfig.url}/services/`,
+    provider: { '@id': `${siteConfig.url}/#organization` },
+    areaServed: { '@type': 'City', name: 'London', '@id': 'https://www.wikidata.org/wiki/Q84' },
+    serviceType: 'Will Writing Referral Service',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Estate Planning Services',
+      itemListElement: services.map((s, i) => ({
+        '@type': 'Offer',
+        position: i + 1,
+        itemOffered: { '@type': 'Service', name: s.title, description: s.description, url: `${siteConfig.url}/services/${s.slug}/` },
+      })),
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 

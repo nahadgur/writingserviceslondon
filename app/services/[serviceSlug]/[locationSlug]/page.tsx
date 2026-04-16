@@ -5,6 +5,7 @@ import { AREA_HUBS, getAreaHubBySlug } from '@/data/locations';
 import { serviceLocationData } from '@/data/serviceLocationData';
 import { getAreaContent } from '@/data/areaContent';
 import { ServiceLocationClient } from './ServiceLocationClient';
+import { siteConfig } from '@/data/site';
 import { serviceLocationMeta } from '@/data/serviceLocationMeta';
 import type { Metadata } from 'next';
 
@@ -45,5 +46,37 @@ export default function ServiceLocationPage({ params }: { params: { serviceSlug:
 
   const areaContent = getAreaContent(hub.slug);
 
-  return <ServiceLocationClient service={service} hub={hub} content={content} areaContent={areaContent} />;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': ['Service', 'WebPage'],
+    '@id': `${siteConfig.url}/services/${service.slug}/${hub.slug}/#service`,
+    name: `${service.title} in ${hub.name} -- London`,
+    description: content.heroParagraph,
+    url: `${siteConfig.url}/services/${service.slug}/${hub.slug}/`,
+    provider: { '@id': `${siteConfig.url}/#organization` },
+    areaServed: { '@type': 'City', name: hub.name, containedInPlace: { '@type': 'City', name: 'London' } },
+    serviceType: service.title,
+    mainEntityOfPage: `${siteConfig.url}/services/${service.slug}/${hub.slug}/`,
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteConfig.url}/services/` },
+        { '@type': 'ListItem', position: 3, name: service.title, item: `${siteConfig.url}/services/${service.slug}/` },
+        { '@type': 'ListItem', position: 4, name: hub.name, item: `${siteConfig.url}/services/${service.slug}/${hub.slug}/` },
+      ],
+    },
+    hasFAQ: content.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <ServiceLocationClient service={service} hub={hub} content={content} areaContent={areaContent} />
+    </>
+  );
 }

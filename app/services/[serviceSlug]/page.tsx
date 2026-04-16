@@ -9,6 +9,7 @@ import { AREA_HUBS } from '@/data/locations';
 import { FAQS_SERVICES } from '@/data/site';
 import { serviceContent } from '@/data/serviceContent';
 import { Header } from '@/components/Header';
+import { siteConfig } from '@/data/site';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
@@ -29,10 +30,32 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
   const service = getServiceBySlug(params.serviceSlug);
   if (!service) notFound();
 
+  const pricing = pricingMap[service.slug];
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': ['Service', 'WebPage'],
+    '@id': `${siteConfig.url}/services/${service.slug}/#service`,
+    name: `${service.title} -- London`,
+    description: service.description,
+    url: `${siteConfig.url}/services/${service.slug}/`,
+    provider: { '@id': `${siteConfig.url}/#organization` },
+    areaServed: { '@type': 'City', name: 'London' },
+    serviceType: service.title,
+    ...(pricing ? { offers: { '@type': 'AggregateOffer', priceCurrency: 'GBP', lowPrice: pricing.from.replace('£',''), highPrice: pricing.to.replace('£',''), offerCount: '10+' } } : {}),
+    mainEntityOfPage: `${siteConfig.url}/services/${service.slug}/`,
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteConfig.url}/services/` },
+        { '@type': 'ListItem', position: 3, name: service.title, item: `${siteConfig.url}/services/${service.slug}/` },
+      ],
+    },
+  };
+
   const content   = serviceContent[service.id] || serviceContent[services[0].id];
   const related   = services.filter(s => s.id !== service.id);
   const combinedFaqs = [...(service.faqs || []), ...FAQS_SERVICES];
-  const pricing   = pricingMap[service.slug];
 
   const h = (size: number | string, style?: React.CSSProperties) => ({
     fontFamily: 'var(--font-cormorant), Georgia, serif',
@@ -46,6 +69,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} defaultService={service.title} />
       <Header onOpenModal={() => setModal(true)} />
 

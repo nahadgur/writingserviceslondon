@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import { AREA_HUBS } from '@/data/locations';
+import { siteConfig } from '@/data/site';
 import { FAQS_LOCATION } from '@/data/site';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -25,8 +26,27 @@ export default function LocationIndexPage() {
     (a, b) => (regionOrder[a] ?? 9) - (regionOrder[b] ?? 9)
   );
 
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${siteConfig.url}/location/#page`,
+    name: 'Will Writing Services -- London Areas',
+    description: 'Find vetted will writers and estate planning specialists across all London areas. Coverage across 15 London hubs from Mayfair to Stratford.',
+    url: `${siteConfig.url}/location/`,
+    isPartOf: { '@id': `${siteConfig.url}/#website` },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url },
+        { '@type': 'ListItem', position: 2, name: 'Areas', item: `${siteConfig.url}/location/` },
+      ],
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 

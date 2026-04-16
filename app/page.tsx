@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { FAQ } from '@/components/FAQ';
 import { services } from '@/data/services';
+import { siteConfig } from '@/data/site';
 import { AREA_HUBS } from '@/data/locations';
 import { FAQS_HOME } from '@/data/site';
 
@@ -52,8 +53,25 @@ export default function HomePage() {
     ...extra,
   });
 
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${siteConfig.url}/#webpage`,
+    name: 'Will Writing Services London -- Free Specialist Matching',
+    description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists. Single wills, mirror wills, LPAs, trust planning and probate support.',
+    url: siteConfig.url,
+    isPartOf: { '@id': `${siteConfig.url}/#website` },
+    about: { '@id': `${siteConfig.url}/#organization` },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.url }],
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 

@@ -2,6 +2,7 @@
 
 export interface ContentBlock {
   type: string; text?: string; src?: string; alt?: string;
+  href?: string; linkText?: string;
   items?: string[]; articles?: { slug: string; title: string; image?: string }[];
 }
 export interface BlogArticle {
@@ -25,6 +26,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Why Families Need Will Writing in London 2026"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "The formal legal requirements for a valid will are set out in full on GOV.UK."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/article(yqxp)_1.jpeg",
@@ -838,6 +840,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Qualifications and Regulation"
         },
+        {"type": "external-link", "href": "https://www.sra.org.uk/consumers/using-solicitor/", "linkText": "Solicitors Regulation Authority: Using a solicitor", "text": "You can verify any solicitor's SRA registration before instructing them."},
         {
             "type": "p",
             "text": "Solicitors and will writing services operate under fundamentally different regulatory frameworks, with solicitors regulated by the Solicitors Regulation Authority (SRA) while will writers often lack formal legal oversight."
@@ -1266,6 +1269,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "What Are Home Visit Will Writing Services?"
         },
+        {"type": "external-link", "href": "https://www.ageuk.org.uk/information-advice/money-legal/legal-issues/making-a-will/", "linkText": "Age UK: Making a will", "text": "Age UK covers home visit will writing services and what to expect from the process."},
         {
             "type": "p",
             "text": "Home visit will writing services bring regulated solicitors directly to your London residence for confidential will drafting. This eliminates office travel while meeting UK Wills Act 1837 requirements for validity. Clients value the convenience of home visit solicitor appointments."
@@ -2240,6 +2244,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Overview of Will Writing in London"
         },
+        {"type": "external-link", "href": "https://www.citizensadvice.org.uk/family/death-and-wills/wills/", "linkText": "Citizens Advice: Wills", "text": "Citizens Advice provides a free overview of your legal options when making a will."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_1.jpeg",
@@ -2681,6 +2686,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Is Will Writing Regulated in the UK?"
         },
+        {"type": "external-link", "href": "https://www.sra.org.uk/consumers/using-solicitor/", "linkText": "Solicitors Regulation Authority: Using a solicitor", "text": "The SRA maintains a public register of all regulated solicitors in England and Wales."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/article(73ln)_1.jpeg",
@@ -3132,6 +3138,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "What Are Mirror Wills?"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "GOV.UK sets out the legal requirements that apply to each partner's will individually."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_1.jpeg",
@@ -3562,6 +3569,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Understanding Wills in London"
         },
+        {"type": "external-link", "href": "https://www.ageuk.org.uk/information-advice/money-legal/legal-issues/making-a-will/", "linkText": "Age UK: Making a will", "text": "Age UK provides practical guidance on reviewing and updating wills at different life stages."},
         {
             "type": "p",
             "text": "In London, wills are governed by the Wills Act 1837, requiring testators to be 18+, of sound mind, and follow strict formalities including two independent witnesses. This law ensures will validity across England and Wales. London residents must meet these rules for their estate planning to hold up in court."
@@ -3960,6 +3968,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Understanding Lasting Power of Attorney (LPA)"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/power-of-attorney", "linkText": "GOV.UK: Lasting power of attorney", "text": "The full registration process and official forms are available on GOV.UK."},
         {
             "type": "p",
             "text": "A Lasting Power of Attorney (LPA) is a legal document under the Mental Capacity Act 2005 allowing you to appoint trusted individuals to manage your financial affairs, property, or health and welfare decisions if you lose mental capacity."
@@ -4415,6 +4424,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Understanding Inheritance Tax in the UK"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/inheritance-tax", "linkText": "GOV.UK: Inheritance Tax", "text": "Current thresholds, reliefs, and exemptions are published on GOV.UK."},
         {
             "type": "p",
             "text": "UK Inheritance Tax (IHT) applies to estates over £325,000 per person, with rates up to 40% on excess value according to HMRC 2024 guidelines. This tax targets the transfer of assets after death. Proper inheritance tax planning helps reduce the burden on beneficiaries."
@@ -4779,6 +4789,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Why London Homeowners Need Specialist Will Writing"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/inheritance-tax", "linkText": "GOV.UK: Inheritance Tax", "text": "The residence nil-rate band rules and property reliefs are explained in full on GOV.UK."},
         {
             "type": "p",
             "text": "London homeowners with multiple properties face unique challenges: 47% of estates over £325,000 triggered inheritance tax in 2023 (HMRC data), while probate delays average 9-12 months for multi-property estates per Ministry of Justice statistics."
@@ -5093,6 +5104,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Why Make a Will in London?"
         },
+        {"type": "external-link", "href": "https://www.citizensadvice.org.uk/family/death-and-wills/wills/", "linkText": "Citizens Advice: Wills", "text": "Citizens Advice outlines the free and low-cost will writing options available to UK residents."},
         {
             "type": "p",
             "text": "In London, 57% of adults die without a will (YouGov 2023), facing intestacy rules that give £322,000 estates entirely to spouses while children wait 10+ years for probate through London's Principal Registry. Without a will writing London plan, assets follow strict intestacy laws. This often leads to unwanted outcomes for families."
@@ -5531,6 +5543,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Understanding Wills in London"
         },
+        {"type": "external-link", "href": "https://www.cancerresearchuk.org/support-us/leave-a-legacy", "linkText": "Cancer Research UK: Leave a legacy", "text": "Cancer Research UK's legacy giving page explains how charitable gifts in wills are handled in practice."},
         {
             "type": "p",
             "text": "London wills must comply with the Wills Act 1837, requiring testators to be 18+, of sound mind, and sign in the presence of two independent witnesses. This ensures will validity under UK law, with London-specific handling through the London District Probate Registry. The process supports smooth estate planning, including charitable gifts like legacy bequests to registered charities."
@@ -5877,6 +5890,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Mistake 1: DIY Wills Without Legal Advice"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "GOV.UK sets out the formal execution requirements that DIY wills most commonly fail to meet."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_1.jpeg",
@@ -6758,6 +6772,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Understanding Emergency Will Writing"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate", "linkText": "GOV.UK: Applying for probate", "text": "Dying without a valid will means executors must apply for letters of administration -- GOV.UK explains the full process."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_1.jpeg",
@@ -7446,6 +7461,7 @@ export const blogArticles: BlogArticle[] = [
             "type": "h2",
             "text": "Preparation Before the Visit"
         },
+        {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate", "linkText": "GOV.UK: Applying for probate", "text": "Documents gathered for your will appointment also help executors when applying for probate later."},
         {
             "type": "image",
             "src": "https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_1.jpeg",

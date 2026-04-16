@@ -50,6 +50,33 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
         </figure>
       );
 
+    case 'external-link':
+      return (
+        <div key={index} style={{ margin: '4px 0 20px', paddingLeft: 16, borderLeft: '2px solid var(--border)' }}>
+          <a
+            href={block.href || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: 12,
+              fontWeight: 500,
+              color: 'var(--brand)',
+              textDecoration: 'none',
+              display: 'block',
+              marginBottom: 2,
+            }}
+          >
+            {block.linkText || block.href} ↗
+          </a>
+          {block.text && (
+            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 300, color: 'var(--dust)', lineHeight: 1.5, margin: 0 }}>
+              {block.text}
+            </p>
+          )}
+        </div>
+      );
+
     case 'cta':
       return (
         <div key={index} style={{ background: 'var(--ink)', borderRadius: 8, padding: '24px 20px', textAlign: 'center', margin: '28px 0' }}>

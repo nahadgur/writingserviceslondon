@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 
@@ -55,10 +56,16 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitting(true);
-    setError('');
 
     const form = e.currentTarget;
+    const consent = (form.querySelector('#m-consent') as HTMLInputElement)?.checked;
+    if (!consent) {
+      setError('Please confirm your consent to continue.');
+      return;
+    }
+
+    setSubmitting(true);
+    setError('');
     const payload = {
       name:    (form.querySelector('#m-name')    as HTMLInputElement).value.trim(),
       email:   (form.querySelector('#m-email')   as HTMLInputElement).value.trim(),
@@ -177,6 +184,34 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                     placeholder="e.g. blended family, home visit needed, urgent..."
                     defaultValue={defaultCity ? `Enquiring from ${defaultCity}` : ''} />
                 </div>
+
+                <label
+                  htmlFor="m-consent"
+                  style={{
+                    display: 'flex',
+                    gap: 8,
+                    alignItems: 'flex-start',
+                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                    fontSize: 12,
+                    fontWeight: 300,
+                    lineHeight: 1.5,
+                    color: 'var(--stone)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <input
+                    id="m-consent"
+                    type="checkbox"
+                    required
+                    style={{ marginTop: 3, accentColor: 'var(--brand)' }}
+                  />
+                  <span>
+                    I consent to my details being shared with up to three vetted will writers in our network. See our{' '}
+                    <Link href="/privacy/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
+                      privacy notice
+                    </Link>.
+                  </span>
+                </label>
 
                 {error && (
                   <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>

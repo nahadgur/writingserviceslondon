@@ -1,3 +1,14 @@
+// app/sitemap.ts
+//
+// 2026-05-04: combo route /services/[svc]/[hub]/ removed entirely
+// (was 90 hand-written pages — replaced by 6 service hubs + 15 area
+// hubs covering the same ground without combinatoric inflation).
+// Added /privacy/, /about/, /contact/, /terms/ legal pages.
+//
+// IMPORTANT: lastModified uses static dates not new Date() — every
+// Google fetch with new Date() looks "fresh" and forces re-crawl,
+// burning crawl budget on pages that haven't changed.
+
 import type { MetadataRoute } from 'next';
 import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
@@ -6,7 +17,7 @@ import { blogArticles } from '@/data/blog';
 import { guides } from '@/data/guides';
 
 const SITE_LAUNCH = '2025-01-01';
-const LAST_CONTENT_UPDATE = '2026-01-15';
+const LAST_CONTENT_UPDATE = '2026-05-04';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -61,7 +72,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Tier 5 — 15 curated area hub pages (0.6)
-  // Each page is genuinely differentiated with original content — higher priority than Phase 1's 83 thin pages
   const locationPages: MetadataRoute.Sitemap = AREA_HUBS.map(hub => ({
     url: `${base}/location/${hub.slug}/`,
     lastModified: LAST_CONTENT_UPDATE,
@@ -69,19 +79,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Tier 6 — 90 service x location pages (0.5)
-  // 6 services x 15 hubs, each with unique per-hub per-service content
-  const serviceLocationPages: MetadataRoute.Sitemap = [];
-  for (const service of services) {
-    for (const hub of AREA_HUBS) {
-      serviceLocationPages.push({
-        url: `${base}/services/${service.slug}/${hub.slug}/`,
-        lastModified: LAST_CONTENT_UPDATE,
-        changeFrequency: 'yearly' as const,
-        priority: 0.5,
-      });
-    }
-  }
+  // Tier 6 — Legal pages
+  const legalPages: MetadataRoute.Sitemap = [
+    { url: `${base}/about/`,   lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.5 },
+    { url: `${base}/contact/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.5 },
+    { url: `${base}/privacy/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${base}/terms/`,   lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.3 },
+  ];
 
   return [
     ...staticPages,
@@ -91,6 +95,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...blogPages,
     ...locationPages,
-    ...serviceLocationPages,
+    ...legalPages,
   ];
 }

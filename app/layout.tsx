@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/data/site';
+import { ConsentBanner } from '@/components/ConsentBanner';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -79,17 +79,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="min-h-screen flex flex-col">
-        {gaId && (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-            <Script id="gtag-init" strategy="afterInteractive">{`
-              window.dataLayer=window.dataLayer||[];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js',new Date());
-              gtag('config','${gaId}');
-            `}</Script>
-          </>
-        )}
+        {/* GA4 only loads after the visitor accepts the cookie banner
+            (UK PECR requires prior consent for non-essential cookies). */}
+        <ConsentBanner gaId={gaId} />
         {children}
       </body>
     </html>

@@ -1,150 +1,269 @@
-// SERVER COMPONENT
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Will Writing Services London',
-  description: 'Privacy policy for Will Writing Services London. How we collect, use, and protect personal data submitted through our referral and matching service.',
-  alternates: { canonical: `${siteConfig.url}/privacy/` },
+  title: 'Privacy notice',
+  description:
+    'How Will Writing Services London collects, uses, and protects personal data submitted through our matching service. UK GDPR notice covering enquiry data, cookies, and your rights.',
+  alternates: { canonical: '/privacy/' },
   robots: { index: true, follow: true },
 };
 
-const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
-  fontSize: size, fontStyle: 'italic', fontWeight: 400,
-  color: 'var(--ink)', lineHeight: 1.15, ...extra,
-});
-
-const sections = [
-  {
-    id: 'who-we-are',
-    heading: 'Who we are',
-    body: [
-      'Will Writing Services London operates at willwritingserviceslondon.co.uk. We are a referral and introduction service connecting members of the public with vetted will writers and estate planning specialists. We are not a law firm, solicitors\' practice, or regulated financial adviser.',
-      'For the purposes of data protection law, Will Writing Services London is the data controller in respect of personal data collected through this website and our enquiry process.',
-    ],
-  },
-  {
-    id: 'what-we-collect',
-    heading: 'What personal data we collect',
-    body: [
-      'When you submit an enquiry through our website, we collect: your full name, email address, telephone number, the type of service you are enquiring about, any additional information you provide in the message field, the URL of the page from which you submitted the enquiry, and the source of the enquiry (form type).',
-      'We also collect standard website analytics data through Google Analytics, including pages visited, time on site, device type, and approximate geographic location. This data is aggregated and does not identify you individually.',
-      'We do not collect financial information, identity documents, or any sensitive personal data through our website.',
-    ],
-  },
-  {
-    id: 'how-we-use-it',
-    heading: 'How we use your personal data',
-    body: [
-      'We use the personal data you submit to: contact you to discuss your enquiry and confirm your requirements; identify and approach suitable specialists in our network; make an introduction between you and the specialist; and follow up to confirm the introduction was satisfactory.',
-      'We do not use your personal data for automated decision-making or profiling. We do not use your data for marketing purposes without your explicit consent.',
-      'Our legal basis for processing your enquiry data is legitimate interests -- specifically, the legitimate interest of fulfilling the referral service you have requested by contacting us.',
-    ],
-  },
-  {
-    id: 'who-we-share-with',
-    heading: 'Who we share your data with',
-    body: [
-      'We share your name, contact details, and service requirements with the specialist or specialists we introduce you to. This is necessary to facilitate the introduction and is the core purpose of our service.',
-      'We use Google Analytics to understand how visitors use our website. Google processes analytics data in accordance with Google\'s privacy policy. We use Google Sheets (via Google Apps Script) to store enquiry data securely.',
-      'We do not sell your personal data to third parties. We do not share your data with marketing companies, data brokers, or any party not directly involved in facilitating your referral.',
-    ],
-  },
-  {
-    id: 'retention',
-    heading: 'How long we keep your data',
-    body: [
-      'We retain your enquiry data for a period of 24 months from the date of your enquiry. After this period, your data is deleted from our systems.',
-      'If you ask us to delete your data before this period has elapsed, we will do so within 30 days of receiving your request, subject to any legal obligation to retain records.',
-    ],
-  },
-  {
-    id: 'your-rights',
-    heading: 'Your rights',
-    body: [
-      'Under the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, you have the following rights in relation to your personal data: the right to access the data we hold about you; the right to correct inaccurate data; the right to request deletion of your data; the right to restrict processing of your data; the right to data portability; and the right to object to processing.',
-      'To exercise any of these rights, contact us at the email address below. We will respond within one calendar month. If you are unhappy with how we handle your request or your data generally, you have the right to complain to the Information Commissioner\'s Office (ICO) at ico.org.uk.',
-    ],
-  },
-  {
-    id: 'cookies',
-    heading: 'Cookies',
-    body: [
-      'Our website uses cookies for analytics purposes (Google Analytics). These cookies collect information about how visitors use the site -- pages visited, time on site, and similar aggregate data. No personally identifiable information is collected through cookies.',
-      'You can control cookies through your browser settings. Disabling analytics cookies will not affect your ability to use the website or submit an enquiry.',
-    ],
-  },
-  {
-    id: 'changes',
-    heading: 'Changes to this policy',
-    body: [
-      'We may update this privacy policy from time to time. The current version will always be available at this URL. Material changes will be noted at the top of the page with the date of update.',
-      'This policy was last updated in April 2026.',
-    ],
-  },
-  {
-    id: 'contact',
-    heading: 'Contact',
-    body: [
-      'If you have any questions about this privacy policy or how we handle your personal data, please contact us through the enquiry form on our website.',
-    ],
-  },
-];
+const LAST_REVIEWED = '4 May 2026';
 
 export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main>
-        {/* Simple parchment hero — no dark treatment, this is a legal document page */}
-        <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '52px 0 44px' }}>
-          <div className="container-width">
-            <p className="eyebrow mb-4">Legal</p>
-            <h1 style={serif('clamp(28px,4vw,44px)', { marginBottom: 12 })}>Privacy policy</h1>
-            <p className="body-lg" style={{ maxWidth: 520 }}>
-              How Will Writing Services London collects, uses, and protects personal data.
+      <main className="flex-grow" style={{ background: 'var(--parchment)' }}>
+        <section style={{ background: 'var(--ink)', color: '#fff' }}>
+          <div className="container-width pt-20 pb-12">
+            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Legal — Privacy notice</p>
+            <h1
+              style={{
+                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontSize: 'clamp(36px, 5vw, 64px)',
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
+                lineHeight: 1.05,
+                color: '#fff',
+              }}
+              className="mb-4"
+            >
+              Privacy <em style={{ color: 'var(--brand)' }}>notice</em>
+            </h1>
+            <p
+              className="max-w-2xl"
+              style={{
+                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                fontWeight: 300,
+                fontSize: 17,
+                lineHeight: 1.65,
+                color: 'rgba(255,255,255,0.72)',
+              }}
+            >
+              How {siteConfig.name} collects, uses, and protects personal data submitted through the matching service. Written to satisfy UK GDPR and PECR.
+            </p>
+            <p
+              className="mt-4"
+              style={{
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: 11,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.4)',
+              }}
+            >
+              Last reviewed · {LAST_REVIEWED}
             </p>
           </div>
         </section>
 
-        <div className="container-width py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_220px] gap-12">
+        <section className="container-width py-14">
+          <Breadcrumbs items={[{ label: 'Privacy' }]} />
 
-            <article style={{ maxWidth: 680 }}>
-              {sections.map(s => (
-                <section key={s.id} id={s.id} style={{ marginBottom: 40 }}>
-                  <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 22, fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.2, marginBottom: 12 }}>
-                    {s.heading}
-                  </h2>
-                  {s.body.map((para, i) => (
-                    <p key={i} className="body-lg" style={{ marginBottom: 10 }}>{para}</p>
-                  ))}
-                </section>
-              ))}
-            </article>
+          <article
+            className="max-w-3xl mx-auto"
+            style={{
+              fontFamily: 'var(--font-inter), system-ui, sans-serif',
+              fontWeight: 300,
+              fontSize: 16,
+              lineHeight: 1.75,
+              color: 'rgba(28,24,20,0.85)',
+            }}
+          >
+            <Section title="Plain-English summary">
+              <p>
+                We collect your name, contact details, and the type of will or estate-planning help you need solely to match you with up to three vetted will writers. We share your details only with those matched professionals — never sold, never shared with third parties for marketing. You have full UK GDPR rights, including the right to ask us to delete your data and the right to complain to the ICO.
+              </p>
+            </Section>
 
-            {/* Sidebar — anchor nav */}
-            <aside>
-              <div className="lg:sticky" style={{ top: 28 }}>
-                <div className="sidebar-box">
-                  <p className="eyebrow mb-3">Contents</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    {sections.map(s => (
-                      <a key={s.id} href={`#${s.id}`} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 300, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, transition: 'color 0.12s' }} className="hover:text-brand-500">
-                        {s.heading}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
+            <Section title="1. Who we are">
+              <p>
+                {siteConfig.name} (&ldquo;we&rdquo;, &ldquo;us&rdquo;) operates {' '}
+                <strong>{siteConfig.url.replace(/https?:\/\//, '')}</strong>{' '}
+                as a free matching service connecting London residents with vetted will writers and estate planning specialists. We are the data controller for personal information submitted via this site.
+              </p>
+              <p>
+                <strong>We are not a law firm or will writing practice.</strong> Once we pass your enquiry to one or more matched professionals, those professionals act as independent data controllers for any further work you instruct them to do.
+              </p>
+            </Section>
+
+            <Section title="2. What data we collect">
+              <p>When you submit the matching form we collect:</p>
+              <ul>
+                <li><strong>Full name</strong> — to address you correctly when matched professionals contact you.</li>
+                <li><strong>Email address</strong> — to send a match confirmation and follow-up.</li>
+                <li><strong>Phone number</strong> — to allow matched professionals to contact you directly.</li>
+                <li><strong>Service type</strong> — the kind of will or estate planning support you&apos;re seeking.</li>
+                <li><strong>Optional message</strong> — any additional context you choose to provide.</li>
+                <li><strong>Page you submitted from</strong> — to give the matched professional context.</li>
+              </ul>
+              <p>
+                We do <strong>not</strong> collect estate values, asset details, beneficiary information, or any specific testamentary content through our forms. Any such information is shared directly between you and the will writer you choose to engage.
+              </p>
+              <p>
+                If you accept analytics cookies, we also collect anonymised browsing data through Google Analytics 4 — see &quot;Cookies&quot; below.
+              </p>
+            </Section>
+
+            <Section title="3. Why we collect it (lawful basis)">
+              <p>
+                We process enquiry data on the basis of <strong>your consent</strong> (UK GDPR Article 6(1)(a)) — you tick a box on the form to confirm you want to be matched with a will writer. You can withdraw consent at any time by emailing us; withdrawal does not affect lawfulness of processing carried out before withdrawal.
+              </p>
+              <p>
+                Once we share your enquiry with a matched professional, that professional&apos;s lawful basis for follow-up contact is also your consent, plus their <strong>legitimate interest</strong> in responding to a referred enquiry.
+              </p>
+            </Section>
+
+            <Section title="4. Who we share it with">
+              <p>
+                Your enquiry is shared with up to three vetted will writers from our London-area network. Each receives your name, email, phone, service requested, and any message you wrote. They are required to treat that information confidentially and use it only to respond to your enquiry.
+              </p>
+              <p>The form submission itself is processed using:</p>
+              <ul>
+                <li><strong>Google Apps Script</strong> (Google LLC) — receives the form submission and routes it to our enquiry record.</li>
+                <li><strong>Google Workspace</strong> (Google LLC) — stores the enquiry record and sends notification email.</li>
+              </ul>
+              <p>
+                Google may transfer data outside the UK; transfers are covered by the UK Addendum to the EU Standard Contractual Clauses, which provides the safeguards UK GDPR requires.
+              </p>
+              <p>
+                <strong>We do not sell or rent your data to third parties for marketing.</strong>
+              </p>
+            </Section>
+
+            <Section title="5. How long we keep it">
+              <p>
+                Enquiry records are kept for <strong>24 months</strong> from the date of submission, after which they are deleted. We keep them this long to handle re-matching requests, complaints, or follow-up questions about a previous match.
+              </p>
+              <p>
+                Anonymised analytics data is retained for 14 months in Google Analytics, then automatically deleted by Google.
+              </p>
+            </Section>
+
+            <Section title="6. Cookies">
+              <p>This site uses two categories of cookie:</p>
+              <ul>
+                <li>
+                  <strong>Strictly necessary</strong> — a small cookie that records your cookie-banner choice. No consent required (PECR exemption).
+                </li>
+                <li>
+                  <strong>Analytics</strong> — Google Analytics 4 (cookies starting <code>_ga</code>) records anonymised page-view data so we can see which pages are useful. Loaded only if you click &quot;Accept&quot; on the cookie banner. You can withdraw consent at any time by clearing site data in your browser; the banner will reappear.
+                </li>
+              </ul>
+              <p>We do not use advertising, retargeting, or social-media tracking cookies.</p>
+            </Section>
+
+            <Section title="7. Your rights">
+              <p>Under UK GDPR you have the right to:</p>
+              <ul>
+                <li>Ask for a copy of the personal data we hold about you (subject access request).</li>
+                <li>Ask us to correct inaccurate data.</li>
+                <li>Ask us to delete your data (right to erasure).</li>
+                <li>Withdraw consent at any time.</li>
+                <li>Object to processing or restrict it.</li>
+                <li>Complain to the UK supervisory authority — the Information Commissioner&apos;s Office at{' '}
+                  <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">
+                    ico.org.uk/make-a-complaint
+                  </a>.
+                </li>
+              </ul>
+              <p>
+                To exercise any of these rights, contact us via the details on our{' '}
+                <Link href="/contact/">contact page</Link>. We will respond within one calendar month.
+              </p>
+            </Section>
+
+            <Section title="8. Security">
+              <p>
+                Data submitted through the form is transmitted over HTTPS. Stored enquiry records are protected by Google Workspace account access controls (two-factor authentication enforced). Access is limited to the people responsible for processing matches.
+              </p>
+              <p>
+                No system is perfectly secure. If we ever suffer a personal data breach that is likely to affect your rights, we will notify you and the ICO within 72 hours, as UK GDPR requires.
+              </p>
+            </Section>
+
+            <Section title="9. Sensitive nature of will-writing enquiries">
+              <p>
+                We recognise that estate planning enquiries can touch on health status, family relationships, bereavement, and other sensitive matters. We deliberately limit what the form collects — name, contact details, and the broad type of help you need — so that more sensitive information stays under your control and is shared only with the matched professional you choose to engage.
+              </p>
+              <p>
+                If you accidentally include sensitive information in the optional message field, you can ask us to delete the enquiry record at any time using the contact details above.
+              </p>
+            </Section>
+
+            <Section title="10. Changes to this notice">
+              <p>
+                We review this notice at least once per year and whenever the matching service changes materially. The &quot;Last reviewed&quot; date at the top of the page reflects the most recent revision.
+              </p>
+            </Section>
+
+            <div
+              className="mt-12 p-6"
+              style={{
+                background: 'var(--parchment-2)',
+                border: '0.5px solid var(--border)',
+                borderRadius: 8,
+              }}
+            >
+              <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Related</p>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(28,24,20,0.85)' }}>
+                Looking for the matching service?{' '}
+                <Link href="/services/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
+                  See the six services
+                </Link>{' '}
+                we connect London residents with, or read our{' '}
+                <Link href="/terms/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
+                  terms of use
+                </Link>.
+              </p>
+            </div>
+          </article>
+        </section>
       </main>
       <Footer />
     </>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="mb-10">
+      <h2
+        style={{
+          fontFamily: 'var(--font-cormorant), Georgia, serif',
+          fontSize: 'clamp(22px, 3vw, 30px)',
+          fontWeight: 400,
+          letterSpacing: '-0.01em',
+          lineHeight: 1.2,
+          color: 'var(--ink)',
+          marginBottom: 16,
+        }}
+      >
+        {title}
+      </h2>
+      <div
+        className="space-y-4"
+        style={{
+          fontFamily: 'var(--font-inter), system-ui, sans-serif',
+          fontWeight: 300,
+        }}
+      >
+        {children}
+      </div>
+      <style>{`
+        section a { color: var(--brand); text-decoration: underline; }
+        section a:hover { color: var(--brand-light); }
+        section ul { list-style: disc; padding-left: 24px; margin: 0 0 16px; }
+        section ul li { margin-bottom: 8px; }
+        section code { font-family: ui-monospace, monospace; font-size: 13px; background: rgba(28,24,20,0.06); padding: 1px 6px; border-radius: 3px; }
+        section strong { font-weight: 500; color: var(--ink); }
+      `}</style>
+    </section>
   );
 }

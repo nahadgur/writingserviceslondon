@@ -68,9 +68,11 @@ export function Footer() {
           <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.3)' }}>Information</p>
           <ul className="space-y-2.5">
             {[
-              { href: '/blog/', label: 'Guides and articles' },
-              { href: '/about/', label: 'About the service' },
-              { href: '/privacy/', label: 'Privacy policy' },
+              { href: '/blog/',    label: 'Guides and articles' },
+              { href: '/about/',   label: 'About the service' },
+              { href: '/contact/', label: 'Contact us' },
+              { href: '/privacy/', label: 'Privacy notice' },
+              { href: '/terms/',   label: 'Terms of use' },
             ].map(l => (
               <li key={l.href}>
                 <Link href={l.href} style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 14, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', transition: 'color 0.12s' }}

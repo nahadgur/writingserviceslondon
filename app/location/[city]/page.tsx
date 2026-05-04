@@ -1,8 +1,24 @@
 // SERVER COMPONENT — no 'use client'
+//
+// 2026-05-04 deepening: previously rendered only sub-areas grid +
+// service cards + FAQ, leaving 600+ lines of rich data unused in
+// areaContent.ts and locationProfiles.ts. Now surfaces:
+//   - areaContent.heroParagraph + introParagraphs (local intro)
+//   - areaContent.whySpecialistMatters
+//   - areaContent.clientProfile + locationProfiles.clientMix
+//   - areaContent.commonTriggers (when people engage this service)
+//   - locationProfiles.estateProfile + planningNeeds
+//   - areaContent.localContext
+//   - areaContent.faqOverride when present
+//
+// Also fixed dead combo links: services grid now links to
+// /services/{slug}/ (combo route was removed in the same commit).
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { services } from '@/data/services';
 import { AREA_HUBS, getAreaHubBySlug } from '@/data/locations';
+import { areaContent } from '@/data/areaContent';
+import { locationProfiles } from '@/data/locationProfiles';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
@@ -49,12 +65,17 @@ export default function CityPage({ params }: { params: { city: string } }) {
   const hub = getAreaHubBySlug(params.city);
   if (!hub) notFound();
 
+  // Optional rich-content modules. Both files cover most but not all
+  // hubs — the page degrades gracefully when an entry is missing.
+  const ac = areaContent[hub.slug];
+  const lp = locationProfiles[hub.slug];
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${siteConfig.url}/location/${hub.slug}/#webpage`,
     name: `Will Writing Referral Service -- ${hub.name}`,
-    description: `Free matching with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0,3).map(a => a.name).join(', ')}.`,
+    description: `Free matching with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}.`,
     url: `${siteConfig.url}/location/${hub.slug}/`,
     isPartOf: { '@id': `${siteConfig.url}/#website` },
     about: {
@@ -75,7 +96,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
     },
   };
 
-  const faqs = buildFaqs(hub.name, hub.subAreas.map(s => s.name));
+  const faqs = ac?.faqOverride ?? buildFaqs(hub.name, hub.subAreas.map(s => s.name));
   const nearbyHubs = AREA_HUBS.filter(h => h.region === hub.region && h.slug !== hub.slug);
 
   const faqSchema = {
@@ -88,6 +109,11 @@ export default function CityPage({ params }: { params: { city: string } }) {
     })),
   };
 
+  // H1 + hero subhead — prefer richer copy from areaContent when available.
+  const heroH1 = ac?.heroHeading ?? `Will writing in ${hub.name}`;
+  const heroSubhead = ac?.heroParagraph
+    ?? `Free matching with vetted estate planning specialists covering ${hub.postcode} and surrounding areas.`;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
@@ -95,177 +121,80 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <Header />
 
       <main>
-        {/* ── Hero — dark with geometric skyline SVG ─────────── */}
+        {/* ── Hero ──────────────────────────────────────────────── */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden', minHeight: 200 }}>
-
-          {/* Decorative skyline — right aligned, low opacity */}
-          <svg
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
-              opacity: 0.15,
-              pointerEvents: 'none',
-              display: 'block',
-            }}
-            width="380" height="220" viewBox="0 0 380 220"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Building 1 — short */}
-            <rect x="10"  y="140" width="34" height="80"  fill="white"/>
-            <rect x="18"  y="152" width="7"  height="9"   fill="#1c1814"/>
-            <rect x="30"  y="152" width="7"  height="9"   fill="#1c1814"/>
-            <rect x="18"  y="168" width="7"  height="9"   fill="#1c1814"/>
-            <rect x="30"  y="168" width="7"  height="9"   fill="#1c1814"/>
-
-            {/* Building 2 — medium */}
-            <rect x="52"  y="100" width="30" height="120" fill="white"/>
-            <rect x="59"  y="112" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="70"  y="112" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="59"  y="128" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="70"  y="128" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="59"  y="144" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="70"  y="144" width="6"  height="8"   fill="#1c1814"/>
-
-            {/* Building 3 — tall */}
-            <rect x="90"  y="60"  width="40" height="160" fill="white"/>
-            <rect x="99"  y="74"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="113" y="74"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="99"  y="92"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="113" y="92"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="99"  y="110" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="113" y="110" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="99"  y="128" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="113" y="128" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="99"  y="146" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="113" y="146" width="8"  height="10"  fill="#1c1814"/>
-
-            {/* Building 4 — short wide */}
-            <rect x="138" y="128" width="26" height="92"  fill="white"/>
-            <rect x="145" y="140" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="155" y="140" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="145" y="154" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="155" y="154" width="5"  height="7"   fill="#1c1814"/>
-
-            {/* Building 5 — medium tall */}
-            <rect x="172" y="80"  width="32" height="140" fill="white"/>
-            <rect x="180" y="94"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="191" y="94"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="180" y="110" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="191" y="110" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="180" y="126" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="191" y="126" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="180" y="142" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="191" y="142" width="6"  height="8"   fill="#1c1814"/>
-
-            {/* Building 6 — narrow short */}
-            <rect x="212" y="148" width="22" height="72"  fill="white"/>
-            <rect x="218" y="158" width="4"  height="6"   fill="#1c1814"/>
-            <rect x="226" y="158" width="4"  height="6"   fill="#1c1814"/>
-
-            {/* Building 7 — tallest */}
-            <rect x="242" y="40"  width="44" height="180" fill="white"/>
-            <rect x="252" y="56"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="56"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="252" y="74"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="74"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="252" y="92"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="92"  width="8"  height="10"  fill="#1c1814"/>
-            <rect x="252" y="110" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="110" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="252" y="128" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="128" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="252" y="146" width="8"  height="10"  fill="#1c1814"/>
-            <rect x="266" y="146" width="8"  height="10"  fill="#1c1814"/>
-
-            {/* Building 8 — right edge */}
-            <rect x="294" y="110" width="36" height="110" fill="white"/>
-            <rect x="303" y="124" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="315" y="124" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="303" y="140" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="315" y="140" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="303" y="156" width="6"  height="8"   fill="#1c1814"/>
-            <rect x="315" y="156" width="6"  height="8"   fill="#1c1814"/>
-
-            <rect x="338" y="130" width="30" height="90"  fill="white"/>
-            <rect x="346" y="142" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="357" y="142" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="346" y="157" width="5"  height="7"   fill="#1c1814"/>
-            <rect x="357" y="157" width="5"  height="7"   fill="#1c1814"/>
-          </svg>
-
-          {/* Hero content */}
-          <div
-            className="container-width"
-            style={{ position: 'relative', zIndex: 10, paddingTop: 44, paddingBottom: 52 }}
-          >
-            {/* Breadcrumb */}
+          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 44, paddingBottom: 52 }}>
             <div style={{ marginBottom: 20 }}>
               <Breadcrumbs dark items={[{ label: 'Areas', href: '/location/' }, { label: hub.name }]} />
             </div>
 
-            {/* Pills */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18, flexWrap: 'wrap' as const }}>
-              <span style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                background: 'rgba(212,105,25,0.18)',
-                border: '0.5px solid rgba(212,105,25,0.45)',
-                color: '#e8943a',
-                fontFamily: 'var(--font-inter), sans-serif',
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: '0.02em',
-                padding: '5px 14px',
-                borderRadius: 20,
-              }}>
-                {hub.region} London
-              </span>
-              <span style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                background: 'rgba(212,105,25,0.18)',
-                border: '0.5px solid rgba(212,105,25,0.45)',
-                color: '#e8943a',
-                fontFamily: 'var(--font-inter), sans-serif',
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: '0.02em',
-                padding: '5px 14px',
-                borderRadius: 20,
-              }}>
-                {hub.postcode}
-              </span>
+              {[hub.region + ' London', hub.postcode].map((label, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    background: 'rgba(212,105,25,0.18)',
+                    border: '0.5px solid rgba(212,105,25,0.45)',
+                    color: '#e8943a',
+                    fontFamily: 'var(--font-inter), sans-serif',
+                    fontSize: 12,
+                    fontWeight: 500,
+                    letterSpacing: '0.02em',
+                    padding: '5px 14px',
+                    borderRadius: 20,
+                  }}
+                >
+                  {label}
+                </span>
+              ))}
             </div>
 
-            {/* H1 — Cormorant, site font, not changed */}
-            <h1 style={{
-              fontFamily: 'var(--font-cormorant), Georgia, serif',
-              fontSize: 'clamp(34px, 5vw, 58px)',
-              fontWeight: 400,
-              fontStyle: 'normal',
-              color: '#ffffff',
-              lineHeight: 1.08,
-              letterSpacing: '-0.01em',
-              marginBottom: 16,
-              maxWidth: 620,
-            }}>
-              Will writing in {hub.name}
+            <h1
+              style={{
+                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontSize: 'clamp(34px, 5vw, 58px)',
+                fontWeight: 400,
+                color: '#ffffff',
+                lineHeight: 1.08,
+                letterSpacing: '-0.01em',
+                marginBottom: 16,
+                maxWidth: 720,
+              }}
+            >
+              {heroH1}
             </h1>
 
-            {/* Subtext */}
-            <p style={{
-              fontFamily: 'var(--font-inter), sans-serif',
-              fontSize: 14,
-              fontWeight: 300,
-              color: 'rgba(255,255,255,0.58)',
-              lineHeight: 1.65,
-              maxWidth: 520,
-            }}>
-              Free matching with vetted estate planning specialists covering {hub.postcode} and surrounding areas.
+            <p
+              style={{
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: 15,
+                fontWeight: 300,
+                color: 'rgba(255,255,255,0.66)',
+                lineHeight: 1.7,
+                maxWidth: 640,
+              }}
+            >
+              {heroSubhead}
             </p>
+
+            {/* Local one-liner from locationProfiles when available */}
+            {lp && (
+              <p
+                style={{
+                  fontFamily: 'var(--font-cormorant), Georgia, serif',
+                  fontStyle: 'italic',
+                  fontSize: 16,
+                  color: 'rgba(232,148,58,0.85)',
+                  marginTop: 18,
+                  maxWidth: 640,
+                  lineHeight: 1.5,
+                }}
+              >
+                {lp.character}
+              </p>
+            )}
           </div>
         </section>
 
@@ -294,6 +223,105 @@ export default function CityPage({ params }: { params: { city: string } }) {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14">
 
             <div>
+              {/* Local intro — from areaContent.introParagraphs */}
+              {ac && ac.introParagraphs.length > 0 && (
+                <section className="mb-12">
+                  <h2 style={serif('clamp(22px,3vw,32px)' as any, { marginBottom: 16 })}>
+                    {ac.introHeading}
+                  </h2>
+                  <div className="space-y-4">
+                    {ac.introParagraphs.map((p, i) => (
+                      <p key={i} className="body-md">{p}</p>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Why specialist matters here */}
+              {ac?.whySpecialistMatters && (
+                <section className="mb-12">
+                  <div
+                    className="card-parchment p-6"
+                    style={{ borderLeft: '3px solid var(--brand)' }}
+                  >
+                    <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Why a specialist matters here</p>
+                    <p className="body-md" style={{ fontStyle: 'italic', color: 'var(--ink)' }}>
+                      {ac.whySpecialistMatters}
+                    </p>
+                  </div>
+                </section>
+              )}
+
+              {/* Estate profile band — from locationProfiles */}
+              {lp && (
+                <section className="mb-12">
+                  <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
+                    What estates in {hub.name} typically look like
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="card-parchment p-5">
+                      <p className="eyebrow mb-2" style={{ color: 'var(--brand)' }}>Estate profile</p>
+                      <p className="body-md" style={{ lineHeight: 1.65 }}>{lp.estateProfile}</p>
+                    </div>
+                    <div className="card-parchment p-5">
+                      <p className="eyebrow mb-2" style={{ color: 'var(--brand)' }}>Planning needs</p>
+                      <p className="body-md" style={{ lineHeight: 1.65 }}>{lp.planningNeeds}</p>
+                    </div>
+                  </div>
+                  {lp.marketContext && (
+                    <p className="body-md mt-5" style={{ color: 'var(--stone)' }}>
+                      {lp.marketContext}
+                    </p>
+                  )}
+                </section>
+              )}
+
+              {/* Who we match here */}
+              {ac?.clientProfile && (
+                <section className="mb-12">
+                  <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
+                    {ac.clientProfile.heading}
+                  </h2>
+                  <div className="card-parchment p-6">
+                    <ul className="space-y-3">
+                      {ac.clientProfile.points.map((p, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0, marginTop: 8 }} />
+                          <span className="body-md">{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </section>
+              )}
+
+              {/* Common triggers */}
+              {ac?.commonTriggers && ac.commonTriggers.length > 0 && (
+                <section className="mb-12">
+                  <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 12 })}>
+                    Why people in {hub.name} engage us
+                  </h2>
+                  <p className="body-md mb-5">
+                    The most common triggers we see for {hub.name} clients starting estate planning:
+                  </p>
+                  <ul className="space-y-2">
+                    {ac.commonTriggers.map((t, i) => (
+                      <li
+                        key={i}
+                        style={{
+                          background: 'var(--parchment-2)',
+                          border: '0.5px solid var(--border)',
+                          borderRadius: 6,
+                          padding: '12px 16px',
+                        }}
+                      >
+                        <span className="body-md">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
               {/* Sub-areas */}
               <section className="mb-12">
                 <h2 style={serif('clamp(20px,2.5vw,28px)' as any, { marginBottom: 10 })}>
@@ -308,19 +336,33 @@ export default function CityPage({ params }: { params: { city: string } }) {
                     <div key={a.name} className="subarea-item">
                       <p className="subarea-name">{a.name}</p>
                       {a.postcode && <p className="subarea-post">{a.postcode}</p>}
+                      {a.note && (
+                        <p
+                          style={{
+                            fontFamily: 'var(--font-inter), sans-serif',
+                            fontSize: 11,
+                            fontWeight: 300,
+                            color: 'var(--stone)',
+                            marginTop: 4,
+                            lineHeight: 1.45,
+                          }}
+                        >
+                          {a.note}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
               </section>
 
-              {/* Services */}
+              {/* Services available — links to /services/{slug}/ NOT combo */}
               <section className="mb-12">
                 <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
                   Services available in {hub.name}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {services.map(s => (
-                    <Link key={s.id} href={`/services/${s.slug}/${hub.slug}/`} className="card group flex gap-3 p-4 items-start">
+                    <Link key={s.id} href={`/services/${s.slug}/`} className="card group flex gap-3 p-4 items-start">
                       <div style={{ width: 64, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)' }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />
@@ -330,7 +372,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                           style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', marginBottom: 3, transition: 'color 0.12s', lineHeight: 1.2 }}
                           className="group-hover:text-brand-500"
                         >
-                          {s.title} in {hub.name}
+                          {s.title}
                         </h3>
                         <p className="body-sm line-clamp-2">{s.description}</p>
                       </div>
@@ -338,6 +380,25 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   ))}
                 </div>
               </section>
+
+              {/* Local context — closing prose */}
+              {ac?.localContext && (
+                <section className="mb-12">
+                  <div
+                    style={{
+                      background: 'var(--parchment-2)',
+                      border: '0.5px solid var(--border)',
+                      borderRadius: 8,
+                      padding: '24px 28px',
+                    }}
+                  >
+                    <p className="eyebrow mb-3">{hub.name} in context</p>
+                    <p className="body-md" style={{ lineHeight: 1.75, color: 'var(--ink)' }}>
+                      {ac.localContext}
+                    </p>
+                  </div>
+                </section>
+              )}
 
               {/* Nearby hubs */}
               {nearbyHubs.length > 0 && (
@@ -378,6 +439,21 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div className="hidden lg:block mb-4">
                   <HeroLeadForm city={hub.name} />
                 </div>
+
+                {/* Client mix from locationProfiles */}
+                {lp && lp.clientMix.length > 0 && (
+                  <div className="sidebar-box">
+                    <p className="eyebrow mb-3">Who we typically match in {hub.name}</p>
+                    <ul className="space-y-1.5">
+                      {lp.clientMix.slice(0, 5).map((c, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(212,105,25,0.6)', flexShrink: 0, marginTop: 7 }} />
+                          <span className="body-sm" style={{ textTransform: 'capitalize' }}>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="sidebar-box">
                   <p className="eyebrow mb-3">Postcodes covered</p>

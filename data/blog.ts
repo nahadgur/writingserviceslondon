@@ -19,7 +19,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Secure your family\'s future with expert will writing services in London. Our 2026 guide covers inheritance tax changes, probate pitfalls, guardianship, costs, and top providers to protect your assets effectively.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/article(yqxp)_4.jpeg',
+    featuredImage: '/images/estate-planning.png',
     excerpt: 'Imagine your family\'s future unraveling due to an outdated will amid 2026\'s tightened inheritance tax rules. For London families, securing a robust will isn\'t optional --it\'s essential to protect assets...',
     content: [
         {
@@ -27,11 +27,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Why Families Need Will Writing in London 2026"
         },
         {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "The formal legal requirements for a valid will are set out in full on GOV.UK."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(yqxp)_1.jpeg",
-            "alt": "Why Families Need Will Writing in London 2026"
-        },
         {
             "type": "p",
             "text": "With UK inheritance tax thresholds frozen until 2028, families in London face a 40% tax on estates over £325,000, making professional will writing services London essential for tax-efficient planning. Rising London property values push more estates into taxable brackets. Families risk heavy tax bills without a legal will tailored to 2026 legal updates."
@@ -146,11 +141,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Guardianship for Minor Children"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(yqxp)_2.jpeg",
-            "alt": "Guardianship for Minor Children"
-        },
-        {
             "type": "p",
             "text": "Name 1-2 backup guardians with contact details and powers; courts appoint guardians for only 1% of orphaned children annually. Under the Children Act 1989, wills provide the primary way parents designate carers. This clause ensures children's stability if both parents pass away unexpectedly."
         },
@@ -251,11 +241,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "DIY vs Professional Services"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(yqxp)_3.jpeg",
-            "alt": "DIY vs Professional Services"
-        },
-        {
             "type": "p",
             "text": "DIY wills fail validity tests far more often than those prepared by professionals, according to Ministry of Justice 2023 data showing 42% failure for DIY versus 8% for experts. Online DIY will kits average £35 but carry risks of £10k+ in probate disputes. Families in London face unique challenges under UK inheritance laws, making informed choices essential for estate planning."
         },
@@ -338,11 +323,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h3",
             "text": "1. Wrong Witnessing"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(yqxp)_4.jpeg",
-            "alt": "1. Wrong Witnessing"
         },
         {
             "type": "p",
@@ -478,20 +458,15 @@ export const blogArticles: BlogArticle[] = [
     slug: 'how-to-choose-a-will-writing-service-in-london',
     title: 'How to Choose a Will Writing Service in London',
     metaTitle: 'Choose Top Will Writing Service in London Guide',
-    metaDescription: 'Discover how to choose a will writing service in London. Assess needs, check reviews, verify solicitor status, compare prices, and customize for basic or complex wills. Safeguard your legacy today with expert tips.',
+    metaDescription: 'Discover how to choose a will writing service in London. Assess needs, check reviews, verify solicitor status, compare prices, and customise for basic or complex wills. Safeguard your legacy today with expert tips.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'Imagine discovering, too late, that your estate falls into legal limbo due to a flawed will --leaving loved ones burdened and disputes unresolved. In London, where estates demand precision amid rising c...',
     content: [
         {
             "type": "h2",
             "text": "Understanding Your Will Writing Needs"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_1.jpeg",
-            "alt": "Understanding Your Will Writing Needs"
         },
         {
             "type": "p",
@@ -591,11 +566,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h2",
             "text": "Key Qualifications to Verify"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_2.jpeg",
-            "alt": "Key Qualifications to Verify"
         },
         {
             "type": "p",
@@ -699,11 +669,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Hidden Fees to Watch For"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_3.jpeg",
-            "alt": "Hidden Fees to Watch For"
-        },
-        {
             "type": "p",
             "text": "Common add-ons like will storage services at £20-£50 per year, validity checks at £50, codicils at £75, and probate referrals over £250 can inflate costs significantly when choosing a will writing service. These extras often catch clients off guard. Request an itemised quote before signing to stay protected."
         },
@@ -782,11 +747,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h3",
             "text": "Avoiding Risks with AI and Unregulated Tools"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/how-to-choose-a-will-writing-service-in-london(707t)_4.jpeg",
-            "alt": "Avoiding Risks with AI and Unregulated Tools"
         },
         {
             "type": "p",
@@ -2218,7 +2178,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Yes, Online Will Writing Services for London Residents produce fully legally binding wills when you follow the guided process correctly. They incorporate electronic signatures compliant with UK regulations, and many offer solicitor review options to meet the requirements of the Wills Act 1837, ensuring your document holds up in probate court."
+            "text": "Yes, Online Will Writing Services for London Residents produce fully legally binding wills when you follow the guided process correctly. They incorporate electronic signatures compliant with UK regulations, and many offer solicitor review options to meet the requirements of the Wills Act 1837, ensuring your document holds up in Probate Registry."
         },
         {
             "type": "h3",
@@ -2261,7 +2221,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover projected Will Writing Costs in London in 2026, from £300+ averages rising due to inflation and regulations. Explore breakdowns for simple single wills, complex mirror wills, solicitors vs online services. Plan your legacy wisely today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'As London\'s property prices soar and living costs climb, securing your legacy could soon demand a bigger investment. Will writing fees, already averaging £300 in 2024 per recent Law Society data, are ...',
     content: [
         {
@@ -2269,11 +2229,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Overview of Will Writing in London"
         },
         {"type": "external-link", "href": "https://www.citizensadvice.org.uk/family/death-and-wills/wills/", "linkText": "Citizens Advice: Wills", "text": "Citizens Advice provides a free overview of your legal options when making a will."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_1.jpeg",
-            "alt": "Overview of Will Writing in London"
-        },
         {
             "type": "p",
             "text": "In London, professional will writing services ensure legal compliance under the Wills Act 1837, with surveys indicating many residents lack proper planning. High property values averaging over half a million pounds expose estates to inheritance tax risks. This makes estate planning essential for families facing London's unique financial pressures."
@@ -2394,11 +2349,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Cost Breakdown by Will Complexity"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_2.jpeg",
-            "alt": "Cost Breakdown by Will Complexity"
-        },
-        {
             "type": "p",
             "text": "Will complexity directly impacts pricing: simple single wills average £285 vs complex mirror wills at £520 (45% premium) per 2024 Trustpilot analysis. In London, will writing costs rise with added elements like trusts or property schedules. Expect future will writing prices in 2026 to reflect inflation and higher London solicitor rates."
         },
@@ -2504,11 +2454,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Additional Fees and Hidden Costs"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_3.jpeg",
-            "alt": "Additional Fees and Hidden Costs"
-        },
-        {
             "type": "p",
             "text": "Beyond drafting, expect £50-£300 annually in storage/probate fees, adding 20-35% to lifetime will costs. These ancillary expenses often catch people off guard in will writing costs London 2026. SRA transparency rules now require full fee disclosure upfront."
         },
@@ -2610,11 +2555,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Tips for Minimising Costs"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-writing-costs-in-london-in-2026(ynua)_4.jpeg",
-            "alt": "Tips for Minimising Costs"
-        },
-        {
             "type": "p",
             "text": "Save 40-65% on will writing costs London 2026 through online providers, off-peak booking, and bundling with LPA services. Traditional solicitor routes often carry higher lawyer fees London, while smart choices keep estate planning expenses low. Focus on these strategies to secure best value will writing amid rising cost of living pressures."
         },
@@ -2703,7 +2643,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Is will writing regulated in the UK? Learn the legal status, risks of unregulated writers, STEP accreditation benefits, and key steps London clients must take to avoid invalid wills and protect their legacy today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/article(73ln)_4.jpeg',
+    featuredImage: '/images/estate-planning.png',
     excerpt: 'Imagine discovering your loved one\'s will is invalid after they\'re gone --devastating, yet preventable. In the UK, will writing remains largely unregulated, leaving London clients vulnerable to costly e...',
     content: [
         {
@@ -2711,11 +2651,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Is Will Writing Regulated in the UK?"
         },
         {"type": "external-link", "href": "https://www.sra.org.uk/consumers/using-solicitor/", "linkText": "Solicitors Regulation Authority: Using a solicitor", "text": "The SRA maintains a public register of all regulated solicitors in England and Wales."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(73ln)_1.jpeg",
-            "alt": "Is Will Writing Regulated in the UK?"
-        },
         {
             "type": "p",
             "text": "Will writing remains largely unregulated in the UK, with only solicitors regulated by the SRA and specific financial services by the FCA falling under statutory oversight. Anyone can offer will drafting services without formal qualifications. This leaves London clients vulnerable to errors in bespoke wills or mirror wills."
@@ -2853,11 +2788,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "STEP Accreditation"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(73ln)_2.jpeg",
-            "alt": "STEP Accreditation"
-        },
-        {
             "type": "p",
             "text": "STEP's Trusted Estate Planner (TEP) designation requires 7+ years experience and passing 6 specialist exams including IHT and trusts. This qualification suits London HNWIs managing cross-border estates under Brussels IV. It ensures expertise in tax planning and gifting strategies beyond basic will drafting."
         },
@@ -2989,11 +2919,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Choosing a Regulated Provider"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(73ln)_3.jpeg",
-            "alt": "Choosing a Regulated Provider"
-        },
-        {
             "type": "p",
             "text": "London clients can compare four regulated options for will writing: solicitors at £350–£800, SWW members at £199–£450, STEP advisors at £500–£1,500 for complex cases, and Legal Aid for those with income under £2,657 per month. Each option offers varying levels of UK regulation and consumer protection. Qualified professionals ensure will validity under England and Wales law."
         },
@@ -3098,11 +3023,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Is Will Writing Regulated in the UK – What London Clients Should Know?"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/article(73ln)_4.jpeg",
-            "alt": "article"
-        },
-        {
             "type": "p",
             "text": "No, will writing is not regulated in the UK. Unlike solicitors or licensed conveyancers, anyone can offer will writing services without formal qualifications or oversight from a regulatory body. For London clients, this means it's crucial to choose reputable providers to avoid risks like invalid wills or disputes."
         },
@@ -3155,7 +3075,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Explore mirror wills and joint wills for couples in London. Learn key features, legal requirements, comparisons, and advantages to protect your legacy effectively. Get expert insights now.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_4.jpeg',
+    featuredImage: '/images/mirror-wills.png',
     excerpt: 'Imagine safeguarding your shared legacy with precision --yet one overlooked detail unravels it all. For London couples, mirror wills and joint wills offer tailored estate planning amid England\'s intrica...',
     content: [
         {
@@ -3163,11 +3083,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "What Are Mirror Wills?"
         },
         {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "GOV.UK sets out the legal requirements that apply to each partner's will individually."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_1.jpeg",
-            "alt": "What Are Mirror Wills?"
-        },
         {
             "type": "p",
             "text": "Mirror wills are identical or 'mirrored' legal documents created by couples, typically spouses or civil partners, where each partner names the other as primary beneficiary and appoints the same executors, ensuring symmetrical estate distribution upon first death. They support simultaneous estate planning for married couples and civil partners in London. This approach reflects mutual testamentary intentions without binding the survivors."
@@ -3291,11 +3206,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Legal Implications for Couples"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_2.jpeg",
-            "alt": "Legal Implications for Couples"
-        },
-        {
             "type": "p",
             "text": "Mirror wills allow unilateral revocation without consent; joint wills bind survivors legally, risking costly High Court challenges. London couples must grasp these under UK law for sound will writing. Solicitors advise on probate and inheritance tax impacts."
         },
@@ -3325,7 +3235,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "For elderly testators, solicitors follow the golden rule: obtain a medical certificate confirming capacity before execution. This protects against later will disputes in probate courts. Couples in London, including married couples and civil partners, benefit from this to secure their estate planning."
+            "text": "For elderly testators, solicitors follow the golden rule: obtain a medical certificate confirming capacity before execution. This protects against later will disputes in Probate Registrys. Couples in London, including married couples and civil partners, benefit from this to secure their estate planning."
         },
         {
             "type": "p",
@@ -3430,11 +3340,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Ex-Spouse Inheritance Without Divorce Clauses"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_3.jpeg",
-            "alt": "Ex-Spouse Inheritance Without Divorce Clauses"
-        },
-        {
             "type": "p",
             "text": "Joint wills lack automatic updates for divorce, exposing estates to ex-spouse claims. Without a specific revocation clause, an ex may inherit as a named beneficiary under English law. This risk is high for remarried couples in Greater London."
         },
@@ -3527,11 +3432,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h3",
             "text": "What are Mirror Wills and Joint Wills for Couples in London?"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/mirror-wills-and-joint-wills-for-couples-in-london(svdc)_4.jpeg",
-            "alt": "What are Mirror Wills and Joint Wills for Couples in London?"
         },
         {
             "type": "p",
@@ -5907,7 +5807,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover common will writing mistakes London families make, like DIY wills ignoring local rules, outdated beneficiaries, forgotten digital assets, and poor executor choices. Protect your legacy from disputes and taxes. Learn how to fix them today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'Imagine your family\'s future unraveling due to a single overlooked clause in your will. In London, where soaring property values and complex inheritance rules amplify risks, common will writing mistak...',
     content: [
         {
@@ -5916,13 +5816,8 @@ export const blogArticles: BlogArticle[] = [
         },
         {"type": "external-link", "href": "https://www.gov.uk/make-will", "linkText": "GOV.UK: Making a will", "text": "GOV.UK sets out the formal execution requirements that DIY wills most commonly fail to meet."},
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_1.jpeg",
-            "alt": "Mistake 1: DIY Wills Without Legal Advice"
-        },
-        {
             "type": "p",
-            "text": "DIY wills fail 45% of the time in probate court per Law Society data, with London families facing 2x higher rejection rates due to local property complexities. Online kits from services like LegalZoom or Farewill often overlook Wills Act 1837 formalities. These include proper signing and witnessing by two independent adults."
+            "text": "DIY wills fail 45% of the time in Probate Registry per Law Society data, with London families facing 2x higher rejection rates due to local property complexities. Online kits from services like LegalZoom or Farewill often overlook Wills Act 1837 formalities. These include proper signing and witnessing by two independent adults."
         },
         {
             "type": "p",
@@ -6047,11 +5942,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Mistake 4: Inadequate Guardianship Provisions for Children"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_2.jpeg",
-            "alt": "Mistake 4: Inadequate Guardianship Provisions for Children"
-        },
-        {
             "type": "p",
             "text": "Only 23% of London parents with children under 18 name guardians in their wills according to YouGov 2023. This common will writing mistake leaves minor children vulnerable to court decisions if both parents die unexpectedly. London families often overlook this, risking unwanted family disputes over care."
         },
@@ -6138,11 +6028,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h3",
             "text": "Including an Anti-Lapse Clause"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_3.jpeg",
-            "alt": "Including an Anti-Lapse Clause"
         },
         {
             "type": "p",
@@ -6259,11 +6144,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Simple Codicil Template"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/common-will-writing-mistakes-london-families-make(s3mr)_4.jpeg",
-            "alt": "Simple Codicil Template"
-        },
-        {
             "type": "p",
             "text": "A codicil amends your will without a full rewrite for minor changes like address updates. It must follow strict rules: sign in front of two disinterested witnesses, reference the original will's date, and include a revocation statement if needed. Use this as a starting point, but seek professional advice for validity."
         },
@@ -6332,17 +6212,12 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover will reviews and second opinions in London to avoid costly estate disputes. Learn key components, top specialist firms, red flags, process, costs, and how to find reliable solicitors for lasting peace of mind.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'Imagine discovering a flaw in your will after it\'s too late --costing your loved ones thousands in disputes. In London, unchecked wills pose real risks to your legacy. This article explores what will re...',
     content: [
         {
             "type": "h2",
             "text": "What Are Will Reviews?"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_1.jpeg",
-            "alt": "What Are Will Reviews?"
         },
         {
             "type": "p",
@@ -6466,11 +6341,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "How to Find Reliable Solicitors"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_2.jpeg",
-            "alt": "How to Find Reliable Solicitors"
-        },
-        {
             "type": "p",
             "text": "Use the Law Society Find a Solicitor directory plus Trustpilot filters (4.5+ stars, 50+ reviews) to identify STEP-qualified professionals within your London postcode. This approach helps narrow down London solicitors specialising in wills, probate, and estate planning. Start by entering postcodes like SW1 for Westminster or EC1 for the City of London."
         },
@@ -6591,11 +6461,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Legal Requirements for London Wills"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_3.jpeg",
-            "alt": "Legal Requirements for London Wills"
-        },
-        {
             "type": "p",
             "text": "London wills must comply with the Wills Act 1837: 18+, mentally capable (Banks v Goodfellow test), written, signed by testator, witnessed by 2 non-beneficiaries present simultaneously. These rules ensure will validity and smooth probate in London. Failing them risks invalid wills and intestacy rules applying."
         },
@@ -6700,11 +6565,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Benefits of Early Will Reviews"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/will-reviews-and-second-opinions-in-london(pm54)_4.jpeg",
-            "alt": "Benefits of Early Will Reviews"
-        },
-        {
             "type": "p",
             "text": "Early reviews save 37% on inheritance tax via nil rate band optimisation, preventing £127,000 average losses reported by HMRC probate stats. Regular checks with London solicitors ensure your will aligns with current laws and family changes. This proactive step protects beneficiaries from unexpected tax burdens."
         },
@@ -6789,7 +6649,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Secure your legacy fast with emergency will writing services in London. Learn what qualifies as urgent, common scenarios, UK legal rules, our quick process from consultation to completion, and benefits like 28-day savings to 4 days. Get peace of mind today.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'Imagine a sudden illness or accident leaving your loved ones unprotected --without a will, chaos ensues. In London\'s fast-paced environment, emergency will writing services provide urgent peace of mind,...',
     content: [
         {
@@ -6797,11 +6657,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Understanding Emergency Will Writing"
         },
         {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate", "linkText": "GOV.UK: Applying for probate", "text": "Dying without a valid will means executors must apply for letters of administration -- GOV.UK explains the full process."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_1.jpeg",
-            "alt": "Understanding Emergency Will Writing"
-        },
         {
             "type": "p",
             "text": "Emergency will writing involves creating legally binding documents within hours or same-day service, essential when facing terminal illness, sudden accidents, or high-risk professions like NHS staff requiring urgent estate planning."
@@ -7032,11 +6887,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Cost Efficiency: £500 Service vs £2K Probate Disputes"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_2.jpeg",
-            "alt": "article"
-        },
-        {
             "type": "p",
             "text": "Opt for fast will execution to save on future costs. A simple service at around £500 avoids probate battles that escalate to £2K or more. This covers contested will advice prevention upfront."
         },
@@ -7232,11 +7082,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "FAQs on Emergency Wills"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_3.jpeg",
-            "alt": "FAQs on Emergency Wills"
-        },
-        {
             "type": "p",
             "text": "Addressing top concerns: Yes, video witnessing is legally valid since 2020. Emergency wills have identical legal force to traditional wills. Most complete within 4 business hours."
         },
@@ -7385,11 +7230,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "9. Storage options?"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/emergency-will-writing-services-in-london(2vkr)_4.jpeg",
-            "alt": "9. Storage options?"
-        },
-        {
             "type": "p",
             "text": "Will storage London includes secure digital vaults or physical safes. Providers offer secure will storage with post-death tracing. Avoid home storage risks."
         },
@@ -7478,7 +7318,7 @@ export const blogArticles: BlogArticle[] = [
     metaDescription: 'Discover what to expect at a will writing home visit in London: prepare documents, ensure privacy, discuss assets, family, and guardians with your solicitor. Enjoy personalised service from home. Secure your legacy today with this complete guide.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
-    featuredImage: 'https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_4.jpeg',
+    featuredImage: '/images/single-will.png',
     excerpt: 'Imagine securing your legacy from the comfort of home, without the hassle of office visits. In bustling London, a solicitor\'s home visit for will writing offers personalised peace of mind, backed by s...',
     content: [
         {
@@ -7486,11 +7326,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Preparation Before the Visit"
         },
         {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate", "linkText": "GOV.UK: Applying for probate", "text": "Documents gathered for your will appointment also help executors when applying for probate later."},
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_1.jpeg",
-            "alt": "Preparation Before the Visit"
-        },
         {
             "type": "p",
             "text": "Prepare for your London solicitor home visit by gathering 10-15 key documents in advance, reducing consultation time by 30-45 minutes and ensuring comprehensive coverage."
@@ -7653,11 +7488,6 @@ export const blogArticles: BlogArticle[] = [
             "text": "Reviewing Your Personal Details"
         },
         {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_2.jpeg",
-            "alt": "Reviewing Your Personal Details"
-        },
-        {
             "type": "p",
             "text": "Complete a 5-minute personal details verification capturing marital status, dependents, and domicile critical for England &amp; Wales will validity. This step uses a secure iPad form for accuracy. It prevents common errors in will preparation."
         },
@@ -7785,11 +7615,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h2",
             "text": "Beneficiary and Executor Selection"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_3.jpeg",
-            "alt": "Beneficiary and Executor Selection"
         },
         {
             "type": "p",
@@ -7942,11 +7767,6 @@ export const blogArticles: BlogArticle[] = [
         {
             "type": "h2",
             "text": "Signing and Witnessing"
-        },
-        {
-            "type": "image",
-            "src": "https://files.autoblogging.ai/images/what-to-expect-at-a-will-writing-home-visit-in-london(777k)_4.jpeg",
-            "alt": "Signing and Witnessing"
         },
         {
             "type": "p",

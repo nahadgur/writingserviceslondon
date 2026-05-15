@@ -81,6 +81,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="min-h-screen flex flex-col">
+        {/* Skip to content — visually hidden until focused, first
+            focusable element on every page (WCAG 2.4.1). */}
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         {/* First-touch attribution into sessionStorage. Fires before
             consent — captures only UTM params and document.referrer
             already exposed to the page, no analytics cookies. */}

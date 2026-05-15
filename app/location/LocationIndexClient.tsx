@@ -30,7 +30,7 @@ export function LocationIndexClient() {
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 
-      <main>
+      <main id="main-content">
         {/* Hero */}
         <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
           <div className="container-width max-w-3xl">

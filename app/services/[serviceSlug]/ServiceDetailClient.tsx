@@ -7,21 +7,13 @@ import { services, type Service } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
 import { FAQS_SERVICES } from '@/data/site';
 import { serviceContent } from '@/data/serviceContent';
+import { getPricingSummary } from '@/data/pricing';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
-
-const pricingMap: Record<string, { from: string; to: string; note: string }> = {
-  'single-will':               { from: '£150', to: '£350', note: 'One-off, fixed fee' },
-  'mirror-wills':              { from: '£250', to: '£550', note: 'For a pair, fixed fee' },
-  'lasting-power-of-attorney': { from: '£300', to: '£900', note: 'Per LPA + £82 OPG fee' },
-  'trust-planning':            { from: '£500', to: '£1,500', note: 'Depends on type' },
-  'estate-planning':           { from: '£400', to: '£1,200', note: 'Full review, fixed fee' },
-  'probate-support':           { from: '£1,500', to: '£3,500', note: 'Straightforward estates' },
-};
 
 // Editorial pairing — for each service, the adjacent service most often
 // taken alongside it. Hand-curated rather than alphabetical so the
@@ -164,7 +156,7 @@ const COMMON_MISTAKES: Record<string, { headline: string; mistakes: { what: stri
 export function ServiceDetailClient({ service }: { service: Service }) {
   const [modal, setModal] = useState(false);
 
-  const pricing = pricingMap[service.slug];
+  const pricing = getPricingSummary(service.slug);
   const pair = PAIRS_WITH[service.slug];
   const pairedService = pair ? services.find(s => s.slug === pair.slug) : undefined;
   const mistakes = COMMON_MISTAKES[service.slug];
@@ -188,7 +180,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} defaultService={service.title} />
       <Header onOpenModal={() => setModal(true)} />
 
-      <main>
+      <main id="main-content">
         {/* ── Hero ──────────────────────────────────────────────── */}
         <section className="hero-dark" style={{ minHeight: 360 }}>
           <div

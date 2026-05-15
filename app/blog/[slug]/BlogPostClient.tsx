@@ -134,7 +134,7 @@ export function BlogPostClient({ article, related }: { article: BlogArticle; rel
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 
-      <main>
+      <main id="main-content">
         {/* Hero */}
         <section className="hero-dark" style={{ minHeight: 220 }}>
           {article.featuredImage && (

@@ -58,7 +58,7 @@ export function HomePageClient() {
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 
-      <main>
+      <main id="main-content">
 
         {/* ── HERO ──────────────────────────────────────────────── */}
         <section className="hero-dark flex flex-col" style={{ minHeight: 'clamp(520px, 85vh, 680px)' }}>

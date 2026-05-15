@@ -42,7 +42,7 @@ export default function GuidesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* Dark hero */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.13, pointerEvents: 'none' }} width="320" height="200" viewBox="0 0 320 200" fill="none">

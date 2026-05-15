@@ -5,18 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
+import { getPricingSummary } from '@/data/pricing';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LeadFormModal } from '@/components/LeadFormModal';
-
-const pricing: Record<string, { range: string; note: string }> = {
-  'single-will':               { range: '£150 – £350', note: 'One-off, fixed fee' },
-  'mirror-wills':              { range: '£250 – £550', note: 'For a pair of wills' },
-  'lasting-power-of-attorney': { range: '£300 – £900', note: 'Per LPA, + £82 OPG fee' },
-  'trust-planning':            { range: '£500 – £1,500', note: 'Depends on type' },
-  'estate-planning':           { range: '£400 – £1,200', note: 'Full review, fixed fee' },
-  'probate-support':           { range: '£1,500 – £3,500', note: 'Straightforward estates' },
-};
 
 export function ServicesIndexClient() {
   const [modal, setModal] = useState(false);
@@ -26,7 +18,7 @@ export function ServicesIndexClient() {
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
 
-      <main>
+      <main id="main-content">
         {/* Hero */}
         <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
           <div className="container-width max-w-3xl">
@@ -47,7 +39,7 @@ export function ServicesIndexClient() {
           <div className="container-width">
             <div style={{ borderTop: '0.5px solid var(--border)' }}>
               {services.map(s => {
-                const p = pricing[s.slug];
+                const p = getPricingSummary(s.slug);
                 return (
                   <Link key={s.id} href={`/services/${s.slug}/`} className="svc-row" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
                     {/* Mobile: image + title stacked */}

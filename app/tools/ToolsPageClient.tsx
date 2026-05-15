@@ -76,7 +76,7 @@ export function ToolsPageClient() {
     <>
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
-      <main>
+      <main id="main-content">
         {/* Dark hero */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="240" height="160" viewBox="0 0 240 160" fill="none">

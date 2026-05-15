@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content">
         {/* Dark hero — matches site pattern */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           {/* Decorative buildings — same as location pages */}

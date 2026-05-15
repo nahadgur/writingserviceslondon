@@ -17,10 +17,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const guide = getGuideBySlug(params.slug);
   if (!guide) return { title: 'Guide not found' };
+  const url = `${siteConfig.url}/guides/${guide.slug}/`;
   return {
     title: guide.metaTitle,
     description: guide.metaDescription,
-    openGraph: { title: guide.metaTitle, description: guide.metaDescription },
+    alternates: { canonical: `/guides/${guide.slug}/` },
+    openGraph: {
+      type: 'article',
+      url,
+      siteName: siteConfig.name,
+      title: guide.metaTitle,
+      description: guide.metaDescription,
+      locale: 'en_GB',
+      publishedTime: guide.publishDate,
+      modifiedTime: guide.publishDate,
+    },
+    twitter: { card: 'summary_large_image', title: guide.metaTitle, description: guide.metaDescription },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -38,15 +51,26 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
     .map(s => guides.find(g => g.slug === s))
     .filter(Boolean) as typeof guides;
 
-  const schema = {
+  // YMYL guide schema. Author + publisher + reviewedBy all point to
+  // the same site Organization (@id-linked into the global graph).
+  // No fabricated named author — the editorial team IS the publisher.
+  const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': ['Article', 'FAQPage'],
+    '@type': 'Article',
+    '@id': `${siteConfig.url}/guides/${guide.slug}/#article`,
     headline: guide.title,
     description: guide.metaDescription,
-    author: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
-    publisher: { '@type': 'Organization', name: siteConfig.name, url: siteConfig.url },
+    author: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: siteConfig.name, url: siteConfig.url },
+    publisher: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: siteConfig.name, url: siteConfig.url },
+    reviewedBy: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: `${siteConfig.name} editorial team` },
     datePublished: guide.publishDate,
+    dateModified: guide.publishDate,
     mainEntityOfPage: `${siteConfig.url}/guides/${guide.slug}/`,
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
     mainEntity: guide.faqs.map(f => ({
       '@type': 'Question',
       name: f.question,
@@ -56,10 +80,11 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* Dark hero */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="260" height="180" viewBox="0 0 260 180" fill="none">
@@ -94,6 +119,15 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
             </h1>
             <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.58)', lineHeight: 1.65, maxWidth: 520 }}>
               {guide.heroParagraph}
+            </p>
+            {/* YMYL byline. No fabricated named author per fleet rule —
+                the editorial team IS the publisher. */}
+            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 400, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginTop: 18, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+              <span>Published and reviewed by the {siteConfig.name} editorial team</span>
+              <span aria-hidden="true">·</span>
+              <span>
+                <time dateTime={guide.publishDate}>{new Date(guide.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              </span>
             </p>
           </div>
         </section>

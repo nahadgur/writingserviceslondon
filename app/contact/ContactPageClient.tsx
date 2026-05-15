@@ -15,7 +15,7 @@ export function ContactPageClient() {
     <>
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header onOpenModal={() => setModal(true)} />
-      <main className="flex-grow" style={{ background: 'var(--parchment)' }}>
+      <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
         <section style={{ background: 'var(--ink)', color: '#fff' }}>
           <div className="container-width pt-20 pb-12">
             <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Contact — get in touch</p>

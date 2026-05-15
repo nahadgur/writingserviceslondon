@@ -147,7 +147,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* ── Hero ──────────────────────────────────────────────── */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden', minHeight: 200 }}>
           <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 44, paddingBottom: 52 }}>

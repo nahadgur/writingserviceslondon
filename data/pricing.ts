@@ -8,6 +8,36 @@ export const pricingTiers: PricingTier[] = [
   { "treatment": "Estate Planning Review", "slug": "estate-planning", "priceFrom": 400, "priceTo": 1200, "typicalDuration": "One-off review", "serviceIncludes": "Full asset review, IHT calculation, wills/LPA/trust recommendations, written report", "description": "Comprehensive review of your complete estate position including inheritance tax exposure, available reliefs, gifting strategies, and recommended actions. Delivered as a written report with clear, prioritised recommendations." },
   { "treatment": "Probate Support", "slug": "probate-support", "priceFrom": 1500, "priceTo": 3500, "typicalDuration": "3-12 months", "serviceIncludes": "Grant of probate application, asset collection, HMRC returns, estate distribution", "description": "Fixed-fee probate for straightforward estates. Complex estates with property sales, disputed assets, or international elements are quoted individually. OPG court fee of £300 is separate. Many clients prefer fixed fees for budget certainty." }
 ];
+// Compact summary used by /services/ and /services/{slug}/. Derived
+// from pricingTiers so we have a single source of truth.
+export interface PricingSummary { from: string; to: string; range: string; note: string; }
+
+const NOTE_OVERRIDES: Record<string, string> = {
+  'single-will':               'One-off, fixed fee',
+  'mirror-wills':              'For a pair, fixed fee',
+  'lasting-power-of-attorney': 'Per LPA, + £82 OPG fee',
+  'trust-planning':            'Depends on type',
+  'estate-planning':           'Full review, fixed fee',
+  'probate-support':           'Straightforward estates',
+};
+
+function fmt(n: number): string {
+  return `£${n.toLocaleString('en-GB')}`;
+}
+
+export function getPricingSummary(slug: string): PricingSummary | null {
+  const tier = pricingTiers.find(p => p.slug === slug);
+  if (!tier) return null;
+  const from = fmt(tier.priceFrom);
+  const to = fmt(tier.priceTo);
+  return {
+    from,
+    to,
+    range: `${from} – ${to}`,
+    note: NOTE_OVERRIDES[slug] ?? tier.typicalDuration,
+  };
+}
+
 export const servicePricingMap: Record<string, string[]> = {
   "single-will": ["single-will"],
   "mirror-wills": ["mirror-wills"],

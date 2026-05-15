@@ -11,8 +11,6 @@
 //   - Per-IP sliding-window rate limit (5 / 60s)
 //   - UTM / gclid / referrer / first-landing persistence (captured
 //     client-side via sessionStorage, forwarded here)
-//   - GA4 Measurement Protocol relay so ad-blockers and ITP don't
-//     break conversion reporting
 //
 // The Google Apps Script URL is hard-coded (see fleet pattern in
 // feedback_hardcode_webhook_urls).
@@ -21,10 +19,6 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { siteConfig } from '@/data/site';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
-const GA4_MEASUREMENT_ID = 'G-MKLSQNN51M';
-// GA4 MP requires an API secret. If unset, the server-side conversion
-// relay is silently skipped (client-side GA4 still fires after consent).
-const GA4_API_SECRET = process.env.GA4_API_SECRET ?? '';
 
 const MIN_FILL_MS = 1500;
 const RATE_LIMIT_MAX = 5;
@@ -163,37 +157,6 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('GAS forward failed:', err);
     return NextResponse.json({ ok: false, error: 'forward_failed' }, { status: 502 });
-  }
-
-  // 8. GA4 Measurement Protocol relay (best-effort)
-  if (GA4_API_SECRET) {
-    const clientId =
-      typeof body.client_id === 'string' && body.client_id
-        ? (body.client_id as string)
-        : `${Date.now()}.${Math.random().toString().slice(2, 12)}`;
-    const url = `https://www.google-analytics.com/mp/collect?measurement_id=${GA4_MEASUREMENT_ID}&api_secret=${GA4_API_SECRET}`;
-    fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        client_id: clientId,
-        events: [
-          {
-            name: 'generate_lead',
-            params: {
-              service,
-              page: payload.page,
-              utm_source: payload.utm_source,
-              utm_medium: payload.utm_medium,
-              utm_campaign: payload.utm_campaign,
-              engagement_time_msec: 1,
-            },
-          },
-        ],
-      }),
-    }).catch(() => {
-      /* best-effort, ignore */
-    });
   }
 
   return NextResponse.json({ ok: true });

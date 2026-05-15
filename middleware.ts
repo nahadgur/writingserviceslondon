@@ -94,13 +94,31 @@ function gone() {
   });
 }
 
+// Next.js metadata file conventions that share dynamic-route URL space
+// with content pages. Without this list the combo-cull regex below
+// would 410 /services/{slug}/opengraph-image and break social cards.
+const NEXT_FILE_CONVENTIONS = new Set([
+  'opengraph-image',
+  'twitter-image',
+  'icon',
+  'apple-icon',
+  'manifest',
+  'sitemap.xml',
+  'robots.txt',
+]);
+
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // 1. Combo URLs — entire route deleted, so any /services/X/Y/ URL
   //    is dead. Match before /services/X/ so we don't 410 surviving
-  //    service hub URLs.
+  //    service hub URLs. Skip Next.js metadata file-conventions that
+  //    legitimately live at /services/{slug}/{convention}.
   if (/^\/services\/[^\/]+\/[^\/]+\/?$/.test(pathname)) {
+    const segments = pathname.split('/').filter(Boolean);
+    if (segments[2] && NEXT_FILE_CONVENTIONS.has(segments[2])) {
+      return NextResponse.next();
+    }
     return gone();
   }
 

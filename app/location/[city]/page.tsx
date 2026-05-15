@@ -13,6 +13,7 @@
 //
 // Also fixed dead combo links: services grid now links to
 // /services/{slug}/ (combo route was removed in the same commit).
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { services } from '@/data/services';
@@ -28,6 +29,31 @@ import { siteConfig } from '@/data/site';
 
 export function generateStaticParams() {
   return AREA_HUBS.map(hub => ({ city: hub.slug }));
+}
+
+export function generateMetadata({ params }: { params: { city: string } }): Metadata {
+  const hub = getAreaHubBySlug(params.city);
+  if (!hub) return { title: 'Area not found' };
+
+  const title = `Will Writers in ${hub.name} ${hub.postcode} | Vetted London Specialists`;
+  const description = `Free matching with vetted will writers and estate planning specialists covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most introductions within 24 hours.`;
+  const url = `${siteConfig.url}/location/${hub.slug}/`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/location/${hub.slug}/` },
+    openGraph: {
+      type: 'article',
+      url,
+      siteName: siteConfig.name,
+      title,
+      description,
+      locale: 'en_GB',
+    },
+    twitter: { card: 'summary_large_image', title, description },
+    robots: { index: true, follow: true },
+  };
 }
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({

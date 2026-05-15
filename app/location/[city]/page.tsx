@@ -16,6 +16,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { services } from '@/data/services';
 import { AREA_HUBS, getAreaHubBySlug } from '@/data/locations';
 import { areaContent } from '@/data/areaContent';
@@ -389,9 +390,8 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {services.map(s => (
                     <Link key={s.id} href={`/services/${s.slug}/`} className="card group flex gap-3 p-4 items-start">
-                      <div style={{ width: 64, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />
+                      <div style={{ width: 64, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)', position: 'relative' }}>
+                        <Image src={s.image} alt={s.title} fill sizes="64px" className="object-cover" />
                       </div>
                       <div style={{ minWidth: 0 }}>
                         <h3

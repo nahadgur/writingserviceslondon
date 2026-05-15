@@ -1,0 +1,6 @@
+Contact: mailto:security@willwritingserviceslondon.co.uk
+Contact: mailto:privacy@willwritingserviceslondon.co.uk
+Expires: 2027-05-15T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.willwritingserviceslondon.co.uk/.well-known/security.txt
+Policy: https://www.willwritingserviceslondon.co.uk/privacy/

@@ -1,53 +1,116 @@
 // app/sitemap.ts
 //
-// 2026-05-04: combo route /services/[svc]/[hub]/ removed entirely
-// (was 90 hand-written pages — replaced by 6 service hubs + 15 area
-// hubs covering the same ground without combinatoric inflation).
-// Added /privacy/, /about/, /contact/, /terms/ legal pages.
+// lastmod per route is derived from the most recent git commit
+// touching the underlying data file(s). That means a content edit
+// to data/services.ts auto-bumps every service URL's lastmod
+// without anyone having to remember to update a hardcoded string.
 //
-// IMPORTANT: lastModified uses static dates not new Date() — every
-// Google fetch with new Date() looks "fresh" and forces re-crawl,
-// burning crawl budget on pages that haven't changed.
+// Falls back to the build-time ISO date if git history is missing
+// (e.g. a non-git build environment). Vercel does include git
+// history on builds.
 
 import type { MetadataRoute } from 'next';
+import { execSync } from 'node:child_process';
+import path from 'node:path';
 import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
 import { siteConfig } from '@/data/site';
 import { blogArticles } from '@/data/blog';
 import { guides } from '@/data/guides';
 
+const ROOT = process.cwd();
+const FALLBACK = new Date().toISOString();
+
+function gitMtime(relPath: string): string {
+  try {
+    const out = execSync(`git log -1 --format=%cI -- "${relPath}"`, {
+      cwd: ROOT,
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'ignore'],
+    }).trim();
+    if (out) return out;
+  } catch {
+    /* fall through */
+  }
+  return FALLBACK;
+}
+
+function newestOf(...paths: string[]): string {
+  return paths.map(gitMtime).sort().pop() ?? FALLBACK;
+}
+
 const SITE_LAUNCH = '2025-01-01';
-const LAST_CONTENT_UPDATE = '2026-05-04';
+
+const HOMEPAGE_MTIME = newestOf(
+  'app/HomePageClient.tsx',
+  'app/page.tsx',
+  'data/site.ts',
+);
+const SERVICES_MTIME = newestOf(
+  'data/services.ts',
+  'data/serviceContent.ts',
+  'app/services/[serviceSlug]/page.tsx',
+  'app/services/[serviceSlug]/ServiceDetailClient.tsx',
+);
+const SERVICES_HUB_MTIME = newestOf(
+  'data/services.ts',
+  'app/services/page.tsx',
+  'app/services/ServicesIndexClient.tsx',
+);
+const LOCATIONS_MTIME = newestOf(
+  'data/locations.ts',
+  'data/areaContent.ts',
+  'data/locationProfiles.ts',
+  'app/location/[city]/page.tsx',
+);
+const LOCATIONS_HUB_MTIME = newestOf(
+  'data/locations.ts',
+  'app/location/page.tsx',
+  'app/location/LocationIndexClient.tsx',
+);
+const BLOG_HUB_MTIME = newestOf(
+  'data/blog.ts',
+  'app/blog/page.tsx',
+  'app/blog/BlogIndexClient.tsx',
+);
+const GUIDES_HUB_MTIME = newestOf(
+  'data/guides.ts',
+  'app/guides/page.tsx',
+);
+const LEGAL_MTIME = newestOf(
+  'app/privacy/page.tsx',
+  'app/about/page.tsx',
+  'app/contact/page.tsx',
+  'app/terms/page.tsx',
+);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
 
-  // Tier 1 — Homepage (1.0)
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${base}/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'monthly', priority: 1.0 },
+    { url: `${base}/`, lastModified: HOMEPAGE_MTIME, changeFrequency: 'monthly', priority: 1.0 },
   ];
 
-  // Tier 2 — Hub pages (0.8)
   const hubPages: MetadataRoute.Sitemap = [
-    { url: `${base}/services/`, lastModified: SITE_LAUNCH, changeFrequency: 'yearly', priority: 0.8 },
-    { url: `${base}/location/`, lastModified: SITE_LAUNCH, changeFrequency: 'yearly', priority: 0.8 },
+    { url: `${base}/services/`, lastModified: SERVICES_HUB_MTIME, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/location/`, lastModified: LOCATIONS_HUB_MTIME, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
   if (blogArticles.length > 0) {
     hubPages.push({
       url: `${base}/blog/`,
-      lastModified: blogArticles[0]?.publishDate ?? SITE_LAUNCH,
+      lastModified: BLOG_HUB_MTIME,
       changeFrequency: 'monthly',
       priority: 0.7,
     });
   }
 
-  // Tier — Guides hub (0.8)
   const guidesHub: MetadataRoute.Sitemap = [
-    { url: `${base}/guides/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/guides/`, lastModified: GUIDES_HUB_MTIME, changeFrequency: 'monthly', priority: 0.8 },
   ];
 
-  // Tier — Individual guide pages (0.7)
+  // Each guide's lastmod uses its own publishDate from data/guides.ts
+  // — that's the authored "last reviewed" date for the article.
   const guidePages: MetadataRoute.Sitemap = guides.map(g => ({
     url: `${base}/guides/${g.slug}/`,
     lastModified: g.publishDate,
@@ -55,15 +118,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Tier 3 — Service pages (0.7)
+  // Service detail pages share the same data files, so all 6 get the
+  // same lastmod = newest commit affecting services.ts / serviceContent.ts.
   const servicePages: MetadataRoute.Sitemap = services.map(s => ({
     url: `${base}/services/${s.slug}/`,
-    lastModified: SITE_LAUNCH,
-    changeFrequency: 'yearly' as const,
+    lastModified: SERVICES_MTIME,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
-  // Tier 4 — Blog posts (0.6)
+  // Blog articles use their authored publishDate (not git mtime) —
+  // the article's own date is what matters for editorial freshness.
   const blogPages: MetadataRoute.Sitemap = blogArticles.map(article => ({
     url: `${base}/blog/${article.slug}/`,
     lastModified: article.publishDate,
@@ -71,20 +136,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  // Tier 5 — 15 curated area hub pages (0.6)
   const locationPages: MetadataRoute.Sitemap = AREA_HUBS.map(hub => ({
     url: `${base}/location/${hub.slug}/`,
-    lastModified: LAST_CONTENT_UPDATE,
-    changeFrequency: 'yearly' as const,
+    lastModified: LOCATIONS_MTIME,
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
-  // Tier 6 — Legal pages
   const legalPages: MetadataRoute.Sitemap = [
-    { url: `${base}/about/`,   lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.5 },
-    { url: `${base}/contact/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.5 },
-    { url: `${base}/privacy/`, lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${base}/terms/`,   lastModified: LAST_CONTENT_UPDATE, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${base}/about/`,   lastModified: LEGAL_MTIME, changeFrequency: 'yearly' as const, priority: 0.5 },
+    { url: `${base}/contact/`, lastModified: LEGAL_MTIME, changeFrequency: 'yearly' as const, priority: 0.5 },
+    { url: `${base}/privacy/`, lastModified: LEGAL_MTIME, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${base}/terms/`,   lastModified: LEGAL_MTIME, changeFrequency: 'yearly' as const, priority: 0.3 },
   ];
 
   return [
@@ -98,3 +161,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...legalPages,
   ];
 }
+
+// Silence unused-var warning when SITE_LAUNCH isn't referenced after
+// removing all hardcoded dates. Keeping the constant around for the
+// historical record and as a sensible fallback for future routes.
+void SITE_LAUNCH;

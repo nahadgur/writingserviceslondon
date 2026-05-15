@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
 import { Header } from '@/components/Header';
@@ -51,9 +52,8 @@ export function ServicesIndexClient() {
                   <Link key={s.id} href={`/services/${s.slug}/`} className="svc-row" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
                     {/* Mobile: image + title stacked */}
                     <div className="flex gap-4 items-start mb-3 lg:hidden">
-                      <div style={{ width: 72, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />
+                      <div style={{ width: 72, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)', position: 'relative' }}>
+                        <Image src={s.image} alt={s.title} fill sizes="72px" className="object-cover" />
                       </div>
                       <div>
                         <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, color: 'var(--ink)', lineHeight: 1.2, marginBottom: 3 }}>
@@ -68,9 +68,8 @@ export function ServicesIndexClient() {
 
                     {/* Desktop: 4-col grid */}
                     <div className="hidden lg:grid" style={{ gridTemplateColumns: '88px 1fr 1fr auto', gap: 24, alignItems: 'center' }}>
-                      <div style={{ width: 88, height: 60, borderRadius: 5, overflow: 'hidden', background: 'var(--parchment-2)' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={s.image} alt={s.title} className="w-full h-full object-cover" loading="lazy" />
+                      <div style={{ width: 88, height: 60, borderRadius: 5, overflow: 'hidden', background: 'var(--parchment-2)', position: 'relative' }}>
+                        <Image src={s.image} alt={s.title} fill sizes="88px" className="object-cover" />
                       </div>
                       <div>
                         <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 22, color: 'var(--ink)', marginBottom: 4 }}>{s.title}</h2>

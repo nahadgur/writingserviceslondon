@@ -2,10 +2,9 @@
 
 import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { readAttribution } from './AttributionCapture';
 
 interface Props { city?: string; service?: string; }
-
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
 
 const serviceOptions = [
   'Single will',
@@ -22,6 +21,7 @@ export function HeroLeadForm({ city, service }: Props) {
   const [done,       setDone]       = useState(false);
   const [error,      setError]      = useState('');
   const formRef = useRef<HTMLFormElement>(null);
+  const startedRef = useRef<number>(Date.now());
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -35,6 +35,7 @@ export function HeroLeadForm({ city, service }: Props) {
 
     setSubmitting(true);
     setError('');
+    const att = readAttribution();
     const payload = {
       name:    (form.querySelector('#hlf-name')  as HTMLInputElement).value.trim(),
       email:   (form.querySelector('#hlf-email') as HTMLInputElement).value.trim(),
@@ -43,15 +44,22 @@ export function HeroLeadForm({ city, service }: Props) {
       message: (form.querySelector('#hlf-msg')   as HTMLTextAreaElement).value.trim(),
       page:    typeof window !== 'undefined' ? window.location.pathname : '',
       source:  'hero-form',
+      _hp_company:    (form.querySelector('#hlf-hp') as HTMLInputElement)?.value ?? '',
+      _form_started:  startedRef.current,
+      ...att,
     };
 
     try {
-      await fetch(GAS_URL, {
+      const res = await fetch('/api/lead', {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data?.ok) {
+        setError('Something went wrong. Please try the button below.');
+        return;
+      }
       setDone(true);
     } catch {
       setError('Something went wrong. Please try the button below.');
@@ -82,6 +90,12 @@ export function HeroLeadForm({ city, service }: Props) {
           <p className="body-sm mb-4">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
 
           <form ref={formRef} onSubmit={submit} noValidate className="space-y-3">
+
+            {/* Honeypot — hidden from real users, bots fill it */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
+              <label htmlFor="hlf-hp">Company name (leave blank)</label>
+              <input id="hlf-hp" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
 
             <div>
               <label className="field-label" htmlFor="hlf-name">Your name *</label>

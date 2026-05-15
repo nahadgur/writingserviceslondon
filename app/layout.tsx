@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import { siteConfig } from '@/data/site';
 import { ConsentBanner } from '@/components/ConsentBanner';
+import { AttributionCapture } from '@/components/AttributionCapture';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -79,6 +80,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="min-h-screen flex flex-col">
+        {/* First-touch attribution into sessionStorage. Fires before
+            consent — captures only UTM params and document.referrer
+            already exposed to the page, no analytics cookies. */}
+        <AttributionCapture />
         {/* GA4 only loads after the visitor accepts the cookie banner
             (UK PECR requires prior consent for non-essential cookies). */}
         <ConsentBanner gaId={gaId} />

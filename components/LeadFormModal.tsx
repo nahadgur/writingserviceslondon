@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
+import { readAttribution } from './AttributionCapture';
 
 interface Props {
   isOpen: boolean;
@@ -10,8 +11,6 @@ interface Props {
   defaultService?: string;
   defaultCity?: string;
 }
-
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
 
 const serviceOptions = [
   'Single will',
@@ -31,11 +30,13 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
   const [error,      setError]      = useState('');
   const nameRef    = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+  const startedRef = useRef<number>(Date.now());
 
   useEffect(() => {
     if (isOpen) {
       triggerRef.current = document.activeElement as HTMLElement;
       setMounted(true); setClosing(false); setSubmitted(false); setError('');
+      startedRef.current = Date.now();
       document.body.style.overflow = 'hidden';
       setTimeout(() => nameRef.current?.focus(), 60);
     } else if (mounted) {
@@ -66,6 +67,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
 
     setSubmitting(true);
     setError('');
+    const att = readAttribution();
     const payload = {
       name:    (form.querySelector('#m-name')    as HTMLInputElement).value.trim(),
       email:   (form.querySelector('#m-email')   as HTMLInputElement).value.trim(),
@@ -74,19 +76,25 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
       message: (form.querySelector('#m-msg')     as HTMLTextAreaElement).value.trim(),
       page:    window.location.pathname,
       source:  'modal',
+      _hp_company:   (form.querySelector('#m-hp') as HTMLInputElement)?.value ?? '',
+      _form_started: startedRef.current,
+      ...att,
     };
 
     try {
-      await fetch(GAS_URL, {
+      const res = await fetch('/api/lead', {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      // no-cors means we can't read the response — assume success if no throw
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data?.ok) {
+        setError('Something went wrong. Please try again or email us directly.');
+        return;
+      }
       setSubmitted(true);
     } catch {
-      setError('Something went wrong. Please try calling us directly.');
+      setError('Something went wrong. Please try again or email us directly.');
     } finally {
       setSubmitting(false);
     }
@@ -144,6 +152,12 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
           ) : (
             <form onSubmit={submit} noValidate>
               <div className="space-y-4">
+
+                {/* Honeypot — hidden from real users, bots fill it */}
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
+                  <label htmlFor="m-hp">Company name (leave blank)</label>
+                  <input id="m-hp" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
 
                 <div>
                   <label className="field-label" htmlFor="m-name">Your name *</label>

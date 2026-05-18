@@ -21,6 +21,12 @@ import { siteConfig } from '@/data/site';
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbwyvWIDUWZCeIaLRn91S3BxMCPTFIKBHE8tG4jEtKtLQyfEZrAPi-nd1MZgH20gP4j1Sw/exec';
 
 const MIN_FILL_MS = 1500;
+
+// 2026-05-18 - Fleet-wide kill switch. The honeypot / timing / spam guards
+// silently swallow submissions (return ok:true with no Sheet write), which
+// hid legitimate-autofill losses. All three drop branches now short-circuit
+// on GUARD_ENABLED. Flip to true once thresholds are calibrated.
+const GUARD_ENABLED: boolean = false;
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 
@@ -96,13 +102,13 @@ export async function POST(req: NextRequest) {
   }
 
   // 3. Honeypot — pretend success so the bot moves on
-  if (typeof body._hp_company === 'string' && body._hp_company.trim() !== '') {
+  if (GUARD_ENABLED && typeof body._hp_company === 'string' && body._hp_company.trim() !== '') {
     return NextResponse.json({ ok: true });
   }
 
   // 4. Form-fill timing
   const formStarted = Number(body._form_started);
-  if (!Number.isFinite(formStarted) || Date.now() - formStarted < MIN_FILL_MS) {
+  if (GUARD_ENABLED && (!Number.isFinite(formStarted) || Date.now() - formStarted < MIN_FILL_MS)) {
     return NextResponse.json({ ok: true });
   }
 
@@ -122,7 +128,7 @@ export async function POST(req: NextRequest) {
   }
 
   // 6. Content spam check
-  if (isSpammy(message) || isSpammy(name)) {
+  if (GUARD_ENABLED && (isSpammy(message) || isSpammy(name))) {
     return NextResponse.json({ ok: true });
   }
 

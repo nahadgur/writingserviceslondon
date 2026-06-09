@@ -8,12 +8,18 @@ export interface ContentBlock {
 export interface BlogArticle {
   slug: string; title: string; metaTitle: string; metaDescription: string;
   category: string; publishDate: string; featuredImage: string; excerpt: string;
+  hub: string;
+  draft: boolean;
+  dateModified?: string;
+  faqs?: { question: string; answer: string }[];
   content: ContentBlock[];
 }
 
 export const blogArticles: BlogArticle[] = [
   {
     slug: 'will-writing-services-london-2026-guide-for-families',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Will Writing Services London – 2026 Guide for Families',
     metaTitle: '2026 Will Writing Services London: Family Guide',
     metaDescription: 'Secure your family\'s future with expert will writing services in London. Our 2026 guide covers inheritance tax changes, probate pitfalls, guardianship, costs, and top providers to protect your assets effectively.',
@@ -456,6 +462,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'how-to-choose-a-will-writing-service-in-london',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'How to Choose a Will Writing Service in London',
     metaTitle: 'Choose Top Will Writing Service in London Guide',
     metaDescription: 'Discover how to choose a will writing service in London. Assess needs, check reviews, verify solicitor status, compare prices, and customise for basic or complex wills. Safeguard your legacy today with expert tips.',
@@ -812,6 +820,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'solicitor-vs-will-writing-service-in-london-key-differences',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Solicitor vs Will Writing Service in London – Key Differences',
     metaTitle: 'Solicitor vs Will Service London: Key Differences',
     metaDescription: 'Discover solicitor vs will writing service in London – key differences in qualifications, costs, services, and complexity handling. Avoid invalid wills and protect your legacy with expert insights. Choose wisely today.',
@@ -1241,6 +1251,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'home-visit-will-writing-services-in-london-explained',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Home Visit Will Writing Services in London Explained',
     metaTitle: 'London Home Visit Will Writing: Full Guide',
     metaDescription: 'Discover home visit will writing services in London explained: perfect for busy pros and mobility-limited clients. Learn the process, from consultation to review, key benefits, and UK legal requirements. Secure your legacy conveniently today.',
@@ -1724,6 +1736,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'online-will-writing-services-for-london-residents',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Online Will Writing Services for London Residents',
     metaTitle: 'Easy Online Will Writing for London Residents',
     metaDescription: 'Secure your legacy with online will writing services for London residents. Learn UK Wills Act compliance, key benefits, top features, step-by-step process, and how to choose the best service today.',
@@ -2216,6 +2230,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'will-writing-costs-in-london-in-2026',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Will Writing Costs in London in 2026',
     metaTitle: '2026 London Will Writing Costs: Projections & Breakdowns',
     metaDescription: 'Discover projected Will Writing Costs in London in 2026, from £300+ averages rising due to inflation and regulations. Explore breakdowns for simple single wills, complex mirror wills, solicitors vs online services. Plan your legacy wisely today.',
@@ -2638,6 +2654,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'is-will-writing-regulated-in-the-uk-what-london-clients-should-know',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Is Will Writing Regulated in the UK – What London Clients Should Know',
     metaTitle: 'UK Will Writing Regulation: London Client Guide',
     metaDescription: 'Is will writing regulated in the UK? Learn the legal status, risks of unregulated writers, STEP accreditation benefits, and key steps London clients must take to avoid invalid wills and protect their legacy today.',
@@ -3070,13 +3088,15 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'mirror-wills-and-joint-wills-for-couples-in-london',
-    title: 'Mirror Wills and Joint Wills for Couples in London',
-    metaTitle: 'Mirror & Joint Wills Guide for London Couples',
-    metaDescription: 'Explore mirror wills and joint wills for couples in London. Learn key features, legal requirements, comparisons, and advantages to protect your legacy effectively. Get expert insights now.',
+    hub: 'mirror-wills-guide',
+    draft: false,
+    title: 'Should London Couples Choose Mirror or Joint Wills?',
+    metaTitle: 'Mirror vs Joint Wills for London Couples',
+    metaDescription: 'Mirror wills and joint wills are not the same thing. How London couples can decide between them, the hidden risks of joint wills, and when each option fits.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: '/images/mirror-wills.png',
-    excerpt: 'Imagine safeguarding your shared legacy with precision --yet one overlooked detail unravels it all. For London couples, mirror wills and joint wills offer tailored estate planning amid England\'s intrica...',
+    excerpt: 'Mirror wills and joint wills are easily confused. Here is how London couples can decide which suits them, and why most specialists steer couples away from a joint will.',
     content: [
         {
             "type": "h2",
@@ -3481,13 +3501,15 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'updating-or-changing-your-will-in-london-when-and-how',
-    title: 'Updating or Changing Your Will in London – When and How',
-    metaTitle: 'When & How to Update Your Will in London',
-    metaDescription: 'Learn when to update your will in London due to marriage, divorce, new assets or life events under English law. Explore codicils, new wills via solicitors, costs and expert steps to safeguard your legacy today.',
+    hub: 'updating-your-will',
+    draft: false,
+    title: 'Life Events That Mean You Should Update Your Will',
+    metaTitle: 'Life Events That Should Trigger a Will Review',
+    metaDescription: 'Marriage, divorce, a new child or buying a home can leave a will out of date or even invalid. The life events that should trigger a review for London families.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: '/images/estate-planning.png',
-    excerpt: 'A sudden life change --like marriage or a new child --could unintentionally disinherit loved ones if your will isn\'t updated. In London, under English law, safeguarding your legacy demands timely action. ...',
+    excerpt: 'Marriage, divorce, a new child or a property purchase can all leave a will out of date, or even revoke it entirely. These are the life events that should prompt a review.',
     content: [
         {
             "type": "h2",
@@ -3880,13 +3902,15 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'lasting-power-of-attorney-and-will-writing-services-in-london',
-    title: 'Lasting Power of Attorney and Will Writing Services in London',
-    metaTitle: 'Expert LPA & Will Writing Services London',
-    metaDescription: 'Secure your future with expert Lasting Power of Attorney and Will Writing Services in London. Learn LPA types, will essentials, avoid pitfalls, and get professional drafting plus registration. Trust local specialists for peace of mind today.',
+    hub: 'lasting-power-of-attorney-guide',
+    draft: false,
+    title: 'Why Pair a Lasting Power of Attorney With Your Will',
+    metaTitle: 'Pairing an LPA With Your Will: Why It Matters',
+    metaDescription: 'A will takes effect after death; a lasting power of attorney protects you while you are alive. Why London families set up both together, and the gap an LPA fills.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: '/images/lasting-power-of-attorney.png',
-    excerpt: 'Imagine facing illness or incapacity without a trusted voice to act on your behalf --what then? Safeguarding your future demands precise Lasting Power of Attorney (LPA) and will planning, especially ami...',
+    excerpt: 'A will only takes effect after death. A lasting power of attorney covers the years before, when you may be unable to make your own decisions. Here is why London families set up both.',
     content: [
         {
             "type": "h2",
@@ -4336,13 +4360,15 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'inheritance-tax-planning-and-will-writing-in-london',
-    title: 'Inheritance Tax Planning and Will Writing in London',
-    metaTitle: 'Expert IHT Planning & Will Writing London Guide',
-    metaDescription: 'Master UK inheritance tax thresholds, exemptions, gifting rules, trusts, and will writing essentials for London properties. Safeguard your estate from 40% tax. Get expert strategies to minimise liabilities today.',
+    hub: 'inheritance-tax-guide-london',
+    draft: false,
+    title: 'How Your Will Can Reduce Inheritance Tax in London',
+    metaTitle: 'Cutting Inheritance Tax Through Your Will',
+    metaDescription: 'Practical ways a well-drafted will can reduce an inheritance tax bill for London estates: the nil-rate bands, charitable gifts and trusts. Guidance, not financial advice.',
     category: 'Will Writing',
     publishDate: '2026-01-15',
     featuredImage: '/images/estate-planning.png',
-    excerpt: 'Imagine safeguarding your family\'s future from a 40% inheritance tax bite on estates exceeding £325,000. With UK thresholds frozen until 2028, proactive planning is essential --especially in London\'s so...',
+    excerpt: 'A well-drafted will is one of the most effective inheritance tax tools a London family has. Here is how the right structure can reduce what HMRC eventually takes.',
     content: [
         {
             "type": "h2",
@@ -4701,6 +4727,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'will-writing-for-london-homeowners-with-multiple-properties',
+    hub: 'trust-planning-guide',
+    draft: false,
     title: 'Will Writing for London Homeowners with Multiple Properties',
     metaTitle: 'Expert Will Writing: London Multi-Property Guide',
     metaDescription: 'London homeowners with multiple properties face huge Inheritance Tax risks up to £265,000+. Learn specialist will writing strategies for complex estates, joint ownership, tax minimisation, and London laws. Secure your legacy with expert tips today.',
@@ -5016,6 +5044,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'free-and-lowcost-will-writing-options-in-london',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Free and Low‑Cost Will Writing Options in London',
     metaTitle: 'Affordable Free Will Writing in London (12 Options)',
     metaDescription: 'Discover 12 free and low-cost will writing options in London, from FreeWill UK and charity schemes to local clinics and DIY kits under £20. Safeguard your legacy without high costs. Find the best fit for your needs today.',
@@ -5455,6 +5485,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'will-writing-and-charitable-gifts-in-london',
+    hub: 'inheritance-tax-guide-london',
+    draft: false,
     title: 'Will Writing and Charitable Gifts in London',
     metaTitle: 'Expert Will Writing & Charitable Gifts London Guide',
     metaDescription: 'Craft a valid will in London with ease. Avoid common mistakes, add charitable bequests to top London charities, and claim inheritance tax relief. Discover solicitor vs. DIY processes, costs, and updates that secure your legacy today.',
@@ -5802,6 +5834,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'common-will-writing-mistakes-london-families-make',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Common Will Writing Mistakes London Families Make',
     metaTitle: 'Avoid Common Will Writing Mistakes London Families Make',
     metaDescription: 'Discover common will writing mistakes London families make, like DIY wills ignoring local rules, outdated beneficiaries, forgotten digital assets, and poor executor choices. Protect your legacy from disputes and taxes. Learn how to fix them today.',
@@ -6207,6 +6241,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'will-reviews-and-second-opinions-in-london',
+    hub: 'updating-your-will',
+    draft: false,
     title: 'Will Reviews and Second Opinions in London',
     metaTitle: 'Expert Will Reviews & Second Opinions London',
     metaDescription: 'Discover will reviews and second opinions in London to avoid costly estate disputes. Learn key components, top specialist firms, red flags, process, costs, and how to find reliable solicitors for lasting peace of mind.',
@@ -6644,6 +6680,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'emergency-will-writing-services-in-london',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'Emergency Will Writing Services in London',
     metaTitle: 'Urgent Emergency Will Writing in London Now',
     metaDescription: 'Secure your legacy fast with emergency will writing services in London. Learn what qualifies as urgent, common scenarios, UK legal rules, our quick process from consultation to completion, and benefits like 28-day savings to 4 days. Get peace of mind today.',
@@ -7313,6 +7351,8 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: 'what-to-expect-at-a-will-writing-home-visit-in-london',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
     title: 'What to Expect at a Will Writing Home Visit in London',
     metaTitle: 'Will Writing Home Visit London: What Happens',
     metaDescription: 'Discover what to expect at a will writing home visit in London: prepare documents, ensure privacy, discuss assets, family, and guardians with your solicitor. Enjoy personalised service from home. Secure your legacy today with this complete guide.',
@@ -7877,4 +7917,14 @@ export const blogArticles: BlogArticle[] = [
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
   return blogArticles.find(a => a.slug === slug);
+}
+
+// Draft gate: draft spokes 404 and are excluded from /blog, hub spoke-grids and
+// the sitemap until the publisher flips them live.
+export function getPublishedArticles(): BlogArticle[] {
+  return blogArticles.filter(a => !a.draft);
+}
+
+export function getArticlesByHub(hub: string): BlogArticle[] {
+  return blogArticles.filter(a => a.hub === hub && !a.draft);
 }

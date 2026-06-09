@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { blogArticles } from '@/data/blog';
+import { getPublishedArticles } from '@/data/blog';
 import { siteConfig } from '@/data/site';
 import { BlogIndexClient } from './BlogIndexClient';
 
 export const metadata: Metadata = {
   title: 'Will Writing and Estate Planning Guides | London',
-  description: 'Practical guides for London residents on wills, LPAs, trusts, inheritance tax, and probate — written for people making these decisions for the first time.',
+  description: 'Practical guides for London residents on wills, LPAs, trusts, inheritance tax, and probate, written for people making these decisions for the first time.',
   alternates: { canonical: '/blog/' },
   openGraph: {
     type: 'website',
@@ -32,7 +32,7 @@ export default function BlogIndexPage() {
     description: 'Practical advice for London residents on wills, LPAs, trusts, inheritance tax, and probate.',
     url: `${siteConfig.url}/blog/`,
     publisher: { '@id': `${siteConfig.url}/#organization` },
-    blogPost: blogArticles.slice(0, 10).map(a => ({
+    blogPost: getPublishedArticles().slice(0, 10).map(a => ({
       '@type': 'BlogPosting',
       headline: a.title,
       url: `${siteConfig.url}/blog/${a.slug}/`,

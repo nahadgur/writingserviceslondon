@@ -4,11 +4,12 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/data/site';
+import { editorialAuthorSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
   title: 'About the matching service',
   description:
-    'Will Writing Services London is a free matching service connecting London families with vetted will writers and estate planning specialists. We are not a law firm — we introduce clients to qualified professionals.',
+    'Will Writing Services London is a free matching service connecting London families with vetted will writers and estate planning specialists. We are not a law firm; we introduce clients to qualified professionals.',
   alternates: { canonical: '/about/' },
   robots: { index: true, follow: true },
 };
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(editorialAuthorSchema()) }} />
       <Header />
       <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
         <section style={{ background: 'var(--ink)', color: '#fff' }}>

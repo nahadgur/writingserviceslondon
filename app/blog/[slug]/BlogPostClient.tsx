@@ -116,8 +116,18 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
   }
 }
 
-export function BlogPostClient({ article, related }: { article: BlogArticle; related: BlogArticle[] }) {
+export function BlogPostClient({ article, related, hub }: { article: BlogArticle; related: BlogArticle[]; hub: { slug: string; title: string } | null }) {
   const [modal, setModal] = useState(false);
+
+  const toolByHub: Record<string, { id: string; label: string }> = {
+    'inheritance-tax-guide-london': { id: 'iht', label: 'Inheritance tax calculator' },
+    'probate-guide-london': { id: 'probate', label: 'Probate fee calculator' },
+    'lasting-power-of-attorney-guide': { id: 'lpa', label: 'LPA cost estimator' },
+    'intestacy-rules-uk': { id: 'intestacy', label: 'Intestacy outcome calculator' },
+    'trust-planning-guide': { id: 'care', label: 'Care cost protection estimator' },
+    'updating-your-will': { id: 'review', label: 'Will review checker' },
+  };
+  const tool = toolByHub[article.hub];
 
   // Find 2nd h2 to inject pull quote
   let h2Count = 0;
@@ -151,6 +161,7 @@ export function BlogPostClient({ article, related }: { article: BlogArticle; rel
               <span className="eyebrow flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.35)' }}>
                 <Calendar size={10} /> {article.publishDate}
               </span>
+              <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.35)' }}>By WWSL</span>
             </div>
             <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(28px,4vw,48px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', lineHeight: 1.15, maxWidth: 680 }}>
               {article.title}
@@ -168,6 +179,16 @@ export function BlogPostClient({ article, related }: { article: BlogArticle; rel
                 className="body-sm hover:text-ink">
                 <ArrowLeft size={12} /> All articles
               </Link>
+
+              {hub && (
+                <p className="body-sm" style={{ marginBottom: 18 }}>
+                  Part of our{' '}
+                  <Link href={`/guides/${hub.slug}/`} style={{ color: 'var(--brand)', textDecoration: 'underline', textDecorationColor: 'rgba(212,105,25,0.35)' }}>
+                    {hub.title}
+                  </Link>{' '}
+                  guide.
+                </p>
+              )}
 
               <p className="article-lede" style={{ marginBottom: 28 }}>{article.excerpt}</p>
 
@@ -241,6 +262,17 @@ export function BlogPostClient({ article, related }: { article: BlogArticle; rel
                     Find my specialist
                   </button>
                 </div>
+
+                {tool && (
+                  <div className="sidebar-box">
+                    <p className="eyebrow mb-3">Try the tool</p>
+                    <Link href={`/tools/#${tool.id}`}
+                      style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
+                      className="hover:text-brand-500">
+                      {tool.label} →
+                    </Link>
+                  </div>
+                )}
 
                 {related.length > 0 && (
                   <div className="sidebar-box">

@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { guides, getGuideBySlug, guideCategories } from '@/data/guides';
+import { getArticlesByHub } from '@/data/blog';
+import { articleSchema, breadcrumbSchema, faqSchema, editorialAuthorSchema } from '@/lib/schema';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
@@ -51,37 +53,30 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
     .map(s => guides.find(g => g.slug === s))
     .filter(Boolean) as typeof guides;
 
-  // YMYL guide schema. Author + publisher + reviewedBy all point to
-  // the same site Organization (@id-linked into the global graph).
-  // No fabricated named author — the editorial team IS the publisher.
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${siteConfig.url}/guides/${guide.slug}/#article`,
-    headline: guide.title,
-    description: guide.metaDescription,
-    author: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: siteConfig.name, url: siteConfig.url },
-    publisher: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: siteConfig.name, url: siteConfig.url },
-    reviewedBy: { '@type': 'Organization', '@id': `${siteConfig.url}/#organization`, name: `${siteConfig.name} editorial team` },
-    datePublished: guide.publishDate,
-    dateModified: guide.publishDate,
-    mainEntityOfPage: `${siteConfig.url}/guides/${guide.slug}/`,
-  };
+  // Live child spokes of this hub (drafts excluded).
+  const spokes = getArticlesByHub(guide.slug);
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: guide.faqs.map(f => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: { '@type': 'Answer', text: f.answer },
-    })),
-  };
+  const url = `${siteConfig.url}/guides/${guide.slug}/`;
+  // YMYL schema: Article + BreadcrumbList + FAQPage, author/reviewer @id to the
+  // WWSL editorial entity (emitted below). No fabricated named person.
+  const schemas = [
+    editorialAuthorSchema(),
+    breadcrumbSchema([{ label: 'Guides', href: '/guides/' }, { label: guide.title }]),
+    articleSchema({
+      url,
+      headline: guide.title,
+      description: guide.metaDescription,
+      datePublished: guide.publishDate,
+      dateModified: guide.publishDate,
+    }),
+    faqSchema(guide.faqs),
+  ];
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {schemas.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <Header />
 
       <main id="main-content">
@@ -123,7 +118,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
             {/* YMYL byline. No fabricated named author per fleet rule —
                 the editorial team IS the publisher. */}
             <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 400, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginTop: 18, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-              <span>Published and reviewed by the {siteConfig.name} editorial team</span>
+              <span>Published and reviewed by WWSL, the {siteConfig.name} editorial team</span>
               <span aria-hidden="true">·</span>
               <span>
                 <time dateTime={guide.publishDate}>{new Date(guide.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
@@ -194,6 +189,23 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
               </div>
             </aside>
           </div>
+
+          {/* Child spokes in this hub (drafts excluded) */}
+          {spokes.length > 0 && (
+            <section style={{ marginTop: 8 }}>
+              <p className="eyebrow mb-4">More on {guide.title.toLowerCase()}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {spokes.map(sp => (
+                  <Link key={sp.slug} href={`/blog/${sp.slug}/`} className="card-parchment"
+                    style={{ display: 'block', padding: '18px 18px', borderRadius: 8, textDecoration: 'none' }}>
+                    <p className="eyebrow-brand mb-1">{sp.category}</p>
+                    <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 17, fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.3, marginBottom: 6 }}>{sp.title}</h3>
+                    <p className="body-sm" style={{ margin: 0 }}>{sp.excerpt}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </main>
 

@@ -15,7 +15,10 @@ import path from 'node:path';
 import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
 import { siteConfig } from '@/data/site';
-import { blogArticles } from '@/data/blog';
+import { getPublishedArticles } from '@/data/blog';
+
+// Draft spokes are excluded from the sitemap until the publisher flips them live.
+const blogArticles = getPublishedArticles();
 import { guides } from '@/data/guides';
 
 const ROOT = process.cwd();

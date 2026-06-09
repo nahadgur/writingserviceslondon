@@ -1,6 +1,52 @@
 // lib/schema.ts — shared JSON-LD builder functions
 import { siteConfig } from '@/data/site';
 
+const ORG_ID = `${siteConfig.url}/#organization`;
+export const AUTHOR_ID = `${siteConfig.url}/about/#author`;
+
+// Editorial author entity. Brand byline "WWSL" (Will Writing Services London),
+// not an invented person or credentials. Emitted on the About page and
+// referenced by @id from guide hubs and blog spokes.
+export function editorialAuthorSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': AUTHOR_ID,
+    name: 'WWSL',
+    alternateName: `${siteConfig.name} editorial team`,
+    url: `${siteConfig.url}/about/`,
+    parentOrganization: { '@id': ORG_ID },
+    description:
+      'Editorial team for Will Writing Services London. Legal points are checked against the Wills Act 1837, current HMRC and GOV.UK guidance, and Office of the Public Guardian sources.',
+  };
+}
+
+// Article schema for hubs and spokes, with the WWSL author @id and dates.
+export function articleSchema(opts: {
+  url: string;
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  image?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${opts.url}#article`,
+    headline: opts.headline,
+    description: opts.description,
+    ...(opts.image ? { image: opts.image } : {}),
+    datePublished: opts.datePublished,
+    dateModified: opts.dateModified,
+    author: { '@id': AUTHOR_ID },
+    publisher: { '@id': ORG_ID },
+    reviewedBy: { '@id': AUTHOR_ID },
+    mainEntityOfPage: opts.url,
+    inLanguage: 'en-GB',
+  };
+}
+
 export function breadcrumbSchema(items: { label: string; href?: string }[]) {
   return {
     '@context': 'https://schema.org',

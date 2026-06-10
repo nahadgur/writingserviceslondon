@@ -7913,6 +7913,128 @@ export const blogArticles: BlogArticle[] = [
             "text": "Costs for a Will Writing Home Visit in London typically range from £150-£400 for single or mirror wills, depending on complexity. What to Expect at a Will Writing Home Visit in London includes transparent pricing discussed upfront, with no hidden fees, making professional will-writing accessible and straightforward."
         }
     ]
+  },
+  {
+    slug: 'what-happens-to-your-online-accounts-after-death-in-london',
+    hub: 'digital-assets-and-wills',
+    draft: true,
+    title: 'What Happens to Your Online Accounts After Death in London',
+    metaTitle: 'What Happens to Online Accounts After Death in London',
+    metaDescription: 'How executors can access your online accounts after death: social media legacy tools, secure password records, platform rules, and how a will helps London families.',
+    category: 'Will Writing',
+    publishDate: '2026-06-09',
+    dateModified: '2026-06-09',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'When you die, your executor needs more than a list of accounts. They need a lawful way to reach them. Banks release funds once probate is granted, but social media, email and cloud storage follow their own rules. Recording access details and naming legacy contacts is what keeps your digital life reachable.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/after-a-death", "linkText": "GOV.UK: What to do after a death", "text": "GOV.UK sets out the practical steps an executor takes after a death, including notifying organisations that hold the estate's accounts."},
+        {"type": "p", "text": "Your executor cannot manage what they cannot find. A modern London estate is spread across dozens of online accounts: email, banking apps, investment platforms, cloud photo libraries, subscriptions and social media. Some of these hold real value, others hold sentimental records, and almost all of them are locked behind credentials only you know. This guide explains what happens to those accounts when you die, what your executor is and is not allowed to do, and the simple steps that keep your digital life reachable."},
+
+        {"type": "h2", "text": "Why online accounts cause problems for executors"},
+        {"type": "p", "text": "Traditional assets have a clear path. A bank releases funds when the executor presents the death certificate and, where required, the grant of probate. Online accounts are different because access usually depends on a password, a phone for two-factor codes, or a device that may itself be locked. Without those, an executor can know an account exists and still be unable to open it."},
+        {"type": "p", "text": "There is also a legal distinction that surprises many families. Much of what people think they own online is in fact a personal licence rather than property. A film library on a streaming service, an ebook collection or a music catalogue is typically non-transferable on death under the provider's terms of service. These do not form part of the estate and cannot be passed on, however much was spent building them up."},
+        {"type": "p", "text": "Accounts that do hold transferable value, such as online bank and investment accounts, PayPal balances and domain names, remain part of the estate and pass under the will. The challenge is purely practical: giving the executor a lawful and workable way in."},
+
+        {"type": "h2", "text": "Which accounts pass to your estate, and which simply close"},
+        {"type": "p", "text": "It helps to sort your accounts into three groups before deciding what to record."},
+        {"type": "list", "items": [
+            "Financial accounts with real value: online bank and savings accounts, investment and pension platforms, PayPal, and any business or domain assets. These are part of the estate and the executor deals with them through the normal probate process.",
+            "Licensed content with no transfer right: streaming, ebook and music libraries, and most app purchases. These usually end with the account and cannot be inherited.",
+            "Identity and memory accounts: email, social media, cloud storage and photo libraries. These rarely have a cash value, but they hold the records families most want to preserve and the logins that unlock everything else."
+        ]},
+        {"type": "p", "text": "Email deserves special attention because it is often the master key. Password resets for banks, utilities and social platforms run through the inbox, so an executor who can reach the email account can frequently reach much of the rest. That is also why email security matters so much while you are alive."},
+
+        {"type": "h2", "text": "Social media and the legacy tools that already exist"},
+        {"type": "p", "text": "Several major platforms now offer their own settings that let you decide in advance what happens to your account. Setting these up takes minutes and removes a great deal of uncertainty for the people left behind."},
+        {"type": "list", "items": [
+            "Facebook lets you appoint a legacy contact who can memorialise your profile, pin a final post and respond to friend requests, or you can ask for the account to be deleted on death.",
+            "Google's Inactive Account Manager can share or delete data from Gmail, Drive and Photos after a set period of inactivity, sending nominated contacts the access you choose.",
+            "Apple offers a Legacy Contact who can request access to photos, messages and files stored in your account using an access key and a copy of the death certificate.",
+            "Instagram and LinkedIn allow accounts to be memorialised or removed when a family member or representative reports a death with supporting documents."
+        ]},
+        {"type": "p", "text": "These tools sit outside your will, so they need to be set up directly with each platform. A will can still name your wishes for your digital legacy, and a specialist can make sure those wishes are consistent with the platform settings you have chosen rather than contradicting them."},
+
+        {"type": "h2", "text": "Recording access safely without putting passwords in your will"},
+        {"type": "p", "text": "A will becomes a public document once probate is granted, so it is the wrong place for passwords, PINs or recovery phrases. Anything written into it could be read by anyone who later obtains a copy. The accepted approach is to keep a separate, private record that the will points to without reproducing."},
+        {"type": "p", "text": "A practical record lists each account, where it is held and how it is accessed, and is stored somewhere your executor can find it. Many people use a reputable password manager with an emergency or inheritance access feature, which lets a nominated person request access after a waiting period. Whichever method you choose, keep it current. Logins, devices and recovery numbers change often, and an out of date record can be as unhelpful as none at all."},
+        {"type": "p", "text": "Tell your executor that the record exists and roughly where it is, even if you do not hand over the contents while you are alive. An instruction that no one knows to follow protects nothing."},
+
+        {"type": "h2", "text": "What your executor is allowed to do"},
+        {"type": "p", "text": "Having a password does not always make access lawful. Some providers treat logging in as another person as a breach of their terms, and computer misuse rules can apply even to a well meaning relative. In most cases the safer route is to use the platform's official bereavement or legacy process, which is designed for exactly this situation and asks for a death certificate and proof of authority."},
+        {"type": "p", "text": "For accounts that form part of the estate, the executor's authority flows from the will and, where needed, the grant of probate. For identity accounts, that authority is usually exercised through the platform's own channels. A clear will, a named executor who understands the digital side, and a current access record together make this far smoother. We are a matching service and do not draft wills ourselves, but we can connect you with vetted specialists who handle digital assets as a routine part of will writing. Anyone with significant or complex online holdings should take advice from a qualified professional rather than relying on a do it yourself approach."},
+        {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will writing professionals in England and Wales."},
+
+        {"type": "cta", "text": "Plan your digital legacy with a vetted London specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Can my executor legally access my email account?"},
+        {"type": "p", "text": "Not automatically. Email providers each set their own rules, and logging in with your password may breach their terms even where the intention is honest. The safer route is the provider's bereavement process, which usually asks for a death certificate and evidence of the executor's authority. Because email is often the key to other accounts, recording how to reach it, and naming a legacy contact where the provider offers one, makes the process far easier."},
+        {"type": "h3", "text": "What is a legacy contact and which platforms offer one?"},
+        {"type": "p", "text": "A legacy contact is a person you nominate in advance to manage or close your account after death. Facebook and Apple both offer this directly in their account settings, Google provides a similar feature through its Inactive Account Manager, and several other platforms allow memorialisation or deletion when a death is reported. Setting these up takes only a few minutes and removes guesswork for your family."},
+        {"type": "h3", "text": "Should I write my passwords in my will?"},
+        {"type": "p", "text": "No. A will can become a public document once probate is granted, so passwords, PINs and recovery phrases should never be written into it. Keep them in a separate private record or a reputable password manager with an emergency access feature, and have your will refer to that record without reproducing its contents. Review the record regularly because login details change often."},
+        {"type": "h3", "text": "What happens to my social media if I do nothing?"},
+        {"type": "p", "text": "If you make no arrangements, your accounts usually stay live until a family member reports the death and supplies documents, at which point the platform may memorialise or delete them under its standard policy. That can mean delay, lost access to photos and messages, and decisions made by the provider rather than by you. Using the built in legacy settings puts those choices back in your hands."},
+        {"type": "h3", "text": "Does my executor need probate to access online accounts?"},
+        {"type": "p", "text": "It depends on the account. Financial accounts that form part of the estate are dealt with through the normal probate process, so a grant is often required before funds are released. Identity accounts such as email and social media are handled through each platform's own bereavement channels, which typically rely on a death certificate and proof of the executor's role rather than a grant of probate."}
+    ]
+  },
+  {
+    slug: 'what-happens-to-your-business-if-you-die-without-a-will-london',
+    hub: 'business-owner-wills',
+    draft: true,
+    title: 'What Happens to Your Business If You Die Without a Will in London',
+    metaTitle: 'What Happens to Your Business If You Die With No Will',
+    metaDescription: 'What happens to a London business when the owner dies with no will: intestacy rules, who controls the company, lost business relief, and protecting succession.',
+    category: 'Estate Planning',
+    publishDate: '2026-06-10',
+    dateModified: '2026-06-10',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'If you die without a will, your business does not simply pass to the person you would have chosen. It falls under the intestacy rules, control can end up with the wrong people, and valuable business relief may be lost. A will lets a London owner direct succession and protect the company.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/inherits-someone-dies-without-will", "linkText": "GOV.UK: Who inherits if someone dies without a will", "text": "GOV.UK sets out the intestacy rules that decide who inherits when there is no valid will, including a business interest."},
+        {"type": "p", "text": "For most people, dying without a will is costly and slow. For a business owner it can be far worse, because a company, partnership share or sole trader operation does not wait while the estate is sorted out. Decisions still need making, staff still need paying, and the people left in charge may have no legal authority to act. This guide explains what happens to a London business when the owner dies without a will, who ends up in control, and why a properly drafted will is the single most effective protection for the value you have built."},
+
+        {"type": "h2", "text": "Why dying without a will is worse for a business owner"},
+        {"type": "p", "text": "When someone dies without a valid will they are said to die intestate, and their estate is shared out under the intestacy rules rather than according to their wishes. For a straightforward estate this mainly affects who inherits. For a business owner it also affects who can run, sell or wind up the business in the meantime, and whether the value survives the transition at all."},
+        {"type": "p", "text": "A business interest is part of the estate like any other asset, so it passes under the same statutory order. A surviving spouse or civil partner takes the personal possessions, a fixed statutory legacy and a share of the rest, with children sharing the remainder. Cohabiting partners, however long they have lived together and however involved in the business, inherit nothing under intestacy. A business partner who is also an unmarried co-owner can therefore be left with no claim on the deceased's share, while a relative who has never set foot in the company inherits it."},
+
+        {"type": "h2", "text": "Who controls the business until the estate is sorted out"},
+        {"type": "p", "text": "With a valid will, the executors you named have authority to step in quickly and can usually start acting straight away, confirming their position later through the grant of probate. With no will there are no executors. Instead, a relative has to apply to be an administrator and obtain a grant of letters of administration before anyone has clear legal authority over the estate's assets, including the business interest."},
+        {"type": "p", "text": "That gap matters. Until the grant is issued, which can take many weeks or months, there may be no one with the standing to vote shares, sign contracts, authorise payments from a company account or deal with a bank. A trading business can stall at exactly the moment it most needs steady hands. Naming the right executors in a will, ideally people who understand the business, removes most of this delay."},
+
+        {"type": "h2", "text": "How intestacy can split or freeze a business interest"},
+        {"type": "p", "text": "How a business actually passes depends on its structure, and the intestacy rules interact with documents that may already govern it."},
+        {"type": "list", "items": [
+            "Limited company shares: the shares form part of the estate, but the company's articles of association and any shareholder agreement come first. Pre-emption rights or transmission provisions may force the shares to be offered to surviving shareholders, or freeze the voting rights until the transfer is registered.",
+            "Partnership share: the partnership deed usually decides what happens on a partner's death. Without a will and without a clear deed, the share may have to be valued and bought out, draining cash from the business at a difficult time.",
+            "Sole trader: there is no separate legal entity, so the business assets simply fall into the estate and pass under intestacy. In practice the business often has to stop trading until an administrator is appointed."
+        ]},
+        {"type": "p", "text": "The result is that the people you would have chosen to take the business on may receive nothing, while the law hands a controlling interest to relatives who cannot or do not want to run it. Where co-owners are involved, a death without proper planning can trigger disputes, forced buy-outs or a fire sale of the very asset you spent years building."},
+
+        {"type": "h2", "text": "The inheritance tax trap of losing business relief"},
+        {"type": "p", "text": "Business relief can reduce the inheritance tax on a qualifying trading business by up to 100 per cent, which is often what allows a family to keep it rather than sell up to pay a tax bill. From April 2026 the 100 per cent rate applies only to the first £1 million of combined qualifying business and agricultural assets, with the rate above that reduced to 50 per cent, so larger holdings face real exposure. Relief also generally requires the assets to have been held for at least two years and to still qualify at the date of death."},
+        {"type": "p", "text": "Dying without a will puts that relief at risk in two ways. If uncertainty forces the business to stop trading or be sold, the interest can cease to qualify, and a delayed, leaderless estate is far more likely to end up in that position. Intestacy can also send the business to a spouse when a more tax-efficient plan would have used the relief deliberately, for example by directing qualifying assets to children or into a trust. Inheritance tax rules are complex and change, so anyone with a significant business interest should take advice from a qualified professional rather than assuming relief will simply apply."},
+        {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for advisers who specialise in inheritance and estate planning, including business succession."},
+
+        {"type": "h2", "text": "How a will protects your business succession"},
+        {"type": "p", "text": "A will lets you decide who inherits the business, who administers the estate and how the succession dovetails with your other planning. A specialist will writer can appoint executors who understand the company, include a clear gift of the business interest to the people you intend, and make sure the will does not contradict your shareholder agreement, partnership deed or any cross-option arrangement backed by key person insurance. Aligning these documents is what turns a paper plan into a workable handover."},
+        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London business owners with vetted specialists who handle business succession as a routine part of will writing, so the will, the company documents and the tax position are considered together rather than in isolation. For an owner whose estate is bound up in a company, that joined-up approach is the difference between a smooth transfer and a costly dispute."},
+
+        {"type": "cta", "text": "Protect your business with a vetted London specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Does my business automatically pass to my spouse if I have no will?"},
+        {"type": "p", "text": "Not necessarily, and not always in full. Under the intestacy rules a surviving spouse or civil partner receives the personal possessions, a fixed statutory legacy and a share of the remainder, while any children share the rest. A business interest is part of that estate, so it can end up divided between your spouse and children rather than passing wholly to the person best placed to run it. A will lets you direct the business specifically instead of leaving it to a statutory formula."},
+        {"type": "h3", "text": "What happens to my business partner's stake if I die without a will?"},
+        {"type": "p", "text": "That usually depends on the shareholder agreement, articles of association or partnership deed rather than the intestacy rules alone. These documents may give surviving owners the right or the obligation to buy your share, often funded by insurance. Without a will, and without those provisions, your share passes under intestacy to your relatives, who may have no interest in the business, which is a common source of dispute. Reviewing the will and the business documents together is the way to avoid that."},
+        {"type": "h3", "text": "Can my family keep running the business before probate?"},
+        {"type": "p", "text": "It is difficult without clear authority. With no will, a relative must obtain a grant of letters of administration before they can lawfully deal with the estate's business assets, and that can take weeks or months. During the gap there may be no one able to vote shares, sign contracts or authorise payments. Naming executors who understand the business in a will is the most reliable way to keep things moving."},
+        {"type": "h3", "text": "Will dying without a will increase the inheritance tax on my business?"},
+        {"type": "p", "text": "It can. Business relief may cut the tax on a qualifying trading business by up to 100 per cent on the first £1 million of qualifying assets from April 2026, with 50 per cent above that, but relief can be lost if the business stops trading or no longer qualifies. A leaderless, delayed estate is more likely to end up in that position, and intestacy gives you no chance to plan the relief deliberately. A qualified adviser can confirm how the rules apply to your situation."},
+        {"type": "h3", "text": "Do I need a separate will for my business?"},
+        {"type": "p", "text": "Usually not a separate document, but your single will needs to address the business properly. For owners with interests in more than one country a specialist may recommend additional arrangements, but for most London owners the priority is one well-drafted will that names suitable executors, gifts the business interest clearly and is consistent with the company's own documents. A specialist will writer can advise on the right structure for your circumstances."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

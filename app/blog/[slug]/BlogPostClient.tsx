@@ -312,6 +312,8 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
                     'will-reviews-and-second-opinions-in-london':                          { slug: 'estate-planning',           title: 'Estate planning review' },
                     'emergency-will-writing-services-in-london':                           { slug: 'single-will',               title: 'Single will writing' },
                     'what-to-expect-at-a-will-writing-home-visit-in-london':               { slug: 'single-will',               title: 'Single will writing' },
+                    'what-happens-to-your-online-accounts-after-death-in-london':          { slug: 'single-will',               title: 'Single will writing' },
+                    'what-happens-to-your-business-if-you-die-without-a-will-london':       { slug: 'estate-planning',           title: 'Estate planning review' },
                   };
                   const svc = serviceMap[article.slug];
                   if (!svc) return null;

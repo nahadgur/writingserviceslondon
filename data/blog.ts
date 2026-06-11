@@ -8035,6 +8035,121 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "Do I need a separate will for my business?"},
         {"type": "p", "text": "Usually not a separate document, but your single will needs to address the business properly. For owners with interests in more than one country a specialist may recommend additional arrangements, but for most London owners the priority is one well-drafted will that names suitable executors, gifts the business interest clearly and is consistent with the company's own documents. A specialist will writer can advise on the right structure for your circumstances."}
     ]
+  },
+  {
+    slug: 'stepchildren-inheritance-rights-no-will-london',
+    hub: 'intestacy-rules-uk',
+    draft: true,
+    title: 'Do Stepchildren Inherit If There Is No Will in London?',
+    metaTitle: 'Do Stepchildren Inherit With No Will in London?',
+    metaDescription: 'Under the intestacy rules, stepchildren inherit nothing unless legally adopted. How London blended families can protect stepchildren with a properly drafted will.',
+    category: 'Estate Planning',
+    publishDate: '2026-06-10',
+    dateModified: '2026-06-10',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'No. When a step-parent dies without a will, stepchildren inherit nothing automatically unless they were legally adopted. The estate passes to the spouse and the deceased\'s own biological or adopted children. For blended London families, only a properly drafted will can provide for stepchildren.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/inherits-someone-dies-without-will", "linkText": "GOV.UK: Who inherits if someone dies without a will", "text": "GOV.UK sets out the statutory order of inheritance that applies when a person dies without a valid will, which counts only biological and adopted children."},
+        {"type": "p", "text": "Blended families are now common across London, yet the law that decides who inherits when someone dies without a will has not kept pace with how families actually live. If a step-parent dies without a valid will, their stepchildren receive nothing automatically, however close the relationship and however long they were raised as part of the family. This guide explains why that happens, who does inherit instead, the narrow circumstances in which a stepchild can still receive something, and how a will fixes the problem for good."},
+
+        {"type": "h2", "text": "Why stepchildren are left out when there is no will"},
+        {"type": "p", "text": "When a person dies without a valid will they die intestate, and their estate is shared out under a fixed statutory order rather than according to their wishes. That order, set by the Administration of Estates Act 1925, refers throughout to a person's children or issue. For these purposes children means biological children and legally adopted children only. A stepchild who was never adopted simply does not appear anywhere in the statutory family tree."},
+        {"type": "p", "text": "This catches families out because it ignores the lived relationship entirely. A man who raised his wife's son from the age of three, paid for his schooling and treated him as his own for thirty years still leaves that stepson nothing under intestacy if he dies without a will. The law looks only at the legal connection, not the emotional one. The result is often the opposite of what the deceased would have wanted, and it cannot be corrected after death except through a court claim."},
+
+        {"type": "h2", "text": "Who actually inherits when a step-parent dies without a will"},
+        {"type": "p", "text": "With no will, the estate passes down a statutory hierarchy. Stepchildren are not on it at any level, so working through the order shows exactly where the money goes instead."},
+        {"type": "list", "items": [
+            "A surviving spouse or civil partner takes all personal possessions, a statutory legacy of £322,000 (the figure that has applied since 26 July 2023), and half of whatever remains above that. The deceased's own biological or adopted children share the other half.",
+            "If there is no surviving spouse, the whole estate is divided equally between the deceased's biological and adopted children, with a deceased child's share passing to their own children.",
+            "If there are no children either, the estate passes to parents, then to brothers and sisters, then to wider blood relatives. Stepchildren are skipped at every stage in favour of blood and adoptive relatives, however distant."
+        ]},
+        {"type": "p", "text": "The practical effect in a blended family is stark. A step-parent's estate can pass in full to their spouse and then, on the spouse's later death, down that spouse's bloodline, while the step-parent's own stepchildren and the children they raised together are divided by an accident of legal status rather than by intention."},
+
+        {"type": "h2", "text": "When a stepchild can still inherit"},
+        {"type": "p", "text": "There are two routes by which a stepchild can receive something, but neither is automatic and only one is reliable. The first is legal adoption. Once a stepchild has been formally adopted, they are treated in law as the adopter's own child for all inheritance purposes, so they inherit under intestacy exactly as a biological child would. Adoption is a significant legal step with lifelong consequences and is far from the right answer for every family, but where it has happened the stepchild's position is secure."},
+        {"type": "p", "text": "The second route is a court claim under the Inheritance (Provision for Family and Dependants) Act 1975. A stepchild who was treated as a child of the family in a marriage or civil partnership, or who was being maintained by the deceased, can ask the court to award reasonable financial provision from the estate. This is not a right to a fixed share. It is a discretionary remedy that depends on the stepchild's circumstances and financial need, it must usually be brought within six months of the grant, and it involves cost, delay and uncertainty. Anyone considering it should take advice from a qualified professional rather than assuming a claim will succeed."},
+
+        {"type": "h2", "text": "A worked example for a London blended family"},
+        {"type": "p", "text": "Consider a London homeowner who remarries and dies without a will. The net estate, after the mortgage, is £700,000. He has one biological daughter from his first marriage and two stepchildren he has raised since they were young, alongside his second wife. Under intestacy his wife receives the personal possessions, the £322,000 statutory legacy, and half of the remaining £378,000, which is £189,000, giving her £511,000. His biological daughter receives the other £189,000. His two stepchildren receive nothing at all."},
+        {"type": "p", "text": "Had he left even a simple will, he could have divided the estate between all three children equally, ring-fenced a share for the stepchildren before the residue passed to his wife, or used a trust to balance providing for his spouse during her lifetime with passing capital to the children afterwards. The intestacy rules offered none of those choices, and the family was left with an outcome nobody intended."},
+
+        {"type": "h2", "text": "How a will protects stepchildren in a blended family"},
+        {"type": "p", "text": "A will is the only dependable way to make sure stepchildren inherit. In it you can name stepchildren as beneficiaries in their own right, set the shares each child receives, appoint guardians for any who are still minors, and use a life interest or property protection trust so that a surviving spouse is provided for while the capital ultimately reaches the children you choose. Blended families also benefit from reviewing the will after any remarriage, because marriage automatically revokes an earlier will unless it was made in contemplation of that marriage, which can quietly return a family to the intestacy position they thought they had escaped."},
+        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London families with vetted specialists who handle blended-family planning as a routine part of will writing, so the will, any trust and the wishes for each child are considered together. For a step-parent who wants the children they raised to be treated fairly, that joined-up advice is what turns intention into a document the law will actually follow."},
+        {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will writing professionals in England and Wales."},
+
+        {"type": "cta", "text": "Provide for your stepchildren with a vetted London specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Do stepchildren automatically inherit if their step-parent dies without a will?"},
+        {"type": "p", "text": "No. The intestacy rules count only biological and legally adopted children, so an unadopted stepchild inherits nothing automatically, no matter how close the relationship or how long they were treated as part of the family. The estate passes to the surviving spouse and the deceased's own children, then to blood relatives. The only way to guarantee a stepchild inherits is to name them in a valid will."},
+        {"type": "h3", "text": "Does it help that the step-parent raised the child from a young age?"},
+        {"type": "p", "text": "Not for the intestacy rules themselves, which look only at legal status and ignore the lived relationship. A long history of being raised and supported by the step-parent does not create an automatic entitlement. It can, however, strengthen a discretionary claim under the Inheritance (Provision for Family and Dependants) Act 1975, where being treated as a child of the family and financially maintained are relevant factors the court considers."},
+        {"type": "h3", "text": "Can a stepchild make a claim against the estate?"},
+        {"type": "p", "text": "Possibly, through the Inheritance (Provision for Family and Dependants) Act 1975. A stepchild treated as a child of the family in a marriage or civil partnership, or maintained by the deceased, can ask the court for reasonable financial provision. It is discretionary rather than a fixed share, normally must be brought within six months of the grant of representation, and carries cost and uncertainty. A qualified adviser can assess whether a claim is realistic before any action is taken."},
+        {"type": "h3", "text": "Do adopted stepchildren inherit under intestacy?"},
+        {"type": "p", "text": "Yes. Once a stepchild has been legally adopted, they are treated as the adopter's own child for all inheritance purposes and inherit under the intestacy rules exactly as a biological child would. Adoption is a major and permanent legal step, so most families who simply want to provide for stepchildren do so through a will instead, which achieves the inheritance aim without changing the child's legal parentage."},
+        {"type": "h3", "text": "How do I make sure my stepchildren inherit from my estate?"},
+        {"type": "p", "text": "Make a valid will that names them. In it you can give stepchildren specific gifts or shares, treat them equally with your biological children if you wish, and use a trust to balance providing for a spouse with passing capital to the children later. Review the will after any marriage, since marriage revokes an earlier will unless it was made in contemplation of it. We can connect you with a vetted London specialist who handles blended-family wills."}
+    ]
+  },
+  {
+    slug: 'how-long-does-probate-take-london',
+    hub: 'probate-guide-london',
+    draft: true,
+    title: 'How Long Does Probate Take in London?',
+    metaTitle: 'How Long Does Probate Take in London?',
+    metaDescription: 'How long probate takes for a London estate, the stages that set the timeline, why inheritance tax and property slow things down, and how to avoid common delays.',
+    category: 'Probate',
+    publishDate: '2026-06-11',
+    dateModified: '2026-06-11',
+    featuredImage: '/images/probate-support.png',
+    excerpt: 'Most London estates take between six and twelve months to administer. A simple estate can be wound up in around six to nine months, while property sales, inheritance tax and missing paperwork commonly push complex estates past a year. The grant itself is only one step in that timeline.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate", "linkText": "GOV.UK: Applying for probate", "text": "GOV.UK sets out the official probate application process and the current guidance on how long the grant takes to issue."},
+        {"type": "p", "text": "Most London estates take between six and twelve months to administer fully. A straightforward estate with a valid will and no inheritance tax can often be settled in around six to nine months, while estates involving property sales, tax or disputes commonly run beyond a year. The grant of probate, which many people think of as the whole process, is really just one stage within that wider timeline. This guide explains where the time goes, why London estates tend to take longer, and what an executor can do to keep things moving."},
+
+        {"type": "h2", "text": "The short answer on probate timelines"},
+        {"type": "p", "text": "Probate is the legal process of administering a deceased person's estate. Where there is a valid will the court issues a grant of probate to the named executors; where there is no will it issues letters of administration to the next of kin. Both are forms of grant of representation, and obtaining one is usually the central bottleneck in the timeline."},
+        {"type": "p", "text": "For a typical London estate, expect the grant itself to take a few months from the point a complete and correct application reaches the court. GOV.UK currently indicates that the grant usually issues within around sixteen weeks of submitting the application, although HMCTS processing times have fluctuated, and an application with errors or missing documents can take considerably longer. Gathering the information needed before applying, and settling the estate afterwards, then adds further months on either side."},
+
+        {"type": "h2", "text": "The stages of probate and how long each takes"},
+        {"type": "p", "text": "It helps to see probate as four stages rather than a single event. Each one carries its own delay, and the slow ones are usually the first and the last."},
+        {"type": "list", "items": [
+            "Valuing the estate (around one to three months): the executor gathers date-of-death valuations for property, bank and investment accounts, pensions and any debts. London property valuations and waiting for financial institutions to respond are the common holdups here.",
+            "Reporting to HMRC where required (a few weeks): for estates that owe inheritance tax, or that do not qualify as excepted, an account must go to HMRC before the grant can be sought.",
+            "Applying for the grant (often around sixteen weeks per current GOV.UK guidance): the application is made to HMCTS online or on paper, with the original will and death certificate, and the court issues the grant once satisfied.",
+            "Administering and distributing the estate (two to six months or more): collecting in assets, selling property, settling debts and tax, preparing estate accounts and paying the beneficiaries."
+        ]},
+        {"type": "p", "text": "Add these together and the six-to-twelve-month range becomes clear. A simple estate moves quickly through stages one and two; a complex London estate can stall at the valuation stage and again when property has to be sold."},
+
+        {"type": "h2", "text": "Why London estates often take longer"},
+        {"type": "p", "text": "Several features common to London estates push the timeline towards the upper end of the range. High-value residential property frequently takes the estate over the inheritance tax threshold, which brings HMRC into the process. Leasehold flats can need lease information that is slow to obtain. Many London estates also include investment portfolios, more than one property, or assets held abroad, each of which adds its own valuation and paperwork."},
+        {"type": "p", "text": "Selling property is often the single largest delay. The executor usually cannot complete a sale until the grant has been issued, and the London market can add weeks or months of its own once the property is listed. Where the bulk of an estate's value sits in a house or flat, the timeline is effectively tied to how long that sale takes."},
+
+        {"type": "h2", "text": "Inheritance tax and the wait before the grant"},
+        {"type": "p", "text": "For estates that owe inheritance tax, the tax process and the probate process are linked, and this is where avoidable delay creeps in. The executor must report the estate to HMRC on form IHT400 and, according to GOV.UK, then wait twenty working days after submitting it before applying for the grant. Any tax due generally has to be paid, or the first instalment arranged in the case of property, before the grant is issued. For deaths on or after 1 January 2022 the rules were simplified, so many estates that owe no tax no longer need to complete a full HMRC account, which can shorten the timeline for smaller estates."},
+        {"type": "p", "text": "London estates often face a practical squeeze known as the probate catch-22: the tax may need paying before the grant is granted, but the property that would fund it cannot be sold without the grant. Executors usually bridge this using accessible savings, paying tax on property by instalments, or a direct payment scheme that lets banks send funds straight to HMRC. Inheritance tax rules are detailed and change over time, so an executor facing a tax bill should take advice from a qualified professional rather than guessing at the figures."},
+        {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for advisers who specialise in estate administration, inheritance tax and probate."},
+
+        {"type": "h2", "text": "How to keep probate moving, and when to get help"},
+        {"type": "p", "text": "An executor cannot control HMCTS or the property market, but most serious delays come from avoidable problems: an application returned for errors, a valuation that arrives late, or assets the executor did not know about. Locating the original will early, keeping an organised record of every asset and debt, applying only once the figures are complete, and responding promptly to the court and to HMRC all shorten the process. Executors are generally allowed twelve months from the date of death, the so-called executor's year, before beneficiaries can press for their inheritance, which gives reasonable breathing room for a properly run estate."},
+        {"type": "p", "text": "We are a matching service and do not handle probate ourselves. We connect London executors and families with vetted probate specialists who deal with the valuations, the HMRC account and the grant application as routine work, which is often what keeps a complex estate inside the six-to-twelve-month range rather than drifting well beyond it. Whether you handle probate yourself or instruct a professional, dealing with each stage promptly is the surest way to avoid the long delays that catch many London estates out."},
+
+        {"type": "cta", "text": "Get matched with a vetted London probate specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "How long does it take to get a grant of probate?"},
+        {"type": "p", "text": "Once a complete and correct application reaches HMCTS, GOV.UK currently indicates the grant usually issues within around sixteen weeks, though processing times have varied and a flawed application can take longer. Remember that the grant is only one stage. Valuing the estate beforehand and administering it afterwards add several months on either side, so the grant arriving is not the same as probate being finished."},
+        {"type": "h3", "text": "Why is probate taking so long for a London estate?"},
+        {"type": "p", "text": "London estates often involve high-value property that triggers inheritance tax, leasehold flats with slow-to-obtain lease details, investment portfolios or assets held abroad, and frequently a property sale that cannot complete until the grant is issued. Each of these adds time. Delays also come from applications returned for errors and from waiting on banks or valuers to respond, which is why thorough preparation before applying makes such a difference."},
+        {"type": "h3", "text": "Do I always need probate, and does that affect the timeline?"},
+        {"type": "p", "text": "Not every estate needs a grant. Assets held jointly often pass automatically by survivorship, and some banks release modest balances on sighting the death certificate alone. Where the deceased owned property in their sole name, a grant is almost always required. Estates that avoid probate altogether can be settled much faster, while those that need a grant follow the longer timeline set out above."},
+        {"type": "h3", "text": "Does inheritance tax make probate slower?"},
+        {"type": "p", "text": "It can. Where tax is due, the executor must report the estate to HMRC and, per GOV.UK, wait twenty working days after submitting the account before applying for the grant, with tax generally paid or the first property instalment arranged first. For deaths on or after 1 January 2022, many estates owing no tax avoid the full account, which speeds things up. A qualified adviser can confirm how the rules apply to a particular estate."},
+        {"type": "h3", "text": "Can I speed up probate on a London estate?"},
+        {"type": "p", "text": "You cannot control HMCTS or the property market, but you can remove the avoidable delays. Find the original will early, build a complete list of assets and debts before applying, submit an accurate application first time, and reply quickly to the court and HMRC. Many executors instruct a probate specialist precisely to keep the valuations, tax account and application on track, which often prevents a complex estate from drifting past a year."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

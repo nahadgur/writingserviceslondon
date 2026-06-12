@@ -124,7 +124,9 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
     'probate-guide-london': { id: 'probate', label: 'Probate fee calculator' },
     'lasting-power-of-attorney-guide': { id: 'lpa', label: 'LPA cost estimator' },
     'intestacy-rules-uk': { id: 'intestacy', label: 'Intestacy outcome calculator' },
+    'will-for-unmarried-couples': { id: 'intestacy', label: 'Intestacy outcome calculator' },
     'trust-planning-guide': { id: 'care', label: 'Care cost protection estimator' },
+    'estate-planning-over-50': { id: 'care', label: 'Care cost protection estimator' },
     'updating-your-will': { id: 'review', label: 'Will review checker' },
   };
   const tool = toolByHub[article.hub];
@@ -316,6 +318,9 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
                     'what-happens-to-your-business-if-you-die-without-a-will-london':       { slug: 'estate-planning',           title: 'Estate planning review' },
                     'stepchildren-inheritance-rights-no-will-london':                      { slug: 'single-will',               title: 'Single will writing' },
                     'how-long-does-probate-take-london':                                   { slug: 'probate-support',           title: 'Probate support' },
+                    'care-fees-protecting-your-home-london':                               { slug: 'estate-planning',           title: 'Estate planning review' },
+                    'protecting-a-cohabiting-partner-not-on-the-deeds':                    { slug: 'trust-planning',            title: 'Trust planning' },
+                    'which-digital-assets-can-be-inherited':                               { slug: 'estate-planning',           title: 'Estate planning review' },
                   };
                   const svc = serviceMap[article.slug];
                   if (!svc) return null;

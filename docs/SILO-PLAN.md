@@ -113,17 +113,18 @@ how-to-write-a-will is well covered; build out the thin hubs:
 
 ## 8. Status tracker
 
-12 hubs. Spokes: 23 toward target ~100 (~8/hub) — 19 live + 4 parked drafts
+12 hubs. Spokes: 26 toward target ~100 (~8/hub) — 19 live + 7 parked drafts
 (digital-assets, online-accounts-after-death, 2026-06-09; business-owner-wills,
 business-if-you-die-without-a-will, 2026-06-10; intestacy-rules-uk,
 stepchildren-inheritance-rights-no-will, 2026-06-10; probate-guide-london,
-how-long-does-probate-take-london, 2026-06-11). Thinnest hubs to fill next:
-trust-planning, estate-planning-over-50, unmarried-couples (each 0-1 spokes
-today); digital-assets, business-owner-wills, intestacy and probate now have
-1 draft each.
+how-long-does-probate-take-london, 2026-06-11; estate-planning-over-50,
+care-fees-protecting-your-home-london, 2026-06-11; will-for-unmarried-couples,
+protecting-a-cohabiting-partner-not-on-the-deeds, 2026-06-12; digital-assets,
+which-digital-assets-can-be-inherited, 2026-06-12). Thinnest hub to fill next:
+trust-planning (1 live, 0 drafts); then round-robin the priority hubs
+(business-owner-wills, intestacy, probate, estate-planning-over-50,
+unmarried-couples each 1 draft; digital-assets now 2 drafts).
 ## Slug rules (writer: follow on every spoke)
 
 Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
-Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
-reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
-use stop words (a/the/to/for). Never rename or reuse a published slug.
+Do NOT: include a year/date; reuse or near-duplicate an

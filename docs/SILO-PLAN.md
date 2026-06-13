@@ -113,7 +113,7 @@ how-to-write-a-will is well covered; build out the thin hubs:
 
 ## 8. Status tracker
 
-12 hubs. Spokes: 27 toward target ~100 (~8/hub) — 19 live + 8 parked drafts
+12 hubs. Spokes: 28 toward target ~100 (~8/hub) — 19 live + 9 parked drafts
 (digital-assets, online-accounts-after-death, 2026-06-09; business-owner-wills,
 business-if-you-die-without-a-will, 2026-06-10; intestacy-rules-uk,
 stepchildren-inheritance-rights-no-will, 2026-06-10; probate-guide-london,
@@ -121,13 +121,13 @@ how-long-does-probate-take-london, 2026-06-11; estate-planning-over-50,
 care-fees-protecting-your-home-london, 2026-06-11; will-for-unmarried-couples,
 protecting-a-cohabiting-partner-not-on-the-deeds, 2026-06-12; digital-assets,
 which-digital-assets-can-be-inherited, 2026-06-12; trust-planning-guide,
-property-protection-trust-wills-london, 2026-06-13). Thinnest hubs to fill next:
-round-robin the priority hubs (business-owner-wills, intestacy, probate,
-estate-planning-over-50, unmarried-couples, trust-planning each 1 draft;
-digital-assets 2 drafts).
+property-protection-trust-wills-london, 2026-06-13; business-owner-wills,
+shareholder-agreements-and-your-will, 2026-06-13). Thinnest hubs to fill next:
+continue the round-robin (business-owner-wills + digital-assets now 2 drafts
+each; intestacy, probate, estate-planning-over-50, unmarried-couples,
+trust-planning each 1 draft — take these to 2 next).
 ## Slug rules (writer: follow on every spoke)
 
 Kebab-case: lowercase, hyphens only, ASCII only, 3-6 words, under ~60 chars.
 Do NOT: include a year/date; reuse or near-duplicate an existing slug; use a
-reserved head term or the parent hub's head term; keyword-stuff or repeat a word;
-use stop words (a/the/to/for). Never rename or reuse a published slug.
+reserved head term or the parent hub's head term; k

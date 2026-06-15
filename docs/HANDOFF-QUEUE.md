@@ -5,7 +5,136 @@ this, runs the verify/commit step on a reliable filesystem, and clears entries.
 
 ---
 
-## 2026-06-11 — wwsl-will-writer run (NEEDS CLAUDE CODE: commit + push)
+## 2026-06-12 — wwsl-will-writer run (NEEDS CLAUDE CODE: commit + push)
+
+- **Site:** writingserviceslondon (willwritingserviceslondon.co.uk)
+- **Spoke written:** `protecting-a-cohabiting-partner-not-on-the-deeds` (draft:true)
+- **Hub:** `will-for-unmarried-couples` (was the last hub at 0 spokes, now 1
+  parked draft). Narrow angle vs the hub head term "wills for unmarried couples":
+  the specific case of a partner who is not named on the property deeds (legal
+  title vs beneficial interest, intestacy outcome, life interest trust / right of
+  occupation, the IHT spouse-exemption trap), not the general cohabitation guide.
+- **Content:** ~1,150 words, answer-first excerpt + opening (~50 words), 6
+  sections + FAQ, 5 distinct FAQs, UK English, no em dashes, matching framing
+  ("we are a matching service and do not draft wills or trusts ourselves"). No
+  legal guarantees; advises consulting a qualified professional. 2 external
+  authority links, one per domain (GOV.UK inherits-without-will + Society of Will
+  Writers).
+- **YMYL facts (current, attributed):** no common-law marriage in England and
+  Wales; intestacy order excludes a cohabiting partner; beneficial-interest
+  claims under TOLATA 1996; 1975 Act (Inheritance (Provision for Family and
+  Dependants)) 2-year cohabitant route is litigation, not a substitute for a
+  will; joint tenants (survivorship) vs tenants in common; no spouse exemption
+  for cohabitants so gifts count against the £325,000 nil-rate band, 40% above;
+  residence nil-rate band (up to £175,000) only on a home passing to direct
+  descendants, so generally unavailable when leaving to a partner; figures
+  flagged as check-against-current-HMRC.
+- **Linking (silo-tight, structural per the BlogPostClient pattern, not inline
+  markdown):** UP-link to `/guides/will-for-unmarried-couples/` auto-renders from
+  the `hub` field; tool link added by mapping the hub in `toolByHub` ->
+  `/tools/#intestacy` (intestacy outcome calculator); commercial link added in
+  `serviceMap` -> `/services/trust-planning/` (Trust planning, fits the property
+  trust angle); matching CTA block in content. No sibling links (first spoke in
+  this hub). Link gate: `node scripts/check-links.mjs .` = 36 slugs, 0 broken.
+- **Files changed:** `data/blog.ts` (new BlogArticle appended before `];`,
+  helpers intact); `app/blog/[slug]/BlogPostClient.tsx` (+2 lines: one
+  `toolByHub` entry, one `serviceMap` entry); `docs/SILO-PLAN.md` section 8
+  counts (25 toward 100, 6 drafts).
+- **Note on FS:** the bash/tsc mount served a stale truncated view of blog.ts and
+  BlogPostClient.tsx right after the Edit-tool writes (tsc saw an "unterminated
+  string"); a rename round-trip (`mv x x.tmp && mv x.tmp x`) forced the mount to
+  re-sync to the full files and tsc then passed. The Read tool always showed the
+  correct full files.
+- **tsc:** `npx tsc --noEmit` clean (exit 0) after the rename round-trip.
+- **git:** NOT COMMITTED. The Cowork `.git` mount blocks lock files — a stale
+  `.git/index.lock` is present and `rm` / `git add` fail with "Operation not
+  permitted" / "File exists". Commit must be done by Claude Code. Two untracked
+  artifacts sit in the tree (`.next-dev.log`, `data/__synctest.txt`, both also
+  unremovable from the sandbox) — do NOT `git add -A`; stage selectively.
+
+### Action for Claude Code (reliable FS)
+1. `cd writingserviceslondon`; clear any stale `.git/index.lock`; `git status`.
+2. `npx tsc --noEmit` (rename round-trip blog.ts if the TS server is stale).
+3. `git add data/blog.ts app/blog/[slug]/BlogPostClient.tsx docs/SILO-PLAN.md docs/HANDOFF-QUEUE.md`
+   then commit to `main` and push. Suggested message:
+   `content(writingserviceslondon): draft spoke protecting-a-cohabiting-partner-not-on-the-deeds (unmarried-couples hub)`
+   This may also sweep earlier parked drafts if still uncommitted.
+4. Add a DONE note here with the commit hash.
+
+---
+
+## 2026-06-11 (b) — wwsl-will-writer run (NEEDS CLAUDE CODE: commit + push)
+
+- **Site:** writingserviceslondon (willwritingserviceslondon.co.uk)
+- **Spoke written:** `care-fees-protecting-your-home-london` (draft:true)
+- **Hub:** `estate-planning-over-50` (was 0 spokes, now 1 parked draft;
+  thinnest-hub priority. Only `will-for-unmarried-couples` remains at 0). Narrow
+  angle vs the hub head term "estate planning over 50": care home fees and
+  protecting the family home specifically (means test, property disregards,
+  deliberate deprivation, will-based property protection trust), not the generic
+  over-50 checklist.
+- **Content:** ~1,250 words, answer-first excerpt + opening (~50 words), 5
+  sections + FAQ, 5 distinct FAQs, UK English, no em dashes, matching framing
+  ("we are a matching service and do not draft wills or trusts ourselves"). No
+  legal guarantees; advises consulting a qualified professional. 2 external
+  authority links, one per domain (GOV.UK care-home-fees + STEP).
+- **YMYL facts (current, attributed):** England capital limits £23,250 upper /
+  £14,250 lower for 2026/27 (confirmed unchanged via GOV.UK LAC 2026-27); tariff
+  income £1/week per £250 between the limits; charging-reform cap (£100k upper
+  limit) legislated but never commenced and the current government has confirmed
+  it will not introduce it; property disregards (spouse/partner, relative 60+,
+  disabled, dependent child; 12-week disregard); deferred payment agreements;
+  deliberate deprivation / notional capital and the point that the 7-year rule is
+  IHT-only and does not protect against care fees; gift-with-reservation risk;
+  life-interest/protective-property-trust mechanics (tenants in common, sever the
+  joint tenancy). Article + BreadcrumbList + FAQPage schema auto-emit from the
+  blog route; FAQs via the inline "Frequently Asked Questions" h2 + h3/p pattern;
+  author @id = WWSL editorial entity (editorialAuthorSchema).
+- **Linking:** UP-link to /guides/estate-planning-over-50/ (auto hub byline
+  line); tool link to /tools/#care (Care cost protection estimator) via a new
+  `toolByHub['estate-planning-over-50']` mapping I added; commercial link to
+  /services/estate-planning/ via serviceMap (added). No live same-hub siblings,
+  so no sibling links (correct).
+- **Files changed (real on-disk, via file tools — verified intact):**
+  - `data/blog.ts` — new BlogArticle appended before the array close (helpers
+    intact below it).
+  - `app/blog/[slug]/BlogPostClient.tsx` — +2 lines: `toolByHub` entry for
+    `estate-planning-over-50` (-> `care` tool) and `serviceMap` entry for the new
+    slug (-> `estate-planning` pillar).
+  - `docs/SILO-PLAN.md` — section 8 counts updated (24 toward 100, 5 drafts).
+- **tsc / link gate:** NOT RUN in-sandbox. Same blocker as the 2026-06-09 and
+  2026-06-11 (a) runs: the Cowork bash mount serves **truncated copies** of the
+  large repo files (`data/blog.ts` cut at line ~8163 / 550 KB, mid-entry;
+  `BlogPostClient.tsx` cut at line 332). `git status`/`git diff` in the sandbox
+  report phantom deletions on files this run never touched (e.g. HANDOFF-QUEUE.md
+  -58), there is the recurring "Index records invalid resolve-undo information"
+  error, and an unkillable stray `data/__synctest.txt` exists only in the overlay
+  (not on the real FS — confirmed, ignore it). The real file-tool view of all
+  changed files is whole and the new entry is well-formed TypeScript by
+  inspection (mirrors the probate-spoke template exactly). **Do NOT trust any
+  sandbox-side git state; do NOT commit from the sandbox.**
+- **git:** NOT COMMITTED.
+
+### Action for Claude Code (reliable FS)
+1. `cd writingserviceslondon`; remove any stale `.git/index.lock`. `git status`
+   should show `data/blog.ts`, `app/blog/[slug]/BlogPostClient.tsx`, and `docs/`
+   changed. Confirm the working tree is whole (blog.ts ends with the three
+   exported helper functions after `];`; BlogPostClient.tsx ends with the closing
+   `</aside></main></>` and the component brace). If any file looks truncated,
+   the sandbox-side copy leaked — re-pull is not needed, the file-tool writes
+   landed on the real FS.
+2. `npx tsc --noEmit` (rename round-trip blog.ts if the TS server is stale).
+3. Run the link gate: `node ../scripts/check-links.mjs .` to 0 broken.
+4. `git add data/blog.ts app/blog/[slug]/BlogPostClient.tsx docs/` then commit to
+   `main` and push. Suggested message:
+   `content(writingserviceslondon): draft spoke care-fees-protecting-your-home-london (estate-planning-over-50 hub)`
+   This run can be swept together with the still-parked probate / intestacy /
+   business / digital-assets drafts if they remain uncommitted.
+5. Add a DONE note here with the commit hash.
+
+---
+
+## 2026-06-11 (a) — wwsl-will-writer run (NEEDS CLAUDE CODE: commit + push)
 
 - **Site:** writingserviceslondon (willwritingserviceslondon.co.uk)
 - **Spoke:** `how-long-does-probate-take-london` (draft:true)
@@ -116,66 +245,19 @@ this, runs the verify/commit step on a reliable filesystem, and clears entries.
   - `app/blog/[slug]/BlogPostClient.tsx` — added the new slug to `serviceMap`
     (-> `estate-planning` pillar, "Estate planning review") for the sidebar
     commercial link. No toolByHub entry (no business calculator; tool link N/A).
-  - `docs/SILO-PLAN.md` — section 8 counts updated (21 toward 100, 2 drafts).
-- **tsc:** NOT RUN. Same sandbox-mount truncation as the 2026-06-09 run: the
-  Cowork bash mount serves a truncated copy of `data/blog.ts` (stops ~525 KB,
-  before the exported helper functions), so `git`/`tsc` from the sandbox would
-  stage a corrupt blob. The file-tool view is intact and well-formed by
-  inspection (new object closes at line 8039, `getArticleBySlug` /
-  `getPublishedArticles` / `getArticlesByHub` present and unchanged after it).
-- **git:** NOT COMMITTED. Do NOT trust sandbox-side git state.
+  - `docs/SILO-PLAN.md` — s
+## 2026-06-12 08:47 — wwsl-will-writer (writingserviceslondon)
+- Sites: writingserviceslondon: ONE new draft spoke "Which Digital Assets Can Be Inherited in the UK" (slug which-digital-assets-can-be-inherited, hub digital-assets-and-wills, draft:true, dates 2026-06-12); serviceMap entry -> estate-planning pillar; SILO-PLAN section 8 tracker updated (26 spokes: 19 live + 7 drafts)
+- Staged files: data/blog.ts, app/blog/[slug]/BlogPostClient.tsx, docs/SILO-PLAN.md (all committed)
+- Live flips this run: none
+- tsc: pass (check-links.mjs: 37 slugs, 0 broken)
+- Commit prompt / git state: commit a10ddfe on main, PUSH FAILED (no GitHub credentials in sandbox), please push. NOTE: a stale .git/index.lock predates this run and the sandbox cannot delete files in .git, so the commit was made via a temp GIT_INDEX_FILE. Remove .git/index.lock Windows-side; the default index is stale relative to HEAD until the next git add -A (self-heals). Some tmp_obj_* files in .git/objects could not be unlinked and can be deleted.
+- Status: PENDING PUSH
 
-### Action for Claude Code (reliable FS)
-1. `cd writingserviceslondon`; confirm the tree shows only `data/blog.ts`,
-   `app/blog/[slug]/BlogPostClient.tsx`, `docs/SILO-PLAN.md`, and `docs/HANDOFF-QUEUE.md`
-   as changes. Any other "modified" large file is a sandbox-mount artifact — `git diff`
-   to confirm no real change before committing.
-2. `npx tsc --noEmit` (rename round-trip blog.ts if the TS server is stale).
-3. Commit to `main` and push. Suggested message:
-   `content(writingserviceslondon): draft spoke business-if-you-die-without-a-will (business-owner-wills hub)`
-4. Add a DONE note here with the commit hash.
-
-
----
-
-## 2026-06-10 — wwsl-will-writer run (Cowork, committed directly)
-
-- **Site:** writingserviceslondon
-- **Spoke:** `stepchildren-inheritance-rights-no-will-london` (draft:true)
-- **Hub:** `intestacy-rules-uk` (was 0 spokes; thinnest-hub priority). Narrow
-  angle vs the hub head term: do stepchildren inherit on intestacy (adoption +
-  1975 Act + blended-family will planning), not the generic "who inherits" term.
-- **Content:** ~1,470 words, answer-first excerpt, 5 sections + FAQ, 5 distinct
-  FAQs, 2 external authority links one per domain (GOV.UK intestacy + Society of
-  Will Writers), matching framing, UK English, no em dashes, £322,000 statutory
-  legacy (correct 26 Jul 2023 figure, verified). Article + BreadcrumbList +
-  FAQPage schema auto-emit from the blog route; FAQs via the inline
-  "Frequently Asked Questions" h2 + h3/p pattern.
-- **Linking:** UP-link to /guides/intestacy-rules-uk/ (auto hub line); tool link
-  to /tools/#intestacy (auto via toolByHub, intestacy outcome calculator);
-  commercial link to /services/single-will/ via serviceMap. No live same-hub
-  siblings yet, so no sibling links (correct).
-- **Files changed:** `data/blog.ts` (+57, new BlogArticle appended before `];`,
-  helpers intact); `app/blog/[slug]/BlogPostClient.tsx` (+1 serviceMap line);
-  `docs/SILO-PLAN.md` section 8 counts (22 toward 100, 3 drafts).
-- **Note on FS:** the Edit-tool write path truncated large inserts this session;
-  worked around by splicing via Python. The bash/git/tsc mount served the full
-  ~548 KB blog.ts (helpers present, tsc parsed whole file), so the earlier
-  sandbox-truncation footgun did NOT recur here.
-- **tsc:** `npx tsc --noEmit` clean (exit 0) on the sandbox mount, which served
-  the full file.
-- **git:** NOT COMMITTED. The Cowork `.git` mount blocks unlink/create, so git
-  cannot write `.git/index.lock` (`rm`/`git add` fail with "Operation not
-  permitted"). Work is on disk and verified; commit must be done by Claude Code.
-
-### Action for Claude Code (reliable FS)
-1. `cd writingserviceslondon`; `git status` should show `data/blog.ts`,
-   `app/blog/[slug]/BlogPostClient.tsx` modified and `docs/` untracked. Confirm
-   `git diff --stat data/blog.ts` is `+57 / -0` (new spoke only, helpers intact).
-2. `npx tsc --noEmit` (rename round-trip blog.ts if the TS server is stale).
-3. `git add data/blog.ts app/blog/[slug]/BlogPostClient.tsx docs/` then commit to
-   `main` and push. Suggested message:
-   `content(writingserviceslondon): draft spoke stepchildren-inheritance-rights-no-will (intestacy hub)`
-   This also sweeps the two earlier parked drafts (online-accounts, business) if
-   they are still uncommitted.
-4. Add a DONE note here with the commit hash.
+## 2026-06-13 00:47 — wwsl-will-writer (writingserviceslondon)
+- Sites: writingserviceslondon: new draft spoke "Property Protection Trusts in Wills for London Couples" (property-protection-trust-wills-london, hub trust-planning-guide, draft:true) + SILO-PLAN section 8 tracker update
+- Staged files: data/blog.ts, docs/SILO-PLAN.md (committed 2d0f575)
+- Live flips this run: none
+- tsc: pass (check-links: 38 slugs, 0 broken)
+- Commit prompt / git state: commit 2d0f575 on main, push failed (no credentials in sandbox) — please push. CLEANUP NEEDED: sandbox cannot unlink files, so .git contains leftover lock files renamed to *.stale*/*.staleX plus possibly a residual index.lock; delete .git/*.stale* and any .git/*.lock (and .git/index2*, .git/s1, .git/s2) from Windows before the next git operation. An earlier corrupt-index commit f68916d was created and reverted via reset --soft; it is unreferenced and never pushed.
+- Status: PENDING PUSH

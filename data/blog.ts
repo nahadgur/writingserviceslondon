@@ -8425,6 +8425,66 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "What happens if my will and my shareholder agreement disagree?"},
         {"type": "p", "text": "For the shares, the agreement and the articles usually win, so the will's gift of those shares may fail or convert into a right to their value. That can frustrate your intentions and, at worst, trigger a dispute between your family and the surviving owners. The fix is not to choose one document over the other but to make them consistent, which means reviewing the will, the articles, the shareholder agreement and any partnership deed at the same time. A specialist will spot the conflict before it becomes a problem."}
     ]
+  },
+  {
+    slug: 'avoid-intestacy-london',
+    hub: 'intestacy-rules-uk',
+    draft: false,
+    title: 'How to Avoid Intestacy in London',
+    metaTitle: 'How to Avoid Intestacy in London',
+    metaDescription: 'Practical steps London residents can take to avoid dying intestate, from making a valid will to stopping marriage or divorce from quietly revoking it.',
+    category: 'Estate Planning',
+    publishDate: '2026-06-15',
+    dateModified: '2026-06-15',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'You avoid intestacy by making a valid will and keeping it valid. A will lets you choose who inherits, name executors and guardians, and override the rigid statutory order that ignores unmarried partners and stepchildren. Marriage, divorce and life changes can quietly undo a will, so reviewing it matters as much as writing it.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/inherits-someone-dies-without-will", "linkText": "GOV.UK: Who inherits if someone dies without a will", "text": "GOV.UK sets out the fixed statutory order that decides who inherits when a person dies without a valid will, which a will lets you replace with your own wishes."},
+        {"type": "p", "text": "Dying intestate means dying without a valid will, and it hands your estate to a rigid statutory order that takes no account of what you actually wanted. The way to avoid it is simple in principle and easy to get wrong in practice: make a valid will, keep it valid, and review it when life changes. This guide sets out the practical steps a London resident can take, the traps that quietly push people back into intestacy, and why each step matters for a high-value London estate."},
+
+        {"type": "h2", "text": "What dying intestate means, and why it is worth avoiding"},
+        {"type": "p", "text": "When there is no valid will, the Administration of Estates Act 1925 decides who inherits through a fixed hierarchy that starts with a spouse or civil partner and the deceased's own biological and adopted children, then moves out to parents, siblings and more distant blood relatives. The rules look only at legal status. An unmarried partner of twenty years, a stepchild raised since infancy, a close friend or a chosen charity all receive nothing, however clear your intentions were in life."},
+        {"type": "p", "text": "In London the stakes are higher because estates are larger. A surviving spouse takes the personal possessions, a statutory legacy of £322,000, and half of the remainder, with the deceased's children sharing the rest, which can split a family home in ways nobody planned. You can see where your own estate would go using our [intestacy outcome tool](/tools/#intestacy), and read [how the intestacy rules share out an estate](/guides/intestacy-rules-uk/) in full on the hub. The point is to keep the decision about who inherits in your hands rather than Parliament's."},
+
+        {"type": "h2", "text": "Step one: make a valid will"},
+        {"type": "p", "text": "The single step that avoids intestacy is making a will that is valid, current and complete. A will is only legally valid in England and Wales if it meets the requirements of section 9 of the Wills Act 1837: it must be in writing, signed by you, and your signature made or acknowledged in front of two witnesses who are present at the same time and who then sign it themselves. The witnesses must be over 18 and must not be beneficiaries or married to beneficiaries, because a witness who stands to inherit loses their gift."},
+        {"type": "p", "text": "A will does far more than name who gets what. It lets you appoint executors to administer the estate, name guardians for children under 18, make specific gifts, and direct the residue, the part left after debts and specific gifts, to the people or causes you choose. It is also the only way to provide for anyone the statutory order ignores. Because this is a legal document where small errors cause large problems, most London families use a professional rather than a shop-bought kit. We run a [free will-writing matching service](/services/single-will/) that connects you with vetted specialists, though you should always satisfy yourself that any will reflects your wishes before signing."},
+
+        {"type": "h2", "text": "Step two: stop marriage or divorce quietly revoking your will"},
+        {"type": "p", "text": "The most common way people fall back into intestacy is not failing to make a will but having one silently cancelled. Under section 18 of the Wills Act 1837, marriage or entering a civil partnership automatically revokes any earlier will. Someone who made a careful will, then later married, may have no valid will at all without realising it, and would die intestate if they did nothing further."},
+        {"type": "p", "text": "There are two practical defences. If you are making a will shortly before marrying a particular person, it can be expressed as made in contemplation of that marriage to that named person under section 18(3), so the marriage does not revoke it. And whenever you marry or remarry, treat a fresh will as part of the plan. Divorce works differently: it does not revoke the will, but under section 18A it treats a former spouse as having died, removing them as executor and beneficiary. That can leave gaps the will never intended to fill, so a review after divorce is essential."},
+
+        {"type": "h2", "text": "Step three: avoid partial intestacy by covering the residue"},
+        {"type": "p", "text": "A will can be perfectly valid and still leave part of your estate to pass under the intestacy rules. This is called partial intestacy, and it usually happens when a will gives away specific items and sums but never says clearly who receives the residue, or when the only named beneficiary of the residue dies before you and no substitute is named."},
+        {"type": "list", "items": [
+            "Always include a clear residuary gift that sweeps up everything not specifically given away, so nothing is left undirected.",
+            "Name substitute or backup beneficiaries in case a first choice dies before you, rather than relying on a single name.",
+            "Make sure gifts do not overlap or contradict each other, which can leave a portion of the estate unallocated.",
+            "Review the will after the death of any major beneficiary, since a lapsed gift with no substitute is a common route into partial intestacy."
+        ]},
+        {"type": "p", "text": "Partial intestacy is largely a drafting problem, which is why a professionally prepared will is worth the modest cost on a London estate. A specialist drafts the residue clause and substitution provisions precisely so that, whatever order events unfold in, the whole estate is covered and none of it drops back into the statutory rules."},
+
+        {"type": "h2", "text": "Step four: keep the will current and findable"},
+        {"type": "p", "text": "Avoiding intestacy is not a one-off task. A will that no longer matches your life, or one your executors cannot find, can be as good as no will at all. If the original cannot be located after death, the law presumes you destroyed it intending to revoke it, and the estate may pass under intestacy despite all your effort. Store the original safely with your will writer, a bank, or the National Will Register, and make sure your executors know where it is."},
+        {"type": "p", "text": "Review the will after the events that most often change who should inherit: marriage or divorce, the birth of a child or grandchild, the death of an executor or beneficiary, buying property, selling a business, or a significant change in the value of your estate. A periodic review every few years catches the rest. Estate planning rules and tax thresholds change over time, so you should take advice from a qualified professional on your own circumstances rather than assuming an old will still does what you intended."},
+        {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will-writing professionals in England and Wales."},
+
+        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London individuals and families with vetted will-writing specialists who prepare valid wills, draft the residue and substitution clauses that prevent partial intestacy, and flag when a marriage or divorce means the will needs redoing. Doing this while you have capacity and time to plan is the surest way to keep your estate out of the statutory rules."},
+
+        {"type": "cta", "text": "Get matched with a vetted London will-writing specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "What is the single best way to avoid dying intestate?"},
+        {"type": "p", "text": "Make a valid will and keep it valid. A will that meets section 9 of the Wills Act 1837, signed by you and witnessed by two independent adults present at the same time, lets you choose your beneficiaries and override the statutory order entirely. The will must also stay current, so reviewing it after major life events is part of the same job. Everything else in avoiding intestacy follows from having a properly drafted, up-to-date will in place."},
+        {"type": "h3", "text": "Can my will become invalid without me realising?"},
+        {"type": "p", "text": "Yes, and this is one of the most common causes of accidental intestacy. Marriage or entering a civil partnership automatically revokes an earlier will under section 18 of the Wills Act 1837, unless the will was expressly made in contemplation of that marriage. A will can also fail in practice if the original cannot be found after death, since the law then presumes it was destroyed to revoke it. Reviewing and safely storing your will guards against both."},
+        {"type": "h3", "text": "Does divorce mean I die intestate?"},
+        {"type": "p", "text": "Not by itself. Divorce does not revoke your will, but under section 18A of the Wills Act 1837 it treats a former spouse as having died before you, so they are removed as executor and beneficiary. If your will left everything to that spouse with no substitute, large parts of the estate can then fall under the intestacy rules. A review immediately after divorce, naming new beneficiaries and executors, prevents that gap."},
+        {"type": "h3", "text": "What is partial intestacy and how do I avoid it?"},
+        {"type": "p", "text": "Partial intestacy happens when a valid will fails to dispose of all of your estate, so the uncovered part passes under the statutory rules. It usually arises from a missing or unclear residue clause, or a sole beneficiary dying before you with no substitute named. You avoid it by including a clear residuary gift that catches everything not specifically given away and by naming backup beneficiaries."},
+        {"type": "h3", "text": "How often should I review my will to avoid intestacy?"},
+        {"type": "p", "text": "Review it after any major life change: marriage, divorce, the birth of a child or grandchild, the death of an executor or beneficiary, buying property, or selling a business. Beyond those triggers, a review every three to five years is sensible. Because tax thresholds and estate planning rules change over time, checking the will with a qualified professional periodically keeps it doing what you intended."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

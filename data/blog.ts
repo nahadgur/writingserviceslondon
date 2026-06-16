@@ -8485,6 +8485,138 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "How often should I review my will to avoid intestacy?"},
         {"type": "p", "text": "Review it after any major life change: marriage, divorce, the birth of a child or grandchild, the death of an executor or beneficiary, buying property, or selling a business. Beyond those triggers, a review every three to five years is sensible. Because tax thresholds and estate planning rules change over time, checking the will with a qualified professional periodically keeps it doing what you intended."}
     ]
+  },
+  {
+    slug: 'how-much-does-probate-cost-london',
+    hub: 'probate-guide-london',
+    draft: true,
+    title: 'How Much Does Probate Cost in London?',
+    metaTitle: 'How Much Does Probate Cost in London?',
+    metaDescription: 'What probate costs for a London estate: the £300 court application fee, who pays nothing, and how solicitor and probate specialist fees are charged.',
+    category: 'Probate',
+    publishDate: '2026-06-15',
+    dateModified: '2026-06-15',
+    featuredImage: '/images/probate-support.png',
+    excerpt: 'Probate in London has two cost layers: a fixed court fee and the professional fees you choose to take on. The court application fee is £300 for estates over £5,000 and nothing at or below that figure. Specialist fees vary widely by how they are charged, and that is where most of the cost sits.',
+    faqs: [
+      { question: 'How much is the probate application fee in England?', answer: 'The court application fee is £300 where the estate is worth more than £5,000, and there is no fee at all where the estate is £5,000 or less. The fee is the same whether you apply yourself or a professional applies for you, and it is set by GOV.UK rather than by any individual firm. Additional official copies of the grant cost a small fee each, and help with the fee is available for people on a low income or certain benefits.' },
+      { question: 'Do I have to pay a solicitor for probate?', answer: 'No. You can apply for probate yourself and pay only the court fee, which suits straightforward estates. Many London families instruct a professional because the estate involves property, inheritance tax or assets that are slow to value, and professional fees are the largest variable in the total cost. How those fees are charged, whether a fixed quote, a percentage of the estate or an hourly rate, matters more than the headline figure.' },
+      { question: 'Why is probate more expensive on a London estate?', answer: 'Cost usually tracks complexity rather than postcode, but London estates tend to be more complex. High-value residential property often brings inheritance tax into the picture, leasehold flats need lease information that is slow to gather, and many estates include investments or more than one property. Each of these adds professional time, and percentage-based fees rise directly with the value of the estate.' },
+      { question: 'Is inheritance tax part of the cost of probate?', answer: 'No, although the two are often confused. Inheritance tax is a separate liability charged at 40 per cent on the part of an estate above the available thresholds, and it is generally paid before the grant is issued. Probate costs are the court fee and any professional fees for administering the estate. An estate can owe no inheritance tax at all and still incur probate costs, and vice versa.' },
+      { question: 'Can I reduce what probate costs?', answer: 'You can keep costs down by gathering valuations and paperwork before applying, by comparing fixed-fee quotes rather than open-ended hourly arrangements, and by checking whether a grant is needed at all, since some small or jointly held estates avoid probate. Where you do instruct a professional, agreeing the basis of charging in writing at the outset is the single most effective way to avoid an unexpected bill.' }
+    ],
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/applying-for-probate/fees", "linkText": "GOV.UK: Applying for probate fees", "text": "GOV.UK sets out the current court application fee for probate and the help available towards it."},
+        {"type": "p", "text": "Probate in London has two separate cost layers. The first is a fixed court fee set by the government, which is £300 where the estate is worth more than £5,000 and nothing where it is £5,000 or less. The second is professional fees, which you only pay if you choose to instruct someone, and which vary far more than the court fee. This guide explains both, why London estates often cost more to administer, and how the way a fee is charged matters more than the headline number. For the wider picture you can read our full probate guide for London."},
+
+        {"type": "h2", "text": "The two parts of a probate bill"},
+        {"type": "p", "text": "Almost every conversation about the cost of probate confuses two different things. One is the court fee, a flat charge paid to HM Courts and Tribunals Service for issuing the grant of representation. It is the same whether you apply yourself or a professional applies on your behalf. The other is professional fees, the money paid to a solicitor, a probate specialist or a bank to handle the work of administering the estate. The court fee is small and predictable; the professional fees are where the real variation, and the real money, sits."},
+        {"type": "p", "text": "Understanding which part you are looking at is the first step to controlling the total. Many people quote a single large figure for probate, but that figure is usually almost entirely professional fees. You can choose to take on much of the work yourself and pay only the court fee, or instruct a professional for some or all of it. The grant itself, and the process behind it, is explained in [the full probate process](/guides/probate-guide-london/) on our hub."},
+
+        {"type": "h2", "text": "The court application fee"},
+        {"type": "p", "text": "The application fee for a grant of probate in England and Wales is £300 where the estate is worth more than £5,000. Where the estate is £5,000 or less there is no fee at all. This charge is set centrally and does not change from one firm or one London borough to another. It is paid once, when the application is submitted to the court."},
+        {"type": "list", "items": [
+            "Application fee: £300 for an estate over £5,000, and no fee for an estate of £5,000 or less.",
+            "Extra copies of the grant: a small fee for each additional sealed copy, which is worth ordering because banks, registrars and other asset holders each want to see one.",
+            "Help with the fee: people on a low income or certain benefits may pay a reduced fee or nothing, by applying for help with court fees before submitting the probate application.",
+            "A second application: a modest fee applies if a further grant is later needed, for example where an executor who reserved their power steps in."
+        ]},
+        {"type": "p", "text": "Because the court fee is fixed and modest, it is rarely the part of probate that catches London families out. The figures above are the current published fees on GOV.UK, but court fees are reviewed from time to time, so it is sensible to confirm the rate before applying."},
+
+        {"type": "h2", "text": "Professional fees and how they are charged"},
+        {"type": "p", "text": "If you instruct a solicitor, a dedicated probate specialist or a bank, their fee is almost always the largest single cost of administering an estate. There is no fixed scale. What you pay depends on the firm, the complexity of the estate and, crucially, the basis on which the fee is charged. Three models are common, and the difference between them can be substantial on a high-value London estate."},
+        {"type": "list", "items": [
+            "Fixed fee: an agreed price for a defined scope of work, which gives certainty and is well suited to estates where the assets are known and straightforward.",
+            "Percentage of the estate: a fee calculated as a percentage of the estate's value, sometimes with an additional hourly element, which can run into several thousand pounds on a London estate dominated by property.",
+            "Hourly rate: charging for the time actually spent, which can be economical for a simple estate but open-ended if complications arise."
+        ]},
+        {"type": "p", "text": "The right choice depends on the estate. A percentage fee on a £1.5 million London estate can be far higher than a fixed quote for the same work, simply because the value of the house inflates the charge without necessarily adding work. Banks also offer probate services, often on a percentage basis, and their convenience can come at a premium. The practical lesson is to compare quotes on a like-for-like basis and to confirm the basis of charging in writing before instructing anyone. You can model the court fee alongside a typical professional range with our [probate fee calculator](/tools/#probate)."},
+        {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for advisers who specialise in estate administration, inheritance tax and probate."},
+
+        {"type": "h2", "text": "Why London probate often costs more"},
+        {"type": "p", "text": "Cost tracks complexity far more than it tracks postcode, but London estates tend to be more complex than average, which pushes professional fees up. High-value residential property frequently takes an estate over the inheritance tax threshold, which adds a layer of reporting and valuation work. Leasehold flats can require lease and service-charge information that is slow to obtain. Many London estates also include investment portfolios, more than one property, or assets held abroad, each of which adds time and therefore cost."},
+        {"type": "p", "text": "Inheritance tax is a frequent source of confusion here, because people fold it into the cost of probate. It is not the same thing. Inheritance tax is a separate liability, charged at 40 per cent on the value of an estate above the available thresholds, and it generally has to be paid before the grant is issued. The cost of probate, in the sense this guide uses, is the court fee plus any professional fees. An estate can carry a large inheritance tax bill and modest probate costs, or owe no tax at all yet still need a paid professional to administer it."},
+
+        {"type": "h2", "text": "Keeping probate costs down, and when to get help"},
+        {"type": "p", "text": "Several things keep the total under control. Check first whether a grant is even needed, because assets held jointly often pass automatically by survivorship and some institutions release modest balances without a grant. Gather date-of-death valuations and a complete list of assets and debts before you approach anyone, so that a fixed quote can be given against a clear picture. Compare quotes on the same scope, and be wary of open-ended hourly arrangements on an estate that could become complicated. Where a professional is worth instructing, agreeing the basis of charging in writing at the outset prevents the bill that surprises so many executors."},
+        {"type": "p", "text": "We are a matching service and do not carry out probate ourselves. We connect London executors and families with vetted [probate support specialists](/services/probate-support/) who quote transparently and handle the valuations, any inheritance tax account and the grant application as routine work. Costs and tax rules in this area are detailed and change over time, so an executor facing a significant estate should take advice from a qualified professional rather than relying on a rule of thumb. Whether you handle the estate yourself or instruct help, understanding the two cost layers is what lets you make that decision with your eyes open."},
+
+        {"type": "cta", "text": "Get matched with a vetted London probate specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "How much is the probate application fee in England?"},
+        {"type": "p", "text": "The court application fee is £300 where the estate is worth more than £5,000, and there is no fee at all where the estate is £5,000 or less. The fee is the same whether you apply yourself or a professional applies for you, and it is set by GOV.UK rather than by any individual firm. Additional official copies of the grant cost a small fee each, and help with the fee is available for people on a low income or certain benefits."},
+        {"type": "h3", "text": "Do I have to pay a solicitor for probate?"},
+        {"type": "p", "text": "No. You can apply for probate yourself and pay only the court fee, which suits straightforward estates. Many London families instruct a professional because the estate involves property, inheritance tax or assets that are slow to value, and professional fees are the largest variable in the total cost. How those fees are charged, whether a fixed quote, a percentage of the estate or an hourly rate, matters more than the headline figure."},
+        {"type": "h3", "text": "Why is probate more expensive on a London estate?"},
+        {"type": "p", "text": "Cost usually tracks complexity rather than postcode, but London estates tend to be more complex. High-value residential property often brings inheritance tax into the picture, leasehold flats need lease information that is slow to gather, and many estates include investments or more than one property. Each of these adds professional time, and percentage-based fees rise directly with the value of the estate."},
+        {"type": "h3", "text": "Is inheritance tax part of the cost of probate?"},
+        {"type": "p", "text": "No, although the two are often confused. Inheritance tax is a separate liability charged at 40 per cent on the part of an estate above the available thresholds, and it is generally paid before the grant is issued. Probate costs are the court fee and any professional fees for administering the estate. An estate can owe no inheritance tax at all and still incur probate costs, and vice versa."},
+        {"type": "h3", "text": "Can I reduce what probate costs?"},
+        {"type": "p", "text": "You can keep costs down by gathering valuations and paperwork before applying, by comparing fixed-fee quotes rather than open-ended hourly arrangements, and by checking whether a grant is needed at all, since some small or jointly held estates avoid probate. Where you do instruct a professional, agreeing the basis of charging in writing at the outset is the single most effective way to avoid an unexpected bill."}
+    ]
+  },
+  {
+    slug: 'what-surviving-spouse-inherits-no-will',
+    hub: 'intestacy-rules-uk',
+    draft: true,
+    title: 'What a Surviving Spouse Inherits Without a Will',
+    metaTitle: 'What a Surviving Spouse Inherits With No Will',
+    metaDescription: 'What a surviving spouse inherits without a will: the £322,000 statutory legacy, how an estate is split with children, and what it means for London couples.',
+    category: 'Estate Planning',
+    publishDate: '2026-06-16',
+    dateModified: '2026-06-16',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'A surviving husband, wife or civil partner does not automatically inherit everything when their spouse dies without a will. They take the personal possessions, a £322,000 statutory legacy and half of what remains, while any children share the other half. Only a will changes that split.',
+    content: [
+        {"type": "external-link", "href": "https://www.gov.uk/inherits-someone-dies-without-will", "linkText": "GOV.UK: Who inherits if someone dies without a will", "text": "GOV.UK sets out the statutory order of inheritance and the current £322,000 statutory legacy that applies when someone dies without a valid will."},
+        {"type": "p", "text": "When someone dies without a valid will they die intestate, and the law, not the family, decides who inherits. Many people assume a husband, wife or civil partner simply receives everything. That is only true in some cases. Where there are also children, the surviving spouse shares the estate with them under a fixed formula set by statute. This guide explains exactly what a surviving spouse receives, how the £322,000 statutory legacy works, and why the result so often surprises London families."},
+
+        {"type": "h2", "text": "How intestacy treats a surviving spouse"},
+        {"type": "p", "text": "Intestacy applies whenever a person dies without a valid will, or where a will fails to deal with part of the estate. The rules come from the Administration of Estates Act 1925 and set a fixed order of who inherits. A spouse or civil partner sits at the top of that order, but the marriage or civil partnership must be legally valid and still subsisting at the date of death. A couple who have separated but never divorced are still married for this purpose, so an estranged husband or wife can inherit, while a divorced former spouse cannot."},
+        {"type": "p", "text": "Only a legal spouse or civil partner qualifies. A long-term unmarried partner inherits nothing under intestacy, however many years the couple lived together and whatever they may have promised each other. What a qualifying spouse actually receives then depends on a single question: were there also surviving children or other direct descendants."},
+
+        {"type": "h2", "text": "The £322,000 statutory legacy explained"},
+        {"type": "p", "text": "Where the person who died leaves both a spouse or civil partner and children, the spouse does not take the whole estate. Instead they receive three things: all the personal possessions, often called personal chattels, such as furniture, jewellery, cars and personal effects; a fixed cash sum known as the statutory legacy; and a share of whatever is left. The statutory legacy is currently £322,000, the figure that has applied since 26 July 2023, when it rose from £270,000. It is reviewed periodically rather than every year, so it can stay the same for long stretches while estate values climb around it."},
+        {"type": "p", "text": "The statutory legacy is paid to the spouse first, before the rest of the estate is divided. If the whole net estate is worth £322,000 or less, the spouse therefore receives everything and the children receive nothing, because there is nothing left once the legacy is met. It is only when the estate exceeds £322,000 that the children begin to inherit at all."},
+
+        {"type": "h2", "text": "How the estate is split between spouse and children"},
+        {"type": "p", "text": "Above the statutory legacy, the remaining estate is divided into two halves. The surviving spouse takes one half outright. The children share the other half equally between them. A child who has already died is represented by their own children, who take that share between them on what is called the statutory trust. Children under 18 do not receive their share directly; it is held on trust until they reach adulthood."},
+        {"type": "list", "items": [
+            "Personal possessions: the surviving spouse receives all of them, whatever their value.",
+            "The first £322,000: paid to the surviving spouse as the statutory legacy.",
+            "Half of the balance above £322,000: paid to the surviving spouse outright.",
+            "The other half of the balance: shared equally between the deceased's children, with under-18s holding their share on trust until they turn 18."
+        ]},
+        {"type": "p", "text": "This is the outcome that catches London families out most often. High property values push estates well past the £322,000 figure, so children inherit a substantial share alongside the surviving spouse rather than the spouse simply keeping the family home outright. A calculator can model the split for your own figures, but the principle does not change: above £322,000 the children always share."},
+
+        {"type": "h2", "text": "A worked example for a London estate"},
+        {"type": "p", "text": "Take a married London homeowner who dies without a will. After the mortgage is cleared, the net estate is worth £900,000, made up mainly of the family home. They leave a spouse and two adult children. The spouse first receives all the personal possessions and the £322,000 statutory legacy, which leaves £578,000. The spouse takes half of that, £289,000, and the two children share the other £289,000, receiving £144,500 each."},
+        {"type": "p", "text": "So the surviving spouse ends up with £611,000 and the children with £289,000 between them. Because most of the value sits in the house, the practical problem is obvious: the children are entitled to a share that may not be available in cash without selling or remortgaging the home the surviving spouse still lives in. None of this reflects any choice made by the person who died. It is simply the formula the law imposes in the absence of a will."},
+
+        {"type": "h2", "text": "When a spouse does inherit everything"},
+        {"type": "p", "text": "There is one situation in which the surviving spouse takes the entire estate under intestacy: where the person who died left a spouse or civil partner but no children, grandchildren or other direct descendants. The whole estate then passes to the spouse, and other relatives such as parents and siblings receive nothing. This rule applies to deaths on or after 1 October 2014. Before then, parents and siblings could share in a childless person's estate even where a spouse survived, and the spouse took only a life interest in part of it."},
+        {"type": "p", "text": "Many couples assume this is how intestacy always works, and that the survivor will inherit everything regardless. For couples with children, that assumption is wrong, and the gap between the assumption and the reality is exactly where unintended outcomes arise."},
+
+        {"type": "h2", "text": "The second death and why a will matters"},
+        {"type": "p", "text": "The first split is not the only risk. When the surviving spouse later dies, their estate, now swelled by what they inherited, passes under their own will or, if they never made one, under intestacy again, this time potentially to their own side of the family rather than to the couple's shared intentions. For blended families, where one partner has children from an earlier relationship, intestacy on the first death can divert part of the estate away from those children, and intestacy on the second death can divert the rest. A will is the only way to set out who should benefit, in what shares, and to use tools such as a life interest trust so a surviving spouse is provided for while the children's inheritance is protected."},
+        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London couples and families with vetted will-writing specialists who can replace the rigid intestacy formula with a plan that reflects what you actually want, including provision for a spouse and children together. The rules are detailed and interact with how property is owned and with inheritance tax, so anyone unsure of their position should take advice from a qualified professional rather than relying on the statutory default."},
+        {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will-writing professionals in England and Wales."},
+
+        {"type": "cta", "text": "Replace the intestacy formula with a will that reflects your wishes"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Does a surviving spouse automatically inherit everything?"},
+        {"type": "p", "text": "Only where there are no children or other direct descendants. In that case the spouse or civil partner takes the whole estate. Where there are also children, the spouse receives the personal possessions, the £322,000 statutory legacy and half of the remainder, while the children share the other half. The common belief that the survivor always inherits everything is only half right, and the half it gets wrong is the one that causes disputes."},
+        {"type": "h3", "text": "How much is the statutory legacy in 2026?"},
+        {"type": "p", "text": "£322,000. This is the fixed sum a surviving spouse or civil partner receives before the rest of the estate is divided with the children. It rose from £270,000 to £322,000 on 26 July 2023 and remains at that level. The figure is reviewed from time to time rather than annually, so it can stay unchanged for several years while property values rise around it."},
+        {"type": "h3", "text": "Do unmarried partners inherit under intestacy?"},
+        {"type": "p", "text": "No. Only a legally married spouse or civil partner inherits under the intestacy rules. A cohabiting partner, however long the relationship, receives nothing automatically, even where the couple shared a home and children. Their only route is a discretionary court claim under the Inheritance (Provision for Family and Dependants) Act 1975, which is uncertain and costly. A will is the dependable way to provide for an unmarried partner."},
+        {"type": "h3", "text": "What happens if the estate is worth less than £322,000?"},
+        {"type": "p", "text": "The surviving spouse receives everything. The statutory legacy is paid to the spouse before anything passes to the children, so where the whole net estate is £322,000 or less there is nothing left for the children to share. Children only begin to inherit under intestacy once the estate exceeds the statutory legacy figure."},
+        {"type": "h3", "text": "Can children force the sale of the family home?"},
+        {"type": "p", "text": "Where children are entitled to a share they cannot usually be left unpaid, and if the estate's value is tied up in the home, meeting their entitlement can in practice require a sale or a remortgage. A surviving spouse does have a right to ask that the home be appropriated towards their own share of the estate, but the figures still have to work. A will that deals expressly with the home avoids this difficulty, which is why it matters most for property-rich London estates."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

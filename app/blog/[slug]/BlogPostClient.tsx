@@ -317,6 +317,7 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
                     'what-happens-to-your-online-accounts-after-death-in-london':          { slug: 'single-will',               title: 'Single will writing' },
                     'what-happens-to-your-business-if-you-die-without-a-will-london':       { slug: 'estate-planning',           title: 'Estate planning review' },
                     'stepchildren-inheritance-rights-no-will-london':                      { slug: 'single-will',               title: 'Single will writing' },
+                    'what-surviving-spouse-inherits-no-will':                              { slug: 'single-will',               title: 'Single will writing' },
                     'how-long-does-probate-take-london':                                   { slug: 'probate-support',           title: 'Probate support' },
                     'care-fees-protecting-your-home-london':                               { slug: 'estate-planning',           title: 'Estate planning review' },
                     'protecting-a-cohabiting-partner-not-on-the-deeds':                    { slug: 'trust-planning',            title: 'Trust planning' },

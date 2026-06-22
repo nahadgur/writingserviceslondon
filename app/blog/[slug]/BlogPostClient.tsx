@@ -182,16 +182,6 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
                 <ArrowLeft size={12} /> All articles
               </Link>
 
-              {hub && (
-                <p className="body-sm" style={{ marginBottom: 18 }}>
-                  Part of our{' '}
-                  <Link href={`/guides/${hub.slug}/`} style={{ color: 'var(--brand)', textDecoration: 'underline', textDecorationColor: 'rgba(212,105,25,0.35)' }}>
-                    {hub.title}
-                  </Link>{' '}
-                  guide.
-                </p>
-              )}
-
               <p className="article-lede" style={{ marginBottom: 28 }}>{article.excerpt}</p>
 
               {(() => {

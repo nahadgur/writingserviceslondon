@@ -8617,6 +8617,66 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "Can children force the sale of the family home?"},
         {"type": "p", "text": "Where children are entitled to a share they cannot usually be left unpaid, and if the estate's value is tied up in the home, meeting their entitlement can in practice require a sale or a remortgage. A surviving spouse does have a right to ask that the home be appropriated towards their own share of the estate, but the figures still have to work. A will that deals expressly with the home avoids this difficulty, which is why it matters most for property-rich London estates."}
     ]
+  },
+  {
+    slug: 'where-to-store-your-will-in-london',
+    hub: 'how-to-write-a-will-in-london',
+    draft: false,
+    title: 'Where to Store Your Will in London Safely',
+    metaTitle: 'Where to Store Your Will Safely in London',
+    metaDescription: 'Where to store your will in London: home, your will writer, a bank, the Probate Service or a solicitor. How to keep the original safe, tell executors where it is, and avoid a lost will.',
+    category: 'Will Writing',
+    publishDate: '2026-06-25',
+    dateModified: '2026-06-25',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'A will only works if your executors can find the signed original after you die. This guide explains where to store your will in London, from keeping it at home to lodging it with your will writer, a bank, a solicitor or the official storage service, and how to make sure the right people know where it is.',
+    content: [
+        {"type": "p", "text": "Writing a will is only half the job. The document has to be found, in its original signed form, when the time comes to apply for probate. A will that nobody can locate, or that turns up damaged or marked, can cause exactly the delay and dispute that [making a will in the first place](/guides/how-to-write-a-will-in-london/) was meant to prevent. This guide sets out where to store your will in London, the trade-offs of each option, and the simple steps that make sure your executors can act on it."},
+
+        {"type": "h2", "text": "Why the original document matters"},
+        {"type": "p", "text": "When someone dies, the executors named in the will apply to the Probate Registry for a grant of probate, and they normally have to send in the original will, not a photocopy. If only a copy can be found, the court may presume the original was deliberately destroyed and revoked, which can be hard to disprove. That presumption is why storage is not a minor administrative detail. Keeping the signed original safe, unmarked and findable is part of making the will effective at all."},
+        {"type": "p", "text": "Equally important is that the will is never altered after signing. Removing a staple, adding a paperclip, writing a note in the margin or letting the pages get water damaged can all raise questions about whether the document was tampered with. The safest approach is to leave the executed will exactly as it was when it was witnessed and store it somewhere it will not be handled."},
+
+        {"type": "h2", "text": "Keeping your will at home"},
+        {"type": "p", "text": "Many people simply keep the original at home, in a fireproof document box or a locked drawer with other important papers. This costs nothing and means the will is to hand if you want to review it. The drawbacks are real, though: fire, flood, theft, accidental disposal during a house clearance, or a relative removing a will they dislike. A home-stored will also has to be found by people who may be searching an unfamiliar house under stress."},
+        {"type": "p", "text": "If you do store your will at home, keep it flat, in a sealed and labelled envelope, away from damp, and make sure at least your executors know exactly where it is. Avoid a bank safety deposit box for the original, because the box itself is often sealed on death until probate is granted, creating a circular problem where the will is needed to obtain probate but cannot be reached without it."},
+
+        {"type": "h2", "text": "Storage with a will writer or solicitor"},
+        {"type": "p", "text": "Most professional will writers and solicitors in London offer to store the original for you, often free of charge or for a modest annual fee, and they keep a register so the document can be retrieved by your executors. This protects the will from the everyday risks of home storage and keeps it in professional custody. It is one reason people choosing a [will writing service in London](/blog/how-to-choose-a-will-writing-service-in-london/) ask about storage and retrieval terms up front, alongside the cost of [writing the will itself](/blog/will-writing-costs-in-london-in-2026/)."},
+        {"type": "p", "text": "Two practical points are worth checking. First, what happens to your will if the firm closes, merges or is sold, since custody can pass to another business and you want to be able to trace it. Second, whether your executors can retrieve the original quickly and without an unexpected charge. A reputable provider will explain both clearly and give you a written note of where the will is held."},
+
+        {"type": "h2", "text": "The official will storage service"},
+        {"type": "p", "text": "England and Wales also has an official storage service run by the Probate Service, part of HM Courts and Tribunals Service, which lets you deposit your original will with the court during your lifetime. The will is kept securely and can be released to you, or after your death to your executors, when needed. There is a fee to deposit a will, and the service is national rather than London-specific, so anyone in the capital can use it. It is a useful, neutral option if you would rather not rely on a firm or on home storage."},
+        {"type": "p", "text": "Whichever route you choose, register the location in any national will register you or your will writer use, so that searchers can confirm a will exists and where it is held. A will that exists but cannot be found can leave an estate to be distributed under the intestacy rules instead, the very outcome the will was meant to override."},
+
+        {"type": "h2", "text": "Telling the right people"},
+        {"type": "p", "text": "Storage only works if your executors can act on it. Tell the people you have named as executors that they hold the role, and tell them where the original will is kept and how to retrieve it. You do not have to show them the contents. A short letter of instruction, kept with your other papers but separate from the will, can record the storage location, any reference number, and contact details for the firm or service holding it."},
+        {"type": "list", "items": [
+            "Keep the original signed will flat, unmarked and in a sealed labelled envelope.",
+            "Choose one secure location: home document box, your will writer or solicitor, or the official storage service.",
+            "Tell your executors the role they hold and exactly where the will is stored.",
+            "Record the location and any reference number in a separate letter of instruction.",
+            "Review the storage arrangement whenever you update the will or change provider."
+        ]},
+
+        {"type": "h2", "text": "Storage and updating your will"},
+        {"type": "p", "text": "Storage and updating go together. When you make a new will it should revoke the old one, and the superseded version should be destroyed so that only the current will can be found. If you store wills with a firm or the court, make sure the old one is withdrawn and the new one lodged, rather than leaving two conflicting documents in different places. Inheritance tax planning is a common reason to revisit a will, since the nil-rate band sits at [£325,000 with 40% charged above it](https://www.gov.uk/inheritance-tax), and the formalities for making and revoking a will are set out by [GOV.UK](https://www.gov.uk/make-will)."},
+        {"type": "p", "text": "We are a matching service and do not draft or store wills ourselves. We connect London families with vetted will-writing professionals who can prepare your will, explain their storage and retrieval terms, and make sure your executors know where to find the original. If you are unsure of your options, take advice from a qualified professional rather than risking a lost or invalid will."},
+
+        {"type": "cta", "text": "Get matched with a London will writer who explains storage and retrieval"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Does the Probate Registry need the original will or a copy?"},
+        {"type": "p", "text": "Executors normally have to send the original signed will to the Probate Registry when they apply for a grant of probate. If only a copy survives, the court may presume the original was destroyed and revoked, which can be difficult and costly to challenge. This is why keeping the signed original safe and findable matters so much, and why a clearly marked, unaltered document is worth more than several photocopies."},
+        {"type": "h3", "text": "Can I keep my will in a bank safety deposit box?"},
+        {"type": "p", "text": "It is usually a poor choice for the original. A deposit box may be sealed on death until probate is granted, but the will inside is exactly what the executors need to obtain that grant, creating a deadlock. If you want professional custody, storage with your will writer or solicitor, or the official storage service, avoids this problem because the will can be released to your executors when required."},
+        {"type": "h3", "text": "How much does the official will storage service cost?"},
+        {"type": "p", "text": "The Probate Service charges a fee to deposit a will with the court for safekeeping during your lifetime. Fees are set nationally and can change, so check the current amount on GOV.UK before depositing. The service is open to anyone in England and Wales, including London residents, and keeps the will until you withdraw it or your executors retrieve it after your death."},
+        {"type": "h3", "text": "What happens if my will writer or solicitor closes down?"},
+        {"type": "p", "text": "Custody of stored wills usually passes to another firm that takes over the practice or its files, but it is worth asking your provider how they would notify you and how a will could be traced. Keeping your own written note of where the will is held, and recording it in a will register, means your executors can still locate the document even if the original firm no longer exists under the same name."},
+        {"type": "h3", "text": "Should my executors read my will before I die?"},
+        {"type": "p", "text": "They do not need to read the contents, but they should know they have been appointed and where the original is stored. Telling your executors in advance avoids a frantic search later and lets them act quickly. A short letter recording the storage location and any reference number, kept separately from the will itself, is usually enough to point them in the right direction."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

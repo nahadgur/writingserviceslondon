@@ -10,10 +10,43 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 import type { BlogArticle, ContentBlock } from '@/data/blog';
 
+// Parse inline markdown links [text](href) into React nodes.
+// Internal /path/ links render as next/link <Link>; external http(s) links
+// render as <a target="_blank" rel="noopener noreferrer">.
+function renderRich(text: string): React.ReactNode {
+  if (!text) return '';
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const nodes: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let k = 0;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    const label = m[1];
+    const href = m[2];
+    if (/^https?:\/\//i.test(href)) {
+      nodes.push(
+        <a key={`l${k++}`} href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
+          {label}
+        </a>
+      );
+    } else {
+      nodes.push(
+        <Link key={`l${k++}`} href={href} style={{ color: 'var(--brand)' }}>
+          {label}
+        </Link>
+      );
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes.length ? nodes : text;
+}
+
 function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
   switch (block.type) {
     case 'p':
-      return <p key={index} className="article-p">{block.text || ''}</p>;
+      return <p key={index} className="article-p">{renderRich(block.text || '')}</p>;
 
     case 'h2':
       return (
@@ -33,7 +66,7 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
           {(block.items || []).map((item, i) => (
             <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8 }}>
               <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0, marginTop: 8 }} />
-              <span className="article-p" style={{ marginBottom: 0 }}>{item}</span>
+              <span className="article-p" style={{ marginBottom: 0 }}>{renderRich(item)}</span>
             </li>
           ))}
         </ul>

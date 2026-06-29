@@ -149,22 +149,10 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
   }
 }
 
-export function BlogPostClient({ article, related, hub }: { article: BlogArticle; related: BlogArticle[]; hub: { slug: string; title: string } | null }) {
+export function BlogPostClient({ article }: { article: BlogArticle; related?: BlogArticle[]; hub?: { slug: string; title: string } | null }) {
   const [modal, setModal] = useState(false);
 
-  const toolByHub: Record<string, { id: string; label: string }> = {
-    'inheritance-tax-guide-london': { id: 'iht', label: 'Inheritance tax calculator' },
-    'probate-guide-london': { id: 'probate', label: 'Probate fee calculator' },
-    'lasting-power-of-attorney-guide': { id: 'lpa', label: 'LPA cost estimator' },
-    'intestacy-rules-uk': { id: 'intestacy', label: 'Intestacy outcome calculator' },
-    'will-for-unmarried-couples': { id: 'intestacy', label: 'Intestacy outcome calculator' },
-    'trust-planning-guide': { id: 'care', label: 'Care cost protection estimator' },
-    'estate-planning-over-50': { id: 'care', label: 'Care cost protection estimator' },
-    'updating-your-will': { id: 'review', label: 'Will review checker' },
-  };
-  const tool = toolByHub[article.hub];
-
-  // Find 2nd h2 to inject pull quote
+  // Find 2nd h2 to inject the mid-article CTA banner and pull quote
   let h2Count = 0;
   let secondH2 = -1;
   for (let i = 0; i < article.content.length; i++) {
@@ -206,7 +194,7 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
 
         {/* Body */}
         <div className="container-width py-10 md:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10 lg:gap-12">
+          <div>
 
             {/* Article */}
             <article>
@@ -253,8 +241,28 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
                     }
                   }
 
-                  // Pull quote before second h2
+                  // Mid-article CTA banner + pull quote before second h2
                   if (i === secondH2) {
+                    rendered.push(
+                      <div
+                        key={`mid-cta-${i}`}
+                        className="rounded-xl px-6 py-6 md:px-10 md:py-7 my-10"
+                        style={{ background: 'var(--ink)' }}
+                      >
+                        <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
+                          Free specialist matching
+                        </p>
+                        <p style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(22px,2.6vw,28px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', lineHeight: 1.2, marginBottom: 8 }}>
+                          Want a fixed-fee quote before you read on?
+                        </p>
+                        <p className="body-sm" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 18, maxWidth: 520 }}>
+                          We match you with vetted will writers across London who quote upfront, with no obligation and no cost to you.
+                        </p>
+                        <button onClick={() => setModal(true)} className="btn-primary">
+                          Get matched free
+                        </button>
+                      </div>
+                    );
                     rendered.push(
                       <div key={`pq-${i}`} className="pull-quote" style={{ marginBottom: 24 }}>
                         <p>Making a will is one of the most important things you can do for the people you love most.</p>
@@ -273,96 +281,6 @@ export function BlogPostClient({ article, related, hub }: { article: BlogArticle
               })()}
             </article>
 
-            {/* Sidebar */}
-            <aside>
-              <div className="lg:sticky" style={{ top: 28 }}>
-                <div className="sidebar-box">
-                  <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 6 }}>
-                    Get matched free
-                  </h3>
-                  <p className="body-sm mb-4">
-                    Ready to write your will? We match you with a vetted specialist in London at no cost.
-                  </p>
-                  <button onClick={() => setModal(true)} className="btn-primary w-full justify-center">
-                    Find my specialist
-                  </button>
-                </div>
-
-                {tool && (
-                  <div className="sidebar-box">
-                    <p className="eyebrow mb-3">Try the tool</p>
-                    <Link href={`/tools/#${tool.id}`}
-                      style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
-                      className="hover:text-brand-500">
-                      {tool.label} →
-                    </Link>
-                  </div>
-                )}
-
-                {related.length > 0 && (
-                  <div className="sidebar-box">
-                    <p className="eyebrow mb-3">More articles</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                      {related.map(rel => (
-                        <div key={rel.slug}>
-                          <p className="eyebrow-brand mb-0.5">{rel.category}</p>
-                          <Link href={`/blog/${rel.slug}/`}
-                            style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 14, color: 'var(--stone)', textDecoration: 'none', transition: 'color 0.12s' }}
-                            className="hover:text-brand-500">
-                            {rel.title}
-                          </Link>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {(() => {
-                  const serviceMap: Record<string, { slug: string; title: string }> = {
-                    'will-writing-services-london-2026-guide-for-families':                { slug: 'single-will',               title: 'Single will writing' },
-                    'how-to-choose-a-will-writing-service-in-london':                      { slug: 'single-will',               title: 'Single will writing' },
-                    'solicitor-vs-will-writing-service-in-london-key-differences':         { slug: 'single-will',               title: 'Single will writing' },
-                    'home-visit-will-writing-services-in-london-explained':                { slug: 'single-will',               title: 'Single will writing' },
-                    'online-will-writing-services-for-london-residents':                   { slug: 'single-will',               title: 'Single will writing' },
-                    'will-writing-costs-in-london-in-2026':                                { slug: 'single-will',               title: 'Single will writing' },
-                    'is-will-writing-regulated-in-the-uk-what-london-clients-should-know': { slug: 'single-will',               title: 'Single will writing' },
-                    'mirror-wills-and-joint-wills-for-couples-in-london':                  { slug: 'mirror-wills',              title: 'Mirror wills for couples' },
-                    'updating-or-changing-your-will-in-london-when-and-how':               { slug: 'estate-planning',           title: 'Estate planning review' },
-                    'lasting-power-of-attorney-and-will-writing-services-in-london':       { slug: 'lasting-power-of-attorney', title: 'Lasting power of attorney' },
-                    'inheritance-tax-planning-and-will-writing-in-london':                 { slug: 'trust-planning',            title: 'Trust planning' },
-                    'will-writing-for-london-homeowners-with-multiple-properties':         { slug: 'trust-planning',            title: 'Trust planning' },
-                    'free-and-lowcost-will-writing-options-in-london':                     { slug: 'single-will',               title: 'Single will writing' },
-                    'will-writing-and-charitable-gifts-in-london':                         { slug: 'estate-planning',           title: 'Estate planning review' },
-                    'common-will-writing-mistakes-london-families-make':                   { slug: 'single-will',               title: 'Single will writing' },
-                    'will-reviews-and-second-opinions-in-london':                          { slug: 'estate-planning',           title: 'Estate planning review' },
-                    'emergency-will-writing-services-in-london':                           { slug: 'single-will',               title: 'Single will writing' },
-                    'what-to-expect-at-a-will-writing-home-visit-in-london':               { slug: 'single-will',               title: 'Single will writing' },
-                    'what-happens-to-your-online-accounts-after-death-in-london':          { slug: 'single-will',               title: 'Single will writing' },
-                    'what-happens-to-your-business-if-you-die-without-a-will-london':       { slug: 'estate-planning',           title: 'Estate planning review' },
-                    'stepchildren-inheritance-rights-no-will-london':                      { slug: 'single-will',               title: 'Single will writing' },
-                    'what-surviving-spouse-inherits-no-will':                              { slug: 'single-will',               title: 'Single will writing' },
-                    'how-long-does-probate-take-london':                                   { slug: 'probate-support',           title: 'Probate support' },
-                    'care-fees-protecting-your-home-london':                               { slug: 'estate-planning',           title: 'Estate planning review' },
-                    'protecting-a-cohabiting-partner-not-on-the-deeds':                    { slug: 'trust-planning',            title: 'Trust planning' },
-                    'which-digital-assets-can-be-inherited':                               { slug: 'estate-planning',           title: 'Estate planning review' },
-                  };
-                  const svc = serviceMap[article.slug];
-                  if (!svc) return null;
-                  return (
-                    <div className="sidebar-box">
-                      <p className="eyebrow mb-3">Related service</p>
-                      <Link
-                        href={`/services/${svc.slug}/`}
-                        style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
-                        className="hover:text-brand-500"
-                      >
-                        {svc.title} →
-                      </Link>
-                    </div>
-                  );
-                })()}
-              </div>
-            </aside>
           </div>
         </div>
       </main>

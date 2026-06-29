@@ -83,6 +83,15 @@ const GONE_HTML = `<!doctype html>
 </body>
 </html>`;
 
+// Permanent slug renames: old blog path -> new blog path. A 308 keeps
+// the method and signals a permanent move so Google transfers ranking
+// to the evergreen slug (year removed from the URL). Add an entry here
+// whenever a published slug is renamed; never delete the old key, or the
+// old SERP link 404s.
+const BLOG_SLUG_REDIRECTS: Record<string, string> = {
+  'will-writing-costs-in-london-in-2026': 'will-writing-costs-in-london',
+};
+
 function gone() {
   return new NextResponse(GONE_HTML, {
     status: 410,
@@ -109,6 +118,16 @@ const NEXT_FILE_CONVENTIONS = new Set([
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  // 0. Renamed blog slugs — 308 permanent redirect old -> new, preserving
+  //    the trailing slash convention. Handled before the cull logic so a
+  //    renamed post never falls through to a 404/410.
+  const blogMatch = pathname.match(/^\/blog\/([^\/]+)\/?$/);
+  if (blogMatch && BLOG_SLUG_REDIRECTS[blogMatch[1]]) {
+    const url = req.nextUrl.clone();
+    url.pathname = `/blog/${BLOG_SLUG_REDIRECTS[blogMatch[1]]}/`;
+    return NextResponse.redirect(url, 308);
+  }
 
   // 1. Combo URLs — entire route deleted, so any /services/X/Y/ URL
   //    is dead. Match before /services/X/ so we don't 410 surviving
@@ -137,5 +156,6 @@ export const config = {
   matcher: [
     '/location/:path*',
     '/services/:path*',
+    '/blog/:path*',
   ],
 };

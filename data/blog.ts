@@ -2229,7 +2229,7 @@ export const blogArticles: BlogArticle[] = [
     ]
   },
   {
-    slug: 'will-writing-costs-in-london-in-2026',
+    slug: 'will-writing-costs-in-london',
     hub: 'how-to-write-a-will-in-london',
     draft: false,
     title: 'Will Writing Costs in London in 2026',
@@ -2247,7 +2247,7 @@ export const blogArticles: BlogArticle[] = [
         {"type": "external-link", "href": "https://www.citizensadvice.org.uk/family/death-and-wills/wills/", "linkText": "Citizens Advice: Wills", "text": "Citizens Advice provides a free overview of your legal options when making a will."},
         {
             "type": "p",
-            "text": "In London, professional will writing services ensure legal compliance under the Wills Act 1837, with surveys indicating many residents lack proper planning. High property values averaging over half a million pounds expose estates to inheritance tax risks. This makes estate planning essential for families facing London's unique financial pressures."
+            "text": "In London, professional will writing services ensure legal compliance under the Wills Act 1837, and the [government's overview of making a will](https://www.gov.uk/make-will) sets out the witnessing and signing rules a valid will must meet. High property values averaging over half a million pounds expose estates to inheritance tax risks, which makes estate planning essential for families facing London's particular financial pressures."
         },
         {
             "type": "p",
@@ -8642,7 +8642,7 @@ export const blogArticles: BlogArticle[] = [
         {"type": "p", "text": "If you do store your will at home, keep it flat, in a sealed and labelled envelope, away from damp, and make sure at least your executors know exactly where it is. Avoid a bank safety deposit box for the original, because the box itself is often sealed on death until probate is granted, creating a circular problem where the will is needed to obtain probate but cannot be reached without it."},
 
         {"type": "h2", "text": "Storage with a will writer or solicitor"},
-        {"type": "p", "text": "Most professional will writers and solicitors in London offer to store the original for you, often free of charge or for a modest annual fee, and they keep a register so the document can be retrieved by your executors. This protects the will from the everyday risks of home storage and keeps it in professional custody. It is one reason people choosing a [will writing service in London](/blog/how-to-choose-a-will-writing-service-in-london/) ask about storage and retrieval terms up front, alongside the cost of [writing the will itself](/blog/will-writing-costs-in-london-in-2026/)."},
+        {"type": "p", "text": "Most professional will writers and solicitors in London offer to store the original for you, often free of charge or for a modest annual fee, and they keep a register so the document can be retrieved by your executors. This protects the will from the everyday risks of home storage and keeps it in professional custody. It is one reason people choosing a [will writing service in London](/blog/how-to-choose-a-will-writing-service-in-london/) ask about storage and retrieval terms up front, alongside the cost of [writing the will itself](/blog/will-writing-costs-in-london/)."},
         {"type": "p", "text": "Two practical points are worth checking. First, what happens to your will if the firm closes, merges or is sold, since custody can pass to another business and you want to be able to trace it. Second, whether your executors can retrieve the original quickly and without an unexpected charge. A reputable provider will explain both clearly and give you a written note of where the will is held."},
 
         {"type": "h2", "text": "The official will storage service"},

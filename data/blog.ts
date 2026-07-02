@@ -8732,6 +8732,189 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "Can a deputy do everything an attorney can?"},
         {"type": "p", "text": "Not quite. A deputy acts under an order that sets out exactly what they may and may not do, and they are supervised by the Office of the Public Guardian, report annually and often have to hold a security bond. An attorney under an LPA operates with the powers you chose to give and far less routine oversight. Deputyship is also usually confined to property and financial affairs, as the court grants personal welfare deputyships only rarely, whereas you can make a health and welfare LPA freely while you have capacity."}
     ]
+  },
+  {
+    slug: 'pensions-and-death-benefits-in-your-estate',
+    hub: 'estate-planning-over-50',
+    draft: true,
+    title: 'Pensions, Death Benefits and Your London Estate',
+    metaTitle: 'Pensions and Death Benefits in a London Estate',
+    metaDescription: 'How pensions and death benefits pass on death in London, why nominations sit outside your will, and what the April 2027 inheritance tax change means for estate planning over 50.',
+    category: 'Estate Planning',
+    publishDate: '2026-07-03',
+    dateModified: '2026-07-03',
+    featuredImage: '/images/estate-planning.png',
+    excerpt: 'For most people over 50, a pension is one of the largest things they will ever leave behind, yet it usually passes completely outside the will. Understanding how death benefits are paid, why the nomination form matters more than the will, and how the inheritance tax rules change in April 2027 is central to getting your London estate plan right.',
+    content: [
+        {"type": "p", "text": "By the time most Londoners reach their fifties, a workplace or personal pension is often worth more than everything else they own apart from the house. It is also the asset people most often assume their will controls, and most often it does not. A pension normally passes under a separate nomination held by the scheme, not under the terms of your will, which is why [a well-drafted will on its own](/guides/estate-planning-over-50/) can still leave a large part of your wealth flowing to the wrong person. Getting the pension side right is a core part of planning an estate in later life."},
+
+        {"type": "h2", "text": "Why your pension usually sits outside your will"},
+        {"type": "p", "text": "Most modern pensions are held under a trust or a scheme with discretion over who receives the death benefit. When you complete an expression of wish or nomination form, you are telling the scheme administrators who you would like to benefit, and in most cases they follow it. Crucially, the money never becomes part of your estate in the ordinary sense, so your executors do not distribute it and your will does not decide where it goes. That separation is deliberate, and for decades it also kept the pension outside inheritance tax."},
+        {"type": "p", "text": "The practical consequence is simple but easily missed. If you made a will leaving everything to your current partner, but your pension nomination still names an ex-spouse from a form completed years ago, the pension can go to the ex-spouse regardless of what the will says. Reviewing the nomination form alongside the will is therefore just as important as the will itself, particularly after a divorce, a new relationship or the death of a previously named beneficiary."},
+
+        {"type": "h2", "text": "The big change from April 2027"},
+        {"type": "p", "text": "The long-standing inheritance tax advantage of pensions is being withdrawn. From 6 April 2027 most unused pension funds and pension death benefits will be brought into the value of the estate for inheritance tax purposes, ending the position where a pension could usually be passed on free of the tax. The government has published the detail in an [HM Revenue and Customs technical note](https://www.gov.uk/government/publications/inheritance-tax-on-pensions-technical-note/technical-note-inheritance-tax-on-pensions), and estate plans built around the old treatment will need revisiting."},
+        {"type": "p", "text": "There are important carve-outs. Death-in-service benefits paid from a registered scheme are set to remain outside the charge, and the existing exemption for anything passing to a surviving spouse or civil partner is being kept, so a pension left to a husband or wife is still expected to pass without inheritance tax. It is estates leaving pension wealth to children, unmarried partners or others where the change bites, and where the extra tax could be substantial once the fund is added to the rest of the estate."},
+
+        {"type": "h2", "text": "How this interacts with the rest of your planning"},
+        {"type": "p", "text": "Adding a pension into the estate can push a London estate over the nil-rate band, where inheritance tax is charged at 40% on the excess, and can affect how the residence nil-rate band works when the family home is passed to direct descendants. This is why the pension cannot be planned in isolation from the will, and why the way [your will can reduce the inheritance tax on your estate](/blog/inheritance-tax-planning-and-will-writing-in-london/) needs to be looked at again once pensions are counted. The two decisions now pull in the same direction rather than being kept in separate boxes."},
+        {"type": "p", "text": "The administration also changes. From April 2027 the responsibility for reporting and paying any inheritance tax on unused pension funds is set to fall on the personal representatives of the estate rather than the pension scheme, which makes it even more important that your executors know the pensions exist and can find the paperwork. Recording where your pension details are held, in the same way you record [where the signed will is stored](/blog/where-to-store-your-will-in-london/), saves your family a difficult search at the worst possible time."},
+
+        {"type": "h2", "text": "Practical steps for the over-50s"},
+        {"type": "p", "text": "None of this requires panic, but it does reward a proper review. The starting point is to gather every pension you hold, confirm who is currently nominated on each, and check that those nominations still reflect your wishes and your will. Impartial guidance on how death benefits are paid and taxed is available from [MoneyHelper](https://www.moneyhelper.org.uk/en/pensions-and-retirement/pensions-basics/what-happens-to-my-pension-when-i-die), the government-backed service, which is a good neutral reference before you take paid advice."},
+        {"type": "list", "items": [
+            "List every workplace and personal pension you hold, including old ones from former employers.",
+            "Check the expression of wish or nomination on each scheme and update any that name the wrong person.",
+            "Review your will and pension nominations together, not separately, so they point the same way.",
+            "Factor the April 2027 change into any inheritance tax planning for estates leaving pensions to non-spouses.",
+            "Tell your executors the pensions exist and where the details are kept."
+        ]},
+        {"type": "p", "text": "We are a matching service and do not give regulated pension or tax advice ourselves. We connect London families with vetted specialists through our [estate planning service](/services/estate-planning/), who can look at your pensions, will and inheritance tax position together and coordinate with a financial adviser where regulated advice is needed. Pensions and tax rules are technical and changing, so treat this as general information and take advice on your own circumstances."},
+
+        {"type": "cta", "text": "Review your will and pensions together with a vetted London specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Does my will control who inherits my pension?"},
+        {"type": "p", "text": "Usually not. Most pensions are paid under a separate nomination or expression of wish held by the scheme, and the administrators normally follow that form rather than your will. The pension does not become part of the estate your executors distribute. This is why keeping the nomination up to date matters as much as the will, especially after a divorce, a new relationship or the death of someone you had previously named."},
+        {"type": "h3", "text": "What is changing for pensions and inheritance tax in 2027?"},
+        {"type": "p", "text": "From 6 April 2027 most unused pension funds and death benefits are expected to be counted as part of the estate for inheritance tax, ending the previous treatment where a pension could usually pass free of the tax. Anything left to a surviving spouse or civil partner is set to stay exempt, and death-in-service benefits from a registered scheme are expected to be excluded, so the change mainly affects pensions left to children, unmarried partners or others."},
+        {"type": "h3", "text": "Is a pension left to my husband or wife still tax-free?"},
+        {"type": "p", "text": "The existing exemption for assets passing to a surviving spouse or civil partner is being kept under the 2027 changes, so a pension left to a husband or wife is still expected to pass without an inheritance tax charge at that point. The value may, however, form part of the survivor's estate for tax when they later die. Because everyone's position differs, it is worth confirming the current rules with a specialist before relying on any exemption."},
+        {"type": "h3", "text": "Who pays the inheritance tax on my pension after 2027?"},
+        {"type": "p", "text": "Under the announced changes, the personal representatives of the estate, usually the executors named in your will, will be responsible for reporting and paying any inheritance tax due on unused pension funds from April 2027, rather than the pension scheme itself. This makes it important that your executors know your pensions exist and can access the details, so they can meet the reporting deadlines without scrambling for information after your death."}
+    ]
+  },
+  {
+    slug: 'naming-your-partner-as-executor',
+    hub: 'will-for-unmarried-couples',
+    draft: true,
+    title: 'Naming Your Partner as Executor of Your Will',
+    metaTitle: 'Naming Your Partner as Executor in London',
+    metaDescription: 'Can your unmarried partner be the executor of your will in London? How a cohabiting partner can act as executor and beneficiary, the witnessing trap to avoid, and when to add a second executor.',
+    category: 'Will Writing',
+    publishDate: '2026-07-03',
+    dateModified: '2026-07-03',
+    featuredImage: '/images/single-will.png',
+    excerpt: 'For unmarried couples in London, naming your partner as executor is one of the simplest ways to make sure the person who knows you best is in charge of sorting out your estate. It is straightforward to do, but there are a few traps, from the witnessing rule that can void a gift to the value of appointing a back-up.',
+    content: [
+        {"type": "p", "text": "For a cohabiting couple, the person best placed to deal with your affairs after you die is usually your partner. They know your accounts, your wishes and your family, and they have every reason to get it right. Naming them as the executor of your will puts that authority where it belongs. Because the intestacy rules give an unmarried partner no automatic standing at all, [making a will that appoints and provides for your partner](/guides/will-for-unmarried-couples/) is the only way to secure both roles for them, the person who inherits and the person in charge."},
+
+        {"type": "h2", "text": "Can an unmarried partner be your executor?"},
+        {"type": "p", "text": "Yes. There is no rule preventing a cohabiting partner from acting as executor, and no requirement that an executor be a relative or a professional. An executor simply has to be over 18 and willing to take on the job of gathering in the estate, paying debts and inheritance tax, and distributing what is left according to the will. Your partner qualifies on exactly the same footing as a spouse would, provided you have named them in a valid will."},
+        {"type": "p", "text": "You can appoint your partner on their own or alongside someone else. Up to four people can act as executors together, and it is common to name a partner plus one other trusted person, or a partner plus a professional, so that the work is shared and there is cover if one of them cannot act. What you cannot do is rely on your partner having any authority without a will, because until they are named in the document they have no legal standing to deal with your estate."},
+
+        {"type": "h2", "text": "Executor and beneficiary at the same time"},
+        {"type": "p", "text": "It is perfectly normal, and entirely legal, for the same person to be both an executor and a beneficiary. Most people who leave their estate to a spouse or partner name that person as executor too, and the surviving partner is frequently the only executor and the main beneficiary. Being an executor does not reduce or complicate what your partner inherits; it just means they are also the person responsible for administering the estate that they largely inherit."},
+        {"type": "p", "text": "There is one important trap to avoid, and it concerns witnessing rather than executorship. Under the [Wills Act 1837](https://www.legislation.gov.uk/ukpga/Vict/7/26/contents), if a beneficiary, or that beneficiary's spouse or civil partner, acts as a witness to the will, the gift to them is void even though the will itself stays valid. Your partner can be an executor and a beneficiary, but they must not be one of the two witnesses who sign when you execute the will, or they could lose their inheritance while keeping the job of administering it."},
+
+        {"type": "h2", "text": "What the role actually involves"},
+        {"type": "p", "text": "Being an executor is real work, and it is worth your partner understanding it before they agree. They will need to register the death, find and value the assets, apply for a grant of probate where one is required, settle debts and any inheritance tax, and then distribute the estate. For a modest, well-organised estate this is manageable; for a larger or more complex one, an executor is allowed to instruct a solicitor or probate specialist and pay the cost from the estate. Impartial help with choosing and understanding the role is set out by [MoneyHelper](https://www.moneyhelper.org.uk/en/family-and-care/death-and-bereavement/choosing-your-executor), the government-backed guidance service."},
+        {"type": "p", "text": "Because the job can be demanding at an already painful time, many couples appoint a second executor as back-up, so the surviving partner is not left to do everything alone or is covered if they are unable to act. It is also sensible to keep the appointment current: if your relationship or circumstances change, [updating the will to reflect who you want in charge](/blog/updating-or-changing-your-will-in-london-when-and-how/) keeps the executor named on the document matched to your actual wishes rather than an out-of-date choice."},
+
+        {"type": "h2", "text": "Making it work in practice"},
+        {"type": "p", "text": "Naming your partner as executor only helps if they can act on it. Tell them they hold the role, make sure they know where the signed will is kept, and give them a sense of what your estate contains. Recording [the storage location of the original will](/blog/where-to-store-your-will-in-london/) and your key accounts in a simple letter kept with your papers means your partner can step into the role quickly rather than piecing it together under stress."},
+        {"type": "p", "text": "We are a matching service and do not draft wills or act as executors ourselves. We connect London couples with vetted will writers through our [single will service](/services/single-will/), who can appoint your partner correctly, arrange proper independent witnesses so no gift is lost, and advise on a sensible back-up executor. Because an unmarried partner has no automatic rights, taking advice and putting a valid will in place is the step that makes everything else possible."},
+
+        {"type": "cta", "text": "Appoint your partner properly with a vetted London will writer"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Can my unmarried partner be the executor of my will?"},
+        {"type": "p", "text": "Yes. A cohabiting partner can act as executor on the same terms as anyone else, provided they are over 18 and named in a valid will. There is no requirement for an executor to be married to you or related to you. The only way to give your partner this authority is to appoint them in the will, because without one an unmarried partner has no automatic right to administer your estate under the intestacy rules."},
+        {"type": "h3", "text": "Can my partner be both my executor and inherit under the will?"},
+        {"type": "p", "text": "Yes, and this is very common. The same person can be an executor and a beneficiary, and most people who leave their estate to a partner also name that partner as executor. Acting as executor does not reduce what your partner inherits. The one thing to avoid is having your partner witness the will, because a gift to a witness, or to a witness's spouse or civil partner, is void even though the will remains valid."},
+        {"type": "h3", "text": "Should I name a second executor as well?"},
+        {"type": "p", "text": "It is often sensible. Appointing a back-up or co-executor means your partner is not left to handle everything alone and is covered if they are unwilling or unable to act when the time comes. Up to four executors can be named to act together. Many couples appoint their partner plus one other trusted person or a professional, so the administration can still proceed smoothly even if one named executor cannot take it on."},
+        {"type": "h3", "text": "What happens if I do not name an executor at all?"},
+        {"type": "p", "text": "If you die without a valid will, your partner cannot simply act, because the intestacy rules do not recognise cohabiting partners and give them no right to administer or inherit the estate. Even with a will, if no named executor is able to act, someone must apply to become an administrator instead, which is slower and less certain. Naming your partner as executor in a valid will avoids both problems and puts them clearly in charge."}
+    ]
+  },
+  {
+    slug: 'changing-a-mirror-will-after-partner-dies',
+    hub: 'mirror-wills-guide',
+    draft: true,
+    title: 'Can You Change a Mirror Will After Your Partner Dies?',
+    metaTitle: 'Changing a Mirror Will After a Partner Dies',
+    metaDescription: 'Can the surviving partner change a mirror will in London after the other dies? Why mirror wills are not binding, how mutual wills differ, and how to protect children from a first relationship.',
+    category: 'Will Writing',
+    publishDate: '2026-07-03',
+    dateModified: '2026-07-03',
+    featuredImage: '/images/mirror-wills.png',
+    excerpt: 'Many London couples assume that once mirror wills are made, the survivor is locked into them after the first death. In fact the opposite is usually true. This guide explains why a surviving partner is generally free to change their will, how mutual wills differ, and what couples can do if they want the terms to stick.',
+    content: [
+        {"type": "p", "text": "Mirror wills are a popular choice for London couples because they are simple, affordable and cover the common wish to leave everything to each other and then to the children. A frequent misunderstanding, though, is that they bind the survivor. Couples often believe that once both have signed, the first death fixes the plan in place. Understanding what mirror wills actually promise, and where they differ from the way [mirror and joint wills work for couples](/blog/mirror-wills-and-joint-wills-for-couples-in-london/), matters most when there are children from an earlier relationship or a risk the survivor might change course."},
+
+        {"type": "h2", "text": "Mirror wills are not binding on the survivor"},
+        {"type": "p", "text": "The key point is that mirror wills are two entirely separate legal documents that happen to contain matching terms. They are not a contract between the couple. Because each will belongs to the person who made it, either partner can change or revoke their own will at any time, and that freedom does not end when the first partner dies. After a bereavement the surviving partner keeps the same right to make a new will that anyone else has, and they are under no legal obligation to keep to what the couple originally agreed."},
+        {"type": "p", "text": "In practice this means the survivor can leave the estate to a new spouse, to different children, or to someone the couple never intended, and the deceased partner's wishes cannot compel otherwise. For many couples this flexibility is a feature, because circumstances change and the survivor may genuinely need to update their arrangements. The problem arises where one partner assumed the plan was guaranteed, particularly where the estate was expected to pass to children from a first marriage."},
+
+        {"type": "h2", "text": "How mutual wills are different"},
+        {"type": "p", "text": "There is a separate and much rarer arrangement, the mutual will, which does bind the survivor. Mutual wills involve a clear agreement that neither person will change their will without the other's consent, and that the survivor will not change theirs after the first death. Where that agreement can be proved, the law can impose a trust that holds the survivor to the original terms even if they later sign a completely different will. The critical difference is the binding agreement, not the mirrored wording."},
+        {"type": "p", "text": "Mutual wills are treated with caution by advisers precisely because they remove the survivor's flexibility and can cause serious difficulty if life changes. Proving the agreement existed is also often contentious and litigated after death. Both mirror and mutual wills sit within the general law on making and revoking wills under the [Wills Act 1837](https://www.legislation.gov.uk/ukpga/Vict/7/26/contents), but only the mutual will carries the extra contractual promise, which is why couples should be clear about which one they actually want before signing."},
+
+        {"type": "h2", "text": "Protecting children from a first relationship"},
+        {"type": "p", "text": "The most common reason couples worry about the survivor changing a mirror will is to protect children from an earlier relationship. If the first partner to die leaves everything to the survivor trusting them to pass it to those children, and the survivor later remarries or simply changes their mind, the children can be left with nothing. A property protection trust or a life interest trust in the will offers a better answer, letting the survivor live in the home or benefit from the estate while ring-fencing the underlying capital for the intended children."},
+        {"type": "p", "text": "This is usually a stronger safeguard than a mutual will, because it achieves the couple's real goal, securing something for named children, without freezing the survivor's whole will. Where circumstances shift, [reviewing and updating the wills after a major life event](/blog/updating-or-changing-your-will-in-london-when-and-how/) keeps the plan current, and a trust-based structure keeps the protection in place even as other details are refreshed. The right choice depends on the family, which is why this is a conversation to have before the wills are drawn up."},
+
+        {"type": "h2", "text": "Getting the right structure in place"},
+        {"type": "p", "text": "For couples whose wishes are straightforward and who trust each other completely, ordinary mirror wills are usually the sensible, cost-effective choice, and the freedom to change them later is a benefit rather than a flaw. For blended families or anyone who needs certainty that specific people will inherit, a trust in the will, or in rare cases a properly advised mutual will, is worth exploring. The important thing is to choose deliberately rather than assuming a mirror will does something it does not. Impartial background on the different types of will is available from [Citizens Advice](https://www.citizensadvice.org.uk/family/death-and-wills/wills/)."},
+        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London couples with vetted will writers through our [mirror wills service](/services/mirror-wills/), who can explain the difference between mirror and mutual wills in plain terms and put in place a trust where children from a previous relationship need protecting. Because binding arrangements are technical and hard to unpick later, this is an area to take proper advice on before signing anything."},
+
+        {"type": "cta", "text": "Get mirror wills structured the right way with a vetted London specialist"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Can the surviving partner change a mirror will after the first death?"},
+        {"type": "p", "text": "Usually yes. Mirror wills are two separate documents, not a contract, so the surviving partner keeps the right to make a new will after the other dies and is under no legal obligation to keep to the original terms. This is why mirror wills are described as flexible but not guaranteed. If it matters that specific people inherit, a trust in the will, rather than reliance on the survivor, is the safer way to secure it."},
+        {"type": "h3", "text": "What is the difference between mirror wills and mutual wills?"},
+        {"type": "p", "text": "Mirror wills simply contain matching terms and can each be changed independently at any time, including after the first death. Mutual wills involve a binding agreement that neither person will change their will without consent, and that the survivor will not change theirs afterwards. Where a mutual will agreement can be proved, the survivor can be held to the original terms even if they sign a new will. The binding agreement is the difference, not the wording."},
+        {"type": "h3", "text": "How do I stop my partner leaving my share away from my children?"},
+        {"type": "p", "text": "The usual answer is a trust in your will rather than leaving everything to your partner outright. A property protection trust or life interest trust lets your surviving partner live in the home or benefit from the estate during their lifetime while ring-fencing your share for your chosen children. This protects the children from a first relationship without freezing your partner's entire will, and it is generally preferred to a mutual will for this purpose."},
+        {"type": "h3", "text": "Are mutual wills a good idea?"},
+        {"type": "p", "text": "They are rarely recommended. Mutual wills remove the survivor's flexibility to respond to changed circumstances and often lead to disputes because the binding agreement has to be proved after death. For most couples who want to protect specific beneficiaries, a trust built into the wills achieves the goal with far less risk. Mutual wills should only be considered with proper legal advice and a clear understanding that they are difficult to unwind."}
+    ]
+  },
+  {
+    slug: 'trusts-for-vulnerable-beneficiaries-london',
+    hub: 'trust-planning-guide',
+    draft: true,
+    title: 'Trusts for Disabled and Vulnerable Beneficiaries',
+    metaTitle: 'Trusts for Disabled Beneficiaries in London Wills',
+    metaDescription: 'How a trust in your will can provide for a disabled or vulnerable beneficiary in London without ending their means-tested benefits, and the special inheritance tax treatment these trusts receive.',
+    category: 'Estate Planning',
+    publishDate: '2026-07-03',
+    dateModified: '2026-07-03',
+    featuredImage: '/images/trust-planning.png',
+    excerpt: 'Leaving money outright to a disabled or vulnerable person can do more harm than good, tipping them over benefit thresholds or handing control to someone who cannot manage it. A trust in your will is the usual answer. This guide explains how these trusts protect means-tested benefits and the special tax treatment they receive.',
+    content: [
+        {"type": "p", "text": "Parents and relatives of a disabled or vulnerable person face a particular worry when they plan their estate. Leaving that person a share of the estate outright can backfire, because a lump sum can end their entitlement to means-tested benefits, or place money in the hands of someone who is not able to manage it safely. The usual solution is to leave their share on trust instead, and [placing part of an estate in a trust through your will](/guides/trust-planning-guide/) lets you provide for the person while keeping the assets protected and managed on their behalf."},
+
+        {"type": "h2", "text": "Why an outright gift can cause problems"},
+        {"type": "p", "text": "Many disability and care benefits are means-tested, which means eligibility depends on the person's income and capital. A direct inheritance can push their savings above the capital limits and stop those benefits, sometimes leaving them worse off overall than before the gift. It can also expose the money to being spent quickly, lost to financial abuse, or dissipated by someone who cannot manage large sums. An outright legacy, however well intended, can therefore undermine the very security you were trying to provide."},
+        {"type": "p", "text": "A trust avoids this because the assets are held and controlled by the trustees rather than by the beneficiary. The disabled or vulnerable person does not own the capital outright, so it generally does not count against them for means-testing, yet the trustees can use it for their benefit, topping up quality of life, funding things the state does not, and adapting as needs change. The person is provided for without the inheritance dismantling their support."},
+
+        {"type": "h2", "text": "How these trusts are treated for tax"},
+        {"type": "p", "text": "The tax system recognises this need and gives qualifying trusts for vulnerable beneficiaries specially favourable treatment. Ordinary discretionary trusts face periodic inheritance tax charges roughly every ten years and on distributions, but a trust that meets the conditions for a vulnerable beneficiary is exempt from those charges, and can also claim reliefs that reduce the income tax and capital gains tax the trustees would otherwise pay. The conditions and definitions are set out by [GOV.UK](https://www.gov.uk/trusts-taxes/trusts-for-vulnerable-people), and it is worth confirming eligibility before assuming the special treatment applies."},
+        {"type": "p", "text": "Broadly, a beneficiary qualifies as vulnerable if they are a disabled person entitled to certain benefits, such as the relevant rates of a disability or personal independence payment, or a child under 18 who has lost a parent. Because the definitions are technical and turn on the exact benefits involved, this is an area where getting the drafting right matters. A trust that is intended to qualify but does not quite meet the conditions will simply be taxed as an ordinary trust, losing the advantage the planning was meant to secure."},
+
+        {"type": "h2", "text": "Choosing trustees and setting the terms"},
+        {"type": "p", "text": "The trustees carry real responsibility, so they should be people who will act in the beneficiary's interests for the long term, and it is common to appoint a mix of family members and a professional. The will can guide them with a letter of wishes describing the beneficiary's needs, routines and the kind of support you would want funded, without tying their hands. For families who also hold significant property, this planning often sits alongside wider arrangements such as those used for [passing on more than one property](/blog/will-writing-for-london-homeowners-with-multiple-properties/), so the whole estate is coordinated rather than dealt with in fragments."},
+        {"type": "p", "text": "Because a vulnerable beneficiary trust interacts with both benefits and inheritance tax, it should be planned as part of the overall estate rather than bolted on. Where the estate is large enough to face inheritance tax, the way [your will can reduce the tax on the rest of the estate](/blog/inheritance-tax-planning-and-will-writing-in-london/) needs to be looked at together with the trust, so the two work in step. The disability charity Mencap publishes helpful [guidance on wills and trusts for families of a disabled person](https://www.mencap.org.uk/advice-and-support/wills-and-trusts), which is a useful starting point before taking formal advice."},
+
+        {"type": "h2", "text": "Getting the right advice"},
+        {"type": "p", "text": "This is not planning to attempt from a template. The interaction between means-tested benefits, the trust conditions and the tax reliefs is detailed, and a small error in the drafting can cost the family both the benefits and the tax advantage. The upside of getting it right is substantial: lifelong security for a vulnerable person, protection of their support, and a tax-efficient structure that keeps working long after you are gone."},
+        {"type": "p", "text": "We are a matching service and do not draft trusts or give regulated advice ourselves. We connect London families with vetted specialists through our [trust planning service](/services/trust-planning/), who can assess whether a vulnerable beneficiary trust fits your situation, draft it correctly within your will, and coordinate it with your benefits and tax position. Given the stakes for the person you are providing for, this is firmly an area to take qualified professional advice on."},
+
+        {"type": "cta", "text": "Protect a vulnerable loved one with a properly drafted trust"},
+
+        {"type": "h2", "text": "Frequently Asked Questions"},
+        {"type": "h3", "text": "Will an inheritance stop my disabled relative's benefits?"},
+        {"type": "p", "text": "It can, if it is left to them outright. Many disability and care benefits are means-tested on income and capital, so a lump sum inheritance can push savings above the limits and end entitlement. Leaving the share on trust instead usually avoids this, because the assets are held by the trustees rather than owned by the beneficiary, so they generally do not count for means-testing while still being used for the person's benefit."},
+        {"type": "h3", "text": "What makes a trust a vulnerable beneficiary trust?"},
+        {"type": "p", "text": "Broadly, it is a trust for a disabled person entitled to certain qualifying benefits, or for a child under 18 who has lost a parent. Trusts that meet the statutory conditions receive special tax treatment. Because eligibility turns on the exact benefits and the way the trust is drafted, it is important to confirm the beneficiary qualifies and that the trust is set up correctly, as a trust that misses the conditions is taxed as an ordinary trust instead."},
+        {"type": "h3", "text": "How are these trusts taxed?"},
+        {"type": "p", "text": "A qualifying trust for a vulnerable beneficiary is exempt from the periodic and exit inheritance tax charges that ordinary discretionary trusts face, and can claim reliefs that reduce the trustees' income tax and capital gains tax so the beneficiary is not worse off than if they owned the assets directly. When the beneficiary dies, the trust assets are generally treated as part of their estate for inheritance tax. The reliefs are valuable but depend on meeting the conditions precisely."},
+        {"type": "h3", "text": "Can I set up the trust in my will?"},
+        {"type": "p", "text": "Yes. A trust for a disabled or vulnerable beneficiary is commonly created within a will, so it comes into effect on your death, though it can also be set up during your lifetime. Building it into the will lets you provide for the person as part of your overall estate plan and appoint the trustees who will manage it. Because the drafting must meet technical conditions, it should be prepared by a specialist rather than from a standard template."}
+    ]
   }
 ];
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

@@ -8681,7 +8681,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: 'lpa-versus-deputyship-london',
     hub: 'lasting-power-of-attorney-guide',
-    draft: true,
+    draft: false,
     title: 'LPA or Deputyship: Which Applies and What It Costs',
     metaTitle: 'LPA vs Deputyship in London: Cost and Process',
     metaDescription: 'LPA vs deputyship for London families: why an LPA is set up in advance, why deputyship is the fallback after capacity is lost, and how the cost and timescale of each compare.',

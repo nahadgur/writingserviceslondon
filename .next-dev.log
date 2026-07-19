@@ -1,50 +1,14 @@
   ▲ Next.js 14.2.35
-  - Local:        http://localhost:3300
+  - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 1630ms
+ ✓ Ready in 2.1s
  ○ Compiling / ...
- ✓ Compiled / in 2.8s (660 modules)
- GET / 200 in 2965ms
+ ✓ Compiled / in 2.6s (642 modules)
+ GET / 200 in 2818ms
+ GET / 200 in 40ms
+ ✓ Compiled /middleware in 190ms (72 modules)
  ○ Compiling /blog/[slug] ...
- ✓ Compiled /blog/[slug] in 1917ms (666 modules)
- GET /blog/will-writing-costs-in-london-in-2026/ 404 in 2304ms
- ✓ Compiled /guides/[slug] in 218ms (672 modules)
- GET /guides/how-to-write-a-will-in-london/ 200 in 626ms
- ✓ Compiled /blog in 245ms (681 modules)
- GET /blog/ 200 in 349ms
- ✓ Compiled /sitemap.xml in 175ms (407 modules)
- GET /sitemap.xml 200 in 2330ms
- ✓ Compiled in 391ms (736 modules)
- ✓ Compiled in 455ms (736 modules)
- GET /guides/how-to-write-a-will-in-london/ 200 in 110ms
- GET /blog/ 200 in 73ms
- ✓ Compiled in 430ms (736 modules)
- ✓ Compiled in 267ms (670 modules)
- ✓ Compiled in 156ms (670 modules)
- ✓ Compiled in 137ms (670 modules)
- ✓ Compiled in 391ms (670 modules)
- GET /blog/ 200 in 129ms
- ✓ Compiled /blog/[slug] in 47ms (339 modules)
- GET /blog/will-writing-costs-in-london-in-2026/ 404 in 219ms
- ✓ Compiled in 380ms (668 modules)
- ✓ Compiled /guides/[slug] in 63ms (351 modules)
- GET /guides/how-to-write-a-will-in-london/ 200 in 172ms
- GET /guides/mirror-wills-guide/ 200 in 38ms
- GET /guides/will-for-unmarried-couples/ 200 in 34ms
- GET /guides/updating-your-will/ 200 in 30ms
- GET /guides/lasting-power-of-attorney-guide/ 200 in 40ms
- GET /guides/inheritance-tax-guide-london/ 200 in 53ms
- GET /guides/trust-planning-guide/ 200 in 34ms
- GET /guides/probate-guide-london/ 200 in 41ms
- GET /guides/intestacy-rules-uk/ 200 in 52ms
- GET /guides/estate-planning-over-50/ 200 in 60ms
- GET /guides/business-owner-wills/ 200 in 41ms
- GET /guides/digital-assets-and-wills/ 200 in 36ms
- GET /blog/mirror-wills-and-joint-wills-for-couples-in-london/ 200 in 43ms
- GET /blog/updating-or-changing-your-will-in-london-when-and-how/ 200 in 54ms
- GET /blog/lasting-power-of-attorney-and-will-writing-services-in-london/ 200 in 55ms
- GET /blog/inheritance-tax-planning-and-will-writing-in-london/ 200 in 57ms
- ✓ Compiled in 560ms (329 modules)
- ✓ Compiled in 93ms (329 modules)
- ✓ Compiled in 303ms (329 modules)
+ ✓ Compiled /blog/[slug] in 560ms (666 modules)
+ GET /blog/will-writing-costs-in-london/ 200 in 1075ms
+ GET /blog/will-writing-costs-in-london/ 200 in 33ms

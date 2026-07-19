@@ -79,9 +79,9 @@ export function HomePageClient() {
                   Free will writing matching service &nbsp;·&nbsp; London
                 </p>
                 <h1 className="anim-1" style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(38px,5.5vw,66px)', fontStyle: 'italic', fontWeight: 400, lineHeight: 1.07, color: '#fff', marginBottom: 18, letterSpacing: '-0.01em' }}>
-                  Because the people<br />
-                  you love deserve<br />
-                  to be protected
+                  Wills that protect<br />
+                  the people<br />
+                  you love
                 </h1>
                 <p className="anim-2" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, lineHeight: 1.78, color: 'rgba(255,255,255,0.65)', maxWidth: 460, marginBottom: 28 }}>
                   More than half of UK adults have no will in place. For London families

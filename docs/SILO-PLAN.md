@@ -113,7 +113,7 @@ how-to-write-a-will is well covered; build out the thin hubs:
 
 ## 8. Status tracker
 
-12 hubs. Spokes: 30 toward target ~100 (~8/hub): 20 live + 10 parked drafts
+12 hubs. Spokes: 31 toward target ~100 (~8/hub): 20 live + 11 parked drafts
 (digital-assets, online-accounts-after-death, 2026-06-09; business-owner-wills,
 business-if-you-die-without-a-will, 2026-06-10; intestacy-rules-uk,
 stepchildren-inheritance-rights-no-will, 2026-06-10; probate-guide-london,
@@ -123,10 +123,11 @@ protecting-a-cohabiting-partner-not-on-the-deeds, 2026-06-12; digital-assets,
 which-digital-assets-can-be-inherited, 2026-06-12; trust-planning-guide,
 property-protection-trust-wills-london, 2026-06-13; business-owner-wills,
 shareholder-agreements-and-your-will, 2026-06-13; probate-guide-london,
-how-much-does-probate-cost-london, 2026-06-15). avoid-intestacy-london went live
-(published 2026-06-15), moving from the draft buffer into the live count.
+how-much-does-probate-cost-london, 2026-06-15; intestacy-rules-uk,
+what-surviving-spouse-inherits-no-will, 2026-06-16). avoid-intestacy-london went
+live (published 2026-06-15), moving from the draft buffer into the live count.
 Thinnest hubs to fill next: continue the round-robin (digital-assets,
-business-owner-wills, probate now 2 drafts each; intestacy,
+business-owner-wills, probate, intestacy now 2 drafts each;
 estate-planning-over-50, unmarried-couples, trust-planning each 1 draft, take
 these to 2 next).
 ## Slug rules (writer: follow on every spoke)

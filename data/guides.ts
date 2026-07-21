@@ -13,6 +13,8 @@ export interface GuideSection {
 
 export interface Guide {
   slug: string;
+  featuredImage: string;
+  featuredImageAlt: string;
   title: string;
   metaTitle: string;
   metaDescription: string;
@@ -33,6 +35,8 @@ export const guides: Guide[] = [
   // ─── 1. How to write a will ───────────────────────────────────────────────
   {
     slug: 'how-to-write-a-will-in-london',
+    featuredImage: '/images/guides/how-to-write-a-will-in-london.webp',
+    featuredImageAlt: 'London family reviewing a will with a professional adviser at home',
     title: 'How to Write a Will in London',
     metaTitle: 'How to Write a Will in London — 2026 Guide',
     metaDescription: 'Step-by-step guide to writing a legally valid will in London. Covers the Wills Act 1837 requirements, what to include, executors, witnesses, and when to use a specialist.',
@@ -125,6 +129,8 @@ export const guides: Guide[] = [
   // ─── 2. Inheritance tax guide ─────────────────────────────────────────────
   {
     slug: 'inheritance-tax-guide-london',
+    featuredImage: '/images/guides/inheritance-tax-guide-london.webp',
+    featuredImageAlt: 'London homeowner calculating inheritance tax beside a property valuation',
     title: 'Inheritance Tax -- The London Homeowner\'s Guide',
     metaTitle: 'Inheritance Tax London — 2026 Homeowner\'s Guide',
     metaDescription: 'How inheritance tax works for London homeowners. Covers the nil-rate band, residence nil-rate band, 7-year rule, trust strategies, and how to calculate your potential IHT liability.',
@@ -208,6 +214,8 @@ export const guides: Guide[] = [
   // ─── 3. LPA guide ────────────────────────────────────────────────────────
   {
     slug: 'lasting-power-of-attorney-guide',
+    featuredImage: '/images/guides/lasting-power-of-attorney-guide.webp',
+    featuredImageAlt: 'Older woman and her daughter discussing a lasting power of attorney with an adviser',
     title: 'Lasting Power of Attorney -- Complete UK Guide',
     metaTitle: 'Lasting Power of Attorney Guide UK — 2026',
     metaDescription: 'Complete guide to lasting power of attorney in England and Wales. Covers both types, who can be an attorney, registration, costs, and what happens without an LPA.',
@@ -292,6 +300,8 @@ export const guides: Guide[] = [
   // ─── 4. Intestacy rules ───────────────────────────────────────────────────
   {
     slug: 'intestacy-rules-uk',
+    featuredImage: '/images/guides/intestacy-rules-uk.webp',
+    featuredImageAlt: 'Blended London family reviewing intestacy and family-tree arrangements',
     title: 'Intestacy Rules -- Who Inherits If You Die Without a Will',
     metaTitle: 'Intestacy Rules UK 2026 — Who Inherits Without a Will',
     metaDescription: 'Explains the UK intestacy rules: who inherits if you die without a will, what unmarried partners receive (nothing), and the statutory legacy amounts for 2026.',
@@ -373,6 +383,8 @@ export const guides: Guide[] = [
   // ─── 5. Mirror wills guide ────────────────────────────────────────────────
   {
     slug: 'mirror-wills-guide',
+    featuredImage: '/images/guides/mirror-wills-guide.webp',
+    featuredImageAlt: 'London couple comparing their separate mirror will documents with an adviser',
     title: 'Mirror Wills for Couples -- Everything You Need to Know',
     metaTitle: 'Mirror Wills for Couples — Complete UK Guide 2026',
     metaDescription: 'Everything about mirror wills for couples in the UK. How they work, the difference from joint wills, the second marriage problem, costs, and when to use them.',
@@ -445,6 +457,8 @@ export const guides: Guide[] = [
   // ─── 6. Trust planning guide ──────────────────────────────────────────────
   {
     slug: 'trust-planning-guide',
+    featuredImage: '/images/guides/trust-planning-guide.webp',
+    featuredImageAlt: 'Adult siblings discussing a property trust with an estate-planning specialist',
     title: 'Property Trusts and Estate Trusts -- The London Guide',
     metaTitle: 'Trust Planning Guide London — Property & Estate Trusts 2026',
     metaDescription: 'How trusts work for London homeowners and families. Covers protective property trusts, discretionary trusts, life interest trusts, and care cost protection under the Care Act 2014.',
@@ -519,6 +533,8 @@ export const guides: Guide[] = [
   // ─── 7. Probate guide ─────────────────────────────────────────────────────
   {
     slug: 'probate-guide-london',
+    featuredImage: '/images/guides/probate-guide-london.webp',
+    featuredImageAlt: 'Executor organising probate documents, house keys and family records in London',
     title: 'Probate in London -- A Step by Step Guide',
     metaTitle: 'Probate Guide London — How It Works, Costs & Timeline 2026',
     metaDescription: 'How probate works in London estates. Covers the grant of probate, HMCTS application, IHT payment, probate fees, typical timelines, and when to use a professional.',
@@ -594,6 +610,8 @@ export const guides: Guide[] = [
   // ─── 8. Digital assets ────────────────────────────────────────────────────
   {
     slug: 'digital-assets-and-wills',
+    featuredImage: '/images/guides/digital-assets-and-wills.webp',
+    featuredImageAlt: 'London professional recording digital assets for inclusion in an estate plan',
     title: 'Digital Assets and Wills -- Crypto, Accounts and IP',
     metaTitle: 'Digital Assets and Wills UK — Crypto, Accounts & IP 2026',
     metaDescription: 'How to include digital assets in your will. Covers cryptocurrency, online accounts, digital IP, access problems, the asset memorandum approach, and HMRC treatment.',
@@ -656,6 +674,8 @@ export const guides: Guide[] = [
   // ─── 9. Wills for unmarried couples ───────────────────────────────────────
   {
     slug: 'will-for-unmarried-couples',
+    featuredImage: '/images/guides/will-for-unmarried-couples.webp',
+    featuredImageAlt: 'Unmarried London couple making wills with a professional adviser at home',
     title: 'Wills for Unmarried Couples in London',
     metaTitle: 'Wills for Unmarried Couples London — Cohabitation Rights 2026',
     metaDescription: 'Why unmarried couples in London need wills urgently. Covers the intestacy trap, joint tenancy vs tenancy in common, pension nominations, and protection options.',
@@ -728,6 +748,8 @@ export const guides: Guide[] = [
   // ─── 10. Estate planning over 50 ─────────────────────────────────────────
   {
     slug: 'estate-planning-over-50',
+    featuredImage: '/images/guides/estate-planning-over-50.webp',
+    featuredImageAlt: 'Couple over 50 completing an estate-planning checklist in their London home',
     title: 'Estate Planning Checklist for Londoners Over 50',
     metaTitle: 'Estate Planning Checklist London — Over 50s Guide 2026',
     metaDescription: 'Complete estate planning checklist for Londoners over 50. Covers wills, LPAs, pension nominations, IHT gifting strategies, property, and the family conversation.',
@@ -799,6 +821,8 @@ export const guides: Guide[] = [
   // ─── 11. Business owner wills ─────────────────────────────────────────────
   {
     slug: 'business-owner-wills',
+    featuredImage: '/images/guides/business-owner-wills.webp',
+    featuredImageAlt: 'London bakery owner discussing business succession and her will with an adviser',
     title: 'Wills for London Business Owners',
     metaTitle: 'Wills for Business Owners London — BPR & Succession 2026',
     metaDescription: 'Why business owners in London need specialist will drafting. Covers business property relief, shareholder agreements, the executor problem, and CGT on death.',
@@ -862,6 +886,8 @@ export const guides: Guide[] = [
   // ─── 12. Updating your will ───────────────────────────────────────────────
   {
     slug: 'updating-your-will',
+    featuredImage: '/images/guides/updating-your-will.webp',
+    featuredImageAlt: 'London homeowner reviewing an existing will after moving house',
     title: 'When and How to Update Your Will',
     metaTitle: 'How to Update Your Will UK — When & Why 2026',
     metaDescription: 'When you need to update your will and how to do it correctly. Covers the events that trigger a review, codicils versus new wills, marriage and divorce effects, and deed of variation.',

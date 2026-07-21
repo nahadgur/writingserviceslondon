@@ -33,7 +33,6 @@ export function BlogIndexClient() {
         {/* Hero */}
         <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
           <div className="container-width max-w-3xl">
-            <p className="eyebrow mb-4">Guides and advice</p>
             <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
               Will writing and estate planning guides
             </h1>
@@ -92,7 +91,7 @@ export function BlogIndexClient() {
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={filtered[0].featuredImage}
-                            alt={filtered[0].title}
+                            alt={filtered[0].featuredImageAlt || filtered[0].title}
                             className="w-full h-full object-cover"
                             style={{ transition: 'transform 0.5s' }}
                             loading="eager"
@@ -125,7 +124,7 @@ export function BlogIndexClient() {
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={article.featuredImage}
-                              alt={article.title}
+                              alt={article.featuredImageAlt || article.title}
                               className="w-full h-full object-cover"
                               style={{ transition: 'transform 0.5s' }}
                               loading="lazy"

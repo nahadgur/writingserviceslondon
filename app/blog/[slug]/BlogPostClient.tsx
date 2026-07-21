@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Header } from '@/components/Header';
@@ -168,12 +169,20 @@ export function BlogPostClient({ article }: { article: BlogArticle; related?: Bl
       <Header onOpenModal={() => setModal(true)} />
 
       <main id="main-content">
+        {article.featuredImage && (
+          <div className="relative h-[320px] md:h-[460px] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
+            <Image
+              src={article.featuredImage}
+              alt={article.featuredImageAlt || article.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
         {/* Hero */}
         <section className="hero-dark" style={{ minHeight: 220 }}>
-          {article.featuredImage && (
-            <div className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${article.featuredImage}')`, opacity: 0.28 }} />
-          )}
           <div className="g-bot" />
           <div className="relative z-10 container-width py-10 md:py-12 w-full">
             <Breadcrumbs dark items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]} />

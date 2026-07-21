@@ -1,5 +1,6 @@
 // SERVER COMPONENT
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { guides, getGuideBySlug, guideCategories } from '@/data/guides';
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const guide = getGuideBySlug(params.slug);
   if (!guide) return { title: 'Guide not found' };
   const url = `${siteConfig.url}/guides/${guide.slug}/`;
+  const image = `${siteConfig.url}${guide.featuredImage}`;
   return {
     title: guide.metaTitle,
     description: guide.metaDescription,
@@ -33,8 +35,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       locale: 'en_GB',
       publishedTime: guide.publishDate,
       modifiedTime: guide.publishDate,
+      images: [{ url: image, width: 1536, height: 1024, alt: guide.featuredImageAlt }],
     },
-    twitter: { card: 'summary_large_image', title: guide.metaTitle, description: guide.metaDescription },
+    twitter: { card: 'summary_large_image', title: guide.metaTitle, description: guide.metaDescription, images: [image] },
     robots: { index: true, follow: true },
   };
 }
@@ -68,6 +71,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
       description: guide.metaDescription,
       datePublished: guide.publishDate,
       dateModified: guide.publishDate,
+      image: `${siteConfig.url}${guide.featuredImage}`,
     }),
     faqSchema(guide.faqs),
   ];
@@ -80,6 +84,16 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
       <Header />
 
       <main id="main-content">
+        <div className="relative h-[320px] md:h-[460px] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
+          <Image
+            src={guide.featuredImage}
+            alt={guide.featuredImageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
         {/* Dark hero */}
         <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="260" height="180" viewBox="0 0 260 180" fill="none">

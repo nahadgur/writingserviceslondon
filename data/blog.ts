@@ -8,6 +8,7 @@ export interface ContentBlock {
 export interface BlogArticle {
   slug: string; title: string; metaTitle: string; metaDescription: string;
   category: string; publishDate: string; featuredImage: string; excerpt: string;
+  featuredImageAlt?: string;
   hub: string;
   draft: boolean;
   dateModified?: string;
@@ -8917,16 +8918,114 @@ export const blogArticles: BlogArticle[] = [
     ]
   }
 ];
+
+const liveFeaturedImages: Record<string, { src: string; alt: string }> = {
+  'will-writing-services-london-2026-guide-for-families': {
+    src: '/images/blog/will-writing-services-london-2026-guide-for-families.webp',
+    alt: 'Multigenerational London family discussing their wills with a professional adviser',
+  },
+  'how-to-choose-a-will-writing-service-in-london': {
+    src: '/images/blog/how-to-choose-a-will-writing-service-in-london.webp',
+    alt: 'London homeowner comparing will-writing specialists and professional credentials',
+  },
+  'solicitor-vs-will-writing-service-in-london-key-differences': {
+    src: '/images/blog/solicitor-vs-will-writing-service-in-london-key-differences.webp',
+    alt: 'Client comparing a solicitor and specialist will-writing service in London',
+  },
+  'home-visit-will-writing-services-in-london-explained': {
+    src: '/images/blog/home-visit-will-writing-services-in-london-explained.webp',
+    alt: 'Will-writing adviser visiting an older client in his London home',
+  },
+  'online-will-writing-services-for-london-residents': {
+    src: '/images/blog/online-will-writing-services-for-london-residents.webp',
+    alt: 'London resident attending an online will-writing consultation from home',
+  },
+  'will-writing-costs-in-london': {
+    src: '/images/blog/will-writing-costs-in-london.webp',
+    alt: 'Household comparing will-writing costs and fixed-fee estimates in London',
+  },
+  'is-will-writing-regulated-in-the-uk-what-london-clients-should-know': {
+    src: '/images/blog/is-will-writing-regulated-in-the-uk-what-london-clients-should-know.webp',
+    alt: 'Client checking a UK will writer\'s professional credentials online',
+  },
+  'mirror-wills-and-joint-wills-for-couples-in-london': {
+    src: '/images/blog/mirror-wills-and-joint-wills-for-couples-in-london.webp',
+    alt: 'London couple signing separate mirror will documents with an independent witness',
+  },
+  'updating-or-changing-your-will-in-london-when-and-how': {
+    src: '/images/blog/updating-or-changing-your-will-in-london-when-and-how.webp',
+    alt: 'New parents updating guardianship provisions in their wills at home',
+  },
+  'lasting-power-of-attorney-and-will-writing-services-in-london': {
+    src: '/images/blog/lasting-power-of-attorney-and-will-writing-services-in-london.webp',
+    alt: 'London family reviewing a will and lasting power of attorney together',
+  },
+  'inheritance-tax-planning-and-will-writing-in-london': {
+    src: '/images/blog/inheritance-tax-planning-and-will-writing-in-london.webp',
+    alt: 'London homeowner discussing inheritance tax planning with an estate adviser',
+  },
+  'will-writing-for-london-homeowners-with-multiple-properties': {
+    src: '/images/blog/will-writing-for-london-homeowners-with-multiple-properties.webp',
+    alt: 'London property owners planning wills for several homes with an adviser',
+  },
+  'free-and-lowcost-will-writing-options-in-london': {
+    src: '/images/blog/free-and-lowcost-will-writing-options-in-london.webp',
+    alt: 'Older London resident receiving free will-writing guidance at a community library',
+  },
+  'will-writing-and-charitable-gifts-in-london': {
+    src: '/images/blog/will-writing-and-charitable-gifts-in-london.webp',
+    alt: 'London resident discussing a charitable gift in her will with a legacy adviser',
+  },
+  'common-will-writing-mistakes-london-families-make': {
+    src: '/images/blog/common-will-writing-mistakes-london-families-make.webp',
+    alt: 'Professional adviser correcting a common will-signing and witnessing mistake',
+  },
+  'will-reviews-and-second-opinions-in-london': {
+    src: '/images/blog/will-reviews-and-second-opinions-in-london.webp',
+    alt: 'Estate specialist conducting a detailed second-opinion review of an older will',
+  },
+  'emergency-will-writing-services-in-london': {
+    src: '/images/blog/emergency-will-writing-services-in-london.webp',
+    alt: 'Calm urgent will appointment with an older client and independent witnesses',
+  },
+  'what-to-expect-at-a-will-writing-home-visit-in-london': {
+    src: '/images/blog/what-to-expect-at-a-will-writing-home-visit-in-london.webp',
+    alt: 'Will-writing adviser arriving for a scheduled visit at a London home',
+  },
+  'stepchildren-inheritance-rights-no-will-london': {
+    src: '/images/blog/stepchildren-inheritance-rights-no-will-london.webp',
+    alt: 'Blended London family discussing stepchildren and inheritance rights with an adviser',
+  },
+  'avoid-intestacy-london': {
+    src: '/images/blog/avoid-intestacy-london.webp',
+    alt: 'London resident arranging beneficiaries and family relationships to avoid intestacy',
+  },
+  'where-to-store-your-will-in-london': {
+    src: '/images/blog/where-to-store-your-will-in-london.webp',
+    alt: 'Original will being placed in secure fire-resistant document storage in London',
+  },
+  'lpa-versus-deputyship-london': {
+    src: '/images/blog/lpa-versus-deputyship-london.webp',
+    alt: 'London family comparing lasting power of attorney and deputyship with a specialist',
+  },
+};
+
+function withLiveFeaturedImage(article: BlogArticle): BlogArticle {
+  const image = liveFeaturedImages[article.slug];
+  return image ? { ...article, featuredImage: image.src, featuredImageAlt: image.alt } : article;
+}
+
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
-  return blogArticles.find(a => a.slug === slug);
+  const article = blogArticles.find(a => a.slug === slug);
+  return article ? withLiveFeaturedImage(article) : undefined;
 }
 
 // Draft gate: draft spokes 404 and are excluded from /blog, hub spoke-grids and
 // the sitemap until the publisher flips them live.
 export function getPublishedArticles(): BlogArticle[] {
-  return blogArticles.filter(a => !a.draft);
+  return blogArticles.filter(a => !a.draft).map(withLiveFeaturedImage);
 }
 
 export function getArticlesByHub(hub: string): BlogArticle[] {
-  return blogArticles.filter(a => a.hub === hub && !a.draft);
+  return blogArticles.filter(a => a.hub === hub && !a.draft).map(withLiveFeaturedImage);
 }

@@ -16,6 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!article) return { title: 'Article not found' };
 
   const url = `${siteConfig.url}/blog/${article.slug}/`;
+  const image = `${siteConfig.url}${article.featuredImage}`;
 
   return {
     title: article.metaTitle,
@@ -30,13 +31,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       locale: 'en_GB',
       publishedTime: article.publishDate,
       modifiedTime: article.dateModified || article.publishDate,
-      images: article.featuredImage ? [{ url: article.featuredImage }] : undefined,
+      images: article.featuredImage ? [{ url: image, width: 1536, height: 1024, alt: article.featuredImageAlt || article.title }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: article.metaTitle,
       description: article.metaDescription,
-      images: article.featuredImage ? [article.featuredImage] : undefined,
+      images: article.featuredImage ? [image] : undefined,
     },
     robots: { index: true, follow: true },
   };
@@ -91,7 +92,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
       description: article.metaDescription,
       datePublished: article.publishDate,
       dateModified,
-      image: article.featuredImage || undefined,
+      image: article.featuredImage ? `${siteConfig.url}${article.featuredImage}` : undefined,
     }),
   ];
   if (faqs.length > 0) schemas.push(faqSchema(faqs));

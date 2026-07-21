@@ -3,6 +3,8 @@ import { getPublishedArticles } from '@/data/blog';
 import { siteConfig } from '@/data/site';
 import { BlogIndexClient } from './BlogIndexClient';
 
+const SOCIAL_IMAGE = `${siteConfig.url}/images/blog/will-writing-services-london-2026-guide-for-families.webp`;
+
 export const metadata: Metadata = {
   title: 'Will Writing and Estate Planning Guides | London',
   description: 'Practical guides for London residents on wills, LPAs, trusts, inheritance tax, and probate, written for people making these decisions for the first time.',
@@ -14,11 +16,13 @@ export const metadata: Metadata = {
     title: 'Will Writing and Estate Planning Guides | London',
     description: 'Practical guides on wills, LPAs, trusts, inheritance tax, and probate for London residents.',
     locale: 'en_GB',
+    images: [{ url: SOCIAL_IMAGE, width: 1536, height: 1024, alt: 'London family discussing their wills with a professional adviser' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Will Writing and Estate Planning Guides | London',
     description: 'Practical guides on wills, LPAs, trusts, inheritance tax, and probate for London residents.',
+    images: [SOCIAL_IMAGE],
   },
   robots: { index: true, follow: true },
 };
@@ -38,6 +42,7 @@ export default function BlogIndexPage() {
       url: `${siteConfig.url}/blog/${a.slug}/`,
       datePublished: a.publishDate,
       description: a.metaDescription,
+      image: `${siteConfig.url}${a.featuredImage}`,
     })),
   };
 

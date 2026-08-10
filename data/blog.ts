@@ -695,11 +695,11 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Top London will writing services offer free consultations, home visits for an extra fee, and video calls. These options suit different needs, from elderly clients requiring in-person support to busy professionals using remote tools. Post-COVID rules allow remote witnessing until January 2024, as per government guidelines."
+            "text": "Top London will writing services offer free consultations, home visits for an extra fee, and video calls for taking instructions. These options suit different needs, from elderly clients requiring in-person support to busy professionals who prefer to give instructions remotely. Whichever route you choose, the signing itself must happen in person, because the temporary video witnessing rules expired on 31 January 2024."
         },
         {
             "type": "p",
-            "text": "Choose a will writing service based on your lifestyle. Elderly clients often need home visit will services for comfort and safety. Busy professionals prefer video call wills with electronic signing like DocuSign for quick completion."
+            "text": "Choose a will writing service based on your lifestyle. Elderly clients often need home visit will services for comfort and safety. Busy professionals often prefer to give instructions by video call, then sign the printed will in front of two witnesses. Electronic signatures are not valid for wills in England and Wales."
         },
         {
             "type": "p",
@@ -711,7 +711,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Compare these will writing comparisons to find the best fit. Firms like Babb &amp; Co excel for vulnerable client wills with inclusive features. Always confirm current remote witnessing rules for COVID safe will signing."
+            "text": "Compare these will writing comparisons to find the best fit. Firms like Babb &amp; Co excel for vulnerable client wills with inclusive features. Confirm how each firm arranges the signing appointment, because the will has to be witnessed in person."
         },
         {
             "type": "h2",
@@ -719,7 +719,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Modern London will writing services rely on advanced tools for protection. They often feature encrypted portals for secure document handling and blockchain storage for an immutable audit trail. Video witnessing options also comply with remote rules introduced in recent years."
+            "text": "Modern London will writing services rely on advanced tools for protection. They often feature encrypted portals for secure document handling and blockchain storage for an immutable audit trail. These tools cover instructions and storage only. The signing itself must still be witnessed in person."
         },
         {
             "type": "p",
@@ -751,7 +751,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "For tax efficient wills, list assets clearly to claim IHT nil rate band or business property relief. Vulnerable client wills benefit from secure handling of mental capacity assessment records. Always verify remote witnessing rules for video call wills."
+            "text": "For tax efficient wills, list assets clearly to claim IHT nil rate band or business property relief. Vulnerable client wills benefit from secure handling of mental capacity assessment records. Where instructions are taken by video call, check how the firm arranges an in person signing appointment."
         },
         {
             "type": "h3",
@@ -1786,7 +1786,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "The Wills Act 1837 sets core standards for will validation in London. Testators must sign in the presence of two witnesses, who also sign. Remote will signing was permitted until January 2024 via the Lord Chancellor's directive, aiding DIY will makers during lockdowns."
+            "text": "The Wills Act 1837 sets core standards for will validation in London. Testators must sign in the presence of two witnesses, who also sign. Remote will signing was permitted between January 2020 and January 2024 under a temporary coronavirus order, and that provision has now lapsed."
         },
         {
             "type": "p",
@@ -1794,7 +1794,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Experts recommend recording virtual witnessing via video for safety. This protects against will contest claims like undue influence. London residents benefit from secure online will services that guide through these steps."
+            "text": "Experts recommend keeping a short written note of who was present at the signing and where it took place. This protects against will contest claims like undue influence. London residents benefit from secure online will services that guide through these steps."
         },
         {
             "type": "h3",
@@ -1802,7 +1802,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Under Wills Act 1837 Section 9, wills must be signed by testator in presence of two witnesses who also sign simultaneously. Virtual witnessing allowed until Jan 2024 per Lord Chancellor's directive. This applies to all UK residents wills, including London postcode wills like SE1 or NW1."
+            "text": "Under Wills Act 1837 Section 9, wills must be signed by testator in presence of two witnesses who also sign simultaneously. Virtual witnessing was allowed only until January 2024 under a temporary coronavirus order. This applies to all UK residents wills, including London postcode wills like SE1 or NW1."
         },
         {
             "type": "p",
@@ -1818,7 +1818,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Follow a video witnessing checklist for remote options: clear audio-video, ID checks, and full signing view. Online will makers often provide this. Research suggests witnessing errors cause many probate rejections at HMCTS."
+            "text": "Follow a signing checklist: two witnesses aged 18 or over, both in the room at the same time, neither a beneficiary nor married to one, and everyone signing the same physical document in one sitting. Online will makers often provide this. Research suggests witnessing errors cause many probate rejections at HMCTS."
         },
         {
             "type": "p",
@@ -1838,7 +1838,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Evaluate features like IHT planning tools and LPA bundling for comprehensive legacy planning. London-specific support, including virtual witnessing, suits busy professionals. Pricing should match complexity, from simple wills to high net worth estates."
+            "text": "Evaluate features like IHT planning tools and LPA bundling for comprehensive legacy planning. London-specific support, including home and office visits for the signing appointment, suits busy professionals. Pricing should match complexity, from simple wills to high net worth estates."
         },
         {
             "type": "p",
@@ -1858,7 +1858,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "London focus matters for property wills and IHT optimisation on high-value homes. Services supporting virtual witnessing comply with COVID will options and remote signing. Bundles with lasting power of attorney cover health and welfare needs."
+            "text": "London focus matters for property wills and IHT optimisation on high-value homes. Services that bring the signing appointment to your home or office save a trip while keeping the will valid. Bundles with lasting power of attorney cover health and welfare needs."
         },
         {
             "type": "p",
@@ -1916,7 +1916,7 @@ export const blogArticles: BlogArticle[] = [
                 "Name beneficiaries: Assign % splits to children or spouse, 4 minutes. Example: 60% to partner, 40% to kids.",
                 "Appoint executors: Select spouse plus solicitor, 3 minutes. Dual choices prevent delays in estate administration.",
                 "Add guardianship: Name carers for minors, include special needs trust options, 4 minutes.",
-                "Video witness signing: Use Zoom; witnesses view signature live, 5 minutes. Meets virtual witnessing rules post-COVID.",
+                "In person witnessing: two witnesses watch you sign and then sign themselves, around 5 minutes. This is the only valid method in England and Wales.",
                 "Download PDF + register: Save file, add to Certainty National Will Register, 2 minutes. Enables will search service."
             ]
         },
@@ -2193,7 +2193,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Yes, Online Will Writing Services for London Residents produce fully legally binding wills when you follow the guided process correctly. They incorporate electronic signatures compliant with UK regulations, and many offer solicitor review options to meet the requirements of the Wills Act 1837, ensuring your document holds up in Probate Registry."
+            "text": "Yes, Online Will Writing Services for London Residents produce fully legally binding wills when you follow the guided process correctly. The document is drafted online, but it only becomes valid once you print it and sign the paper copy in front of two witnesses, as the Wills Act 1837 requires. Electronic signatures do not satisfy that requirement. Many services also offer a solicitor review option before you sign."
         },
         {
             "type": "h3",
@@ -3164,7 +3164,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "For blended families, discretionary trusts prevent family provision claims. Virtual consultations with London solicitors enable remote signing. Overall, mirror wills offer practical end-of-life planning under UK law."
+            "text": "For blended families, discretionary trusts prevent family provision claims. Virtual consultations with London solicitors cover the instructions, though the will itself is signed in person. Overall, mirror wills offer practical end-of-life planning under UK law."
         },
         {
             "type": "h2",
@@ -3286,7 +3286,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Experts recommend a formal signing ceremony at a solicitor's office in Central London for complex estates or blended families. This records testamentary intentions and prevents contentious probate. For remote signing post-COVID-19, video wills require extra safeguards."
+            "text": "Experts recommend a formal signing ceremony at a solicitor's office in Central London for complex estates or blended families. This records testamentary intentions and prevents contentious probate. Wherever the signing takes place, both witnesses must be physically present at the same time."
         },
         {
             "type": "p",
@@ -3426,7 +3426,7 @@ export const blogArticles: BlogArticle[] = [
                 "Choose a provider: Compare London solicitors or online platforms for fixed-fee will writing. Knights Solicitors offers in-person advice for complex estates, while Lawhive provides quick online drafting.",
                 "Initial consultation: Discuss testamentary intentions, assets like residential property or shares, and inheritance tax planning. Include details on executors, beneficiaries, and provisions for minors or pets.",
                 "Drafting: Receive drafts in 2-5 days, customised with survivorship clauses, discretionary trusts, or funeral wishes. Ensure reciprocal provisions for spouses or cohabiting partners.",
-                "Review and signing: Check for accuracy, then sign with two witnesses in a formal ceremony. Remote signing via video suits busy London couples.",
+                "Review and signing: Check for accuracy, then sign with two witnesses present in the room. Evening and weekend appointments suit busy London couples.",
                 "Storage: Store in safe custody, such as London Courts at £30 per year, to protect against loss or disputes."
             ]
         },
@@ -3779,7 +3779,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Execution requires testator signature in presence of two independent witnesses who sign immediately, per Ministry of Justice Covid remote witnessing rules. This follows Wills Act 1837 formalities for will validity. Avoid errors like witnesses as beneficiaries, which voids gifts."
+            "text": "Execution requires the testator to sign in the presence of two independent witnesses, who then sign immediately. This follows the section 9 Wills Act 1837 formalities for will validity. Avoid errors like witnesses as beneficiaries, which voids gifts."
         },
         {
             "type": "p",
@@ -3797,7 +3797,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "For video witnessing protocol, use this 6-point checklist: ensure clear video/audio, show signing in real-time, confirm identities, record full process, witnesses sign copies, send originals promptly. This suits hospital will execution or home visits."
+            "text": "For the signing appointment, use this 6-point checklist: confirm both witnesses are over 18 and independent, gather everyone in the same room, check identities, watch the testator sign, have both witnesses sign the same document straight away, and store the original safely. This suits hospital will execution or home visits."
         },
         {
             "type": "p",
@@ -5709,7 +5709,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Research suggests regulated advisors prevent contested wills, especially for vulnerable clients under the Mental Capacity Act. Londoners benefit from home visits or video witnessing for will preparation."
+            "text": "Research suggests regulated advisors prevent contested wills, especially for vulnerable clients under the Mental Capacity Act. Londoners benefit from home visits, which let instructions and the in person signing happen in one appointment."
         },
         {
             "type": "h3",
@@ -6491,7 +6491,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Probate solicitors advise video witnessing logs for modern wills to meet witnessing requirements. Early second opinions prevent will challenges and caveat probate filings."
+            "text": "Probate solicitors advise keeping a note of who witnessed the will and where, in case the execution is questioned later. Early second opinions prevent will challenges and caveat probate filings."
         },
         {
             "type": "h2",
@@ -6515,7 +6515,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "London allows video witnessing post-COVID for remote signing, but electronic signatures remain invalid. Seek second opinions from estate lawyers to avoid undue influence claims. No coercion or pressure is permitted."
+            "text": "Wills in London must be witnessed in person by two people present at the same time, and electronic signatures remain invalid. Seek second opinions from estate lawyers to avoid undue influence claims. No coercion or pressure is permitted."
         },
         {
             "type": "h3",
@@ -6571,7 +6571,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Two independent witnesses, not beneficiaries, must watch the signing together. They sign immediately after. Post-COVID, video witnessing works if all see clearly via live link."
+            "text": "Two independent witnesses, not beneficiaries, must watch the signing together. They sign immediately after. Both witnesses have to be in the room, not on a video link."
         },
         {
             "type": "p",
@@ -6706,11 +6706,11 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Common triggers include medical emergencies such as a cancer diagnosis, accidents leaving someone hospitalised, and life events like military deployment. For instance, an NHS worker facing a sudden health crisis can use express will preparation via video witnessing. This ensures property distribution, guardians for children, and funeral wishes are secured promptly."
+            "text": "Common triggers include medical emergencies such as a cancer diagnosis, accidents leaving someone hospitalised, and life events like military deployment. For instance, an NHS worker facing a sudden health crisis can give instructions by phone in the morning and sign in front of two witnesses that evening. This ensures property distribution, guardians for children, and funeral wishes are secured promptly."
         },
         {
             "type": "p",
-            "text": "Emergency estate planning also covers executors appointment and inheritance tax planning basics. Professional will writers in London provide same-day will service, often with remote will signing compliant with modern regulations. This approach protects families from the complexities of death without a will."
+            "text": "Emergency estate planning also covers executors appointment and inheritance tax planning basics. Professional will writers in London provide same-day will service, with the signing arranged in person at a home, an office or a hospital bedside. This approach protects families from the complexities of death without a will."
         },
         {
             "type": "h3",
@@ -6722,7 +6722,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Key criteria define these services. First, completion within 24 hours ensures urgency without compromising legality. Second, remote or video witnessing aligns with post-COVID regulations for safe execution."
+            "text": "Key criteria define these services. First, completion within 24 hours ensures urgency without compromising legality. Second, the signing is arranged wherever the person already is, because two witnesses have to be physically present."
         },
         {
             "type": "list",
@@ -6825,7 +6825,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Our 4-hour emergency process includes initial video consultation, document drafting with your input, remote witnessing via approved platform, and secure digital storage."
+            "text": "Our 4-hour emergency process includes an initial video or phone consultation, document drafting with your input, an in person signing appointment with two independent witnesses, and secure storage."
         },
         {
             "type": "p",
@@ -6842,7 +6842,7 @@ export const blogArticles: BlogArticle[] = [
                 "Join a 45-minute video call to share instructions and details.",
                 "Complete drafting in 90 minutes based on your guidance.",
                 "Handle review and approval in 30 minutes for accuracy.",
-                "Conduct 15-minute video witnessing with two solicitors.",
+                "Sign in front of two independent witnesses, around 15 minutes.",
                 "Finish with 15-minute secure storage and copies."
             ]
         },
@@ -7122,7 +7122,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Addressing top concerns: Yes, video witnessing is legally valid since 2020. Emergency wills have identical legal force to traditional wills. Most complete within 4 business hours."
+            "text": "Addressing top concerns: an emergency will has exactly the same legal force as one prepared over several weeks, provided it is signed and witnessed correctly. Drafting can be done in hours. The signing has to be done in person."
         },
         {
             "type": "p",
@@ -7142,15 +7142,15 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Video witnessing became legal in England and Wales from 31 January 2020 under temporary COVID measures. It remains valid until further notice, allowing remote will signing with two independent witnesses. This suits emergency will writing for those isolating or abroad."
+            "text": "No, not any more. Video witnessing was permitted in England and Wales only between 31 January 2020 and 31 January 2024, under a temporary coronavirus measure. The government chose not to renew it, so since 1 February 2024 every will must be signed in the physical presence of two witnesses who are both there at the same time."
         },
         {
             "type": "p",
-            "text": "Witnesses must see you sign via live video and confirm their own signatures remotely. Use platforms with recording for proof. Law Society guidance stresses clear audio-visual links to meet legal will requirements."
+            "text": "Wills that were video witnessed during that four year window remain valid. A will signed over a video link today does not meet section 9 of the Wills Act 1837, and it would fail."
         },
         {
             "type": "p",
-            "text": "For urgent will drafting in London, this enables express will preparation without travel. Always check with a solicitor for your situation. Society of Will Writers endorses it for safe execution."
+            "text": "For urgent will drafting in London this makes the signing appointment the one part that cannot be done remotely. Instructions can be taken by phone or video the same day, but someone has to be in the room when the will is signed."
         },
         {
             "type": "h3",
@@ -7162,7 +7162,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "Process starts with a free will writing consultation, drafting, and video witnessing. Professional will writers prioritise speed while ensuring validity. Most finish by end of day if started early."
+            "text": "Process starts with a free will writing consultation, then drafting, then an in person signing appointment with two witnesses. Professional will writers prioritise speed while ensuring validity. Most finish by end of day if started early."
         },
         {
             "type": "p",
@@ -7242,7 +7242,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "International will writing ensures recognition, including for Sharia will writing or religious will provisions. Video witnessing suits expats. Society of Will Writers offers templates."
+            "text": "International will writing ensures recognition, including for Sharia will writing or religious will provisions. Expats signing abroad still need two witnesses physically present. Society of Will Writers offers templates."
         },
         {
             "type": "p",
@@ -7799,7 +7799,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "By Day 3, Draft v1.0 arrives in MS Word with tracked changes for transparency. Stage 3 on Day 5 sends a PDF via DocuSign for your review, allowing comments on guardianship clauses or trust creation. Revisions incorporate feedback by Day 6, leading to final approval on Day 7."
+            "text": "By Day 3, Draft v1.0 arrives in MS Word with tracked changes for transparency. Stage 3 on Day 5 sends a PDF for your review, allowing comments on guardianship clauses or trust creation. Revisions incorporate feedback by Day 6, leading to final approval on Day 7."
         },
         {
             "type": "p",

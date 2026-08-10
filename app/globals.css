@@ -197,8 +197,15 @@
     pointer-events: none;
   }
   .g-bot {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 75%;
-    background: linear-gradient(to top, rgba(10,6,2,0.94), transparent);
+    position: absolute; bottom: 0; left: 0; right: 0; height: 88%;
+    background: linear-gradient(
+      to top,
+      rgba(10,6,2,0.97) 0%,
+      rgba(10,6,2,0.92) 30%,
+      rgba(10,6,2,0.72) 58%,
+      rgba(10,6,2,0.34) 80%,
+      transparent 100%
+    );
     pointer-events: none;
   }
 

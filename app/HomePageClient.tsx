@@ -75,7 +75,7 @@ export function HomePageClient() {
 
               {/* Copy */}
               <div>
-                <p className="eyebrow anim-0" style={{ color: 'rgba(255,255,255,0.5)', marginBottom: 18 }}>
+                <p className="eyebrow anim-0" style={{ color: 'rgba(255,255,255,0.72)', marginBottom: 18 }}>
                   Free will writing matching service &nbsp;·&nbsp; London
                 </p>
                 <h1 className="anim-1" style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(38px,5.5vw,66px)', fontStyle: 'italic', fontWeight: 400, lineHeight: 1.07, color: '#fff', marginBottom: 18, letterSpacing: '-0.01em' }}>
@@ -83,9 +83,9 @@ export function HomePageClient() {
                   the people<br />
                   you love
                 </h1>
-                <p className="anim-2" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, lineHeight: 1.78, color: 'rgba(255,255,255,0.65)', maxWidth: 460, marginBottom: 28 }}>
+                <p className="anim-2" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, lineHeight: 1.7, color: 'rgba(255,255,255,0.93)', maxWidth: 460, marginBottom: 28, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
                   More than half of UK adults have no will in place. For London families
-                  with property, pensions, and children depending on them — the consequences
+                  with property, pensions, and children depending on them, the consequences
                   of dying without one are serious and avoidable. We match you with the right
                   specialist, free, within 24 hours.
                 </p>
@@ -93,7 +93,7 @@ export function HomePageClient() {
                   <button onClick={() => setModal(true)} className="btn-primary">Find my specialist</button>
                   <Link href="/services/" className="btn-ghost">See all services</Link>
                 </div>
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, fontWeight: 300, color: 'rgba(255,255,255,0.28)', marginTop: 16, lineHeight: 1.8 }}>
+                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11.5, fontWeight: 400, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.8 }}>
                   Free to all clients &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Every specialist vetted and insured
                 </p>
               </div>

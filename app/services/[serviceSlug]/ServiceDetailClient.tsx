@@ -195,14 +195,14 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 <h1 style={{ ...h('clamp(36px,5vw,60px)' as any), color: '#fff', marginTop: 20, marginBottom: 14 }}>
                   {service.title}
                 </h1>
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.6)', maxWidth: 420, lineHeight: 1.75, marginBottom: 22 }}>
+                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, color: 'rgba(255,255,255,0.93)', maxWidth: 420, lineHeight: 1.7, marginBottom: 22, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
                   {service.description}
                 </p>
                 <div className="flex flex-col gap-2 mb-6">
                   {['Compare up to 3 specialist quotes', 'Every professional vetted and insured', 'Covering all London areas'].map((b, i) => (
                     <div key={i} className="flex items-center gap-2.5">
                       <CheckCircle size={13} style={{ color: 'var(--brand)', flexShrink: 0 }} />
-                      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.68)' }}>{b}</span>
+                      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13.5, fontWeight: 400, color: 'rgba(255,255,255,0.88)' }}>{b}</span>
                     </div>
                   ))}
                 </div>

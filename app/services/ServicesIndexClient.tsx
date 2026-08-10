@@ -24,11 +24,11 @@ export function ServicesIndexClient() {
           <div className="container-width max-w-3xl">
             <p className="eyebrow mb-4">Estate planning services</p>
             <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
-              What we match you with
+              Our Services
             </h1>
             <p className="body-lg max-w-xl">
-              Our network covers every aspect of will writing and estate planning.
-              Tell us your situation and we find the right specialist — a considered introduction,
+              We cover every aspect of will writing and estate planning.
+              Tell us your situation and quote a fixed fee before any work begins,
               not a directory listing.
             </p>
           </div>

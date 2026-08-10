@@ -83,7 +83,7 @@ function buildFaqs(hubName: string, subAreaNames: string[]) {
     },
     {
       question: `What estate planning services are available in ${hubName}?`,
-      answer: `Our network covering ${hubName} includes specialists in single wills, mirror wills, both types of Lasting Power of Attorney, protective property trusts, discretionary trusts, estate planning reviews, and probate support.`,
+      answer: `In ${hubName} we handle single wills, mirror wills, both types of Lasting Power of Attorney, protective property trusts, discretionary trusts, estate planning reviews, and probate support.`,
     },
   ];
 }
@@ -303,7 +303,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                 </section>
               )}
 
-              {/* Who we match here */}
+              {/* Who we work with here */}
               {ac?.clientProfile && (
                 <section className="mb-12">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>

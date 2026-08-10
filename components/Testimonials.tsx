@@ -9,7 +9,7 @@ export function Testimonials({ limit = 3 }: Props) {
     return (
       <div style={{ padding: '24px 20px', background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 8 }}>
         <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 16, fontStyle: 'italic', color: 'var(--dust)', lineHeight: 1.6 }}>
-          Client testimonials coming soon. We are currently collecting verified feedback from matched clients.
+          Client testimonials coming soon. We are currently collecting verified feedback from clients.
         </p>
       </div>
     );

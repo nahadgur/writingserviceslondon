@@ -174,7 +174,7 @@ export function HeroLeadForm({ city, service }: Props) {
           </form>
 
           <p className="body-sm text-center mt-3" style={{ color: 'var(--dust)' }}>
-            Paid by our network, never by you
+            Fixed fees, quoted before any work begins
           </p>
         </>
       )}

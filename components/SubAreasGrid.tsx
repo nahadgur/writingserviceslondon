@@ -11,7 +11,7 @@ export function SubAreasGrid({ hubName, subAreas }: Props) {
       <p className="body-md mb-5">
         Our will writers serve clients across {hubName} and all surrounding neighbourhoods —
         including {subAreas.slice(0, 3).map(s => s.name).join(', ')} and beyond.
-        We can match you with a specialist who covers your exact postcode.
+        We cover your exact postcode and can visit you at home.
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 mb-5">
         {subAreas.map(a => (

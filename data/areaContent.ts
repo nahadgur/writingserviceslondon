@@ -23,7 +23,7 @@ export const areaContent: Record<string, AreaContent> = {
 
   mayfair: {
     heroHeading: 'Will Writing and Estate Planning in Mayfair',
-    heroParagraph: 'Mayfair estates are among London\'s most complex. Multi-jurisdictional assets, offshore structures, and nine-figure portfolios require estate planning that goes far beyond a standard will. We match you with specialists who work with private wealth managers and international tax advisors as standard.',
+    heroParagraph: 'Mayfair estates are among London\'s most complex. Multi-jurisdictional assets, offshore structures, and nine-figure portfolios require estate planning that goes far beyond a standard will. We work alongside private wealth managers and international tax advisors as standard.',
     introHeading: 'Estate Planning for Mayfair\'s Complex Portfolios',
     introParagraphs: [
       'A Mayfair address typically signals an estate that exceeds seven figures — often by a significant margin. Art collections, international property, trust structures already in place, and business interests across jurisdictions mean that will writing here must coordinate with existing private wealth arrangements rather than work in isolation.',
@@ -32,7 +32,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'An estate with international dimensions, trust structures, or assets under professional management needs a specialist who has worked with private wealth teams — not a generalist who will treat it as a standard residential estate.',
     clientProfile: {
-      heading: 'Who We Match in Mayfair',
+      heading: 'Will Writing in Mayfair',
       points: [
         'High-net-worth individuals with estates spanning multiple jurisdictions',
         'International families with UK property and overseas assets requiring coordinated planning',
@@ -57,13 +57,13 @@ export const areaContent: Record<string, AreaContent> = {
     heroParagraph: 'Property values in Kensington and the surrounding areas mean most family homes push estates well above inheritance tax thresholds. Add complex family structures — second marriages, blended families, international connections — and a generic will template is simply not adequate.',
     introHeading: 'Property Wealth and Complex Family Structures in W8',
     introParagraphs: [
-      'A family home in Kensington worth £2 million or more creates an inheritance tax liability of hundreds of thousands of pounds that many families simply haven\'t planned for. Our matched specialists begin every conversation by understanding the full estate picture — not just what the client wants in their will, but what the tax implications of different distribution structures actually are.',
+      'A family home in Kensington worth £2 million or more creates an inheritance tax liability of hundreds of thousands of pounds that many families simply haven\'t planned for. We begin every conversation by understanding the full estate picture — not just what the client wants in their will, but what the tax implications of different distribution structures actually are.',
       'The demographic here includes a significant proportion of clients with complex family situations: second marriages where children from different relationships need protecting, international residents with assets in multiple countries, and elderly homeowners whose properties have appreciated far beyond what they originally paid.',
       'The Notting Hill and Holland Park end of this market particularly demands specialists comfortable with ultra-prime residential values, privacy-conscious clients, and estates that include art, international bank accounts, and company directorships alongside the family home.',
     ],
     whySpecialistMatters: 'A Kensington estate almost always involves property worth more than the IHT threshold, which means every will here needs to consider trust structures, gifting strategies, and how the surviving spouse\'s own estate will be affected — not just who gets what.',
     clientProfile: {
-      heading: 'Who We Match in Kensington',
+      heading: 'Will Writing in Kensington',
       points: [
         'Families with high-value properties where the home alone exceeds IHT thresholds',
         'Blended families needing wills that protect children from all relationships',
@@ -80,7 +80,7 @@ export const areaContent: Record<string, AreaContent> = {
       'Diagnosis of a serious illness in the family',
       'Retirement and realisation that the estate has grown substantially',
     ],
-    localContext: 'Kensington, Notting Hill, Holland Park, Earl\'s Court, Bayswater, and Shepherd\'s Bush all fall within this area hub. The estate planning needs vary from ultra-high-net-worth individuals in Holland Park to first-home buyers in Earl\'s Court — all of whom are better served by a specialist match than a generic will writing service.',
+    localContext: 'Kensington, Notting Hill, Holland Park, Earl\'s Court, Bayswater, and Shepherd\'s Bush all fall within this area hub. The estate planning needs vary from ultra-high-net-worth individuals in Holland Park to first-home buyers in Earl\'s Court — all of whom are better served by a specialist attention than a generic will writing service.',
   },
 
   chelsea: {
@@ -90,11 +90,11 @@ export const areaContent: Record<string, AreaContent> = {
     introParagraphs: [
       'Chelsea\'s estate planning needs are shaped by two distinctive features: the prevalence of valuable personal property — art, antiques, jewellery, wine — that requires specific will provisions, and the high rate of relationship change among affluent residents that means wills frequently need updating after divorce or remarriage.',
       'Art and chattels provisions in wills are often handled poorly by generalist will writers. Who gets a specific painting, how collections should be divided, whether items should be valued and distributed equally or left to a single beneficiary — these require careful drafting that goes beyond standard residuary estate clauses.',
-      'Business owners in Chelsea\'s retail, hospitality, and creative sectors need succession provisions coordinated with shareholder agreements and employment contracts. The specialist we match you with will understand that personal and business estate planning must work together, not in isolation.',
+      'Business owners in Chelsea\'s retail, hospitality, and creative sectors need succession provisions coordinated with shareholder agreements and employment contracts. We understand that personal and business estate planning must work together, not in isolation.',
     ],
     whySpecialistMatters: 'If your estate includes valuable personal property, business interests, or the aftermath of a divorce, a will needs to address these explicitly. Generalist will writers often miss the provisions that matter most for Chelsea-type estates.',
     clientProfile: {
-      heading: 'Who We Match in Chelsea',
+      heading: 'Will Writing in Chelsea',
       points: [
         'Art and antique collectors needing specific chattels provisions',
         'Business owners requiring succession planning coordinated with their professional arrangements',
@@ -125,7 +125,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'A Hampstead estate almost always involves both substantial property wealth and some form of intellectual or cultural legacy. The specialist who handles your will needs to understand both — and know when you need a literary executor as well as a financial one.',
     clientProfile: {
-      heading: 'Who We Match in Hampstead',
+      heading: 'Will Writing in Hampstead',
       points: [
         'Long-term residents in period properties with significant accumulated equity',
         'Writers, academics, and cultural professionals with IP and archive estates',
@@ -152,11 +152,11 @@ export const areaContent: Record<string, AreaContent> = {
     introParagraphs: [
       'The single most common call we receive from Islington is from cohabiting couples who have just bought a property together and realised that if one of them dies without a will, the other has no automatic right to the home or the estate — regardless of the length of the relationship. The Intestacy Rules simply do not recognise unmarried partners.',
       'Islington\'s property values mean that first-home buyers are taking on significant financial commitments — and often have life insurance, pension death benefits, and savings alongside the property. A first will coordinates all of these into a coherent plan rather than leaving them to default rules that may produce the wrong outcome.',
-      'Beyond cohabitation, the young professional demographic here has a second urgent planning need: guardianship. Parents with young children who die without a will leave the question of who raises their children to a court rather than a chosen guardian. The specialist we match you with will ensure your will includes this provision from day one.',
+      'Beyond cohabitation, the young professional demographic here has a second urgent planning need: guardianship. Parents with young children who die without a will leave the question of who raises their children to a court rather than a chosen guardian. We ensure your will includes this provision from day one.',
     ],
     whySpecialistMatters: 'In Islington, the most urgent need is usually a first will for a cohabiting couple after a property purchase. Getting this right — covering the property, life insurance, pension nominations, and guardianship in one coherent plan — requires a specialist, not a generic online template.',
     clientProfile: {
-      heading: 'Who We Match in Islington',
+      heading: 'Will Writing in Islington',
       points: [
         'Cohabiting couples who have purchased property together without wills in place',
         'New parents who need guardianship provisions for young children',
@@ -181,13 +181,13 @@ export const areaContent: Record<string, AreaContent> = {
     heroParagraph: 'Hackney\'s creative and diverse community has estate planning needs that generic will writing services handle poorly: freelance business protection, Sharia-compliant options, cohabitation wills for unmarried parents, and culturally sensitive planning for multicultural families.',
     introHeading: 'Freelancers, Diverse Families, and Specialist Planning in E8',
     introParagraphs: [
-      'Hackney\'s creative economy means a significant proportion of residents are self-employed, with income from freelance work, creative IP, and small business goodwill that a standard will does not automatically protect. The specialist we match you with will understand how to structure provisions around business interests that may not have a clear market value.',
+      'Hackney\'s creative economy means a significant proportion of residents are self-employed, with income from freelance work, creative IP, and small business goodwill that a standard will does not automatically protect. We understand how to structure provisions around business interests that may not have a clear market value.',
       'The borough\'s diversity — one of London\'s most genuinely multicultural — creates demand for will specialists who are comfortable with Sharia-compliant inheritance provisions, Orthodox Jewish estate planning, and culturally sensitive drafting for families where inheritance expectations may differ from English default rules.',
       'Hackney also has one of London\'s highest concentrations of cohabiting couples — particularly in Shoreditch, London Fields, and Dalston — for whom the absence of a will is a serious financial risk. The area\'s rapidly appreciated property means the stakes of dying intestate are higher than ever.',
     ],
     whySpecialistMatters: 'A Hackney estate is rarely straightforward. Freelance income, creative IP, cohabitation, multicultural family structures, and rapidly appreciated property all require specific provisions that a generalist or online template will get wrong.',
     clientProfile: {
-      heading: 'Who We Match in Hackney',
+      heading: 'Will Writing in Hackney',
       points: [
         'Creative freelancers whose business interests and IP need protecting',
         'Cohabiting couples without wills facing serious financial risk if one partner dies',
@@ -216,9 +216,9 @@ export const areaContent: Record<string, AreaContent> = {
       'The international dimension compounds this. Many E14 residents have assets or family obligations in other countries — the US, continental Europe, South Asia, the Middle East. A UK will needs to either address these directly or be coordinated with wills in other jurisdictions to ensure the global estate plan is coherent.',
       'Share options and deferred compensation require specific will provisions. The fate of unvested options, the treatment of deferred bonuses, and whether carried interest passes to beneficiaries in the way the holder expects — these are not covered by standard will templates and require a specialist who understands financial sector compensation.',
     ],
-    whySpecialistMatters: 'City compensation estates involve instruments — options, deferred bonuses, carried interest — that generic will writers do not know how to address. The specialist we match you with will have worked with finance professionals and will understand your compensation structure.',
+    whySpecialistMatters: 'City compensation estates involve instruments — options, deferred bonuses, carried interest — that generic will writers do not know how to address. We have worked with finance professionals and will understand your compensation structure.',
     clientProfile: {
-      heading: 'Who We Match in Canary Wharf',
+      heading: 'Will Writing in Canary Wharf',
       points: [
         'Finance professionals with share options, deferred bonuses, and significant pensions',
         'International professionals with assets or family obligations in multiple countries',
@@ -245,11 +245,11 @@ export const areaContent: Record<string, AreaContent> = {
     introParagraphs: [
       'Two events trigger almost every first will in Clapham: buying a property and having a baby. The first creates a situation where an unmarried partner could lose the home if their partner dies without a will. The second creates the urgent need for guardianship provisions — without a will, a court decides who raises your children.',
       'Clapham\'s professional demographic means most first wills here are not simple documents. Life insurance policies need to be written in trust so the payout doesn\'t increase the estate and create an IHT liability. Pension nominations need to be checked. The mortgage protection policy needs to be reviewed. Our specialists coordinate all of this in one conversation.',
-      'The speed of life in Clapham — busy careers, young children, active social lives — means estate planning gets deferred. Our matching service is designed to make the process as efficient as possible: you share your situation, we find the right specialist, and the specialist comes to you rather than making you fit around them.',
+      'The speed of life in Clapham — busy careers, young children, active social lives — means estate planning gets deferred. We keep the process as efficient as possible: you share your situation, we find the right specialist, and the specialist comes to you rather than making you fit around them.',
     ],
     whySpecialistMatters: 'A first will for a young professional couple in Clapham is more complex than it looks. Life insurance trusts, pension nominations, guardianship provisions, and property protection all need to be coordinated — not addressed in isolation.',
     clientProfile: {
-      heading: 'Who We Match in Clapham',
+      heading: 'Will Writing in Clapham',
       points: [
         'Cohabiting couples who have bought property without wills in place',
         'New parents who urgently need guardianship provisions',
@@ -280,7 +280,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'Greenwich estates range from first-will needs for young riverside apartment buyers to substantial IHT planning for long-term Blackheath homeowners. The matching matters — a specialist suited to one is not necessarily suited to the other.',
     clientProfile: {
-      heading: 'Who We Match in Greenwich',
+      heading: 'Will Writing in Greenwich',
       points: [
         'Long-term residents in period homes with significant accumulated equity and IHT exposure',
         'Young families in riverside developments who need first wills and guardianship provisions',
@@ -297,7 +297,7 @@ export const areaContent: Record<string, AreaContent> = {
       'Bereavement of a parent prompting review of own arrangements',
       'Marriage or significant relationship change requiring updated provisions',
     ],
-    localContext: 'Greenwich, Blackheath, Lewisham, Deptford, New Cross, Peckham, and the surrounding SE10 area have varied estate planning needs that span the full range from first-time buyers to established families — all requiring specialist matching rather than generic services.',
+    localContext: 'Greenwich, Blackheath, Lewisham, Deptford, New Cross, Peckham, and the surrounding SE10 area have varied estate planning needs that span the full range from first-time buyers to established families — all requiring specialist drafting rather than generic services.',
   },
 
   richmond: {
@@ -309,9 +309,9 @@ export const areaContent: Record<string, AreaContent> = {
       'The planning challenge in TW9 is not creating a will from scratch but creating a comprehensive estate plan that coordinates all of these elements: the will, the LPAs, the pension nominations, the trust structure, the gifting strategy. Our specialists approach Richmond clients with a full-estate review rather than treating the will in isolation.',
       'Wimbledon, Putney, and Twickenham bring additional school-catchment premium to already significant property values, and the retiring professional demographic in all of these areas shares a common characteristic: they have built wealth steadily over careers and now need to ensure it transfers efficiently to the next generation.',
     ],
-    whySpecialistMatters: 'A Richmond estate almost always requires more than a will update. The specialist we match you with will approach your situation as a comprehensive estate planning exercise — covering trust structures, IHT strategy, pension nominations, and LPAs, not just the will document.',
+    whySpecialistMatters: 'A Richmond estate almost always requires more than a will update. We approach your situation as a comprehensive estate planning exercise — covering trust structures, IHT strategy, pension nominations, and LPAs, not just the will document.',
     clientProfile: {
-      heading: 'Who We Match in Richmond',
+      heading: 'Will Writing in Richmond',
       points: [
         'Established professionals with multi-asset estates requiring comprehensive IHT planning',
         'Retiring couples who need to ensure their estate transfers efficiently to children',
@@ -342,7 +342,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'Camden\'s range is too wide for a single approach. The matching matters here more than almost anywhere — a music industry estate and a Primrose Hill property portfolio need entirely different specialist expertise.',
     clientProfile: {
-      heading: 'Who We Match in Camden',
+      heading: 'Will Writing in Camden',
       points: [
         'Primrose Hill affluent families with complex IHT planning needs',
         'Music and entertainment professionals with royalty and IP succession requirements',
@@ -369,11 +369,11 @@ export const areaContent: Record<string, AreaContent> = {
     introParagraphs: [
       'The most common estate planning scenario in Shoreditch is a founder or co-founder whose company is worth more than their personal assets — often significantly more. What happens to startup equity when a shareholder dies? Is there a shareholders\' agreement with drag-along provisions? Are unvested options lost? These questions need answering in both the shareholder agreement and the will.',
       'Digital assets add another layer of complexity. Cryptocurrency holdings, domain portfolios, social media accounts with commercial value, and digital creative IP all need provisions in the will — and require an executor who understands how to access and manage them. Our specialists will prompt you to address these explicitly.',
-      'The Bangladeshi community in adjacent Whitechapel and Spitalfields, and the Sharia-compliant will demand this creates, sits alongside the tech community in EC2A. Both need specialist matching — the creative founder and the devout Muslim businessman both deserve a specialist who understands their specific situation.',
+      'The Bangladeshi community in adjacent Whitechapel and Spitalfields, and the Sharia-compliant will demand this creates, sits alongside the tech community in EC2A. Both need specialist attention — the creative founder and the devout Muslim businessman both deserve a specialist who understands their specific situation.',
     ],
     whySpecialistMatters: 'A Shoreditch estate usually has business complexity that a standard will handles badly. Startup equity, vesting schedules, digital assets, and shareholders\' agreement coordination all require a specialist who works with tech and creative founders regularly.',
     clientProfile: {
-      heading: 'Who We Match in Shoreditch',
+      heading: 'Will Writing in Shoreditch',
       points: [
         'Startup founders whose company equity represents a significant portion of their estate',
         'Agency owners who need business succession coordinated with personal estate planning',
@@ -390,7 +390,7 @@ export const areaContent: Record<string, AreaContent> = {
       'Co-founder\'s illness or death making business succession planning urgent',
       'Property purchase with a partner in an expensive tech-area market',
     ],
-    localContext: 'Shoreditch, Old Street, Hoxton, Clerkenwell, Farringdon, Spitalfields, Whitechapel, and the EC1/EC2 tech corridor share a combination of startup business complexity, creative IP, and community cultural diversity that requires specialist matching for each distinct client type.',
+    localContext: 'Shoreditch, Old Street, Hoxton, Clerkenwell, Farringdon, Spitalfields, Whitechapel, and the EC1/EC2 tech corridor share a combination of startup business complexity, creative IP, and community cultural diversity that requires specialist attention for each distinct client type.',
   },
 
   battersea: {
@@ -404,7 +404,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'Battersea\'s range of ownership structures — from Nine Elms leasehold to established Victorian terraces to Portuguese community homes — requires specialists who match the client\'s actual situation rather than applying a generic approach.',
     clientProfile: {
-      heading: 'Who We Match in Battersea',
+      heading: 'Will Writing in Battersea',
       points: [
         'Nine Elms new-build buyers needing first wills alongside their purchase',
         'International buyers whose ownership structures need specific will provisions',
@@ -431,11 +431,11 @@ export const areaContent: Record<string, AreaContent> = {
     introParagraphs: [
       'Dulwich\'s school catchment premium has transformed the estate profile of families who bought a decade or more ago. A home purchased for £400,000 in 2010 may now be worth £900,000 or more — and many families simply have not updated their estate planning to reflect this change. Combined with pensions and savings, many families face IHT liability they have not planned for.',
       'The Dulwich Picture Gallery and the area\'s cultural character create a distinctive dimension to some estates. Art collections, Gallery connections, and the creative professional community add valuation and succession complexity. Specialist provisions for cultural assets — who curates a collection, how donations to institutions are structured — require careful drafting.',
-      'The stable, long-term character of Dulwich means many residents have elderly parents whose own planning is also needed. The specialist we match you with will often be asked to handle two generations of planning simultaneously — or to refer a parent to an appropriate LPA specialist while working on the primary client\'s will and estate plan.',
+      'The stable, long-term character of Dulwich means many residents have elderly parents whose own planning is also needed. We often be asked to handle two generations of planning simultaneously — or to refer a parent to an appropriate LPA specialist while working on the primary client\'s will and estate plan.',
     ],
-    whySpecialistMatters: 'Dulwich estates have typically outgrown the wills that originally covered them. The specialist we match you with will conduct a full estate review to identify the gap between the existing plan and what the current estate actually requires.',
+    whySpecialistMatters: 'Dulwich estates have typically outgrown the wills that originally covered them. We conduct a full estate review to identify the gap between the existing plan and what the current estate actually requires.',
     clientProfile: {
-      heading: 'Who We Match in Dulwich',
+      heading: 'Will Writing in Dulwich',
       points: [
         'Families whose property has appreciated significantly since their last will review',
         'School-focused families where the home is the dominant asset and needs protecting',
@@ -466,7 +466,7 @@ export const areaContent: Record<string, AreaContent> = {
     ],
     whySpecialistMatters: 'Stratford\'s combination of shared ownership, international family structures, and community diversity means generic will writing services are likely to miss the specific provisions that matter most. Specialist matching is essential.',
     clientProfile: {
-      heading: 'Who We Match in Stratford',
+      heading: 'Will Writing in Stratford',
       points: [
         'Shared ownership and Help to Buy purchasers who need wills addressing these structures',
         'Bangladeshi families needing Sharia-compliant options and Bangladesh property provisions',
@@ -483,7 +483,7 @@ export const areaContent: Record<string, AreaContent> = {
       'Religious observation or family expectation making Sharia compliance important',
       'Olympic Village property appreciating significantly and making the estate valuable',
     ],
-    localContext: 'Stratford, West Ham, Bow, Forest Gate, Leyton, Leytonstone, Manor Park, and Plaistow form an east London cluster where regeneration, diversity, and first-time buying create estate planning needs that are genuinely varied and require specialist matching rather than generic provision.',
+    localContext: 'Stratford, West Ham, Bow, Forest Gate, Leyton, Leytonstone, Manor Park, and Plaistow form an east London cluster where regeneration, diversity, and first-time buying create estate planning needs that are genuinely varied and require specialist drafting rather than generic provision.',
   },
 };
 

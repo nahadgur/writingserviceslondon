@@ -199,7 +199,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                   {service.description}
                 </p>
                 <div className="flex flex-col gap-2 mb-6">
-                  {['Compare up to 3 specialist quotes', 'Every professional vetted and insured', 'Covering all London areas'].map((b, i) => (
+                  {['Fixed fee quoted upfront', 'Home visits across London', 'Covering all London areas'].map((b, i) => (
                     <div key={i} className="flex items-center gap-2.5">
                       <CheckCircle size={13} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                       <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13.5, fontWeight: 400, color: 'rgba(255,255,255,0.88)' }}>{b}</span>
@@ -363,7 +363,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 {service.title} across London
               </h2>
               <p className="body-md mb-5">
-                Our network covers {service.title.toLowerCase()} specialists across all major London areas.
+                We cover {service.title.toLowerCase()} specialists across all major London areas.
                 Select your area to find specialists who serve your neighbourhood specifically.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-12">
@@ -391,13 +391,13 @@ export function ServiceDetailClient({ service }: { service: Service }) {
             <aside>
               <div className="lg:sticky" style={{ top: 28 }}>
                 <div className="sidebar-box">
-                  <h3 style={h(20, { color: 'var(--ink)', marginBottom: 6 })}>Get matched free</h3>
-                  <p className="body-sm mb-4">Vetted {service.title.toLowerCase()} specialists covering your area. Most introductions within 24 hours.</p>
+                  <h3 style={h(20, { color: 'var(--ink)', marginBottom: 6 })}>Book a consultation</h3>
+                  <p className="body-sm mb-4">{service.title} covering your area, with home visits. Most wills drafted within 3 to 7 working days.</p>
                   <button onClick={() => setModal(true)} className="btn-primary w-full justify-center">
                     Find a specialist
                   </button>
                   <ul className="mt-4 space-y-2 pt-4" style={{ borderTop: '0.5px solid var(--border)' }}>
-                    {['Matched within 24 hours', 'Vetted and insured', 'Free to all clients'].map((p, i) => (
+                    {['Drafted in 3 to 7 days', 'Fixed fees from £150', 'Home visits London-wide'].map((p, i) => (
                       <li key={i} className="flex items-center gap-2">
                         <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
                         <span className="body-sm">{p}</span>
@@ -418,14 +418,14 @@ export function ServiceDetailClient({ service }: { service: Service }) {
 
                 <div className="sidebar-dark p-5 rounded-lg">
                   <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: '#fff', marginBottom: 6 }}>
-                    Free matching service
+                    Fixed fees, quoted upfront
                   </p>
                   <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                    We are paid by the specialists in our network — never by clients.
+                    No hourly billing and no charge for the first conversation.
                   </p>
                   <button onClick={() => setModal(true)}
                     style={{ width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
-                    Get free quotes
+                    Book a consultation
                   </button>
                 </div>
 

@@ -236,7 +236,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                 </button>
 
                 <p className="body-sm text-center" style={{ color: 'var(--dust)' }}>
-                  We are paid by the professionals in our network, never by you
+                  Fixed fees, quoted before any work begins
                 </p>
               </div>
             </form>

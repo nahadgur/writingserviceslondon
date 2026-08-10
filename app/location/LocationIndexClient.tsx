@@ -39,7 +39,7 @@ export function LocationIndexClient() {
               Will writing across every<br className="hidden sm:block" /> London area
             </h1>
             <p className="body-lg max-w-xl">
-              Our network of vetted specialists covers all of London. Select your area
+              We cover all of London, with home visits in every borough. Select your area
               to see specialists, postcodes covered, and local estate planning information.
             </p>
           </div>
@@ -106,7 +106,7 @@ export function LocationIndexClient() {
               Not sure which area to choose?
             </h2>
             <p className="body-lg mb-7 mx-auto" style={{ maxWidth: 440, color: 'rgba(255,255,255,0.5)' }}>
-              Leave your contact details and we will match you directly regardless of area.
+              Leave your contact details and we will get back to you whichever area you are in.
             </p>
             <button
               onClick={() => setModal(true)}

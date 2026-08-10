@@ -7,7 +7,7 @@ export const serviceContent: Record<string, {
     intro: [
       "A single will is the foundation of any estate plan — the legal document that determines who receives your assets, who manages your estate as executor, and who cares for any minor children as guardian. Without one, the Intestacy Rules decide these matters, and they rarely reflect what you would actually want.",
       "London residents face additional complexity: high property values mean even modest estates can exceed the inheritance tax threshold; complex family arrangements require careful drafting; and the pace of London life means important documents are often deferred until circumstances make them urgent. A professionally drafted will removes all of this uncertainty.",
-      "Our matched will writers produce documents that are legally robust, clearly expressed, and tailored to your specific circumstances. They take time to understand your wishes, explain the implications of different provisions, and ensure the final document truly reflects your intentions."
+      "Our will writers produce documents that are legally robust, clearly expressed, and tailored to your specific circumstances. They take time to understand your wishes, explain the implications of different provisions, and ensure the final document truly reflects your intentions."
     ],
     benefits: [
       { "title": "Legal Certainty for Your Loved Ones", "desc": "A professionally drafted will removes ambiguity about your wishes and gives your executors clear authority to act. This prevents delays, reduces the risk of disputes, and ensures your estate is distributed as you intend — not as the Intestacy Rules dictate." },
@@ -34,7 +34,7 @@ export const serviceContent: Record<string, {
     intro: [
       "Mirror wills are two separate but matching wills — one for each partner — that leave everything to each other first, and then to the same chosen beneficiaries. They are the standard recommendation for married couples, civil partners, and cohabiting couples who share the same wishes for their estate.",
       "For cohabiting couples in particular, mirror wills are essential. The intestacy rules do not recognise unmarried partners — without a will, a partner receives nothing from your estate regardless of how long you have lived together. Mirror wills correct this and ensure both partners have proper legal protection.",
-      "Our matched will writers draft mirror wills that are legally robust, clearly differentiated where circumstances require, and reviewed jointly with both partners to ensure the provisions truly reflect what both of you want. The process is straightforward and typically completed within two weeks."
+      "Our will writers draft mirror wills that are legally robust, clearly differentiated where circumstances require, and reviewed jointly with both partners to ensure the provisions truly reflect what both of you want. The process is straightforward and typically completed within two weeks."
     ],
     benefits: [
       { "title": "Protection for Unmarried Partners", "desc": "The intestacy rules offer no protection to unmarried partners. Mirror wills give both partners legal certainty that their estate passes to each other, not to the state or distant relatives." },
@@ -61,7 +61,7 @@ export const serviceContent: Record<string, {
     intro: [
       "A Lasting Power of Attorney (LPA) is a legal document that allows you to appoint one or more trusted people — your attorneys — to make decisions on your behalf if you lose mental capacity. Without an LPA in place, your family has no legal authority to manage your affairs, regardless of your relationship. They would need to apply to the Court of Protection — a lengthy, expensive, and distressing process.",
       "There are two types of LPA: a Property and Financial Affairs LPA, which covers bank accounts, property, investments, and financial decisions; and a Health and Welfare LPA, which covers medical treatment, care arrangements, and daily living decisions. Both types are essential — a financial attorney has no authority over health decisions and vice versa.",
-      "LPAs must be signed while you have mental capacity and registered with the Office of the Public Guardian — a process that currently takes approximately 20 weeks. This means starting early is essential. Our matched specialists ensure your LPAs are drafted correctly, executed properly, and registered efficiently."
+      "LPAs must be signed while you have mental capacity and registered with the Office of the Public Guardian — a process that currently takes approximately 20 weeks. This means starting early is essential. Our specialists ensure your LPAs are drafted correctly, executed properly, and registered efficiently."
     ],
     benefits: [
       { "title": "Avoid Court of Protection Proceedings", "desc": "Without an LPA, family members have no legal authority to manage your affairs if you lose capacity. A deputyship application to the Court of Protection can take 6-12 months, cost several thousand pounds, and requires ongoing annual reporting. An LPA prevents all of this." },
@@ -88,7 +88,7 @@ export const serviceContent: Record<string, {
     intro: [
       "Trusts are legal arrangements that hold assets for the benefit of named or described beneficiaries, managed by trustees. In estate planning, trusts serve several important purposes: protecting assets from care fee means testing, reducing inheritance tax exposure, controlling how and when beneficiaries receive assets, and protecting vulnerable or minor beneficiaries.",
       "London property values mean that many families now have estates that exceed the inheritance tax threshold. Proper trust planning — whether through protective property trusts incorporated into wills, or standalone discretionary trusts — can significantly reduce the tax burden on your estate and ensure more of what you have worked for passes to your family.",
-      "Trust planning requires genuinely specialist advice. The wrong trust structure can create unintended tax consequences, complicate estate administration, or fail to achieve its intended purpose. Our matched trust planning specialists explain your options clearly, model the financial impact, and recommend solutions that are genuinely appropriate for your situation."
+      "Trust planning requires genuinely specialist advice. The wrong trust structure can create unintended tax consequences, complicate estate administration, or fail to achieve its intended purpose. Our trust planning specialists explain your options clearly, model the financial impact, and recommend solutions that are genuinely appropriate for your situation."
     ],
     benefits: [
       { "title": "Care Fee Asset Protection", "desc": "A protective property trust (or life interest trust) in your will can protect your share of the family home from being included in the surviving spouse's assets for care fee means testing after you die. This can preserve significant value for your children or other intended beneficiaries." },
@@ -115,7 +115,7 @@ export const serviceContent: Record<string, {
     intro: [
       "Comprehensive estate planning is a strategic review of your complete financial and personal picture, looking at how your assets will pass on your death and how much of your estate will be absorbed by inheritance tax. For most London residents, this is more complex than they realise — and more rewarding to address properly.",
       "An estate planning review looks at your wills, LPAs, trust provisions, pension nominations, insurance policies, gifting history, and asset ownership structures. The output is a clear picture of your current position, your likely inheritance tax liability under current rules, and practical recommendations for reducing that liability and ensuring your assets pass to the right people.",
-      "The best time to undertake estate planning is before a crisis makes decisions urgent. Our matched specialists take a methodical, non-alarming approach — explaining your position clearly and making recommendations you can implement at your own pace."
+      "The best time to undertake estate planning is before a crisis makes decisions urgent. Our specialists take a methodical, non-alarming approach — explaining your position clearly and making recommendations you can implement at your own pace."
     ],
     benefits: [
       { "title": "Complete Estate Visibility", "desc": "Many people are surprised by the scale of their estate when all assets are properly aggregated — property, pensions, investments, business interests, life insurance, and accumulated savings. A clear picture is the starting point for all planning decisions." },
@@ -142,7 +142,7 @@ export const serviceContent: Record<string, {
     intro: [
       "Probate is the legal process of administering a deceased person's estate — collecting assets, paying debts and taxes, and distributing what remains to the beneficiaries. Obtaining the grant of probate (or letters of administration where there is no will) gives executors the legal authority to deal with banks, investment providers, and property registries.",
       "The probate process can be straightforward for simple estates, but it becomes complex when there is property to sell, inheritance tax to pay, overseas assets to address, or when family circumstances create complications. Professional probate support ensures the process is handled correctly, efficiently, and with appropriate care for the bereaved family.",
-      "Our matched probate specialists are experienced, compassionate professionals who guide executors through every stage of the process — from the initial application to the final distribution of the estate. They handle HMRC correspondence, IHT calculations, and legal formalities so executors can focus on supporting their families."
+      "Our probate specialists are experienced, compassionate professionals who guide executors through every stage of the process — from the initial application to the final distribution of the estate. They handle HMRC correspondence, IHT calculations, and legal formalities so executors can focus on supporting their families."
     ],
     benefits: [
       { "title": "Executor Relief", "desc": "Being an executor is a significant legal responsibility. Professionals handle the paperwork, HMRC submissions, and legal formalities — allowing executors to focus on family support rather than administrative complexity during a difficult time." },

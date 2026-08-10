@@ -164,7 +164,7 @@ export function BlogIndexClient() {
               Ready to make your will?
             </h2>
             <p className="body-lg mb-7 mx-auto" style={{ maxWidth: 440, color: 'rgba(255,255,255,0.5)' }}>
-              Our free matching service connects you with the right specialist in London within 24 hours.
+              We can help you with the right specialist in London within 24 hours.
             </p>
             <button
               onClick={() => setModal(true)}

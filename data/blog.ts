@@ -425,7 +425,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "A professionally drafted single will in London typically costs between \u00a3150 and \u00a3350. Mirror wills for couples range from \u00a3250 to \u00a3550 for the pair. Wills involving trusts, complex family arrangements, or business interests sit higher. All specialists in our network provide fixed-fee quotes before any work begins."
+            "text": "A professionally drafted single will in London typically costs between \u00a3150 and \u00a3350. Mirror wills for couples range from \u00a3250 to \u00a3550 for the pair. Wills involving trusts, complex family arrangements, or business interests sit higher. We provide fixed-fee quotes before any work begins."
         },
         {
             "type": "h3",
@@ -6763,7 +6763,7 @@ export const blogArticles: BlogArticle[] = [
         },
         {
             "type": "p",
-            "text": "We are a free matching service rather than a firm, so what we do in an urgent case is connect you quickly with a London specialist who can act at short notice, including at a hospital or at home. Tell us the situation and how much time there is. Most urgent enquiries are introduced the same day. Straightforward cases are usually a [single will](/services/single-will/), and couples in the same position often need [mirror wills](/services/mirror-wills/) prepared together. Where the person is at home rather than in hospital, the appointment works much like any other [will writing home visit](/blog/what-to-expect-at-a-will-writing-home-visit-in-london/), only compressed into a single day."
+            "text": "In an urgent case we prioritise the appointment and can attend at short notice, including at a hospital or at home. Tell us the situation and how much time there is. Most urgent enquiries get an appointment the same day. Straightforward cases are usually a [single will](/services/single-will/), and couples in the same position often need [mirror wills](/services/mirror-wills/) prepared together. Where the person is at home rather than in hospital, the appointment works much like any other [will writing home visit](/blog/what-to-expect-at-a-will-writing-home-visit-in-london/), only compressed into a single day."
         },
         {
             "type": "h3",
@@ -7638,10 +7638,10 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "What your executor is allowed to do"},
         {"type": "p", "text": "Having a password does not always make access lawful. Some providers treat logging in as another person as a breach of their terms, and computer misuse rules can apply even to a well meaning relative. In most cases the safer route is to use the platform's official bereavement or legacy process, which is designed for exactly this situation and asks for a death certificate and proof of authority."},
-        {"type": "p", "text": "For accounts that form part of the estate, the executor's authority flows from the will and, where needed, the grant of probate. For identity accounts, that authority is usually exercised through the platform's own channels. A clear will, a named executor who understands the digital side, and a current access record together make this far smoother. We are a matching service and do not draft wills ourselves, but we can connect you with vetted specialists who handle digital assets as a routine part of will writing. Anyone with significant or complex online holdings should take advice from a qualified professional rather than relying on a do it yourself approach."},
+        {"type": "p", "text": "For accounts that form part of the estate, the executor's authority flows from the will and, where needed, the grant of probate. For identity accounts, that authority is usually exercised through the platform's own channels. A clear will, a named executor who understands the digital side, and a current access record together make this far smoother. We draft wills for London clients. Our specialists handle digital assets as a routine part of will writing. Anyone with significant or complex online holdings should take advice from a qualified professional rather than relying on a do it yourself approach."},
         {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will writing professionals in England and Wales."},
 
-        {"type": "cta", "text": "Plan your digital legacy with a vetted London specialist"},
+        {"type": "cta", "text": "Plan your digital legacy with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Can my executor legally access my email account?"},
@@ -7696,9 +7696,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "How a will protects your business succession"},
         {"type": "p", "text": "A will lets you decide who inherits the business, who administers the estate and how the succession dovetails with your other planning. A specialist will writer can appoint executors who understand the company, include a clear gift of the business interest to the people you intend, and make sure the will does not contradict your shareholder agreement, partnership deed or any cross-option arrangement backed by key person insurance. Aligning these documents is what turns a paper plan into a workable handover."},
-        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London business owners with vetted specialists who handle business succession as a routine part of will writing, so the will, the company documents and the tax position are considered together rather than in isolation. For an owner whose estate is bound up in a company, that joined-up approach is the difference between a smooth transfer and a costly dispute."},
+        {"type": "p", "text": "We draft wills for business owners. Our specialists handle business succession as a routine part of will writing, so the will, the company documents and the tax position are considered together rather than in isolation. For an owner whose estate is bound up in a company, that joined-up approach is the difference between a smooth transfer and a costly dispute."},
 
-        {"type": "cta", "text": "Protect your business with a vetted London specialist"},
+        {"type": "cta", "text": "Protect your business with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does my business automatically pass to my spouse if I have no will?"},
@@ -7752,10 +7752,10 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "How a will protects stepchildren in a blended family"},
         {"type": "p", "text": "A will is the only dependable way to make sure stepchildren inherit. In it you can name stepchildren as beneficiaries in their own right, set the shares each child receives, appoint guardians for any who are still minors, and use a life interest or property protection trust so that a surviving spouse is provided for while the capital ultimately reaches the children you choose. Blended families also benefit from reviewing the will after any remarriage, because marriage automatically revokes an earlier will unless it was made in contemplation of that marriage, which can quietly return a family to the intestacy position they thought they had escaped."},
-        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London families with vetted specialists who handle blended-family planning as a routine part of will writing, so the will, any trust and the wishes for each child are considered together. For a step-parent who wants the children they raised to be treated fairly, that joined-up advice is what turns intention into a document the law will actually follow."},
+        {"type": "p", "text": "We draft wills for families. Our specialists handle blended-family planning as a routine part of will writing, so the will, any trust and the wishes for each child are considered together. For a step-parent who wants the children they raised to be treated fairly, that joined-up advice is what turns intention into a document the law will actually follow."},
         {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will writing professionals in England and Wales."},
 
-        {"type": "cta", "text": "Provide for your stepchildren with a vetted London specialist"},
+        {"type": "cta", "text": "Provide for your stepchildren with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Do stepchildren automatically inherit if their step-parent dies without a will?"},
@@ -7767,7 +7767,7 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "Do adopted stepchildren inherit under intestacy?"},
         {"type": "p", "text": "Yes. Once a stepchild has been legally adopted, they are treated as the adopter's own child for all inheritance purposes and inherit under the intestacy rules exactly as a biological child would. Adoption is a major and permanent legal step, so most families who simply want to provide for stepchildren do so through a will instead, which achieves the inheritance aim without changing the child's legal parentage."},
         {"type": "h3", "text": "How do I make sure my stepchildren inherit from my estate?"},
-        {"type": "p", "text": "Make a valid will that names them. In it you can give stepchildren specific gifts or shares, treat them equally with your biological children if you wish, and use a trust to balance providing for a spouse with passing capital to the children later. Review the will after any marriage, since marriage revokes an earlier will unless it was made in contemplation of it. We can connect you with a vetted London specialist who handles blended-family wills."}
+        {"type": "p", "text": "Make a valid will that names them. In it you can give stepchildren specific gifts or shares, treat them equally with your biological children if you wish, and use a trust to balance providing for a spouse with passing capital to the children later. Review the will after any marriage, since marriage revokes an earlier will unless it was made in contemplation of it. We can connect you with a London will writer who handles blended-family wills."}
     ]
   },
   {
@@ -7811,9 +7811,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "How to keep probate moving, and when to get help"},
         {"type": "p", "text": "An executor cannot control HMCTS or the property market, but most serious delays come from avoidable problems: an application returned for errors, a valuation that arrives late, or assets the executor did not know about. Locating the original will early, keeping an organised record of every asset and debt, applying only once the figures are complete, and responding promptly to the court and to HMRC all shorten the process. Executors are generally allowed twelve months from the date of death, the so-called executor's year, before beneficiaries can press for their inheritance, which gives reasonable breathing room for a properly run estate."},
-        {"type": "p", "text": "We are a matching service and do not handle probate ourselves. We connect London executors and families with vetted probate specialists who deal with the valuations, the HMRC account and the grant application as routine work, which is often what keeps a complex estate inside the six-to-twelve-month range rather than drifting well beyond it. Whether you handle probate yourself or instruct a professional, dealing with each stage promptly is the surest way to avoid the long delays that catch many London estates out."},
+        {"type": "p", "text": "We handle probate for executors and families. Our probate specialists deal with the valuations, the HMRC account and the grant application as routine work, which is often what keeps a complex estate inside the six-to-twelve-month range rather than drifting well beyond it. Whether you handle probate yourself or instruct a professional, dealing with each stage promptly is the surest way to avoid the long delays that catch many London estates out."},
 
-        {"type": "cta", "text": "Get matched with a vetted London probate specialist"},
+        {"type": "cta", "text": "Speak to a London probate specialist"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "How long does it take to get a grant of probate?"},
@@ -7863,9 +7863,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Planning ahead for London families"},
         {"type": "p", "text": "Care fee planning works best as part of a wider estate plan, put in place well before care is on the horizon and alongside decisions about your will, your lasting powers of attorney and any inheritance tax exposure. The rules are detailed, they interact with tax, and a step that looks sensible on its own can backfire if it is read as deliberate deprivation or triggers a tax charge elsewhere. No arrangement can be guaranteed to shield assets from future care costs, and you should always take advice from a qualified professional on your own circumstances before acting."},
-        {"type": "p", "text": "We are a matching service and do not draft wills or trusts ourselves. We connect London families with vetted will-writing and estate-planning specialists who set up protective property trusts and care-aware wills correctly, and who can tell you honestly when a particular strategy will not work. Getting that advice early, while you still have full mental capacity and time to plan, is the surest way to protect what you reasonably can for the people you care about."},
+        {"type": "p", "text": "We draft wills and trusts for families. Our will-writing and estate-planning specialists set up protective property trusts and care-aware wills correctly, and who can tell you honestly when a particular strategy will not work. Getting that advice early, while you still have full mental capacity and time to plan, is the surest way to protect what you reasonably can for the people you care about."},
 
-        {"type": "cta", "text": "Get matched with a vetted London estate-planning specialist"},
+        {"type": "cta", "text": "Speak to a London estate-planning specialist"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "At what point do you have to pay for your own care home fees?"},
@@ -7919,9 +7919,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Setting it up correctly in London"},
         {"type": "p", "text": "Protecting an unnamed partner usually means more than a single document. It can involve a will, a review of how the property is owned, a declaration of trust, pension and death-in-service nominations, and lasting powers of attorney, all working together. Getting one element wrong, such as leaving a joint tenancy in place when a tenancy in common was needed, can undo the rest, which is why this is work for a qualified professional rather than a homemade will kit."},
-        {"type": "p", "text": "We are a matching service and do not draft wills or trusts ourselves. We connect couples in London with vetted will-writing and estate-planning specialists who handle cohabitation cases, set up life interest trusts and declarations of trust correctly, and advise honestly on the tax position. No outcome can be guaranteed, and you should always take advice from a qualified professional on your own situation, but acting now, while both partners are able to plan, is the surest way to protect the person you live with."},
+        {"type": "p", "text": "We draft wills and trusts for couples in London. Our will-writing and estate-planning specialists handle cohabitation cases, set up life interest trusts and declarations of trust correctly, and advise honestly on the tax position. No outcome can be guaranteed, and you should always take advice from a qualified professional on your own situation, but acting now, while both partners are able to plan, is the surest way to protect the person you live with."},
 
-        {"type": "cta", "text": "Get matched with a vetted London estate-planning specialist"},
+        {"type": "cta", "text": "Speak to a London estate-planning specialist"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does my partner automatically inherit our home if we live together?"},
@@ -7977,10 +7977,10 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "How to deal with both groups in your estate plan"},
         {"type": "p", "text": "For the assets that do pass, the planning steps are concrete. Make an inventory of everything you hold, where it is held and roughly what it is worth, and keep it with your other estate papers. Record access arrangements separately and securely, never in the will itself, because a will becomes a public document once probate is granted. For cryptoassets in particular, think through how a recovery phrase or hardware wallet reaches your executor safely, since without it the asset may be lost outright. Your will can then leave specific digital assets to specific people, or let them fall into the residue of the estate."},
-        {"type": "p", "text": "For the licensed group, planning means managing expectations and using the tools that exist: legacy contact settings, memorialisation options and provider bereavement processes. It also means telling your family what will not survive you, so nobody builds plans around a film library or a points balance that lapses. We are a matching service and do not draft wills ourselves; we connect you with vetted London specialists who treat digital assets as a routine part of will writing. Cryptoassets, domains and online business interests can raise valuation and inheritance tax questions, so take advice from a qualified professional rather than guessing where your holdings fall."},
+        {"type": "p", "text": "For the licensed group, planning means managing expectations and using the tools that exist: legacy contact settings, memorialisation options and provider bereavement processes. It also means telling your family what will not survive you, so nobody builds plans around a film library or a points balance that lapses. We draft wills for London clients. Our specialists treat digital assets as a routine part of will writing. Cryptoassets, domains and online business interests can raise valuation and inheritance tax questions, so take advice from a qualified professional rather than guessing where your holdings fall."},
         {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for estate practitioners and has published guidance for advisers on dealing with digital assets on death."},
 
-        {"type": "cta", "text": "Plan your digital estate with a vetted London specialist"},
+        {"type": "cta", "text": "Plan your digital estate with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Is cryptocurrency part of my estate when I die?"},
@@ -8028,10 +8028,10 @@ export const blogArticles: BlogArticle[] = [
         {"type": "p", "text": "Inheritance tax is broadly neutral. Where the survivor is a spouse or civil partner, their life interest is an immediate post-death interest, so the spouse exemption applies on the first death and the trust share is counted alongside the survivor's estate on the second. Because the home ultimately passes to direct descendants, the residence nil-rate band can still be available in the usual way. The trust is an asset protection tool, not a tax scheme, and anyone promised otherwise should ask harder questions."},
 
         {"type": "h2", "text": "Setting one up properly"},
-        {"type": "p", "text": "A property protection trust is drafted as part of a pair of wills, almost always alongside the severance of the joint tenancy and a check of the Land Registry title. The wills name trustees, define the survivor's rights of occupation and the power to move home, and name the final beneficiaries. Costs in London typically sit above a standard pair of mirror wills because of the trust drafting and the registration work, but well below the cost of resolving a sideways disinheritance dispute after the event. We are a matching service and do not draft wills or trusts ourselves; we connect you with vetted London specialists who prepare these arrangements routinely. Because the trust interacts with care fee rules, inheritance tax and property law, this is firmly a job for a qualified professional rather than an off-the-shelf template."},
+        {"type": "p", "text": "A property protection trust is drafted as part of a pair of wills, almost always alongside the severance of the joint tenancy and a check of the Land Registry title. The wills name trustees, define the survivor's rights of occupation and the power to move home, and name the final beneficiaries. Costs in London typically sit above a standard pair of mirror wills because of the trust drafting and the registration work, but well below the cost of resolving a sideways disinheritance dispute after the event. We draft wills and trusts for London clients. Our specialists prepare these arrangements routinely. Because the trust interacts with care fee rules, inheritance tax and property law, this is firmly a job for a qualified professional rather than an off-the-shelf template."},
         {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for trust and estate practitioners; membership is a useful marker when choosing an adviser to draft will trusts."},
 
-        {"type": "cta", "text": "Speak to a vetted London specialist about protecting your share of the home"},
+        {"type": "cta", "text": "Speak to a London will writer about protecting your share of the home"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does a property protection trust mean my partner could be forced out of the home?"},
@@ -8085,10 +8085,10 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "How the will fits around the business"},
         {"type": "p", "text": "Once the company documents and any cross-option agreement are in order, the will does the surrounding work. It should name executors who understand the business and can act quickly, gift the business interest or its proceeds to the people you intend, and make sure nothing in the will contradicts the shareholder agreement, partnership deed or the options backed by insurance. A letter of wishes can guide the executors on running or selling the business in the gap before the estate is settled. Aligning these documents is what turns a paper plan into a handover that actually works."},
-        {"type": "p", "text": "We are a matching service and do not draft wills, shareholder agreements or trusts ourselves. We connect London business owners with vetted specialists who treat business succession as a routine part of will writing, so the will, the company documents and the tax position are reviewed as one rather than in isolation. For an owner whose wealth is bound up in a company, that joined-up approach is the difference between a clean transfer and a costly dispute, and it is firmly a job for a qualified professional."},
+        {"type": "p", "text": "We draft wills and trusts for London business owners, and we treat business succession as a routine part of will writing, so the will, the company documents and the tax position are reviewed as one rather than in isolation. For an owner whose wealth is bound up in a company, that joined-up approach is the difference between a clean transfer and a costly dispute, and it is firmly a job for a qualified professional."},
         {"type": "external-link", "href": "https://www.step.org/", "linkText": "STEP (Society of Trust and Estate Practitioners)", "text": "STEP is the professional body for advisers who specialise in inheritance and estate planning, including business succession and the drafting of cross-option agreements."},
 
-        {"type": "cta", "text": "Align your will and shareholder agreement with a vetted London specialist"},
+        {"type": "cta", "text": "Align your will and shareholder agreement with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does my will override my shareholder agreement?"},
@@ -8098,7 +8098,7 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h3", "text": "Can a buy and sell agreement affect Business Relief?"},
         {"type": "p", "text": "Yes. Where an agreement obliges the estate to sell and the survivors to buy a business interest on death, HMRC can treat it as a binding contract for sale at the date of death. The interest is then valued as a right to cash proceeds rather than as qualifying business property, which can deny Business Relief on those shares. Structuring the arrangement as a cross-option, where neither side is obliged to act unless the option is exercised, generally preserves the relief. Take professional advice before relying on this."},
         {"type": "h3", "text": "Should my business partner and I use the same will writer?"},
-        {"type": "p", "text": "You do not have to, and there can be good reasons to take independent advice, but the shareholder or partnership agreement and the cross-option arrangement do need to be drafted consistently across all the owners. In practice many co-owners use a single specialist firm to align the business documents, then each owner's personal will can be prepared with their own interests in mind. We can match each owner with a vetted London specialist while keeping the business documents coherent."},
+        {"type": "p", "text": "You do not have to, and there can be good reasons to take independent advice, but the shareholder or partnership agreement and the cross-option arrangement do need to be drafted consistently across all the owners. In practice many co-owners use a single specialist firm to align the business documents, then each owner's personal will can be prepared with their own interests in mind. We can match each owner with a London will writer while keeping the business documents coherent."},
         {"type": "h3", "text": "What happens if my will and my shareholder agreement disagree?"},
         {"type": "p", "text": "For the shares, the agreement and the articles usually win, so the will's gift of those shares may fail or convert into a right to their value. That can frustrate your intentions and, at worst, trigger a dispute between your family and the surviving owners. The fix is not to choose one document over the other but to make them consistent, which means reviewing the will, the articles, the shareholder agreement and any partnership deed at the same time. A specialist will spot the conflict before it becomes a problem."}
     ]
@@ -8125,7 +8125,7 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Step one: make a valid will"},
         {"type": "p", "text": "The single step that avoids intestacy is making a will that is valid, current and complete. A will is only legally valid in England and Wales if it meets the requirements of section 9 of the Wills Act 1837: it must be in writing, signed by you, and your signature made or acknowledged in front of two witnesses who are present at the same time and who then sign it themselves. The witnesses must be over 18 and must not be beneficiaries or married to beneficiaries, because a witness who stands to inherit loses their gift."},
-        {"type": "p", "text": "A will does far more than name who gets what. It lets you appoint executors to administer the estate, name guardians for children under 18, make specific gifts, and direct the residue, the part left after debts and specific gifts, to the people or causes you choose. It is also the only way to provide for anyone the statutory order ignores. Because this is a legal document where small errors cause large problems, most London families use a professional rather than a shop-bought kit. We run a [free will-writing matching service](/services/single-will/) that connects you with vetted specialists, though you should always satisfy yourself that any will reflects your wishes before signing."},
+        {"type": "p", "text": "A will does far more than name who gets what. It lets you appoint executors to administer the estate, name guardians for children under 18, make specific gifts, and direct the residue, the part left after debts and specific gifts, to the people or causes you choose. It is also the only way to provide for anyone the statutory order ignores. Because this is a legal document where small errors cause large problems, most London families use a professional rather than a shop-bought kit. We draft [single wills](/services/single-will/) for London families, though you should always satisfy yourself that any will reflects your wishes before signing."},
 
         {"type": "h2", "text": "Step two: stop marriage or divorce quietly revoking your will"},
         {"type": "p", "text": "The most common way people fall back into intestacy is not failing to make a will but having one silently cancelled. Under section 18 of the Wills Act 1837, marriage or entering a civil partnership automatically revokes any earlier will. Someone who made a careful will, then later married, may have no valid will at all without realising it, and would die intestate if they did nothing further."},
@@ -8146,9 +8146,9 @@ export const blogArticles: BlogArticle[] = [
         {"type": "p", "text": "Review the will after the events that most often change who should inherit: marriage or divorce, the birth of a child or grandchild, the death of an executor or beneficiary, buying property, selling a business, or a significant change in the value of your estate. A periodic review every few years catches the rest. Estate planning rules and tax thresholds change over time, so you should take advice from a qualified professional on your own circumstances rather than assuming an old will still does what you intended."},
         {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will-writing professionals in England and Wales."},
 
-        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London individuals and families with vetted will-writing specialists who prepare valid wills, draft the residue and substitution clauses that prevent partial intestacy, and flag when a marriage or divorce means the will needs redoing. Doing this while you have capacity and time to plan is the surest way to keep your estate out of the statutory rules."},
+        {"type": "p", "text": "We draft wills for individuals and families. Our will-writing specialists prepare valid wills, draft the residue and substitution clauses that prevent partial intestacy, and flag when a marriage or divorce means the will needs redoing. Doing this while you have capacity and time to plan is the surest way to keep your estate out of the statutory rules."},
 
-        {"type": "cta", "text": "Get matched with a vetted London will-writing specialist"},
+        {"type": "cta", "text": "Speak to a London will-writing specialist"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "What is the single best way to avoid dying intestate?"},
@@ -8216,9 +8216,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Keeping probate costs down, and when to get help"},
         {"type": "p", "text": "Several things keep the total under control. Check first whether a grant is even needed, because assets held jointly often pass automatically by survivorship and some institutions release modest balances without a grant. Gather date-of-death valuations and a complete list of assets and debts before you approach anyone, so that a fixed quote can be given against a clear picture. Compare quotes on the same scope, and be wary of open-ended hourly arrangements on an estate that could become complicated. Where a professional is worth instructing, agreeing the basis of charging in writing at the outset prevents the bill that surprises so many executors."},
-        {"type": "p", "text": "We are a matching service and do not carry out probate ourselves. We connect London executors and families with vetted [probate support specialists](/services/probate-support/) who quote transparently and handle the valuations, any inheritance tax account and the grant application as routine work. Costs and tax rules in this area are detailed and change over time, so an executor facing a significant estate should take advice from a qualified professional rather than relying on a rule of thumb. Whether you handle the estate yourself or instruct help, understanding the two cost layers is what lets you make that decision with your eyes open."},
+        {"type": "p", "text": "We carry out probate for executors and families. Our [probate support specialists](/services/probate-support/) quote transparently and handle the valuations, any inheritance tax account and the grant application as routine work. Costs and tax rules in this area are detailed and change over time, so an executor facing a significant estate should take advice from a qualified professional rather than relying on a rule of thumb. Whether you handle the estate yourself or instruct help, understanding the two cost layers is what lets you make that decision with your eyes open."},
 
-        {"type": "cta", "text": "Get matched with a vetted London probate specialist"},
+        {"type": "cta", "text": "Speak to a London probate specialist"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "How much is the probate application fee in England?"},
@@ -8277,7 +8277,7 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "The second death and why a will matters"},
         {"type": "p", "text": "The first split is not the only risk. When the surviving spouse later dies, their estate, now swelled by what they inherited, passes under their own will or, if they never made one, under intestacy again, this time potentially to their own side of the family rather than to the couple's shared intentions. For blended families, where one partner has children from an earlier relationship, intestacy on the first death can divert part of the estate away from those children, and intestacy on the second death can divert the rest. A will is the only way to set out who should benefit, in what shares, and to use tools such as a life interest trust so a surviving spouse is provided for while the children's inheritance is protected."},
-        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London couples and families with vetted will-writing specialists who can replace the rigid intestacy formula with a plan that reflects what you actually want, including provision for a spouse and children together. The rules are detailed and interact with how property is owned and with inheritance tax, so anyone unsure of their position should take advice from a qualified professional rather than relying on the statutory default."},
+        {"type": "p", "text": "We draft wills for couples and families. Our will-writing specialists can replace the rigid intestacy formula with a plan that reflects what you actually want, including provision for a spouse and children together. The rules are detailed and interact with how property is owned and with inheritance tax, so anyone unsure of their position should take advice from a qualified professional rather than relying on the statutory default."},
         {"type": "external-link", "href": "https://www.willwriters.com/", "linkText": "Society of Will Writers", "text": "The Society of Will Writers is a recognised self-regulatory body for will-writing professionals in England and Wales."},
 
         {"type": "cta", "text": "Replace the intestacy formula with a will that reflects your wishes"},
@@ -8338,9 +8338,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Storage and updating your will"},
         {"type": "p", "text": "Storage and updating go together. When you make a new will it should revoke the old one, and the superseded version should be destroyed so that only the current will can be found. If you store wills with a firm or the court, make sure the old one is withdrawn and the new one lodged, rather than leaving two conflicting documents in different places. Inheritance tax planning is a common reason to revisit a will, since the nil-rate band sits at [£325,000 with 40% charged above it](https://www.gov.uk/inheritance-tax), and the formalities for making and revoking a will are set out by [GOV.UK](https://www.gov.uk/make-will)."},
-        {"type": "p", "text": "We are a matching service and do not draft or store wills ourselves. We connect London families with vetted will-writing professionals who can prepare your will, explain their storage and retrieval terms, and make sure your executors know where to find the original. If you are unsure of your options, take advice from a qualified professional rather than risking a lost or invalid will."},
+        {"type": "p", "text": "We prepare wills for London families and will explain the storage and retrieval options, and make sure your executors know where to find the original. If you are unsure of your options, take advice from a qualified professional rather than risking a lost or invalid will."},
 
-        {"type": "cta", "text": "Get matched with a London will writer who explains storage and retrieval"},
+        {"type": "cta", "text": "Ask us about will storage and retrieval"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does the Probate Registry need the original will or a copy?"},
@@ -8393,7 +8393,7 @@ export const blogArticles: BlogArticle[] = [
         {"type": "h2", "text": "How the two fit into wider planning"},
         {"type": "p", "text": "An LPA sits alongside, not instead of, a will. A will decides what happens to your estate after death; an LPA covers the years before, when you may be alive but unable to manage your own affairs. Many London families deal with both in one conversation, which is why the case for [pairing an LPA with a will](/blog/lasting-power-of-attorney-and-will-writing-services-in-london/) comes up so often. It closes the gap on both sides of the final years rather than only one."},
         {"type": "p", "text": "Cost is a common reason people hesitate over an LPA, yet the sums involved are modest set against the deputyship bill that replaces them if they wait too long. Anyone weighing the outlay can model the likely fees for their own situation with our [LPA cost estimator](/tools/#lpa) before deciding, and treat the figures throughout this guide as a guide rather than a quote, since court and registration fees change over time."},
-        {"type": "p", "text": "We are a matching service and do not draft LPAs or act as attorneys or deputies ourselves. We connect London families with vetted specialists through our [lasting power of attorney service](/services/lasting-power-of-attorney/), who can prepare and register both types of LPA correctly and explain how they work with your will. Capacity, court procedure and best-interests decisions are technical areas, so anyone unsure of their position should take advice from a qualified professional rather than assuming a relative can simply take over."},
+        {"type": "p", "text": "We draft and register LPAs through our [lasting power of attorney service](/services/lasting-power-of-attorney/), who can prepare and register both types of LPA correctly and explain how they work with your will. Capacity, court procedure and best-interests decisions are technical areas, so anyone unsure of their position should take advice from a qualified professional rather than assuming a relative can simply take over."},
 
         {"type": "cta", "text": "Set up an LPA now and avoid a deputyship application later"},
 
@@ -8446,9 +8446,9 @@ export const blogArticles: BlogArticle[] = [
             "Factor the April 2027 change into any inheritance tax planning for estates leaving pensions to non-spouses.",
             "Tell your executors the pensions exist and where the details are kept."
         ]},
-        {"type": "p", "text": "We are a matching service and do not give regulated pension or tax advice ourselves. We connect London families with vetted specialists through our [estate planning service](/services/estate-planning/), who can look at your pensions, will and inheritance tax position together and coordinate with a financial adviser where regulated advice is needed. Pensions and tax rules are technical and changing, so treat this as general information and take advice on your own circumstances."},
+        {"type": "p", "text": "We do not give regulated pension or investment advice, and we will tell you when you need an IFA. What we do handle is the will and the estate structure around it, through our [estate planning service](/services/estate-planning/), who can look at your pensions, will and inheritance tax position together and coordinate with a financial adviser where regulated advice is needed. Pensions and tax rules are technical and changing, so treat this as general information and take advice on your own circumstances."},
 
-        {"type": "cta", "text": "Review your will and pensions together with a vetted London specialist"},
+        {"type": "cta", "text": "Review your will and pensions together with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Does my will control who inherits my pension?"},
@@ -8490,9 +8490,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Making it work in practice"},
         {"type": "p", "text": "Naming your partner as executor only helps if they can act on it. Tell them they hold the role, make sure they know where the signed will is kept, and give them a sense of what your estate contains. Recording [the storage location of the original will](/blog/where-to-store-your-will-in-london/) and your key accounts in a simple letter kept with your papers means your partner can step into the role quickly rather than piecing it together under stress."},
-        {"type": "p", "text": "We are a matching service and do not draft wills or act as executors ourselves. We connect London couples with vetted will writers through our [single will service](/services/single-will/), who can appoint your partner correctly, arrange proper independent witnesses so no gift is lost, and advise on a sensible back-up executor. Because an unmarried partner has no automatic rights, taking advice and putting a valid will in place is the step that makes everything else possible."},
+        {"type": "p", "text": "We draft wills through our [single will service](/services/single-will/), though we do not act as executors. We can appoint your partner correctly, arrange proper independent witnesses so no gift is lost, and advise on a sensible back-up executor. Because an unmarried partner has no automatic rights, taking advice and putting a valid will in place is the step that makes everything else possible."},
 
-        {"type": "cta", "text": "Appoint your partner properly with a vetted London will writer"},
+        {"type": "cta", "text": "Appoint your partner properly with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Can my unmarried partner be the executor of my will?"},
@@ -8534,9 +8534,9 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Getting the right structure in place"},
         {"type": "p", "text": "For couples whose wishes are straightforward and who trust each other completely, ordinary mirror wills are usually the sensible, cost-effective choice, and the freedom to change them later is a benefit rather than a flaw. For blended families or anyone who needs certainty that specific people will inherit, a trust in the will, or in rare cases a properly advised mutual will, is worth exploring. The important thing is to choose deliberately rather than assuming a mirror will does something it does not. Impartial background on the different types of will is available from [Citizens Advice](https://www.citizensadvice.org.uk/family/death-and-wills/wills/)."},
-        {"type": "p", "text": "We are a matching service and do not draft wills ourselves. We connect London couples with vetted will writers through our [mirror wills service](/services/mirror-wills/), who can explain the difference between mirror and mutual wills in plain terms and put in place a trust where children from a previous relationship need protecting. Because binding arrangements are technical and hard to unpick later, this is an area to take proper advice on before signing anything."},
+        {"type": "p", "text": "We draft wills for couples. Our will writers through our [mirror wills service](/services/mirror-wills/), can explain the difference between mirror and mutual wills in plain terms and put in place a trust where children from a previous relationship need protecting. Because binding arrangements are technical and hard to unpick later, this is an area to take proper advice on before signing anything."},
 
-        {"type": "cta", "text": "Get mirror wills structured the right way with a vetted London specialist"},
+        {"type": "cta", "text": "Get mirror wills structured the right way with a London will writer"},
 
         {"type": "h2", "text": "Frequently Asked Questions"},
         {"type": "h3", "text": "Can the surviving partner change a mirror will after the first death?"},
@@ -8578,7 +8578,7 @@ export const blogArticles: BlogArticle[] = [
 
         {"type": "h2", "text": "Getting the right advice"},
         {"type": "p", "text": "This is not planning to attempt from a template. The interaction between means-tested benefits, the trust conditions and the tax reliefs is detailed, and a small error in the drafting can cost the family both the benefits and the tax advantage. The upside of getting it right is substantial: lifelong security for a vulnerable person, protection of their support, and a tax-efficient structure that keeps working long after you are gone."},
-        {"type": "p", "text": "We are a matching service and do not draft trusts or give regulated advice ourselves. We connect London families with vetted specialists through our [trust planning service](/services/trust-planning/), who can assess whether a vulnerable beneficiary trust fits your situation, draft it correctly within your will, and coordinate it with your benefits and tax position. Given the stakes for the person you are providing for, this is firmly an area to take qualified professional advice on."},
+        {"type": "p", "text": "We draft trusts through our [trust planning service](/services/trust-planning/), though we do not give regulated investment advice. We are specialists who can assess whether a vulnerable beneficiary trust fits your situation, draft it correctly within your will, and coordinate it with your benefits and tax position. Given the stakes for the person you are providing for, this is firmly an area to take qualified professional advice on."},
 
         {"type": "cta", "text": "Protect a vulnerable loved one with a properly drafted trust"},
 

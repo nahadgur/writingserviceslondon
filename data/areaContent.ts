@@ -278,7 +278,7 @@ export const areaContent: Record<string, AreaContent> = {
       'The newer population in riverside developments and the expanding commuter zones around the DLR are young families who need first wills — triggered by property purchases, new children, and the sudden realisation that without a will, their partner has no guaranteed right to stay in the home they share.',
       'Maritime heritage adds an interesting dimension: some long-term Greenwich families have pension arrangements linked to the maritime industry, and the local NHS presence at Queen Elizabeth Hospital means a significant number of healthcare professional estates to serve. Both groups have specific pension and employment estate considerations.',
     ],
-    whySpecialistMatters: 'Greenwich estates range from first-will needs for young riverside apartment buyers to substantial IHT planning for long-term Blackheath homeowners. The matching matters — a specialist suited to one is not necessarily suited to the other.',
+    whySpecialistMatters: 'Greenwich estates range from first-will needs for young riverside apartment buyers to substantial IHT planning for long-term Blackheath homeowners. The distinction matters, because a will suited to one is not necessarily suited to the other.',
     clientProfile: {
       heading: 'Will Writing in Greenwich',
       points: [
@@ -336,7 +336,7 @@ export const areaContent: Record<string, AreaContent> = {
     heroParagraph: 'Camden\'s estate planning market spans the full range — from complex IHT planning for Primrose Hill residents to royalty and IP succession for the music industry community, to basic wills for elderly council tenants who want to ensure their possessions go to the right people.',
     introHeading: 'From Primrose Hill Portfolios to Music Industry IP in NW1',
     introParagraphs: [
-      'Camden\'s extraordinary diversity creates a genuine matching challenge. A Primrose Hill resident with a £3 million home and a significant investment portfolio needs comprehensive IHT planning and trust structuring. A music producer in Kentish Town needs a will that handles royalty income, master recording rights, and publishing rights alongside personal assets. An elderly council tenant in Gospel Oak needs a simple, affordable will that ensures their possessions and savings go to their children rather than the state.',
+      'Camden\'s extraordinary diversity creates genuinely different drafting requirements. A Primrose Hill resident with a £3 million home and a significant investment portfolio needs comprehensive IHT planning and trust structuring. A music producer in Kentish Town needs a will that handles royalty income, master recording rights, and publishing rights alongside personal assets. An elderly council tenant in Gospel Oak needs a simple, affordable will that ensures their possessions and savings go to their children rather than the state.',
       'The music and entertainment industry presence in Camden creates estate planning needs that genuinely require specialist knowledge. Royalties continue after death — sometimes for seventy years. Master recordings, publishing rights, and performance rights all need specific succession provisions. Generalist will writers typically miss this entirely.',
       'Primrose Hill\'s celebrity and affluent professional concentration creates a different but equally specialist need: clients who may want confidential estate planning, complex trust structures, and provisions for blended families that do not become the subject of public knowledge.',
     ],
@@ -359,7 +359,7 @@ export const areaContent: Record<string, AreaContent> = {
       'Business acquisition or sale changing the estate picture significantly',
       'First property purchase in Kentish Town or Chalk Farm',
     ],
-    localContext: 'Camden, Primrose Hill, Kentish Town, Chalk Farm, Gospel Oak, Belsize Village, and the NW1 corridor cover an extraordinary demographic range — from one of London\'s wealthiest postcodes to social housing estates — requiring specialists matched to the specific situation rather than a one-size approach.',
+    localContext: 'Camden, Primrose Hill, Kentish Town, Chalk Farm, Gospel Oak, Belsize Village, and the NW1 corridor cover an extraordinary demographic range — from one of London\'s wealthiest postcodes to social housing estates — requiring provisions drafted for the specific situation rather than a one-size approach.',
   },
 
   shoreditch: {

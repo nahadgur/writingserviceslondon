@@ -140,7 +140,7 @@ export function ToolsPageClient() {
               Ready to speak to a specialist?
             </h2>
             <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.5)', marginBottom: 20, maxWidth: 400, margin: '0 auto 20px' }}>
-              Free matching with vetted will writers and estate planning professionals across London. Most clients are introduced within 24 hours.
+              Wills, lasting powers of attorney, trusts and probate support across London. Most wills are drafted within 3 to 7 working days.
             </p>
             <button onClick={() => setModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
               Get your free match

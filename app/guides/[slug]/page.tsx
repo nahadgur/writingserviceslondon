@@ -166,10 +166,10 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
                   </div>
                 </div>
 
-                {/* Get matched */}
+                {/* Book a consultation */}
                 <div className="sidebar-box">
-                  <h3 style={serif(18, { marginBottom: 6 })}>Get matched free</h3>
-                  <p className="body-sm mb-4">Vetted will writers and estate planning specialists across London. Free matching, 24 hours.</p>
+                  <h3 style={serif(18, { marginBottom: 6 })}>Book a consultation</h3>
+                  <p className="body-sm mb-4">Wills, LPAs and probate support across London. Fixed fees from £150.</p>
                   <Link href={`/services/${guide.relatedService}/`} className="btn-primary w-full justify-center" style={{ display: 'flex', textDecoration: 'none' }}>
                     Find a specialist
                   </Link>

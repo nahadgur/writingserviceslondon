@@ -87,7 +87,7 @@ export function GuideBody({ guide }: Props) {
                   Speak to a specialist about your estate
                 </p>
                 <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>
-                  Free matching with vetted will writers and estate planning professionals across London.
+                  Wills, LPAs and probate support and estate planning professionals across London.
                 </p>
                 <button onClick={() => setModal(true)} className="btn-primary">Find my specialist</button>
               </div>
@@ -101,13 +101,13 @@ export function GuideBody({ guide }: Props) {
         {/* Bottom CTA */}
         <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '36px 32px', textAlign: 'center', marginTop: 40 }}>
           <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(22px,3vw,32px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', marginBottom: 10 }}>
-            Get matched with a London specialist
+            Book a will writing consultation
           </h2>
           <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.5)', marginBottom: 20, maxWidth: 420, margin: '0 auto 20px' }}>
-            Free matching with vetted professionals covering your area. Most clients receive an introduction within 24 hours.
+            Wills, LPAs and probate support covering your area. Most wills are drafted within 3 to 7 working days.
           </p>
           <button onClick={() => setModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
-            Get your free match
+            Book a consultation
           </button>
         </div>
       </article>

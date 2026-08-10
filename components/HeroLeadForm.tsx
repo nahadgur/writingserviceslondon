@@ -85,7 +85,7 @@ export function HeroLeadForm({ city, service }: Props) {
       ) : (
         <>
           <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 19, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 3 }}>
-            {city ? `Get matched in ${city}` : 'Get matched free'}
+            {city ? `Book a consultation in ${city}` : 'Book a consultation'}
           </p>
           <p className="body-sm mb-4">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
 

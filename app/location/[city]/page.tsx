@@ -37,7 +37,7 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   if (!hub) return { title: 'Area not found' };
 
   const title = `Will Writers in ${hub.name} ${hub.postcode} | Fixed Fees, Home Visits`;
-  const description = `Will writing and estate planning covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most introductions within 24 hours.`;
+  const description = `Will writing and estate planning covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most wills drafted within 3 to 7 working days.`;
   const url = `${siteConfig.url}/location/${hub.slug}/`;
 
   return {
@@ -70,7 +70,7 @@ const serif = (size: number | string, extra?: React.CSSProperties): React.CSSPro
 function buildFaqs(hubName: string, subAreaNames: string[]) {
   return [
     {
-      question: `How quickly can I be matched with a will writer covering ${hubName}?`,
+      question: `How quickly can a will be written in ${hubName}?`,
       answer: `Most wills are drafted within 3 to 7 working days of the consultation. Where there is real urgency we prioritise the appointment and can often complete within a day. We cover ${hubName} and all surrounding areas including ${subAreaNames.slice(0, 4).join(', ')}.`,
     },
     {
@@ -462,7 +462,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               <div className="lg:sticky" style={{ top: 28 }}>
 
                 {/* Desktop form */}
-                <div className="hidden lg:block mb-4">
+                <div id="book-consultation" className="hidden lg:block mb-4 scroll-mt-24">
                   <HeroLeadForm city={hub.name} />
                 </div>
 
@@ -500,7 +500,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   <p style={serif(20, { color: '#fff', marginBottom: 4 })}>From £150</p>
                   <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Fixed-fee quotes, no hidden costs.</p>
                   <a
-                    href="#get-matched"
+                    href="#book-consultation"
                     style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4 }}
                   >
                     Get free quotes
@@ -519,10 +519,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
               Covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and all surrounding areas.
             </p>
             <a
-              href="#get-matched"
+              href="#book-consultation"
               style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4 }}
             >
-              Get your free match
+              Book a consultation
             </a>
           </div>
         </div>

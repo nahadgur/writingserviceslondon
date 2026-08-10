@@ -20,10 +20,10 @@ const trustItems = [
 ];
 
 const urgencyCards = [
-  { head: 'You bought a property together',  body: 'Unmarried partners have zero rights under the Intestacy Rules. A will protects your partner\'s right to your shared home.', cta: 'Mirror wills for couples →', href: '/services/mirror-wills/' },
-  { head: 'You have children',               body: 'Without a will, a court decides who raises your children if both parents die. A will names their guardian.', cta: 'Single wills with guardianship →', href: '/services/single-will/' },
-  { head: 'Your estate has grown',           body: 'London property values mean most families exceed the £325k IHT threshold. Planning now can reduce or eliminate the bill.', cta: 'Estate planning review →', href: '/services/estate-planning/' },
-  { head: 'A parent\'s health is declining', body: 'An LPA must be registered while capacity exists. Once it\'s lost, the application cannot be made — ever.', cta: 'Lasting power of attorney →', href: '/services/lasting-power-of-attorney/' },
+  { head: 'Buying a Home Together',        body: 'Unmarried partners have zero rights under the Intestacy Rules. A will protects your partner\'s right to your shared home.', cta: 'Mirror wills for couples →', href: '/services/mirror-wills/' },
+  { head: 'Children Under 18',             body: 'Without a will, a court decides who raises your children if both parents die. A will names their guardian.', cta: 'Single wills with guardianship →', href: '/services/single-will/' },
+  { head: 'A Growing Estate',              body: 'London property values mean most families exceed the £325k IHT threshold. Planning now can reduce or eliminate the bill.', cta: 'Estate planning review →', href: '/services/estate-planning/' },
+  { head: 'A Parent in Declining Health',  body: 'An LPA must be registered while capacity exists. Once it is lost, the application cannot be made at all.', cta: 'Lasting power of attorney →', href: '/services/lasting-power-of-attorney/' },
 ];
 
 const whyUs = [
@@ -155,10 +155,10 @@ export function HomePageClient() {
               <div>
                 <p className="eyebrow mb-3">Why this matters</p>
                 <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 16 })}>
-                  Most people leave it<br />too long
+                  When to Make or Update Your Will
                 </h2>
                 <p className="body-lg mb-5">
-                  The triggers are predictable — buying a property, having a child,
+                  The triggers are predictable: buying a property, having a child,
                   a parent's health declining. But most families act only after
                   something has already gone wrong.
                 </p>
@@ -190,7 +190,7 @@ export function HomePageClient() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
                 <p className="eyebrow mb-3">Our services</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Every aspect of will writing<br className="hidden sm:block" /> and estate planning</h2>
+                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Will Writing and Estate Planning Services</h2>
               </div>
               <Link href="/services/" className="btn-secondary self-start sm:self-auto">All services →</Link>
             </div>
@@ -266,7 +266,7 @@ export function HomePageClient() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
                 <p className="eyebrow mb-3">London areas we cover</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Every part of London,<br className="hidden sm:block" /> every type of estate</h2>
+                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Will Writing Across Every London Area</h2>
               </div>
               <Link href="/location/" className="btn-secondary self-start sm:self-auto">All 15 areas →</Link>
             </div>
@@ -295,7 +295,7 @@ export function HomePageClient() {
         <section className="section-padding" style={{ background: 'var(--parchment)' }}>
           <div className="container-width max-w-3xl">
             <p className="eyebrow mb-3">Common questions</p>
-            <FAQ faqs={FAQS_HOME} title="Will writing in London — what you need to know" />
+            <FAQ faqs={FAQS_HOME} title="Will Writing in London: Common Questions" />
           </div>
         </section>
 
@@ -306,7 +306,7 @@ export function HomePageClient() {
               Wills, LPAs and probate support &nbsp;·&nbsp; London
             </p>
             <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(30px,4vw,50px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', marginBottom: 16, lineHeight: 1.15 }}>
-              Don't leave the people you love<br className="hidden sm:block" /> without protection
+              Book Your Will Writing Consultation
             </h2>
             <p className="mx-auto mb-8" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.5)', maxWidth: 480, lineHeight: 1.78 }}>
               Book Your Will Writing Consultation

@@ -85,7 +85,7 @@ export const guides: Guide[] = [
         body: [
           'DIY will kits are legal in England and Wales. The question is not legality but adequacy. A will that is technically valid under s.9 of the Wills Act 1837 can still fail to reflect your wishes -- through ambiguous language, missing provisions, or clauses that conflict with each other. Solicitors and specialist will writers spend years learning to spot these issues before they reach probate.',
           'For straightforward estates -- single person, no property, clear beneficiaries -- a well-completed DIY will may be adequate. For most London residents, the combination of property values, relationship complexity, and inheritance tax exposure makes professional drafting the better choice. The cost difference between a professionally drafted will (£150-£350) and a DIY kit (£20-£50) is negligible against the estate value at stake.',
-          'Our [free matching service](/services/single-will/) connects you with vetted will writers across London. Most clients receive a fixed-fee quote within 24 hours.',
+          'Our [single will service](/services/single-will/) covers this. We are will writers covering the whole of London. Most clients receive a fixed-fee quote within 24 hours.',
         ],
       },
       {
@@ -120,7 +120,7 @@ export const guides: Guide[] = [
       { question: 'Does a will need to be witnessed by a solicitor?', answer: 'No. Any two independent adults over 18 can witness a will, provided neither is a beneficiary or married to a beneficiary. A solicitor is not required as a witness, though using one to draft the will ensures the document is correctly prepared.' },
       { question: 'Can I write my own will by hand?', answer: 'Yes. A handwritten will is valid if it meets all the requirements of s.9 of the Wills Act 1837 -- signed by you and witnessed by two independent adults present at the same time. However, handwritten wills are more prone to ambiguity and drafting errors than professionally prepared documents.' },
       { question: 'What happens if one of my witnesses dies before I do?', answer: 'Nothing -- the will remains valid. The witness signed at the time of execution, and their subsequent death does not affect the validity of the document. Courts can accept other evidence that the will was properly executed if needed.' },
-      { question: 'How much does a professionally drafted will cost in London?', answer: 'A single will drafted by a professional will writer in London typically costs £150-£350. Mirror wills for couples typically cost £250-£550 for the pair. Wills involving trusts or complex provisions cost more. All specialists in our network provide fixed-fee quotes before work begins. See our [guide to will writing costs](/blog/will-writing-costs-in-london/) for a full breakdown.' },
+      { question: 'How much does a professionally drafted will cost in London?', answer: 'A single will drafted by a professional will writer in London typically costs £150-£350. Mirror wills for couples typically cost £250-£550 for the pair. Wills involving trusts or complex provisions cost more. We provide fixed-fee quotes before work begins. See our [guide to will writing costs](/blog/will-writing-costs-in-london/) for a full breakdown.' },
       { question: 'Is a will made in Scotland valid in England?', answer: 'Broadly yes, though there are differences in Scottish law that can cause complications. A will made in Scotland is generally recognised in England and Wales, but if you have moved from Scotland and your estate includes English property, having an English will drafted is advisable.' },
       { question: 'Can I leave my pension in my will?', answer: 'No. Pensions sit outside your estate and do not pass under your will. They pass according to your pension provider\'s nomination form. Keeping nomination forms current is essential -- an outdated nomination can send your pension to the wrong person regardless of what your will says.' },
     ],
@@ -188,7 +188,7 @@ export const guides: Guide[] = [
         body: [
           'Trusts can form part of an IHT planning strategy, though the rules are complex and the benefits depend heavily on the type of trust, the assets involved, and the timing. A protective property trust in a will ring-fences one partner\'s share of the family home, ensuring that share is not included in the survivor\'s estate for care cost or IHT assessment purposes.',
           'Discretionary trusts during lifetime allow assets to be moved outside the estate after seven years, subject to the ten-year anniversary charge and exit charges under the relevant property regime. Nil-rate band trusts, once common, are less used since the introduction of the transferable NRB, but may still have a role in some estates.',
-          'IHT planning through trusts requires specialist advice. The interaction between IHT, capital gains tax, and income tax within trusts is complex. Our [trust planning guide](/guides/trust-planning-guide/) covers the main structures in detail, and our [matching service](/services/trust-planning/) connects you with specialists.',
+          'IHT planning through trusts requires specialist advice. The interaction between IHT, capital gains tax, and income tax within trusts is complex. Our [trust planning guide](/guides/trust-planning-guide/) covers the main structures in detail, and our [trust planning service](/services/trust-planning/) covers thih specialists.',
         ],
         legalNote: 'The relevant property regime for discretionary trusts is set out in Part III Chapter III IHTA 1984 (ss.58-85). Ten-year anniversary charges apply under s.64. Exit charges apply under s.65. Business property relief (ss.103-114) and agricultural property relief (ss.115-124) can significantly reduce IHT on qualifying assets.',
       },
@@ -198,7 +198,7 @@ export const guides: Guide[] = [
         body: [
           'A family that bought a three-bedroom house in Islington, Dulwich, or Richmond in the 1990s for £200,000-£300,000 may now hold a property worth £1,000,000-£2,000,000. Combined with savings and pensions, these estates can generate IHT bills of £200,000-£400,000 or more -- on assets that are entirely illiquid until the property is sold.',
           'The executors must pay IHT before probate is granted, creating a timing problem for property-heavy estates. HMRC offers an instalment option for property -- IHT on real property can be paid in ten annual instalments, with interest charged on the outstanding balance. But this requires careful planning and is not automatic.',
-          'For London homeowners, the conversation about IHT planning is not optional. If you own property in London and have not reviewed your estate plan, the probability that your estate owes IHT is significant. An [estate planning review](/services/estate-planning/) with one of our matched specialists typically takes 90 minutes and produces a clear picture of your current position.',
+          'For London homeowners, the conversation about IHT planning is not optional. If you own property in London and have not reviewed your estate plan, the probability that your estate owes IHT is significant. An [estate planning review](/services/estate-planning/) with one of our will writers typically takes 90 minutes and produces a clear picture of your current position.',
         ],
       },
     ],
@@ -584,7 +584,7 @@ export const guides: Guide[] = [
         body: [
           'Once the grant of probate is issued, the executor has full authority to collect assets, pay debts, and distribute the estate. This includes collecting all bank accounts, claiming life insurance proceeds, selling or transferring property, and filing any outstanding tax returns on behalf of the deceased.',
           'Executors have personal liability for errors. An executor who distributes the estate before paying all debts -- including unknown creditors -- can be personally liable to those creditors. An executor who fails to account for tax correctly can be liable for penalties. Advertising for creditors in the London Gazette and a national newspaper provides protection under the Trustee Act 1925 s.27.',
-          'For complex estates, professional probate support removes this personal liability risk and speeds the administration. Our [probate support service](/services/probate-support/) connects executors with vetted probate professionals across London.',
+          'For complex estates, professional probate support removes this personal liability risk and speeds the administration. Our [probate support service](/services/probate-support/) covers executors across London.',
         ],
         legalNote: 'Executor liability to unknown creditors is governed by s.27 of the Trustee Act 1925, which provides protection to executors who advertise in the prescribed manner before distributing the estate. The limitation period for creditor claims against estates is six years for most claims under the Limitation Act 1980.',
       },
@@ -732,7 +732,7 @@ export const guides: Guide[] = [
         body: [
           'The priority actions for cohabiting couples are: make mirror wills naming each other as primary beneficiary; review how your property is held and take advice if you own as tenants in common; update pension nomination forms; write any life insurance in trust; and check whether either partner has assets in their sole name that need addressing.',
           'These steps can be completed in a matter of weeks. The cost of mirror wills is £250-£550. The cost of not having them, for a London couple with a jointly owned property, could be the entire value of the estate.',
-          'Our [mirror wills service](/services/mirror-wills/) matches you with a vetted specialist covering your area within 24 hours.',
+          'Our [mirror wills service](/services/mirror-wills/) covers your area, with home visits within 24 hours.',
         ],
         toolSlot: 'intestacy-calculator',
       },
@@ -812,7 +812,7 @@ export const guides: Guide[] = [
     ],
     faqs: [
       { question: 'Is it too early to think about estate planning at 50?', answer: 'No. At 50, most people have accumulated significant assets and are at the peak of their earning and wealth-building years. LPAs, gifting strategies, and trust structures all work better the earlier they are established. The seven-year clock for IHT-efficient gifting means that gifts made at 50 fall outside the estate by 57 -- leaving plenty of scope for further planning.' },
-      { question: 'Should I use a financial advisor or a solicitor for estate planning?', answer: 'Both have a role. A solicitor drafts wills, LPAs, trust deeds, and deed of variations. A financial advisor reviews investment and pension structures for tax efficiency. For comprehensive estate planning, you typically need both working together. Our matched specialists are often able to work alongside your existing advisors.' },
+      { question: 'Should I use a financial advisor or a solicitor for estate planning?', answer: 'Both have a role. A solicitor drafts wills, LPAs, trust deeds, and deed of variations. A financial advisor reviews investment and pension structures for tax efficiency. For comprehensive estate planning, you typically need both working together. Our will writers are often able to work alongside your existing advisors.' },
       { question: 'What is a deed of variation and can it reduce IHT?', answer: 'A deed of variation allows beneficiaries who have already inherited to redirect their inheritance to someone else within two years of the death, as if the redirection had been made by the deceased\'s will. Under s.142 IHTA 1984, the variation is treated as if it was made by the deceased, which means it can reduce the IHT charge on the original estate. It requires the agreement of all affected beneficiaries and careful legal drafting.' },
       { question: 'How do I reduce IHT on my London property?', answer: 'Options include: ensuring you are claiming the full RNRB by leaving property to direct descendants; using a protective property trust in your will to ring-fence one partner\'s share; making lifetime gifts subject to the seven-year rule; leaving part of your estate to charity to qualify for the 36% reduced IHT rate; or structuring the ownership of the property in a way that maximises available reliefs. None of these strategies is simple -- all require specialist advice.' },
     ],

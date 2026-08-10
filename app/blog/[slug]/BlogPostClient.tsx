@@ -113,12 +113,12 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
       return (
         <div key={index} style={{ background: 'var(--ink)', borderRadius: 8, padding: '24px 20px', textAlign: 'center', margin: '28px 0' }}>
           <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: '#fff', marginBottom: 6 }}>
-            {block.text || 'Get your free will writing match'}
+            {block.text || 'Book a will writing consultation'}
           </p>
           <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)', marginBottom: 16 }}>
-            Vetted will writing professionals across London. Free matching service.
+            Wills, LPAs and probate support across London. Fixed fees from £150.
           </p>
-          <button onClick={onModal} className="btn-primary">Find my specialist</button>
+          <button onClick={onModal} className="btn-primary">Book a consultation</button>
         </div>
       );
 
@@ -259,16 +259,16 @@ export function BlogPostClient({ article }: { article: BlogArticle; related?: Bl
                         style={{ background: 'var(--ink)' }}
                       >
                         <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
-                          Free specialist matching
+                          Book a consultation
                         </p>
                         <p style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(22px,2.6vw,28px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', lineHeight: 1.2, marginBottom: 8 }}>
                           Want a fixed-fee quote before you read on?
                         </p>
                         <p className="body-sm" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 18, maxWidth: 520 }}>
-                          We match you with vetted will writers across London who quote upfront, with no obligation and no cost to you.
+                          We write wills across London and quote upfront, with no obligation and no cost to you.
                         </p>
                         <button onClick={() => setModal(true)} className="btn-primary">
-                          Get matched free
+                          Book a consultation
                         </button>
                       </div>
                     );

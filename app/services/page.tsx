@@ -5,20 +5,20 @@ import { ServicesIndexClient } from './ServicesIndexClient';
 
 export const metadata: Metadata = {
   title: 'Will Writing Services in London | Single Wills, LPAs, Trusts, Probate',
-  description: 'Free matching with vetted London will writers across six services — single and mirror wills, lasting powers of attorney, trust planning, estate planning reviews, and probate support.',
+  description: 'Six services for London families: single and mirror wills, lasting powers of attorney, trust planning, estate planning reviews, and probate support. Fixed fees quoted upfront.',
   alternates: { canonical: '/services/' },
   openGraph: {
     type: 'website',
     url: `${siteConfig.url}/services/`,
     siteName: siteConfig.name,
     title: 'Will Writing Services in London',
-    description: 'Six core services from vetted London estate planning specialists. Free matching, 24-hour introductions.',
+    description: 'Six core will writing and estate planning services for London, with fixed fees and home visits.',
     locale: 'en_GB',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Will Writing Services in London',
-    description: 'Six core services from vetted London estate planning specialists.',
+    description: 'Six core will writing and estate planning services for London.',
   },
   robots: { index: true, follow: true },
 };
@@ -28,8 +28,8 @@ export default function ServicesIndexPage() {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${siteConfig.url}/services/#webpage`,
-    name: 'Will Writing and Estate Planning Matching -- London',
-    description: 'Free referral service connecting London residents with vetted will writers and estate planning specialists. We introduce clients to professionals -- we are not a law firm or will writing practice.',
+    name: 'Will Writing and Estate Planning -- London',
+    description: 'Will writing and estate planning for London families. Single and mirror wills, lasting powers of attorney, trusts, estate planning reviews and probate support.',
     url: `${siteConfig.url}/services/`,
     isPartOf: { '@id': `${siteConfig.url}/#website` },
     mentions: services.map(s => ({

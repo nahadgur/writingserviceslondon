@@ -23,7 +23,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Find Vetted Will Writing Specialists in London`,
+    default: `${siteConfig.name} | Wills, LPAs and Probate Support`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -68,7 +68,7 @@ const orgSchema = {
   '@id': `${siteConfig.url}/#organization`,
   name: siteConfig.name, url: siteConfig.url,
   logo: `${siteConfig.url}/android-chrome-512x512.png`,
-  description: 'Free matching service connecting London residents with vetted will writers and estate planning specialists. We are not a law firm — we introduce clients to qualified professionals.',
+  description: 'Will writing service for London families. Single wills, mirror wills, lasting powers of attorney, trust planning and probate support, with home visits across every London borough and urgent appointments where time is short.',
   areaServed: { '@type': 'AdministrativeArea', name: 'London', containedInPlace: { '@type': 'Country', name: 'United Kingdom' } },
 };
 

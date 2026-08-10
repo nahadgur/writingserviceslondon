@@ -4,20 +4,20 @@ import { LocationIndexClient } from './LocationIndexClient';
 
 export const metadata: Metadata = {
   title: 'Will Writing Services Across London | 15 Area Hubs',
-  description: 'Coverage across 15 London hubs from Mayfair and Hampstead to Canary Wharf and Richmond. Vetted estate planning specialists serving every borough — find your area below.',
+  description: 'Coverage across 15 London hubs from Mayfair and Hampstead to Canary Wharf and Richmond. Will writing and estate planning in every borough, with home visits. Find your area below.',
   alternates: { canonical: '/location/' },
   openGraph: {
     type: 'website',
     url: `${siteConfig.url}/location/`,
     siteName: siteConfig.name,
     title: 'Will Writing Across Every London Area',
-    description: '15 London hubs covered by our vetted estate planning network. Free matching, 24-hour introductions.',
+    description: '15 London hubs covered for will writing and estate planning, with home visits throughout.',
     locale: 'en_GB',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Will Writing Across Every London Area',
-    description: '15 London hubs covered by our vetted estate planning network.',
+    description: '15 London hubs covered for will writing and estate planning.',
   },
   robots: { index: true, follow: true },
 };
@@ -28,7 +28,7 @@ export default function LocationIndexPage() {
     '@type': 'CollectionPage',
     '@id': `${siteConfig.url}/location/#page`,
     name: 'Will Writing Services -- London Areas',
-    description: 'Find vetted will writers and estate planning specialists across all London areas. Coverage across 15 London hubs from Mayfair to Stratford.',
+    description: 'Will writing and estate planning across all London areas. Coverage across 15 London hubs from Mayfair to Stratford.',
     url: `${siteConfig.url}/location/`,
     isPartOf: { '@id': `${siteConfig.url}/#website` },
     breadcrumb: {

@@ -29,10 +29,10 @@ export function Footer() {
             Will Writing Services London
           </p>
           <p className="body-sm mb-5" style={{ color: 'rgba(255,255,255,0.45)', lineHeight: 1.75 }}>
-            Free matching service connecting London residents with vetted will writers and estate planning specialists across all London areas.
+            Wills, mirror wills, lasting powers of attorney, trust planning and probate support for families across every London borough.
           </p>
           <p className="body-sm" style={{ color: 'rgba(255,255,255,0.25)', lineHeight: 1.7 }}>
-            We are not a law firm or will writing practice. We introduce clients to qualified professionals and are paid by those professionals — never by clients.
+            Fixed fees quoted before any work begins. Home visits throughout London, including evenings and weekends.
           </p>
         </div>
 
@@ -91,7 +91,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Will Writing Services London. All rights reserved.
           </p>
           <p className="body-sm max-w-lg" style={{ color: 'rgba(255,255,255,0.18)' }}>
-            Will Writing Services London is a referral and introduction service. We do not provide legal advice. All professionals in our network hold appropriate qualifications and professional indemnity insurance.
+            Will writing is not a regulated activity in England and Wales and we are not a firm of solicitors. Information on this site is general guidance about the law, not advice on your individual circumstances.
           </p>
         </div>
       </div>

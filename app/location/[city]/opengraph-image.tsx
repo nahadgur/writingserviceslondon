@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { AREA_HUBS, getAreaHubBySlug } from '@/data/locations';
 
 export const runtime = 'edge';
-export const alt = 'Will writing matching service — vetted London area specialists';
+export const alt = 'Will writing and estate planning across London areas';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -96,7 +96,7 @@ export default function Image({ params }: { params: { city: string } }) {
               <span style={{ display: 'flex' }}>·</span>
               <span style={{ display: 'flex' }}>Fixed-fee quotes</span>
               <span style={{ display: 'flex' }}>·</span>
-              <span style={{ display: 'flex' }}>Free matching</span>
+              <span style={{ display: 'flex' }}>Home visits</span>
             </div>
             <div
               style={{

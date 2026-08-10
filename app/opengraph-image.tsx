@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Will Writing Services London — free matching with vetted will writers and estate planning specialists';
+export const alt = 'Will Writing Services London — wills, lasting powers of attorney and probate support';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -41,7 +41,7 @@ export default function Image() {
                 display: 'flex',
               }}
             >
-              FREE MATCHING SERVICE · LONDON
+              WILLS AND ESTATE PLANNING · LONDON
             </div>
             <div
               style={{
@@ -53,7 +53,7 @@ export default function Image() {
                 maxWidth: 940,
               }}
             >
-              Find vetted London will writers, free
+              Wills, LPAs and probate support in London
             </div>
           </div>
 
@@ -74,11 +74,11 @@ export default function Image() {
                 gap: 14,
               }}
             >
-              <span style={{ display: 'flex' }}>Vetted specialists</span>
+              <span style={{ display: 'flex' }}>Fixed fees from £150</span>
               <span style={{ display: 'flex' }}>·</span>
               <span style={{ display: 'flex' }}>24-hour intro</span>
               <span style={{ display: 'flex' }}>·</span>
-              <span style={{ display: 'flex' }}>Free to clients</span>
+              <span style={{ display: 'flex' }}>Home visits London-wide</span>
             </div>
             <div
               style={{

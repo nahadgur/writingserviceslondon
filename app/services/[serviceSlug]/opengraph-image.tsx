@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { services, getServiceBySlug } from '@/data/services';
 
 export const runtime = 'edge';
-export const alt = 'Will writing matching service — vetted London specialists';
+export const alt = 'Will writing and estate planning services across London';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -57,7 +57,7 @@ export default function Image({ params }: { params: { serviceSlug: string } }) {
                 display: 'flex',
               }}
             >
-              VETTED LONDON SPECIALISTS · FREE MATCHING
+              LONDON WILLS AND ESTATE PLANNING
             </div>
             <div
               style={{

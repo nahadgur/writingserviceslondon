@@ -22,7 +22,7 @@ export function generateMetadata({ params }: { params: { serviceSlug: string } }
   if (!service) return { title: 'Service not found' };
 
   const headline = titleSuffix[service.slug] ?? `${service.title} in London`;
-  const title = `${headline} | Vetted Specialist Matching`;
+  const title = `${headline} | Fixed Fees, Home Visits`;
   const description = service.description;
   const url = `${siteConfig.url}/services/${service.slug}/`;
 
@@ -61,7 +61,7 @@ export default function ServicePage({ params }: { params: { serviceSlug: string 
       name: service.title,
       provider: { '@id': `${siteConfig.url}/#organization` },
       areaServed: { '@type': 'City', name: 'London' },
-      serviceType: 'Will Writing Referral and Matching Service',
+      serviceType: 'Will Writing and Estate Planning',
     },
     mainEntityOfPage: `${siteConfig.url}/services/${service.slug}/`,
     breadcrumb: {

@@ -36,8 +36,8 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   const hub = getAreaHubBySlug(params.city);
   if (!hub) return { title: 'Area not found' };
 
-  const title = `Will Writers in ${hub.name} ${hub.postcode} | Vetted London Specialists`;
-  const description = `Free matching with vetted will writers and estate planning specialists covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most introductions within 24 hours.`;
+  const title = `Will Writers in ${hub.name} ${hub.postcode} | Fixed Fees, Home Visits`;
+  const description = `Will writing and estate planning covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most introductions within 24 hours.`;
   const url = `${siteConfig.url}/location/${hub.slug}/`;
 
   return {
@@ -71,15 +71,15 @@ function buildFaqs(hubName: string, subAreaNames: string[]) {
   return [
     {
       question: `How quickly can I be matched with a will writer covering ${hubName}?`,
-      answer: `Most clients are matched within 24 hours. For urgent situations we can often arrange same-day introductions. We cover ${hubName} and all surrounding areas including ${subAreaNames.slice(0, 4).join(', ')}.`,
+      answer: `Most wills are drafted within 3 to 7 working days of the consultation. Where there is real urgency we prioritise the appointment and can often complete within a day. We cover ${hubName} and all surrounding areas including ${subAreaNames.slice(0, 4).join(', ')}.`,
     },
     {
-      question: `Is the matching service free for ${hubName} clients?`,
-      answer: `Completely free. You only pay the specialist directly for their work. Our service is funded by the professionals in our network — no charge to clients at any stage.`,
+      question: `What does a will cost in ${hubName}?`,
+      answer: `A single will is £150 to £350 and mirror wills for a couple are £250 to £550 for the pair, depending on complexity. You get a fixed-fee quote before any work begins, and there is no charge for the initial conversation.`,
     },
     {
       question: `Do will writers offer home visits in ${hubName}?`,
-      answer: `Yes. Most specialists in our network offer home visits across ${hubName} and surrounding areas. For elderly clients or those with mobility issues this is standard practice.`,
+      answer: `Yes. We offer home visits across ${hubName} and surrounding areas, including evenings and weekends. For elderly clients or those with mobility issues this is standard practice.`,
     },
     {
       question: `What estate planning services are available in ${hubName}?`,
@@ -101,16 +101,16 @@ export default function CityPage({ params }: { params: { city: string } }) {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${siteConfig.url}/location/${hub.slug}/#webpage`,
-    name: `Will Writing Referral Service -- ${hub.name}`,
-    description: `Free matching with vetted will writers and estate planning specialists covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}.`,
+    name: `Will Writing Services -- ${hub.name}`,
+    description: `Will writing and estate planning covering ${hub.name} and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}.`,
     url: `${siteConfig.url}/location/${hub.slug}/`,
     isPartOf: { '@id': `${siteConfig.url}/#website` },
     about: {
       '@type': 'Service',
-      name: `Will Writing Referral Service -- ${hub.name}`,
+      name: `Will Writing Services -- ${hub.name}`,
       provider: { '@id': `${siteConfig.url}/#organization` },
       areaServed: { '@type': 'City', name: hub.name, containedInPlace: { '@type': 'City', name: 'London' } },
-      serviceType: 'Will Writing Referral and Matching Service',
+      serviceType: 'Will Writing and Estate Planning',
     },
     mainEntityOfPage: `${siteConfig.url}/location/${hub.slug}/`,
     breadcrumb: {
@@ -139,7 +139,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
   // H1 + hero subhead — prefer richer copy from areaContent when available.
   const heroH1 = ac?.heroHeading ?? `Will writing in ${hub.name}`;
   const heroSubhead = ac?.heroParagraph
-    ?? `Free matching with vetted estate planning specialists covering ${hub.postcode} and surrounding areas.`;
+    ?? `Will writing and estate planning covering ${hub.postcode} and surrounding areas.`;
 
   return (
     <>
@@ -233,9 +233,9 @@ export default function CityPage({ params }: { params: { city: string } }) {
         {/* ── Trust strip ──────────────────────────────────────── */}
         <div className="trust-strip">
           {[
-            { head: 'Matched in 24 hours',     body: 'A relevant introduction, not a list' },
-            { head: 'Every specialist vetted', body: 'Qualifications and insurance checked' },
-            { head: 'Free to all clients',     body: 'Paid by our network, never by you' },
+            { head: 'Drafted in 3 to 7 days',  body: 'Faster where the situation is urgent' },
+            { head: 'Fixed fees from £150',    body: 'Quoted upfront, no hourly billing' },
+            { head: 'We come to you',          body: 'Home visits, evenings and weekends' },
             { head: 'Home visits available',   body: 'Most specialists will come to you' },
           ].map((t, i) => (
             <div key={i} className="trust-item">
@@ -516,7 +516,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               Find a will writing specialist in {hub.name}
             </h2>
             <p className="body-lg mb-6 mx-auto" style={{ maxWidth: 500, color: 'rgba(255,255,255,0.5)' }}>
-              Free matching covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and all surrounding areas.
+              Covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and all surrounding areas.
             </p>
             <a
               href="#get-matched"

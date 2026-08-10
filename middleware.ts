@@ -73,7 +73,7 @@ const GONE_HTML = `<!doctype html>
   <div class="num">410</div>
   <div class="eyebrow">Page no longer available</div>
   <h1>This page has been retired</h1>
-  <p>The page you were looking for was part of an earlier version of the site and has been removed. The matching service is still running &mdash; pick a destination below and we&rsquo;ll help you find a vetted London will writer.</p>
+  <p>The page you were looking for was part of an earlier version of the site and has been removed. Pick a destination below and we&rsquo;ll point you to the right part of the site.</p>
   <div class="btns">
     <a class="btn primary" href="/">Go to homepage <span aria-hidden="true">&rarr;</span></a>
     <a class="btn secondary" href="/services/">Browse services</a>

@@ -13,10 +13,10 @@ import { AREA_HUBS } from '@/data/locations';
 import { FAQS_HOME } from '@/data/site';
 
 const trustItems = [
-  { icon: <Clock size={13} style={{ color: 'var(--brand)' }} />, head: 'Matched in 24 hours',     body: 'A relevant introduction — not a generic list' },
-  { icon: <Shield size={13} style={{ color: 'var(--brand)' }} />, head: 'Every specialist vetted', body: 'Qualifications, insurance and feedback checked' },
-  { icon: <Star size={13} style={{ color: 'var(--brand)' }} />,   head: 'Free to all clients',     body: 'Paid by our network, never by you' },
-  { icon: <Users size={13} style={{ color: 'var(--brand)' }} />,  head: 'Home visits available',   body: 'Most specialists will come to you' },
+  { icon: <Clock size={13} style={{ color: 'var(--brand)' }} />, head: 'Fixed fees from £150',    body: 'Quoted in full before any work starts' },
+  { icon: <Shield size={13} style={{ color: 'var(--brand)' }} />, head: 'Drafted in 3 to 7 days',  body: 'Faster when the situation is urgent' },
+  { icon: <Star size={13} style={{ color: 'var(--brand)' }} />,   head: 'Signing done properly',   body: 'Two witnesses, in person, done right' },
+  { icon: <Users size={13} style={{ color: 'var(--brand)' }} />,  head: 'Home visits London-wide', body: 'Evenings and weekends included' },
 ];
 
 const urgencyCards = [
@@ -27,15 +27,15 @@ const urgencyCards = [
 ];
 
 const whyUs = [
-  { head: 'We read your situation, not just your postcode', body: 'Generic referral services match on geography. We match on the nature of your estate — a cohabiting couple needing urgent protection, a Hampstead family with a seven-figure IHT exposure, or an executor dealing with a complex probate.' },
-  { head: 'Every specialist independently vetted',         body: 'We check qualifications, membership of recognised bodies (Society of Will Writers, Solicitors Regulation Authority), professional indemnity insurance, and recent client feedback before any specialist joins our network.' },
-  { head: 'Transparent about what we are',                body: 'We are a matching service, not a will writing firm. We do not draft wills, provide legal advice, or take a cut of your specialist\'s fee. Our income comes from the professionals in our network.' },
+  { head: 'Drafted Around Your Estate', body: 'A template asks what you own. We ask how it is held, who depends on it, and what happens if someone dies first. A cohabiting couple with a shared mortgage, a Hampstead family facing a seven-figure IHT exposure and a business owner with shareholder obligations need three different wills, not three copies of one.' },
+  { head: 'The Signing Handled With You',         body: 'Most home-made wills fail at execution, not drafting. Video witnessing ended on 31 January 2024, so two witnesses must now be physically present at the same time, and a witness who inherits loses their gift. We take you through the signing rather than emailing a document and wishing you luck.' },
+  { head: 'Plain About What We Are',                body: 'Will writing is not a regulated activity in England and Wales and we are not a firm of solicitors. Where an estate genuinely needs one, because of overseas property, a likely dispute, or substantial business assets, we say so rather than take the work.' },
 ];
 
 const processSteps = [
-  { n: '1', head: 'Tell us what you need', body: 'Leave your email, phone number, and the type of service you\'re looking for. Two minutes of context means a far better match.' },
-  { n: '2', head: 'We identify the right specialist', body: 'We review your situation and identify will writers in our London network who handle estates like yours regularly — a considered introduction, not an algorithm.' },
-  { n: '3', head: 'You choose, with no pressure', body: 'Review the introduction, speak to the specialist, decide whether to proceed. You agree terms directly with them. Free re-matching if it\'s not right.' },
+  { n: '1', head: 'Consultation', body: 'We talk through your family, your assets and what you want to happen, at your home or by phone or video if that is easier. No charge, and no obligation to go ahead.' },
+  { n: '2', head: 'Drafting and Review', body: 'We draft the will around what you have told us, usually within three to seven working days, and send it over for you to read properly. You come back with changes until it says exactly what you mean.' },
+  { n: '3', head: 'Signing and Witnessing', body: 'We take you through the signing appointment, in person, with two eligible witnesses present at the same time. This is the step that decides whether the will works, so we do not leave it to chance.' },
 ];
 
 const featuredAreas = AREA_HUBS.slice(0, 8);
@@ -76,25 +76,22 @@ export function HomePageClient() {
               {/* Copy */}
               <div>
                 <p className="eyebrow anim-0" style={{ color: 'rgba(255,255,255,0.72)', marginBottom: 18 }}>
-                  Free will writing matching service &nbsp;·&nbsp; London
+                  Wills, LPAs and probate support &nbsp;·&nbsp; London
                 </p>
                 <h1 className="anim-1" style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(38px,5.5vw,66px)', fontStyle: 'italic', fontWeight: 400, lineHeight: 1.07, color: '#fff', marginBottom: 18, letterSpacing: '-0.01em' }}>
-                  Wills that protect<br />
-                  the people<br />
-                  you love
+                  Will Writing Services London
                 </h1>
                 <p className="anim-2" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, lineHeight: 1.7, color: 'rgba(255,255,255,0.93)', maxWidth: 460, marginBottom: 28, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
-                  More than half of UK adults have no will in place. For London families
-                  with property, pensions, and children depending on them, the consequences
-                  of dying without one are serious and avoidable. We match you with the right
-                  specialist, free, within 24 hours.
+                  Wills, mirror wills, lasting powers of attorney, trusts and probate
+                  support for London families. Fixed fees from £150, home visits in every
+                  borough, and urgent appointments when time is short.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 anim-3">
-                  <button onClick={() => setModal(true)} className="btn-primary">Find my specialist</button>
+                  <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
                   <Link href="/services/" className="btn-ghost">See all services</Link>
                 </div>
                 <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11.5, fontWeight: 400, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.8 }}>
-                  Free to all clients &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Every specialist vetted and insured
+                  Fixed fees from £150 &nbsp;&middot;&nbsp; Home visits London-wide &nbsp;&middot;&nbsp; Free first conversation
                 </p>
               </div>
 
@@ -110,7 +107,7 @@ export function HomePageClient() {
                 }}
               >
                 <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 9, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: 16 }}>
-                  We match you with
+                  What we do
                 </p>
                 {[
                   { label: 'Single & mirror wills',       href: '/services/single-will/' },
@@ -130,7 +127,7 @@ export function HomePageClient() {
                     onClick={() => setModal(true)}
                     style={{ width: '100%', background: 'var(--brand)', color: '#fff', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer', letterSpacing: '0.02em' }}
                   >
-                    Get matched free →
+                    See all services →
                   </button>
                 </div>
               </div>
@@ -170,7 +167,7 @@ export function HomePageClient() {
                   A grant of probate on an intestate estate takes six months or more.
                   Every day without the right documents in place is a risk your family carries for you.
                 </p>
-                <button onClick={() => setModal(true)} className="btn-primary">Get matched today</button>
+                <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {urgencyCards.map((card, i) => (
@@ -192,7 +189,7 @@ export function HomePageClient() {
           <div className="container-width">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
-                <p className="eyebrow mb-3">What we match you with</p>
+                <p className="eyebrow mb-3">Our services</p>
                 <h2 style={serif('clamp(28px,3.5vw,42px)')}>Every aspect of will writing<br className="hidden sm:block" /> and estate planning</h2>
               </div>
               <Link href="/services/" className="btn-secondary self-start sm:self-auto">All services →</Link>
@@ -203,7 +200,7 @@ export function HomePageClient() {
                   <div style={{ height: 148, overflow: 'hidden', background: 'var(--parchment-2)', position: 'relative' }}>
                     <Image
                       src={s.image}
-                      alt={`${s.title} specialists in London`}
+                      alt={`${s.title} in London`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -214,7 +211,7 @@ export function HomePageClient() {
                       {s.title}
                     </h3>
                     <p className="body-sm line-clamp-2 mb-3">{s.description}</p>
-                    <span className="eyebrow-brand flex items-center gap-1">Find a specialist <ArrowRight size={10} /></span>
+                    <span className="eyebrow-brand flex items-center gap-1">See the service <ArrowRight size={10} /></span>
                   </div>
                 </Link>
               ))}
@@ -227,7 +224,7 @@ export function HomePageClient() {
           <div className="container-width">
             <div className="max-w-2xl mb-12">
               <p className="eyebrow mb-3">Why use this service</p>
-              <h2 style={serif('clamp(28px,3.5vw,42px)')}>Not a directory.<br />A considered match.</h2>
+              <h2 style={serif('clamp(28px,3.5vw,42px)')}>Why Choose Us</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {whyUs.map((w, i) => (
@@ -245,7 +242,7 @@ export function HomePageClient() {
           <div className="container-width">
             <div className="max-w-2xl">
               <p className="eyebrow mb-3">How it works</p>
-              <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 28 })}>Three steps to the<br />right specialist</h2>
+              <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 28 })}>Our Will Writing Process</h2>
               <div className="space-y-4 mb-10">
                 {processSteps.map(step => (
                   <div key={step.n} className="step-row">
@@ -257,8 +254,8 @@ export function HomePageClient() {
                   </div>
                 ))}
               </div>
-              <button onClick={() => setModal(true)} className="btn-primary">Start your free enquiry</button>
-              <p className="body-sm mt-3" style={{ color: 'var(--dust)' }}>No obligation. Free re-matching if the first introduction is not right.</p>
+              <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
+              <p className="body-sm mt-3" style={{ color: 'var(--dust)' }}>The first conversation is free and there is no obligation to go ahead.</p>
             </div>
           </div>
         </section>
@@ -306,19 +303,19 @@ export function HomePageClient() {
         <section style={{ background: 'var(--ink)', padding: '80px 0' }}>
           <div className="container-width text-center">
             <p className="eyebrow mb-5" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              Free will writing matching service &nbsp;·&nbsp; London
+              Wills, LPAs and probate support &nbsp;·&nbsp; London
             </p>
             <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(30px,4vw,50px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', marginBottom: 16, lineHeight: 1.15 }}>
               Don't leave the people you love<br className="hidden sm:block" /> without protection
             </h2>
             <p className="mx-auto mb-8" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.5)', maxWidth: 480, lineHeight: 1.78 }}>
-              A will takes two weeks. Getting matched takes two minutes.
+              Book Your Will Writing Consultation
             </p>
             <button onClick={() => setModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '14px 32px', borderRadius: 4, border: 'none', cursor: 'pointer', letterSpacing: '0.02em' }}>
-              Find my specialist
+              Book a consultation
             </button>
             <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, fontWeight: 300, color: 'rgba(255,255,255,0.22)', marginTop: 14 }}>
-              Free &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Vetted specialists &nbsp;&middot;&nbsp; 24hr response
+              Fixed fees from £150 &nbsp;&middot;&nbsp; Home visits London-wide &nbsp;&middot;&nbsp; Free first conversation
             </p>
           </div>
         </section>

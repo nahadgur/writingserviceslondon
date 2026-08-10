@@ -8,7 +8,7 @@ import { siteConfig } from '@/data/site';
 export const metadata: Metadata = {
   title: 'Terms of use',
   description:
-    'Terms of use for Will Writing Services London — a free matching service connecting London families with vetted will writers. Read the rules of using this site and the limits of our liability.',
+    'Terms of use for Will Writing Services London, a will writing and estate planning service for London. Read the rules of using this site and the limits of our liability.',
   alternates: { canonical: '/terms/' },
   robots: { index: true, follow: true },
 };
@@ -46,7 +46,7 @@ export default function TermsPage() {
                 color: 'rgba(255,255,255,0.72)',
               }}
             >
-              The rules that apply when you use this site or submit an enquiry through the matching service. Plain English wherever possible.
+              The rules that apply when you use this site or instruct us to do work. Plain English wherever possible.
             </p>
             <p
               className="mt-4"
@@ -78,7 +78,7 @@ export default function TermsPage() {
           >
             <Section title="1. About these terms">
               <p>
-                These terms govern your use of {siteConfig.url.replace(/https?:\/\//, '')} and the matching service operated by {siteConfig.name}. By using the site or submitting an enquiry, you agree to these terms. If you don&apos;t agree, please don&apos;t use the service.
+                These terms govern your use of {siteConfig.url.replace(/https?:\/\//, '')} and the will writing and estate planning service operated by {siteConfig.name}. By using the site or submitting an enquiry, you agree to these terms. If you don&apos;t agree, please don&apos;t use the service.
               </p>
               <p>
                 We may update these terms from time to time. The &quot;Last reviewed&quot; date at the top of the page reflects the most recent change. Continued use of the site after changes means you accept the updated terms.
@@ -87,16 +87,16 @@ export default function TermsPage() {
 
             <Section title="2. What we are">
               <p>
-                {siteConfig.name} is a referral and introduction service. We connect you with vetted, independent will writers and estate planning specialists serving London.
+                {siteConfig.name} is a will writing and estate planning service for London. We take your instructions, draft the documents, and take you through signing and witnessing.
               </p>
               <p>
-                <strong>We are not a law firm or will writing practice.</strong> We do not draft wills, witness signatures, store original documents, hold client funds, or provide legal advice. We make introductions; the work is done by the professional you engage.
+                <strong>We are not a firm of solicitors and we do not hold client funds.</strong> Will writing is not a regulated activity in England and Wales. Where a matter genuinely calls for a solicitor, for example contested estates, substantial business assets, or property held abroad, we will tell you so rather than take the work.
               </p>
             </Section>
 
-            <Section title="3. The matching service is free to clients">
+            <Section title="3. Quotes and fees">
               <p>
-                You pay nothing to be matched. We are paid by the will writers in our network when an introduction leads to engaged work. You only pay the will writer you choose to engage, on the terms agreed directly with them.
+                The initial consultation is free and carries no obligation to proceed. If you decide to go ahead we give you a fixed-fee quote in writing before any work begins, and that is the price you pay. We do not bill by the hour. Third-party fees, such as the Office of the Public Guardian registration fee for a lasting power of attorney, are payable separately and we will identify them in the quote.
               </p>
             </Section>
 
@@ -114,34 +114,34 @@ export default function TermsPage() {
               <ul>
                 <li>You are at least 18 years old.</li>
                 <li>The information you provide in the enquiry form is accurate and complete to the best of your knowledge.</li>
-                <li>You consent to your details being shared with up to three matched professionals (you tick a box on the form to confirm this).</li>
+                <li>You consent to us contacting you about your enquiry (you tick a box on the form to confirm this).</li>
                 <li>You will not use the site to submit malicious, abusive, or fraudulent enquiries, or to attempt to interfere with the site&apos;s operation.</li>
               </ul>
             </Section>
 
-            <Section title="6. Our role ends at introduction">
+            <Section title="6. Our responsibilities to you">
               <p>
-                Once we have introduced you to a matched professional, the relationship is between you and that professional. The will writer is responsible for:
+                When you instruct us, we are responsible for:
               </p>
               <ul>
-                <li>Their own quote and fee, and the terms on which work is engaged.</li>
-                <li>The advice they give and the documents they draft.</li>
-                <li>Their professional indemnity cover and regulatory standing.</li>
-                <li>Witnessing arrangements and document storage.</li>
-                <li>Handling any complaints about the service they provide, in line with their professional body&apos;s rules.</li>
+                <li>Quoting a fixed fee in writing before work begins, and honouring it.</li>
+                <li>Taking your instructions properly and drafting documents that reflect them.</li>
+                <li>Explaining what the law requires for the document to be valid, including how it must be signed and witnessed.</li>
+                <li>Setting out clearly what happens to the original document and how it can be retrieved.</li>
+                <li>Responding to complaints about our work.</li>
               </ul>
               <p>
-                We are not responsible for the work of matched professionals. If you encounter a problem, please tell us — we use the feedback to maintain network standards and may re-match you with an alternative if appropriate.
+                You remain responsible for reading the draft and telling us if it does not say what you intend, and for signing the document in the way we explain. A will that is not executed correctly is not valid, however well it is drafted. If something is wrong with our work, tell us and we will put it right. If you are not satisfied with how we handle a complaint you may be able to take it further, and we will tell you what routes are open to you at that point.
               </p>
             </Section>
 
             <Section title="7. Limitation of liability">
               <p>
-                To the extent permitted by law, our liability is limited to the introduction itself. We are not liable for:
+                Nothing in this section affects your statutory rights under the Consumer Rights Act 2015, which require us to carry out our service with reasonable care and skill. Subject to that, and to the extent permitted by law, we are not liable for:
               </p>
               <ul>
-                <li>The accuracy, suitability, or quality of work performed by matched professionals.</li>
-                <li>Disputes between you and a matched professional.</li>
+                <li>Loss caused by information you gave us that was inaccurate or incomplete.</li>
+                <li>Loss caused by a document being signed or witnessed other than as we explained.</li>
                 <li>Loss arising from reliance on general information published on this site.</li>
                 <li>Indirect or consequential losses (lost income, lost opportunity, etc.).</li>
               </ul>
@@ -192,7 +192,7 @@ export default function TermsPage() {
                 </Link>
                 {' '}for what we collect, or read{' '}
                 <Link href="/about/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
-                  how the matching service works
+                  how we work
                 </Link>.
               </p>
             </div>

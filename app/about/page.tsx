@@ -7,9 +7,9 @@ import { siteConfig } from '@/data/site';
 import { editorialAuthorSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'About the matching service',
+  title: 'About Us',
   description:
-    'Will Writing Services London is a free matching service connecting London families with vetted will writers and estate planning specialists. We are not a law firm; we introduce clients to qualified professionals.',
+    'Will Writing Services London is a will writing and estate planning service for London families. Fixed fees, home visits across every borough, and the signing handled properly.',
   alternates: { canonical: '/about/' },
   robots: { index: true, follow: true },
 };
@@ -22,7 +22,7 @@ export default function AboutPage() {
       <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
         <section style={{ background: 'var(--ink)', color: '#fff' }}>
           <div className="container-width pt-20 pb-12">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>About — the matching service</p>
+            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>About us</p>
             <h1
               style={{
                 fontFamily: 'var(--font-cormorant), Georgia, serif',
@@ -34,7 +34,7 @@ export default function AboutPage() {
               }}
               className="mb-4"
             >
-              How we match London families with the <em style={{ color: 'var(--brand)' }}>right will writer</em>
+              Will Writing for <em style={{ color: 'var(--brand)' }}>London Families</em>
             </h1>
             <p
               className="max-w-2xl"
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 color: 'rgba(255,255,255,0.72)',
               }}
             >
-              {siteConfig.name} is a free, no-obligation matching service. We read your circumstances, then introduce you to up to three vetted will writers and estate planning specialists who already work with situations like yours.
+              {siteConfig.name} writes wills, lasting powers of attorney and trusts for people across London. We come to you, quote a fixed fee before starting, and take you through the signing so the document actually works when it is needed.
             </p>
           </div>
         </section>
@@ -64,71 +64,65 @@ export default function AboutPage() {
               color: 'rgba(28,24,20,0.85)',
             }}
           >
-            <Section title="What we are — and aren't">
+            <Section title="What We Do">
               <p>
-                We are a referral and matching service. We are <strong>not</strong> a law firm, a will writing practice, or a regulated legal service provider. We do not draft wills, witness signatures, store original documents, or hold client funds.
+                We draft single wills and mirror wills, prepare both types of lasting power of attorney, set up protective property and discretionary trusts, carry out estate planning reviews, and support executors through probate. The full breakdown is on the{' '}
+                <Link href="/services/">services page</Link>.
               </p>
               <p>
-                What we do: we read your enquiry, identify which of our vetted will writers are best placed to help, and introduce you. Once an introduction has been made, the relationship is between you and the will writer — including their fee, their service terms, and their professional accountability.
+                Most of the work happens at a client&apos;s kitchen table. We cover every London borough, including evenings and weekends, and we attend hospitals, hospices and care homes where health makes that necessary.
               </p>
             </Section>
 
-            <Section title="How matching works">
-              <p>The process from enquiry to first call typically takes 24 hours:</p>
+            <Section title="What We Are Not">
+              <p>
+                We are <strong>not</strong> a firm of solicitors, and we do not hold client funds. Will writing is not a regulated activity in England and Wales, which is worth knowing when you compare providers: the job title alone tells you very little, so ask about experience with estates like yours.
+              </p>
+              <p>
+                Some matters genuinely need a solicitor. Contested estates, property held abroad, substantial business assets, and situations where a claim against the estate looks likely all fall into that category. We will tell you when your situation is one of them rather than take the work.
+              </p>
+            </Section>
+
+            <Section title="How the Process Works">
               <ol>
-                <li><strong>You submit the form.</strong> Name, contact details, what type of will or estate planning support you need, and any context you want to share.</li>
-                <li><strong>We read it.</strong> A real person reviews every enquiry — we don&apos;t auto-route. The complexity of your situation (mirror wills, trusts, overseas property, blended families, business interests) determines which specialists we shortlist.</li>
-                <li><strong>We make up to three introductions.</strong> You receive contact details for the matched professionals. They contact you to arrange a free initial conversation, usually within a working day.</li>
-                <li><strong>You choose.</strong> Compare quotes, ask questions, and engage whichever professional you&apos;re most comfortable with — or none, if none are right for you. There is no obligation either way.</li>
+                <li><strong>Consultation.</strong> We talk through your family, your assets and what you want to happen. At your home, or by phone or video if that is easier. It is free and there is no obligation to go ahead.</li>
+                <li><strong>Quote.</strong> A fixed fee in writing before any work starts. No hourly billing, and any third-party costs such as the Office of the Public Guardian registration fee are identified separately.</li>
+                <li><strong>Drafting and review.</strong> Usually three to seven working days. You read the draft properly and come back with changes until it says exactly what you mean.</li>
+                <li><strong>Signing and witnessing.</strong> We take you through the signing appointment in person. This is the step that decides whether the will works at all.</li>
               </ol>
             </Section>
 
-            <Section title="How we vet professionals in our network">
-              <p>Every will writer in our network is checked for the following before joining:</p>
-              <ul>
-                <li><strong>Qualifications.</strong> Membership of a recognised professional body — typically the Society of Will Writers, the Institute of Professional Willwriters, the Society of Trust and Estate Practitioners (STEP), or a Solicitors Regulation Authority (SRA) registration.</li>
-                <li><strong>Professional indemnity insurance.</strong> Current cover at a level appropriate to the value and complexity of work undertaken.</li>
-                <li><strong>Practical experience.</strong> A demonstrated track record of producing legally valid documents in line with the Wills Act 1837 and current estate planning legislation, including supervised drafting and witnessing arrangements.</li>
-                <li><strong>Disclosure of any complaints.</strong> We ask about, and verify, any active or unresolved complaints with the relevant professional body.</li>
-              </ul>
+            <Section title="Why the Signing Matters So Much">
               <p>
-                We re-check qualifications and insurance annually. If a professional&apos;s status changes, they are removed from the network until the issue is resolved.
+                Most home-made wills fail on execution rather than wording. Section 9 of the Wills Act 1837 requires the will to be signed by you, or by someone else in your presence and at your direction, in front of two witnesses who are both there at the same time and who each then sign while you watch.
+              </p>
+              <p>
+                Two things catch people out. Video witnessing was permitted only between 31 January 2020 and 31 January 2024 under a temporary coronavirus order and has not been renewed, so witnesses must now be physically present. And under section 15, a beneficiary or their spouse who witnesses the will loses their gift, which is exactly what happens when the family in the room are the ones asked to sign.
               </p>
             </Section>
 
-            <Section title="What it costs you">
+            <Section title="What It Costs">
               <p>
-                Nothing. The matching service is free to clients — we are paid by the will writers in our network when an introduction leads to engaged work. This means:
-              </p>
-              <ul>
-                <li>You never pay us — only the professional you choose to engage.</li>
-                <li>You see the will writer&apos;s actual fee before committing. There is no markup added by us.</li>
-                <li>Our incentive is to match well — a poor match means you don&apos;t engage, which means we&apos;re not paid.</li>
-              </ul>
-            </Section>
-
-            <Section title="What kinds of situations we handle">
-              <p>
-                Our network covers the full range of personal estate planning work for London families and individuals — single wills, mirror wills for couples, lasting powers of attorney for property and welfare, trust planning, broader estate planning reviews, and probate support after bereavement. See the{' '}
-                <Link href="/services/">services page</Link>
-                {' '}for a fuller breakdown of each.
+                A single will is £150 to £350 and mirror wills for a couple are £250 to £550 for the pair. Lasting powers of attorney are £300 to £900 each, plus the £82 Office of the Public Guardian registration fee. Trust planning runs from £500 to £1,500, estate planning reviews £400 to £1,200, and probate support for straightforward estates £1,500 to £3,500.
               </p>
               <p>
-                Some situations need specialist input — overseas property, business interests, beneficiaries with disabilities, Sharia-compliant wills, large estates with significant inheritance tax exposure, or culturally specific inheritance traditions. Our matching process surfaces these requirements and connects you with professionals who handle them regularly rather than rarely.
+                Where a price sits in its range depends on complexity. The first conversation is free, and you get the full figure in writing before anything starts.
               </p>
             </Section>
 
-            <Section title="How we handle your data">
+            <Section title="Situations We See Often">
               <p>
-                We collect only what we need to make the introduction — see our{' '}
-                <Link href="/privacy/">privacy notice</Link>
-                {' '}for the full UK GDPR detail. The headline is: name, contact, broad service type, optional message. We never sell or share data outside the matched professionals you authorise.
+                Cohabiting couples who assume they have rights they do not have. Blended families where the children of a first marriage need protecting after a second. Owners of leasehold flats and share-of-freehold arrangements. Business owners whose shareholder agreement and will contradict each other. Families whose London house alone pushes the estate past the inheritance tax threshold. Executors who have inherited a mess and need someone to untangle it.
+              </p>
+              <p>
+                Overseas property, beneficiaries with disabilities, Sharia-compliant provisions and large estates with significant inheritance tax exposure all come up regularly enough that they are routine rather than exceptional.
               </p>
             </Section>
 
-            <Section title="What happens after a match">
+            <Section title="How We Handle Your Data">
               <p>
-                Once you and the matched professional are speaking directly, we step back. The professional handles the work end-to-end — initial consultation, drafting, witnessing arrangements, document storage, and any subsequent updates. If you encounter any issue with a matched professional, please tell us — we use that feedback to maintain network standards and may re-match you with an alternative if appropriate.
+                We collect only what we need to respond to your enquiry: name, contact details, broad service type and an optional message. We do not pass your details to any other company, and we never sell or share them for marketing. The full UK GDPR detail is in our{' '}
+                <Link href="/privacy/">privacy notice</Link>.
               </p>
             </Section>
 
@@ -142,7 +136,7 @@ export default function AboutPage() {
             >
               <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Get started</p>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(28,24,20,0.85)' }}>
-                Ready to be matched?{' '}
+                Ready to start?{' '}
                 <Link href="/services/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
                   Browse the six services
                 </Link>{' '}

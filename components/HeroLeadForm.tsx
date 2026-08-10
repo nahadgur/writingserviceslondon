@@ -157,7 +157,7 @@ export function HeroLeadForm({ city, service }: Props) {
                 style={{ marginTop: 3, accentColor: 'var(--brand)' }}
               />
               <span>
-                I consent to my details being shared with up to three vetted will writers in our network. See our{' '}
+                I consent to Will Writing Services London contacting me about this enquiry. We do not pass your details to anyone else. See our{' '}
                 <Link href="/privacy/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
                   privacy notice
                 </Link>.

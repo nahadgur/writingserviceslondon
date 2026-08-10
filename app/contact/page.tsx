@@ -4,7 +4,7 @@ import { ContactPageClient } from './ContactPageClient';
 
 export const metadata: Metadata = {
   title: 'Contact Will Writing Services London',
-  description: 'How to reach our free matching service — enquiry form, general questions, UK GDPR data requests, and the partner contact for vetted London will writers.',
+  description: 'How to reach us — enquiry form, general questions, UK GDPR data requests, and what to expect when you get in touch.',
   alternates: { canonical: '/contact/' },
   openGraph: {
     type: 'website',

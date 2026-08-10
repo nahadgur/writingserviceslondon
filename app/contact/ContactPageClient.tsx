@@ -42,7 +42,7 @@ export function ContactPageClient() {
                 color: 'rgba(255,255,255,0.72)',
               }}
             >
-              The fastest way to engage the matching service is the enquiry form. For questions about how the service works, data requests, or feedback about a matched professional, use the channels below.
+              The fastest way to get started is the enquiry form. For questions about how the service works, data requests, or feedback about work we have done, use the channels below.
             </p>
           </div>
         </section>
@@ -52,7 +52,7 @@ export function ContactPageClient() {
 
           <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
 
-            {/* Get matched */}
+            {/* Book a consultation */}
             <div
               style={{
                 background: '#fff',
@@ -61,7 +61,7 @@ export function ContactPageClient() {
                 padding: 28,
               }}
             >
-              <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Get matched</p>
+              <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Book a consultation</p>
               <h2
                 style={{
                   fontFamily: 'var(--font-cormorant), Georgia, serif',
@@ -72,7 +72,7 @@ export function ContactPageClient() {
                   marginBottom: 12,
                 }}
               >
-                Start a free enquiry
+                Book a consultation
               </h2>
               <p
                 style={{
@@ -84,7 +84,7 @@ export function ContactPageClient() {
                   marginBottom: 20,
                 }}
               >
-                Tell us your situation. We&apos;ll introduce you to up to three vetted will writers within 24 hours. Free, no obligation.
+                Tell us your situation. We will get back to you within one working day to arrange a consultation. Free, no obligation.
               </p>
               <button onClick={() => setModal(true)} className="btn-primary">
                 Open the enquiry form
@@ -123,7 +123,7 @@ export function ContactPageClient() {
                   marginBottom: 20,
                 }}
               >
-                Questions about how the matching service works, complaints about a matched professional, or feedback. We aim to respond within two working days.
+                Questions about how we work, or a complaint about work we have done, or feedback. We aim to respond within two working days.
               </p>
               <p
                 style={{
@@ -197,50 +197,6 @@ export function ContactPageClient() {
               </p>
             </div>
 
-            {/* Joining the network */}
-            <div
-              style={{
-                background: 'var(--parchment-2)',
-                border: '0.5px solid var(--border)',
-                borderRadius: 8,
-                padding: 28,
-              }}
-            >
-              <p className="eyebrow mb-3" style={{ color: 'rgba(28,24,20,0.5)' }}>For will writers</p>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-cormorant), Georgia, serif',
-                  fontSize: 24,
-                  fontWeight: 400,
-                  lineHeight: 1.2,
-                  color: 'var(--ink)',
-                  marginBottom: 12,
-                }}
-              >
-                Join the network
-              </h2>
-              <p
-                style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: 300,
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  color: 'rgba(28,24,20,0.7)',
-                  marginBottom: 20,
-                }}
-              >
-                Vetted will writers and estate planning specialists serving London — get in touch about joining the matched network. We check qualifications, professional indemnity, and complaints history before accepting any new partner.
-              </p>
-              <p
-                style={{
-                  fontFamily: 'ui-monospace, monospace',
-                  fontSize: 14,
-                  color: 'var(--ink)',
-                }}
-              >
-                partners@willwritingserviceslondon.co.uk
-              </p>
-            </div>
 
           </div>
 
@@ -254,9 +210,9 @@ export function ContactPageClient() {
               color: 'rgba(28,24,20,0.55)',
             }}
           >
-            We are not a law firm and do not provide legal advice. We introduce clients to qualified will writers and estate planning specialists. See our{' '}
+            We are not a firm of solicitors. Information on this site is general guidance about the law, not advice on your circumstances and estate planning specialists. See our{' '}
             <Link href="/about/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>about page</Link>
-            {' '}for how the matching service works, or our{' '}
+            {' '}for how we work, or our{' '}
             <Link href="/terms/" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>terms</Link>
             {' '}for the rules of using this site.
           </p>

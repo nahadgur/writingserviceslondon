@@ -27,7 +27,7 @@ main :is(a,p,span)[style*="color: var(--brand)"]:not([class*=btn]){color:var(--b
 @media(min-width:720px){[data-edition-page=home]>[data-edition-hero]>.absolute{height:260px}}
 
 /* Shared directory hero: one size, colour and type scale across all four indexes. */
-[data-directory-hero]{background:#c44c20!important;border:0;display:flex;align-items:center;min-height:380px!important}
+[data-directory-hero]{background:linear-gradient(100deg,rgba(112,39,14,.94) 0%,rgba(112,39,14,.84) 55%,rgba(78,29,13,.72) 100%),url('/images/london-edition.webp') center 55%/cover no-repeat #c44c20!important;border:0;display:flex;align-items:center;min-height:380px!important}
 [data-directory-hero]>.container-width{max-width:1280px;padding-block:32px!important}
 [data-directory-hero] :is(h1,p,span,em){color:#fff!important}
 [data-directory-hero] h1{font-size:clamp(36px,5vw,64px)!important;line-height:1.06!important;max-width:900px;margin:0 0 18px!important;text-wrap:balance}

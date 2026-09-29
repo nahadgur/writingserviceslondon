@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { IHTCalculator } from '@/components/tools/IHTCalculator';
@@ -62,89 +63,47 @@ const tools = [
 ];
 
 export function ToolsPageClient() {
-
-  const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-    fontFamily: 'var(--font-inter), Arial, sans-serif',
-    fontSize: size, fontStyle: 'normal', fontWeight: 400,
-    color: 'var(--ink)', lineHeight: 1.15, ...extra,
-  });
-
-  return (
-    <>
-      <Header />
-      <main data-edition-page="tools" id="main-content">
-        {/* Dark hero */}
-        <section data-edition-hero style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
-          <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="240" height="160" viewBox="0 0 240 160" fill="none">
-            <rect x="10"  y="80"  width="28" height="80"  fill="white"/>
-            <rect x="46"  y="50"  width="32" height="110" fill="white"/>
-            <rect x="86"  y="28"  width="38" height="132" fill="white"/>
-            <rect x="96"  y="44"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="108" y="44"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="96"  y="62"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="132" y="68"  width="26" height="92"  fill="white"/>
-            <rect x="166" y="40"  width="34" height="120" fill="white"/>
-            <rect x="175" y="54"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="185" y="54"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="208" y="60"  width="26" height="100" fill="white"/>
-          </svg>
-          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 32, paddingBottom: 32 }}>
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: "#f29264", marginBottom: 16 }}>
-              Free tools
-            </p>
-            <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(30px,5vw,50px)', fontWeight: 400, fontStyle: 'normal', color: '#fff', lineHeight: 1.1, marginBottom: 16, maxWidth: 580 }}>
-              Estate planning calculators for London residents
-            </h1>
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.76)", lineHeight: 1.65, maxWidth: 500 }}>
-              Six free tools covering inheritance tax, intestacy, LPA costs, probate fees, care cost protection, and will reviews. All figures current for 2026.
-            </p>
-          </div>
-        </section>
-
-        {/* Tools grid with jump links */}
-        <div className="container-width py-12">
-
-          {/* Jump links */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32, paddingBottom: 20, borderBottom: '0.5px solid var(--border)' }}>
-            {tools.map(t => (
-              <a key={t.id} href={`#${t.id}`} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--stone)', textDecoration: 'none', padding: "5px 12px", borderRadius: 0, border: '0.5px solid var(--border)', background: 'var(--parchment)', transition: 'all 0.12s' }}
-                className="hover:text-brand-500">
-                {t.title}
-              </a>
-            ))}
-          </div>
-
-          {/* Tools */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            {tools.map(t => (
-              <section key={t.id} id={t.id} style={{ scrollMarginTop: 80 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 6 }}>
-                  <h2 style={serif('clamp(20px,2.5vw,28px)')}>{t.title}</h2>
-                  <Link href={t.guide} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--brand)', textDecoration: 'none', whiteSpace: 'nowrap', padding: "4px 12px", border: '0.5px solid rgba(212,105,25,0.35)', borderRadius: 0, background: 'rgba(212,105,25,0.06)' }}>
-                    Read {t.guideLabel} →
-                  </Link>
-                </div>
-                <p className="body-md mb-2" style={{ maxWidth: 580 }}>{t.desc}</p>
-                {t.component}
-              </section>
-            ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <div style={{ background: 'var(--ink)', borderRadius: 0, padding: "32px 32px", textAlign: 'center', marginTop: 32 }}>
-            <h2 style={serif('clamp(20px,3vw,30px)', { color: '#fff', marginBottom: 10 })}>
-              Ready to speak to a specialist?
-            </h2>
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: "rgba(255,255,255,0.76)", marginBottom: 20, maxWidth: 400, margin: '0 auto 20px' }}>
-              Wills, lasting powers of attorney, trusts and probate support across London. Most wills are drafted within 3 to 7 working days.
-            </p>
-            <Link href="/contact/#enquiry" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, padding: "13px 28px", borderRadius: 0, border: 'none', cursor: 'pointer' }}>
-              Get your free match
-            </Link>
-          </div>
+  const [active, setActive] = useState(tools[0].id);
+  useEffect(() => {
+    const sync = () => { const id = window.location.hash.slice(1); if (tools.some(tool => tool.id === id)) setActive(id); };
+    sync(); window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+  const selectTool = (id: string) => { setActive(id); window.history.replaceState(null, '', '#' + id); };
+  return <>
+    <Header />
+    <main data-edition-page="tools" id="main-content">
+      <section data-edition-hero data-directory-hero>
+        <div className="container-width">
+          <p className="eyebrow">Free tools</p>
+          <h1>Estate planning calculators for London residents</h1>
+          <p className="body-lg">Six free tools covering inheritance tax, intestacy, LPA costs, probate fees, care cost protection, and will reviews. All figures current for 2026.</p>
         </div>
-      </main>
-      <Footer />
-    </>
-  );
+      </section>
+      <div className="container-width tools-workspace">
+        <div className="tools-picker">
+          <label htmlFor="tools-picker">Free tools</label>
+          <select id="tools-picker" value={active} onChange={event => selectTool(event.target.value)}>{tools.map(tool => <option key={tool.id} value={tool.id}>{tool.title}</option>)}</select>
+        </div>
+        <div className="tools-navigation" role="tablist" aria-label="Estate planning calculators" aria-orientation="vertical">
+          {tools.map((tool, index) => <button key={tool.id} type="button" role="tab" id={'tab-' + tool.id} aria-controls={tool.id} aria-selected={active === tool.id} tabIndex={active === tool.id ? 0 : -1} onClick={() => selectTool(tool.id)} onKeyDown={event => {
+            const next = event.key === 'ArrowDown' ? (index + 1) % tools.length : event.key === 'ArrowUp' ? (index + tools.length - 1) % tools.length : event.key === 'Home' ? 0 : event.key === 'End' ? tools.length - 1 : -1;
+            if (next < 0) return; event.preventDefault(); selectTool(tools[next].id); document.getElementById('tab-' + tools[next].id)?.focus();
+          }}>{tool.title}</button>)}
+        </div>
+        <div className="tools-panels">
+          {tools.map(tool => <section key={tool.id} id={tool.id} className="tool-panel" role="tabpanel" aria-labelledby={'tool-title-' + tool.id} tabIndex={0} hidden={active !== tool.id}>
+            <div className="tool-heading"><h2 id={'tool-title-' + tool.id}>{tool.title}</h2><Link href={tool.guide}>Read {tool.guideLabel} →</Link></div>
+            <p className="tool-intro">{tool.desc}</p>
+            {tool.component}
+          </section>)}
+        </div>
+      </div>
+      <section className="container-width tools-contact-wrap"><div className="tools-contact">
+        <div><h2>Ready to speak to a specialist?</h2><p>Wills, lasting powers of attorney, trusts and probate support across London. Most wills are drafted within 3 to 7 working days.</p></div>
+        <Link href="/contact/#enquiry" className="btn-primary">Get your free match</Link>
+      </div></section>
+    </main>
+    <Footer />
+  </>;
 }

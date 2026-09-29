@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
   fontFamily: 'var(--font-inter), Arial, sans-serif',
@@ -15,6 +15,7 @@ function parse(s: string) {
 function fmt(n: number) { return '£' + Math.round(n).toLocaleString('en-GB'); }
 
 export function ProbateFeeCalculator() {
+  const fieldId = useId();
   const [estate,     setEstate]     = useState('');
   const [hasWill,    setHasWill]    = useState<boolean | null>(null);
   const [properties, setProperties] = useState('1');
@@ -56,22 +57,22 @@ export function ProbateFeeCalculator() {
   const ready = hasWill !== null && overseas !== null;
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Probate fee estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>HMCTS court fee: £300 for estates over £5,000. Professional fees: typically 1-2% of estate value.</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px', marginBottom: 16 }}>
+      <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px', marginBottom: 16 }}>
         <div style={{ gridColumn: '1 / -1' }}>
-          <label style={labelStyle}>Gross estate value</label>
-          <input style={fieldStyle} type="text" placeholder="£ e.g. 850000" value={estate} onChange={e => setEstate(e.target.value)} />
+          <label htmlFor={`${fieldId}-1`} style={labelStyle}>Gross estate value</label>
+          <input id={`${fieldId}-1`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ e.g. 850000" value={estate} onChange={e => setEstate(e.target.value)} />
         </div>
       </div>
 
       <div style={{ marginBottom: 16 }}>
         <p style={labelStyle}>Is there a valid will?</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button style={btnStyle(hasWill === true)}  onClick={() => setHasWill(true)}>Yes (grant of probate)</button>
-          <button style={btnStyle(hasWill === false)} onClick={() => setHasWill(false)}>No (letters of administration)</button>
+          <button type="button" aria-pressed={hasWill === true} style={btnStyle(hasWill === true)}  onClick={() => setHasWill(true)}>Yes (grant of probate)</button>
+          <button type="button" aria-pressed={hasWill === false} style={btnStyle(hasWill === false)} onClick={() => setHasWill(false)}>No (letters of administration)</button>
         </div>
       </div>
 
@@ -79,7 +80,7 @@ export function ProbateFeeCalculator() {
         <p style={labelStyle}>Number of properties in the estate</p>
         <div style={{ display: 'flex', gap: 8 }}>
           {['1','2','3','4+'].map(n => (
-            <button key={n} style={btnStyle(properties === n)} onClick={() => setProperties(n)}>{n}</button>
+            <button type="button" aria-pressed={properties === n} key={n} style={btnStyle(properties === n)} onClick={() => setProperties(n)}>{n}</button>
           ))}
         </div>
       </div>
@@ -87,8 +88,8 @@ export function ProbateFeeCalculator() {
       <div style={{ marginBottom: 20 }}>
         <p style={labelStyle}>Any overseas assets?</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button style={btnStyle(overseas === true)}  onClick={() => setOverseas(true)}>Yes</button>
-          <button style={btnStyle(overseas === false)} onClick={() => setOverseas(false)}>No</button>
+          <button type="button" aria-pressed={overseas === true} style={btnStyle(overseas === true)}  onClick={() => setOverseas(true)}>Yes</button>
+          <button type="button" aria-pressed={overseas === false} style={btnStyle(overseas === false)} onClick={() => setOverseas(false)}>No</button>
         </div>
       </div>
 
@@ -112,9 +113,9 @@ export function ProbateFeeCalculator() {
           </div>
 
           {estateVal > 0 && (
-            <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
+            <div className="calculator-total" style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
               <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total cost</p>
-              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
+              <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
                 {fmt(totalMin)} -- {fmt(totalMax)}
               </p>
             </div>

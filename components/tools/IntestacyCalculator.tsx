@@ -76,7 +76,7 @@ export function IntestacyCalculator() {
   const hasWarning = rows.some(r => r.warning);
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Intestacy outcome calculator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>See who inherits if you die without a will under the Administration of Estates Act 1925.</p>
 
@@ -84,8 +84,8 @@ export function IntestacyCalculator() {
       <div style={{ marginBottom: 16 }}>
         <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 8 }}>Are you married or in a civil partnership?</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button style={btnStyle(married === true)}  onClick={() => { setMarried(true);  setStep(s => Math.max(s, 2)); }}>Yes</button>
-          <button style={btnStyle(married === false)} onClick={() => { setMarried(false); setStep(s => Math.max(s, 2)); }}>No</button>
+          <button type="button" aria-pressed={married === true} style={btnStyle(married === true)}  onClick={() => { setMarried(true);  setStep(s => Math.max(s, 2)); }}>Yes</button>
+          <button type="button" aria-pressed={married === false} style={btnStyle(married === false)} onClick={() => { setMarried(false); setStep(s => Math.max(s, 2)); }}>No</button>
         </div>
       </div>
 
@@ -95,7 +95,7 @@ export function IntestacyCalculator() {
           <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 8 }}>How many children do you have?</p>
           <div style={{ display: 'flex', gap: 8 }}>
             {['0','1','2','3','4+'].map(n => (
-              <button key={n} style={btnStyle(children === n)} onClick={() => setChildren(n)}>{n}</button>
+              <button type="button" aria-pressed={children === n} key={n} style={btnStyle(children === n)} onClick={() => setChildren(n)}>{n}</button>
             ))}
           </div>
         </div>
@@ -106,8 +106,8 @@ export function IntestacyCalculator() {
         <div style={{ marginBottom: 16 }}>
           <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 8 }}>Do you have an unmarried partner living with you?</p>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button style={btnStyle(cohabiting === true)}  onClick={() => { setCohabiting(true);  setStep(s => Math.max(s, 3)); }}>Yes</button>
-            <button style={btnStyle(cohabiting === false)} onClick={() => { setCohabiting(false); setStep(s => Math.max(s, 3)); }}>No</button>
+            <button type="button" aria-pressed={cohabiting === true} style={btnStyle(cohabiting === true)}  onClick={() => { setCohabiting(true);  setStep(s => Math.max(s, 3)); }}>Yes</button>
+            <button type="button" aria-pressed={cohabiting === false} style={btnStyle(cohabiting === false)} onClick={() => { setCohabiting(false); setStep(s => Math.max(s, 3)); }}>No</button>
           </div>
         </div>
       )}
@@ -116,7 +116,7 @@ export function IntestacyCalculator() {
       {step >= 3 && (
         <div style={{ marginBottom: 20 }}>
           <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 8 }}>Estimated estate value (optional)</p>
-          <input style={{ ...fieldStyle, width: 200 }} type="text" placeholder="£ e.g. 750000" value={estate} onChange={e => setEstate(e.target.value)} />
+          <input aria-label="Estimated estate value (optional)" style={{ ...fieldStyle, width: 200 }} type="text" inputMode="decimal" placeholder="£ e.g. 750000" value={estate} onChange={e => setEstate(e.target.value)} />
         </div>
       )}
 

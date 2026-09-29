@@ -44,7 +44,7 @@ export function LPAEstimator() {
   });
 
   const typeBtn = (t: string, label: string) => (
-    <button style={btnStyle(types.includes(t))} onClick={() => toggle(t)}>{label}</button>
+    <button type="button" aria-pressed={types.includes(t)} style={btnStyle(types.includes(t))} onClick={() => toggle(t)}>{label}</button>
   );
 
   const labelStyle: React.CSSProperties = {
@@ -56,7 +56,7 @@ export function LPAEstimator() {
   const ready = count > 0 && lowIncome !== null && benefits !== null && professional !== null;
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>LPA cost estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>OPG fee £82 per LPA (2026). Registration currently takes approximately {WEEKS} weeks.</p>
 
@@ -71,8 +71,8 @@ export function LPAEstimator() {
       <div style={{ marginBottom: 16 }}>
         <p style={labelStyle}>Do you receive means-tested benefits?</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button style={btnStyle(benefits === true)}  onClick={() => { setBenefits(true);  setLowIncome(false); }}>Yes (fee waived)</button>
-          <button style={btnStyle(benefits === false)} onClick={() => setBenefits(false)}>No</button>
+          <button type="button" aria-pressed={benefits === true} style={btnStyle(benefits === true)}  onClick={() => { setBenefits(true);  setLowIncome(false); }}>Yes (fee waived)</button>
+          <button type="button" aria-pressed={benefits === false} style={btnStyle(benefits === false)} onClick={() => setBenefits(false)}>No</button>
         </div>
       </div>
 
@@ -80,8 +80,8 @@ export function LPAEstimator() {
         <div style={{ marginBottom: 16 }}>
           <p style={labelStyle}>Is your annual income under £12,000?</p>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button style={btnStyle(lowIncome === true)}  onClick={() => setLowIncome(true)}>Yes (50% reduction)</button>
-            <button style={btnStyle(lowIncome === false)} onClick={() => setLowIncome(false)}>No</button>
+            <button type="button" aria-pressed={lowIncome === true} style={btnStyle(lowIncome === true)}  onClick={() => setLowIncome(true)}>Yes (50% reduction)</button>
+            <button type="button" aria-pressed={lowIncome === false} style={btnStyle(lowIncome === false)} onClick={() => setLowIncome(false)}>No</button>
           </div>
         </div>
       )}
@@ -89,8 +89,8 @@ export function LPAEstimator() {
       <div style={{ marginBottom: 20 }}>
         <p style={labelStyle}>Are you using a professional to draft the LPA?</p>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button style={btnStyle(professional === true)}  onClick={() => setProfessional(true)}>Yes</button>
-          <button style={btnStyle(professional === false)} onClick={() => setProfessional(false)}>No (completing myself)</button>
+          <button type="button" aria-pressed={professional === true} style={btnStyle(professional === true)}  onClick={() => setProfessional(true)}>Yes</button>
+          <button type="button" aria-pressed={professional === false} style={btnStyle(professional === false)} onClick={() => setProfessional(false)}>No (completing myself)</button>
         </div>
       </div>
 
@@ -109,9 +109,9 @@ export function LPAEstimator() {
             )}
           </div>
 
-          <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
+          <div className="calculator-total" style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
             <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total</p>
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
+            <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
               {professional ? `${fmt(totalMin)} -- ${fmt(totalMax)}` : fmt(totalMin)}
             </p>
           </div>

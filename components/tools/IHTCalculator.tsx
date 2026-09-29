@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
   fontFamily: 'var(--font-inter), Arial, sans-serif',
@@ -23,6 +23,7 @@ function parse(s: string): number {
 }
 
 export function IHTCalculator() {
+  const fieldId = useId();
   const [property,   setProperty]   = useState('');
   const [savings,    setSavings]    = useState('');
   const [other,      setOther]      = useState('');
@@ -65,30 +66,30 @@ export function IHTCalculator() {
   };
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Inheritance tax estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>2026 figures -- NRB £325,000, RNRB £175,000, rate 40%. For guidance only.</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px' }}>
+      <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px' }}>
         <div>
-          <label style={labelStyle}>Property value</label>
-          <input style={fieldStyle} type="text" placeholder="£ e.g. 850000" value={property} onChange={e => setProperty(e.target.value)} />
+          <label htmlFor={`${fieldId}-1`} style={labelStyle}>Property value</label>
+          <input id={`${fieldId}-1`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ e.g. 850000" value={property} onChange={e => setProperty(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>Savings &amp; investments</label>
-          <input style={fieldStyle} type="text" placeholder="£ e.g. 150000" value={savings} onChange={e => setSavings(e.target.value)} />
+          <label htmlFor={`${fieldId}-2`} style={labelStyle}>Savings &amp; investments</label>
+          <input id={`${fieldId}-2`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ e.g. 150000" value={savings} onChange={e => setSavings(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>Other assets</label>
-          <input style={fieldStyle} type="text" placeholder="£ business, art, etc." value={other} onChange={e => setOther(e.target.value)} />
+          <label htmlFor={`${fieldId}-3`} style={labelStyle}>Other assets</label>
+          <input id={`${fieldId}-3`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ business, art, etc." value={other} onChange={e => setOther(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>Debts &amp; liabilities</label>
-          <input style={fieldStyle} type="text" placeholder="£ mortgage, loans" value={debts} onChange={e => setDebts(e.target.value)} />
+          <label htmlFor={`${fieldId}-4`} style={labelStyle}>Debts &amp; liabilities</label>
+          <input id={`${fieldId}-4`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ mortgage, loans" value={debts} onChange={e => setDebts(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>Charitable gifts in will</label>
-          <input style={fieldStyle} type="text" placeholder="£ 0" value={charity} onChange={e => setCharity(e.target.value)} />
+          <label htmlFor={`${fieldId}-5`} style={labelStyle}>Charitable gifts in will</label>
+          <input id={`${fieldId}-5`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ 0" value={charity} onChange={e => setCharity(e.target.value)} />
         </div>
       </div>
 
@@ -111,7 +112,7 @@ export function IHTCalculator() {
 
       {/* Results */}
       <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 18 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 20px', marginBottom: 16 }}>
+        <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 20px', marginBottom: 16 }}>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Gross estate</p>
             <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(gross)}</p>
@@ -138,9 +139,9 @@ export function IHTCalculator() {
           </div>
         </div>
 
-        <div style={{ background: iht > 0 ? 'rgba(212,105,25,0.08)' : 'rgba(0,0,0,0.03)', border: `0.5px solid ${iht > 0 ? 'rgba(212,105,25,0.3)' : 'var(--border)'}`, borderRadius: 0, padding: "14px 18px", textAlign: 'center' }}>
+        <div className="calculator-total" style={{ background: iht > 0 ? 'rgba(212,105,25,0.08)' : 'rgba(0,0,0,0.03)', border: `0.5px solid ${iht > 0 ? 'rgba(212,105,25,0.3)' : 'var(--border)'}`, borderRadius: 0, padding: "14px 18px", textAlign: 'center' }}>
           <p style={labelStyle}>Estimated inheritance tax</p>
-          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 36, fontWeight: 400, color: iht > 0 ? '#D46919' : 'var(--stone)', lineHeight: 1 }}>{fmt(iht)}</p>
+          <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 36, fontWeight: 400, color: iht > 0 ? '#D46919' : 'var(--stone)', lineHeight: 1 }}>{fmt(iht)}</p>
           {iht > 0 && (
             <p className="body-sm mt-2" style={{ color: 'var(--dust)' }}>
               Trust planning and gifting strategies could reduce this. Speak to a specialist.

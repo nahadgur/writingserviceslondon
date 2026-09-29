@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
   fontFamily: 'var(--font-inter), Arial, sans-serif',
@@ -17,6 +17,7 @@ function parse(s: string) {
 function fmt(n: number) { return '£' + Math.round(n).toLocaleString('en-GB'); }
 
 export function CareCalculator() {
+  const fieldId = useId();
   const [property, setProperty] = useState('');
   const [savings,  setSavings]  = useState('');
 
@@ -47,42 +48,42 @@ export function CareCalculator() {
   const hasInput = propVal > 0;
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Care cost protection estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>Illustrates the potential benefit of a protective property trust under the Care Act 2014. Self-funding threshold: £100,000 (from Oct 2025).</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px', marginBottom: 20 }}>
+      <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 20px', marginBottom: 20 }}>
         <div>
-          <label style={labelStyle}>Combined property value</label>
-          <input style={fieldStyle} type="text" placeholder="£ e.g. 900000" value={property} onChange={e => setProperty(e.target.value)} />
+          <label htmlFor={`${fieldId}-1`} style={labelStyle}>Combined property value</label>
+          <input id={`${fieldId}-1`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ e.g. 900000" value={property} onChange={e => setProperty(e.target.value)} />
         </div>
         <div>
-          <label style={labelStyle}>Combined savings &amp; investments</label>
-          <input style={fieldStyle} type="text" placeholder="£ e.g. 120000" value={savings} onChange={e => setSavings(e.target.value)} />
+          <label htmlFor={`${fieldId}-2`} style={labelStyle}>Combined savings &amp; investments</label>
+          <input id={`${fieldId}-2`} style={fieldStyle} type="text" inputMode="decimal" placeholder="£ e.g. 120000" value={savings} onChange={e => setSavings(e.target.value)} />
         </div>
       </div>
 
       {hasInput && (
         <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 18 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+          <div className="calculator-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
             <div style={{ background: 'rgba(200,50,50,0.05)', border: '0.5px solid rgba(200,50,50,0.2)', borderRadius: 0, padding: "14px 16px" }}>
               <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 6 }}>Without PPT</p>
               <p style={serif(13, { color: 'var(--stone)', marginBottom: 8 })}>Assets potentially assessed for care</p>
-              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 26, fontWeight: 400, color: '#c0392b', lineHeight: 1 }}>{fmt(withoutProtection)}</p>
+              <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 26, fontWeight: 400, color: '#c0392b', lineHeight: 1 }}>{fmt(withoutProtection)}</p>
               <p className="body-sm mt-2" style={{ color: 'var(--dust)' }}>Full estate above £100,000 threshold</p>
             </div>
             <div style={{ background: 'rgba(212,105,25,0.06)', border: '0.5px solid rgba(212,105,25,0.25)', borderRadius: 0, padding: "14px 16px" }}>
               <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 6 }}>With PPT</p>
               <p style={serif(13, { color: 'var(--stone)', marginBottom: 8 })}>Assets potentially assessed for care</p>
-              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 26, fontWeight: 400, color: "var(--brand)", lineHeight: 1 }}>{fmt(withProtection)}</p>
+              <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 26, fontWeight: 400, color: "var(--brand)", lineHeight: 1 }}>{fmt(withProtection)}</p>
               <p className="body-sm mt-2" style={{ color: 'var(--dust)' }}>Survivor\'s half of property + savings</p>
             </div>
           </div>
 
           {saving > 0 && (
-            <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "12px 16px", textAlign: 'center', marginBottom: 14 }}>
+            <div className="calculator-total" style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "12px 16px", textAlign: 'center', marginBottom: 14 }}>
               <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Potential assets protected</p>
-              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 28, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>{fmt(saving)}</p>
+              <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 28, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>{fmt(saving)}</p>
             </div>
           )}
 

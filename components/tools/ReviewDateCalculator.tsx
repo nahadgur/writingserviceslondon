@@ -126,7 +126,7 @@ export function ReviewDateCalculator() {
   const others = primary ? selected.filter(t => t.id !== primary.id) : [];
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
+    <div className="edition-calculator" style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(22, { marginBottom: 6 })}>Will review checker</p>
       <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--dust)', marginBottom: 20 }}>
         Tick any events that have occurred since your will was last made or reviewed.
@@ -178,13 +178,13 @@ export function ReviewDateCalculator() {
               {selected.length} triggers identified -- showing most urgent
             </p>
           )}
-          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 24, fontStyle: 'normal', fontWeight: 400, color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 10, lineHeight: 1.2 }}>
+          <p className="calculator-value" style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 24, fontStyle: 'normal', fontWeight: 400, color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 10, lineHeight: 1.2 }}>
             {primary.verdict}
           </p>
           <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--stone)', lineHeight: 1.7, marginBottom: 18 }}>
             {primary.detail}
           </p>
-          <a href={primary.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, color: '#fff', background: hasUrgent ? '#c0392b' : '#D46919', padding: "11px 22px", borderRadius: 0 }}>
+          <a href={primary.href.startsWith('/services/') ? '/contact/#enquiry' : primary.href === '/tools/' ? '/tools/#iht' : primary.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, color: '#fff', background: hasUrgent ? '#c0392b' : '#D46919', padding: "11px 22px", borderRadius: 0 }}>
             {primary.cta} →
           </a>
 

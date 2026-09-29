@@ -1,8 +1,9 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/data/site';
 import { ContactPageClient } from './ContactPageClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/contact/", {
   title: 'Contact Will Writing Services London',
   description: 'How to reach us — enquiry form, general questions, UK GDPR data requests, and what to expect when you get in touch.',
   alternates: { canonical: '/contact/' },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description: 'Enquiry form, general questions, UK GDPR data requests, and partner contact.',
   },
   robots: { index: true, follow: true },
-};
+});
 
 export default function ContactPage() {
   return <ContactPageClient />;

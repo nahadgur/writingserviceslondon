@@ -1,8 +1,9 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/data/site';
 import { LocationIndexClient } from './LocationIndexClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/location/", {
   title: 'Will Writing Services Across London | 15 Area Hubs',
   description: 'Coverage across 15 London hubs from Mayfair and Hampstead to Canary Wharf and Richmond. Will writing and estate planning in every borough, with home visits. Find your area below.',
   alternates: { canonical: '/location/' },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description: '15 London hubs covered for will writing and estate planning.',
   },
   robots: { index: true, follow: true },
-};
+});
 
 export default function LocationIndexPage() {
   const schema = {

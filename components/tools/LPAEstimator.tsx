@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
-  fontSize: size, fontStyle: 'italic', fontWeight: 400,
+  fontFamily: 'var(--font-inter), Arial, sans-serif',
+  fontSize: size, fontStyle: 'normal', fontWeight: 400,
   color: 'var(--ink)', lineHeight: 1.2, ...extra,
 });
 
@@ -36,8 +36,8 @@ export function LPAEstimator() {
   const fmt = (n: number) => '£' + n.toLocaleString('en-GB');
 
   const btnStyle = (active: boolean): React.CSSProperties => ({
-    padding: '9px 20px', fontSize: 12, fontFamily: 'var(--font-inter), sans-serif',
-    fontWeight: 500, borderRadius: 4, cursor: 'pointer', border: '0.5px solid',
+    padding: "9px 20px", fontSize: 12, fontFamily: 'var(--font-inter), Arial, sans-serif',
+    fontWeight: 500, borderRadius: 0, cursor: 'pointer', border: '0.5px solid',
     borderColor: active ? '#D46919' : 'var(--border)',
     background: active ? 'rgba(212,105,25,0.1)' : 'var(--parchment)',
     color: active ? '#D46919' : 'var(--stone)',
@@ -48,7 +48,7 @@ export function LPAEstimator() {
   );
 
   const labelStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500,
+    fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500,
     letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)',
     display: 'block', marginBottom: 8,
   };
@@ -56,7 +56,7 @@ export function LPAEstimator() {
   const ready = count > 0 && lowIncome !== null && benefits !== null && professional !== null;
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '24px 22px', marginTop: 20, marginBottom: 20 }}>
+    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>LPA cost estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>OPG fee £82 per LPA (2026). Registration currently takes approximately {WEEKS} weeks.</p>
 
@@ -97,27 +97,27 @@ export function LPAEstimator() {
       {ready && count > 0 && (
         <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 18 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--parchment)', borderRadius: 5, border: '0.5px solid var(--border)' }}>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 12, color: 'var(--stone)' }}>OPG registration fee ({count} LPA{count > 1 ? 's' : ''} x {fmt(opgFeePerLPA)})</span>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 400, color: 'var(--ink)' }}>{fmt(opgTotal)}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: "8px 12px", background: 'var(--parchment)', borderRadius: 0, border: '0.5px solid var(--border)' }}>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: 'var(--stone)' }}>OPG registration fee ({count} LPA{count > 1 ? 's' : ''} x {fmt(opgFeePerLPA)})</span>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: 'var(--ink)' }}>{fmt(opgTotal)}</span>
             </div>
             {professional && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--parchment)', borderRadius: 5, border: '0.5px solid var(--border)' }}>
-                <span style={{ fontFamily: 'var(--font-inter)', fontSize: 12, color: 'var(--stone)' }}>Professional preparation (estimate)</span>
-                <span style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 400, color: 'var(--ink)' }}>{fmt(profFeeMin)} -- {fmt(profFeeMax)}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: "8px 12px", background: 'var(--parchment)', borderRadius: 0, border: '0.5px solid var(--border)' }}>
+                <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: 'var(--stone)' }}>Professional preparation (estimate)</span>
+                <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: 'var(--ink)' }}>{fmt(profFeeMin)} -- {fmt(profFeeMax)}</span>
               </div>
             )}
           </div>
 
-          <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 6, padding: '14px 18px', textAlign: 'center', marginBottom: 14 }}>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total</p>
-            <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 30, fontWeight: 400, fontStyle: 'italic', color: '#D46919', lineHeight: 1 }}>
+          <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
               {professional ? `${fmt(totalMin)} -- ${fmt(totalMax)}` : fmt(totalMin)}
             </p>
           </div>
 
-          <div style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 6, padding: '12px 16px' }}>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 6 }}>Registration timeline</p>
+          <div style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "12px 16px" }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 6 }}>Registration timeline</p>
             <p className="body-sm" style={{ color: 'var(--stone)', marginBottom: 4 }}>Current OPG processing time: approximately {WEEKS} weeks from submission of a complete application.</p>
             <p className="body-sm" style={{ color: 'var(--dust)' }}>An unregistered LPA cannot be used. Apply well in advance of any anticipated need.</p>
           </div>

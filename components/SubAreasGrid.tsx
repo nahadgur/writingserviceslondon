@@ -4,8 +4,8 @@ interface Props { hubName: string; subAreas: SubArea[]; }
 
 export function SubAreasGrid({ hubName, subAreas }: Props) {
   return (
-    <section className="mb-12">
-      <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(20px,2.5vw,26px)', fontStyle: 'italic', color: 'var(--ink)', marginBottom: 8 }}>
+    <section className="mb-8">
+      <h2 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(20px,2.5vw,26px)', fontStyle: 'normal', color: 'var(--ink)', marginBottom: 8 }}>
         Areas we cover around {hubName}
       </h2>
       <p className="body-md mb-5">

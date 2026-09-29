@@ -1,8 +1,9 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { siteConfig, FAQS_HOME } from '@/data/site';
 import { HomePageClient } from './HomePageClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/", {
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     locale: 'en_GB',
   },
-};
+});
 
 export default function HomePage() {
   const faqSchema = {

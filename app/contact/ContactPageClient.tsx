@@ -1,27 +1,24 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { LeadFormModal } from '@/components/LeadFormModal';
+import { HeroLeadForm } from '@/components/HeroLeadForm';
 import { siteConfig } from '@/data/site';
 
 export function ContactPageClient() {
-  const [modal, setModal] = useState(false);
 
   return (
     <>
-      <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
-      <Header onOpenModal={() => setModal(true)} />
-      <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
-        <section style={{ background: 'var(--ink)', color: '#fff' }}>
-          <div className="container-width pt-20 pb-12">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Contact — get in touch</p>
+      <Header />
+      <main data-edition-page="contact" id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
+        <section data-edition-hero style={{ background: 'var(--ink)', color: '#fff' }}>
+          <div className="container-width pt-8 pb-12">
+            <p className="eyebrow mb-4" style={{ color: "rgba(255,255,255,0.76)" }}>Contact — get in touch</p>
             <h1
               style={{
-                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 'clamp(36px, 5vw, 64px)',
                 fontWeight: 400,
                 letterSpacing: '-0.01em',
@@ -35,8 +32,8 @@ export function ContactPageClient() {
             <p
               className="max-w-2xl"
               style={{
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                fontWeight: 300,
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
+                fontWeight: 400,
                 fontSize: 17,
                 lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.72)',
@@ -47,24 +44,24 @@ export function ContactPageClient() {
           </div>
         </section>
 
-        <section className="container-width py-14">
+        <section className="container-width py-8">
           <Breadcrumbs items={[{ label: 'Contact' }]} />
 
-          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="edition-contact-layout">
 
             {/* Book a consultation */}
-            <div
+            <div id="enquiry" className="edition-contact-booking"
               style={{
                 background: '#fff',
                 border: '0.5px solid var(--border)',
-                borderRadius: 8,
+                borderRadius: 0,
                 padding: 28,
               }}
             >
               <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Book a consultation</p>
               <h2
                 style={{
-                  fontFamily: 'var(--font-cormorant), Georgia, serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 24,
                   fontWeight: 400,
                   lineHeight: 1.2,
@@ -76,8 +73,8 @@ export function ContactPageClient() {
               </h2>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: 300,
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
+                  fontWeight: 400,
                   fontSize: 14,
                   lineHeight: 1.7,
                   color: 'rgba(28,24,20,0.7)',
@@ -86,24 +83,25 @@ export function ContactPageClient() {
               >
                 Tell us your situation. We will get back to you within one working day to arrange a consultation. Free, no obligation.
               </p>
-              <button onClick={() => setModal(true)} className="btn-primary">
-                Open the enquiry form
-              </button>
+              <div className="edition-contact-form">
+                <HeroLeadForm />
+              </div>
             </div>
 
+            <div className="edition-contact-support">
             {/* General questions */}
             <div
               style={{
                 background: 'var(--parchment-2)',
                 border: '0.5px solid var(--border)',
-                borderRadius: 8,
+                borderRadius: 0,
                 padding: 28,
               }}
             >
               <p className="eyebrow mb-3" style={{ color: 'rgba(28,24,20,0.5)' }}>General questions</p>
               <h2
                 style={{
-                  fontFamily: 'var(--font-cormorant), Georgia, serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 24,
                   fontWeight: 400,
                   lineHeight: 1.2,
@@ -115,8 +113,8 @@ export function ContactPageClient() {
               </h2>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: 300,
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
+                  fontWeight: 400,
                   fontSize: 14,
                   lineHeight: 1.7,
                   color: 'rgba(28,24,20,0.7)',
@@ -127,7 +125,7 @@ export function ContactPageClient() {
               </p>
               <p
                 style={{
-                  fontFamily: 'ui-monospace, monospace',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 14,
                   color: 'var(--ink)',
                 }}
@@ -141,14 +139,14 @@ export function ContactPageClient() {
               style={{
                 background: 'var(--parchment-2)',
                 border: '0.5px solid var(--border)',
-                borderRadius: 8,
+                borderRadius: 0,
                 padding: 28,
               }}
             >
               <p className="eyebrow mb-3" style={{ color: 'rgba(28,24,20,0.5)' }}>UK GDPR data requests</p>
               <h2
                 style={{
-                  fontFamily: 'var(--font-cormorant), Georgia, serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 24,
                   fontWeight: 400,
                   lineHeight: 1.2,
@@ -160,8 +158,8 @@ export function ContactPageClient() {
               </h2>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: 300,
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
+                  fontWeight: 400,
                   fontSize: 14,
                   lineHeight: 1.7,
                   color: 'rgba(28,24,20,0.7)',
@@ -172,7 +170,7 @@ export function ContactPageClient() {
               </p>
               <p
                 style={{
-                  fontFamily: 'ui-monospace, monospace',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 14,
                   color: 'var(--ink)',
                 }}
@@ -181,8 +179,8 @@ export function ContactPageClient() {
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                  fontWeight: 300,
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
+                  fontWeight: 400,
                   fontSize: 12,
                   color: 'rgba(28,24,20,0.55)',
                   marginTop: 12,
@@ -196,6 +194,7 @@ export function ContactPageClient() {
                 {' '}for details on what we collect and your rights.
               </p>
             </div>
+            </div>
 
 
           </div>
@@ -203,8 +202,8 @@ export function ContactPageClient() {
           <p
             className="max-w-3xl mx-auto mt-10 text-center"
             style={{
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontWeight: 300,
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
+              fontWeight: 400,
               fontSize: 13,
               lineHeight: 1.7,
               color: 'rgba(28,24,20,0.55)',

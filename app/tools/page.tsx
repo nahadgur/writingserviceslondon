@@ -1,8 +1,9 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/data/site';
 import { ToolsPageClient } from './ToolsPageClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/tools/", {
   title: 'Estate Planning Calculators for London Residents | Free Tools',
   description: 'Six free 2026-current tools — inheritance tax, intestacy outcome, LPA cost, probate fees, care cost protection, and a will review checker. Built for London estates.',
   alternates: { canonical: '/tools/' },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     description: 'Six free 2026-current tools covering IHT, intestacy, LPAs, probate, care costs, and will reviews.',
   },
   robots: { index: true, follow: true },
-};
+});
 
 export default function ToolsPage() {
   return <ToolsPageClient />;

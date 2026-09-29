@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getArticleBySlug, getPublishedArticles, getArticlesByHub, type ContentBlock } from '@/data/blog';
@@ -18,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const url = `${siteConfig.url}/blog/${article.slug}/`;
   const image = `${siteConfig.url}${article.featuredImage}`;
 
-  return {
+  return withPageSeo('/blog/' + article.slug + '/', {
     title: article.metaTitle,
     description: article.metaDescription,
     alternates: { canonical: `/blog/${article.slug}/` },
@@ -40,7 +41,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       images: article.featuredImage ? [image] : undefined,
     },
     robots: { index: true, follow: true },
-  };
+  });
 }
 
 // Extract a FAQ list from content (the "Frequently Asked Questions" h2 followed

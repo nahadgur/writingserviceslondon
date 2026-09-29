@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { readAttribution } from './AttributionCapture';
 
 interface Props { city?: string; service?: string; }
@@ -17,6 +17,8 @@ const serviceOptions = [
 ];
 
 export function HeroLeadForm({ city, service }: Props) {
+  const formId = useId();
+  const selectedService = service ? serviceOptions.find(option => option.toLowerCase().startsWith(service.toLowerCase())) ?? '' : '';
   const [submitting, setSubmitting] = useState(false);
   const [done,       setDone]       = useState(false);
   const [error,      setError]      = useState('');
@@ -27,7 +29,8 @@ export function HeroLeadForm({ city, service }: Props) {
     e.preventDefault();
 
     const form = formRef.current!;
-    const consent = (form.querySelector('#hlf-consent') as HTMLInputElement)?.checked;
+    if (!form.reportValidity()) return;
+    const consent = (form.querySelector(`[id="${formId}-consent"]`) as HTMLInputElement)?.checked;
     if (!consent) {
       setError('Please confirm your consent to continue.');
       return;
@@ -37,14 +40,14 @@ export function HeroLeadForm({ city, service }: Props) {
     setError('');
     const att = readAttribution();
     const payload = {
-      name:    (form.querySelector('#hlf-name')  as HTMLInputElement).value.trim(),
-      email:   (form.querySelector('#hlf-email') as HTMLInputElement).value.trim(),
-      phone:   (form.querySelector('#hlf-phone') as HTMLInputElement).value.trim(),
-      service: (form.querySelector('#hlf-svc')   as HTMLSelectElement).value,
-      message: (form.querySelector('#hlf-msg')   as HTMLTextAreaElement).value.trim(),
+      name:    (form.querySelector(`[id="${formId}-name"]`)  as HTMLInputElement).value.trim(),
+      email:   (form.querySelector(`[id="${formId}-email"]`) as HTMLInputElement).value.trim(),
+      phone:   (form.querySelector(`[id="${formId}-phone"]`) as HTMLInputElement).value.trim(),
+      service: (form.querySelector(`[id="${formId}-svc"]`)   as HTMLSelectElement).value,
+      message: (form.querySelector(`[id="${formId}-msg"]`)   as HTMLTextAreaElement).value.trim(),
       page:    typeof window !== 'undefined' ? window.location.pathname : '',
       source:  'hero-form',
-      _hp_company:    (form.querySelector('#hlf-hp') as HTMLInputElement)?.value ?? '',
+      _hp_company:    (form.querySelector(`[id="${formId}-hp"]`) as HTMLInputElement)?.value ?? '',
       _form_started:  startedRef.current,
       ...att,
     };
@@ -69,7 +72,7 @@ export function HeroLeadForm({ city, service }: Props) {
   }
 
   return (
-    <div style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '22px 20px' }}>
+    <div className="edition-hero-form" style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "22px 20px" }}>
       {done ? (
         <div className="text-center py-4">
           <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(212,105,25,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
@@ -77,14 +80,14 @@ export function HeroLeadForm({ city, service }: Props) {
               <path d="M3 8l3.5 3.5L13 5" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 6 }}>
+          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 20, fontStyle: 'normal', color: 'var(--ink)', marginBottom: 6 }}>
             Thank you
           </p>
           <p className="body-sm">We will be in touch within 24 hours.</p>
         </div>
       ) : (
         <>
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 19, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 3 }}>
+          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 19, fontStyle: 'normal', color: 'var(--ink)', marginBottom: 3 }}>
             {city ? `Book a consultation in ${city}` : 'Book a consultation'}
           </p>
           <p className="body-sm mb-4">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 24hr response</p>
@@ -93,32 +96,32 @@ export function HeroLeadForm({ city, service }: Props) {
 
             {/* Honeypot — hidden from real users, bots fill it */}
             <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
-              <label htmlFor="hlf-hp">Company name (leave blank)</label>
-              <input id="hlf-hp" type="text" tabIndex={-1} autoComplete="off" />
+              <label htmlFor={`${formId}-hp`}>Company name (leave blank)</label>
+              <input id={`${formId}-hp`} type="text" tabIndex={-1} autoComplete="off" />
             </div>
 
             <div>
-              <label className="field-label" htmlFor="hlf-name">Your name *</label>
-              <input id="hlf-name" type="text" required className="field-input"
+              <label className="field-label" htmlFor={`${formId}-name`}>Your name *</label>
+              <input id={`${formId}-name`} type="text" required className="field-input"
                 placeholder="e.g. Sarah Johnson" autoComplete="name" />
             </div>
 
             <div>
-              <label className="field-label" htmlFor="hlf-email">Email address *</label>
-              <input id="hlf-email" type="email" required className="field-input"
+              <label className="field-label" htmlFor={`${formId}-email`}>Email address *</label>
+              <input id={`${formId}-email`} type="email" required className="field-input"
                 placeholder="your@email.com" autoComplete="email" />
             </div>
 
             <div>
-              <label className="field-label" htmlFor="hlf-phone">Phone number *</label>
-              <input id="hlf-phone" type="tel" required className="field-input"
+              <label className="field-label" htmlFor={`${formId}-phone`}>Phone number *</label>
+              <input id={`${formId}-phone`} type="tel" required className="field-input"
                 placeholder="07700 900000" autoComplete="tel" />
             </div>
 
             <div>
-              <label className="field-label" htmlFor="hlf-svc">Type of service *</label>
+              <label className="field-label" htmlFor={`${formId}-svc`}>Type of service *</label>
               <div style={{ position: 'relative' }}>
-                <select id="hlf-svc" required className="field-select" defaultValue={service ?? ''}>
+                <select id={`${formId}-svc`} required className="field-select" defaultValue={selectedService}>
                   <option value="">Please select...</option>
                   {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -129,29 +132,29 @@ export function HeroLeadForm({ city, service }: Props) {
             </div>
 
             <div>
-              <label className="field-label" htmlFor="hlf-msg">
-                Message <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+              <label className="field-label" htmlFor={`${formId}-msg`}>
+                Message <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
               </label>
-              <textarea id="hlf-msg" rows={2} className="field-input resize-none"
+              <textarea id={`${formId}-msg`} rows={2} className="field-input resize-none"
                 placeholder="e.g. blended family, home visit needed, urgent..." />
             </div>
 
             <label
-              htmlFor="hlf-consent"
+              htmlFor={`${formId}-consent`}
               style={{
                 display: 'flex',
                 gap: 8,
                 alignItems: 'flex-start',
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 12,
-                fontWeight: 300,
+                fontWeight: 400,
                 lineHeight: 1.5,
                 color: 'var(--stone)',
                 cursor: 'pointer',
               }}
             >
               <input
-                id="hlf-consent"
+                id={`${formId}-consent`}
                 type="checkbox"
                 required
                 style={{ marginTop: 3, accentColor: 'var(--brand)' }}
@@ -165,7 +168,7 @@ export function HeroLeadForm({ city, service }: Props) {
             </label>
 
             {error && (
-              <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
+              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
             )}
 
             <button type="submit" disabled={submitting} className="btn-primary w-full justify-center">

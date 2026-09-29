@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
-  fontSize: size, fontStyle: 'italic', fontWeight: 400,
+  fontFamily: 'var(--font-inter), Arial, sans-serif',
+  fontSize: size, fontStyle: 'normal', fontWeight: 400,
   color: 'var(--ink)', lineHeight: 1.2, ...extra,
 });
 
@@ -36,27 +36,27 @@ export function ProbateFeeCalculator() {
   const isComplex    = parseInt(properties) > 1 || overseas;
 
   const btnStyle = (active: boolean): React.CSSProperties => ({
-    padding: '9px 20px', fontSize: 12, fontFamily: 'var(--font-inter), sans-serif',
-    fontWeight: 500, borderRadius: 4, cursor: 'pointer', border: '0.5px solid',
+    padding: "9px 20px", fontSize: 12, fontFamily: 'var(--font-inter), Arial, sans-serif',
+    fontWeight: 500, borderRadius: 0, cursor: 'pointer', border: '0.5px solid',
     borderColor: active ? '#D46919' : 'var(--border)',
     background: active ? 'rgba(212,105,25,0.1)' : 'var(--parchment)',
     color: active ? '#D46919' : 'var(--stone)',
   });
   const labelStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500,
+    fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500,
     letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)',
     display: 'block', marginBottom: 8,
   };
   const fieldStyle: React.CSSProperties = {
-    padding: '9px 12px', fontSize: 13, fontFamily: 'var(--font-inter), sans-serif',
-    fontWeight: 300, background: 'var(--parchment)', border: '0.5px solid var(--border)',
-    borderRadius: 4, color: 'var(--ink)', outline: 'none',
+    padding: "9px 12px", fontSize: 13, fontFamily: 'var(--font-inter), Arial, sans-serif',
+    fontWeight: 400, background: 'var(--parchment)', border: '0.5px solid var(--border)',
+    borderRadius: 0, color: 'var(--ink)', outline: 'none',
   };
 
   const ready = hasWill !== null && overseas !== null;
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '24px 22px', marginTop: 20, marginBottom: 20 }}>
+    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Probate fee estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>HMCTS court fee: £300 for estates over £5,000. Professional fees: typically 1-2% of estate value.</p>
 
@@ -95,40 +95,40 @@ export function ProbateFeeCalculator() {
       {ready && (
         <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 18 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--parchment)', borderRadius: 5, border: '0.5px solid var(--border)' }}>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 12, color: 'var(--stone)' }}>HMCTS probate court fee</span>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--ink)' }}>{fmt(courtFee)}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: "8px 12px", background: 'var(--parchment)', borderRadius: 0, border: '0.5px solid var(--border)' }}>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: 'var(--stone)' }}>HMCTS probate court fee</span>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, color: 'var(--ink)' }}>{fmt(courtFee)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--parchment)', borderRadius: 5, border: '0.5px solid var(--border)' }}>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 12, color: 'var(--stone)' }}>Certified copies of grant (x{copies} at £1.50)</span>
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--ink)' }}>{fmt(copyFee)}</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: "8px 12px", background: 'var(--parchment)', borderRadius: 0, border: '0.5px solid var(--border)' }}>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: 'var(--stone)' }}>Certified copies of grant (x{copies} at £1.50)</span>
+              <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, color: 'var(--ink)' }}>{fmt(copyFee)}</span>
             </div>
             {estateVal > 0 && (
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--parchment)', borderRadius: 5, border: '0.5px solid var(--border)' }}>
-                <span style={{ fontFamily: 'var(--font-inter)', fontSize: 12, color: 'var(--stone)' }}>Professional fees (1-2% of estate)</span>
-                <span style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--ink)' }}>{fmt(profMin)} -- {fmt(profMax)}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: "8px 12px", background: 'var(--parchment)', borderRadius: 0, border: '0.5px solid var(--border)' }}>
+                <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: 'var(--stone)' }}>Professional fees (1-2% of estate)</span>
+                <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, color: 'var(--ink)' }}>{fmt(profMin)} -- {fmt(profMax)}</span>
               </div>
             )}
           </div>
 
           {estateVal > 0 && (
-            <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 6, padding: '14px 18px', textAlign: 'center', marginBottom: 14 }}>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total cost</p>
-              <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 30, fontWeight: 400, fontStyle: 'italic', color: '#D46919', lineHeight: 1 }}>
+            <div style={{ background: 'rgba(212,105,25,0.08)', border: '0.5px solid rgba(212,105,25,0.3)', borderRadius: 0, padding: "14px 18px", textAlign: 'center', marginBottom: 14 }}>
+              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)', marginBottom: 4 }}>Estimated total cost</p>
+              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 30, fontWeight: 400, fontStyle: 'normal', color: "var(--brand)", lineHeight: 1 }}>
                 {fmt(totalMin)} -- {fmt(totalMax)}
               </p>
             </div>
           )}
 
-          <div style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 6, padding: '12px 16px' }}>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 6 }}>Estimated timeline</p>
+          <div style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "12px 16px" }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 500, color: 'var(--ink)', marginBottom: 6 }}>Estimated timeline</p>
             <p className="body-sm" style={{ color: 'var(--stone)', marginBottom: 4 }}>
               {isComplex
                 ? `Complex estate (multiple properties${overseas ? ', overseas assets' : ''}): ${complexWeeks}`
                 : `Straightforward estate: ${simpleWeeks} weeks`}
             </p>
             {!hasWill && (
-              <p className="body-sm" style={{ color: '#D46919', marginTop: 4 }}>Without a will, letters of administration add time and complexity to the process.</p>
+              <p className="body-sm" style={{ color: "var(--brand)", marginTop: 4 }}>Without a will, letters of administration add time and complexity to the process.</p>
             )}
           </div>
 

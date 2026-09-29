@@ -61,7 +61,7 @@ export function ConsentBanner({ gaId }: Props) {
             style={{
               background: 'var(--ink)',
               color: '#fff',
-              borderRadius: 8,
+              borderRadius: 0,
               border: '0.5px solid rgba(255,255,255,0.08)',
             }}
             className="mx-auto max-w-3xl shadow-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5"
@@ -69,8 +69,8 @@ export function ConsentBanner({ gaId }: Props) {
             <div
               className="flex-1"
               style={{
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                fontWeight: 300,
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
+                fontWeight: 400,
                 fontSize: 13,
                 lineHeight: 1.6,
                 color: 'rgba(255,255,255,0.78)',
@@ -89,11 +89,11 @@ export function ConsentBanner({ gaId }: Props) {
                   background: 'transparent',
                   color: '#fff',
                   border: '0.5px solid rgba(255,255,255,0.4)',
-                  fontFamily: 'var(--font-inter), sans-serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 13,
                   fontWeight: 400,
-                  padding: '10px 18px',
-                  borderRadius: 4,
+                  padding: "10px 18px",
+                  borderRadius: 0,
                   cursor: 'pointer',
                 }}
                 className="flex-1 sm:flex-none"
@@ -106,11 +106,11 @@ export function ConsentBanner({ gaId }: Props) {
                   background: 'var(--brand)',
                   color: '#fff',
                   border: 'none',
-                  fontFamily: 'var(--font-inter), sans-serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 13,
                   fontWeight: 500,
-                  padding: '10px 18px',
-                  borderRadius: 4,
+                  padding: "10px 18px",
+                  borderRadius: 0,
                   cursor: 'pointer',
                 }}
                 className="flex-1 sm:flex-none"

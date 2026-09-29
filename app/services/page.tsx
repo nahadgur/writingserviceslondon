@@ -1,9 +1,10 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { services } from '@/data/services';
 import { siteConfig } from '@/data/site';
 import { ServicesIndexClient } from './ServicesIndexClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/services/", {
   title: 'Will Writing Services in London | Single Wills, LPAs, Trusts, Probate',
   description: 'Six services for London families: single and mirror wills, lasting powers of attorney, trust planning, estate planning reviews, and probate support. Fixed fees quoted upfront.',
   alternates: { canonical: '/services/' },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     description: 'Six core will writing and estate planning services for London.',
   },
   robots: { index: true, follow: true },
-};
+});
 
 export default function ServicesIndexPage() {
   const schema = {

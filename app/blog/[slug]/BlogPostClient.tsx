@@ -11,38 +11,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 import type { BlogArticle, ContentBlock } from '@/data/blog';
 
-// Parse inline markdown links [text](href) into React nodes.
-// Internal /path/ links render as next/link <Link>; external http(s) links
-// render as <a target="_blank" rel="noopener noreferrer">.
-function renderRich(text: string): React.ReactNode {
-  if (!text) return '';
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-  const nodes: React.ReactNode[] = [];
-  let last = 0;
-  let m: RegExpExecArray | null;
-  let k = 0;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last) nodes.push(text.slice(last, m.index));
-    const label = m[1];
-    const href = m[2];
-    if (/^https?:\/\//i.test(href)) {
-      nodes.push(
-        <a key={`l${k++}`} href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
-          {label}
-        </a>
-      );
-    } else {
-      nodes.push(
-        <Link key={`l${k++}`} href={href} style={{ color: 'var(--brand)' }}>
-          {label}
-        </Link>
-      );
-    }
-    last = m.index + m[0].length;
-  }
-  if (last < text.length) nodes.push(text.slice(last));
-  return nodes.length ? nodes : text;
-}
+import { articleText as renderRich } from '@/components/ArticleText';
 
 function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
   switch (block.type) {
@@ -51,33 +20,30 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
 
     case 'h2':
       return (
-        <h2 key={index} className="article-h2">{block.text || ''}</h2>
+        <h2 key={index} className="article-h2">{renderRich(block.text || '')}</h2>
       );
 
     case 'h3':
       return (
-        <h3 key={index} style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: 'var(--ink)', marginTop: 28, marginBottom: 10 }}>
-          {block.text || ''}
+        <h3 key={index}>
+          {renderRich(block.text || '')}
         </h3>
       );
 
     case 'list':
-      return (
-        <ul key={index} style={{ marginBottom: 20, paddingLeft: 0, listStyle: 'none' }}>
-          {(block.items || []).map((item, i) => (
-            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 8 }}>
-              <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0, marginTop: 8 }} />
-              <span className="article-p" style={{ marginBottom: 0 }}>{renderRich(item)}</span>
-            </li>
-          ))}
-        </ul>
-      );
+    case 'unordered-list':
+      return <ul key={index} className="article-list">{(block.items || []).map((item, i) => <li key={i}>{renderRich(item)}</li>)}</ul>;
+    case 'ordered-list':
+      return <ol key={index} className="article-list">{(block.items || []).map((item, i) => <li key={i}>{renderRich(item)}</li>)}</ol>;
+    case 'quote':
+    case 'blockquote':
+      return <blockquote key={index}><p>{renderRich(block.text || '')}</p></blockquote>;
 
     case 'image':
       return (
         <figure key={index} style={{ margin: '28px 0' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={block.src || ''} alt={block.alt || ''} style={{ width: '100%', borderRadius: 6, objectFit: 'cover' }} loading="lazy" />
+          <img src={block.src || ''} alt={block.alt || ''} style={{ width: '100%', borderRadius: 0, objectFit: 'cover' }} loading="lazy" />
           {block.alt && <figcaption className="body-sm text-center" style={{ marginTop: 8 }}>{block.alt}</figcaption>}
         </figure>
       );
@@ -90,7 +56,7 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: 'var(--font-inter), sans-serif',
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
               fontSize: 12,
               fontWeight: 500,
               color: 'var(--brand)',
@@ -102,7 +68,7 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
             {block.linkText || block.href} ↗
           </a>
           {block.text && (
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 300, color: 'var(--dust)', lineHeight: 1.5, margin: 0 }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 400, color: 'var(--dust)', lineHeight: 1.5, margin: 0 }}>
               {block.text}
             </p>
           )}
@@ -110,35 +76,29 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
       );
 
     case 'cta':
-      return (
-        <div key={index} style={{ background: 'var(--ink)', borderRadius: 8, padding: '24px 20px', textAlign: 'center', margin: '28px 0' }}>
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: '#fff', marginBottom: 6 }}>
-            {block.text || 'Book a will writing consultation'}
-          </p>
-          <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)', marginBottom: 16 }}>
-            Wills, LPAs and probate support across London. Fixed fees from £150.
-          </p>
-          <button onClick={onModal} className="btn-primary">Book a consultation</button>
-        </div>
-      );
+      return <aside key={index} className="article-cta">
+        <p className="article-cta-title">{renderRich(block.text || 'Book a will writing consultation')}</p>
+        <p>Wills, LPAs and probate support across London. Fixed fees from £150.</p>
+        <button onClick={onModal} className="btn-primary">Book a consultation</button>
+      </aside>;
 
     case 'related-articles':
       return (
         <div key={index} style={{ margin: '24px 0' }}>
-          <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 18, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 12 }}>
+          <h3 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 18, fontStyle: 'normal', color: 'var(--ink)', marginBottom: 12 }}>
             Related reading
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             {(block.articles || []).map((rel, i) => (
               <Link key={i} href={`/blog/${rel.slug}/`} className="card-parchment"
-                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 6, textDecoration: 'none' }}>
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: "12px 14px", borderRadius: 0, textDecoration: 'none' }}>
                 {rel.image && (
-                  <div style={{ width: 44, height: 36, borderRadius: 4, overflow: 'hidden', flexShrink: 0 }}>
+                  <div style={{ width: 44, height: 36, borderRadius: 0, overflow: 'hidden', flexShrink: 0 }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={rel.image} alt={rel.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                   </div>
                 )}
-                <span style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 14, color: 'var(--stone)' }}>{rel.title}</span>
+                <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, color: 'var(--stone)' }}>{rel.title}</span>
               </Link>
             ))}
           </div>
@@ -178,9 +138,9 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
   return (
     <>
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
-      <Header onOpenModal={() => setModal(true)} />
+      <Header />
 
-      <main id="main-content">
+      <main data-edition-page="blog" id="main-content">
         {article.featuredImage && (
           <div className="relative h-[320px] md:h-[460px] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
             <Image
@@ -194,7 +154,7 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
           </div>
         )}
         {/* Hero */}
-        <section className="hero-dark" style={{ minHeight: 220 }}>
+        <section data-edition-hero data-article-hero className="hero-dark" style={{ minHeight: 220 }}>
           <div className="g-bot" />
           <div className="relative z-10 container-width py-10 md:py-12 w-full">
             <Breadcrumbs dark items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]} />
@@ -202,23 +162,23 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
               <span className="loc-pill">
                 <Tag size={10} /> {article.category}
               </span>
-              <span className="eyebrow flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.35)' }}>
+              <span className="eyebrow flex items-center gap-1.5" style={{ color: "rgba(255,255,255,0.76)" }}>
                 <Calendar size={10} /> {article.publishDate}
               </span>
-              <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.35)' }}>By WWSL</span>
+              <span className="eyebrow" style={{ color: "rgba(255,255,255,0.76)" }}>By WWSL</span>
             </div>
-            <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(28px,4vw,48px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', lineHeight: 1.15, maxWidth: 680 }}>
+            <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(28px,4vw,48px)', fontStyle: 'normal', fontWeight: 400, color: '#fff', lineHeight: 1.15, maxWidth: 680 }}>
               {article.title}
             </h1>
           </div>
         </section>
 
         {/* Body */}
-        <div className="container-width py-10 md:py-14">
+        <div className="container-width article-shell py-10 md:py-8">
           <div>
 
             {/* Article */}
-            <article>
+            <article className="edition-prose">
               <Link href="/blog/" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 28, textDecoration: 'none', color: 'var(--dust)' }}
                 className="body-sm hover:text-ink">
                 <ArrowLeft size={12} /> All articles
@@ -262,7 +222,7 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
                     }
                     if (faqs.length > 0) {
                       rendered.push(
-                        <div key={i} style={{ marginTop: 40 }}>
+                        <div key={i} style={{ marginTop: 32 }}>
                           <FAQ faqs={faqs} title="Frequently Asked Questions" />
                         </div>
                       );
@@ -274,29 +234,17 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
                   // Mid-article CTA banner + pull quote before second h2
                   if (i === secondH2) {
                     rendered.push(
-                      <div
-                        key={`mid-cta-${i}`}
-                        className="rounded-xl px-6 py-6 md:px-10 md:py-7 my-10"
-                        style={{ background: 'var(--ink)' }}
-                      >
-                        <p className="eyebrow" style={{ color: 'rgba(255,255,255,0.45)', marginBottom: 8 }}>
-                          Book a consultation
-                        </p>
-                        <p style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(22px,2.6vw,28px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', lineHeight: 1.2, marginBottom: 8 }}>
-                          Want a fixed-fee quote before you read on?
-                        </p>
-                        <p className="body-sm" style={{ color: 'rgba(255,255,255,0.6)', marginBottom: 18, maxWidth: 520 }}>
-                          We write wills across London and quote upfront, with no obligation and no cost to you.
-                        </p>
-                        <button onClick={() => setModal(true)} className="btn-primary">
-                          Book a consultation
-                        </button>
-                      </div>
+                      <aside key={'mid-cta-' + i} className="article-cta">
+                        <p className="article-cta-kicker">Book a consultation</p>
+                        <p className="article-cta-title">Want a fixed-fee quote before you read on?</p>
+                        <p>We write wills across London and quote upfront, with no obligation and no cost to you.</p>
+                        <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
+                      </aside>
                     );
                     rendered.push(
-                      <div key={`pq-${i}`} className="pull-quote" style={{ marginBottom: 24 }}>
+                      <blockquote key={"pq-" + i}>
                         <p>Making a will is one of the most important things you can do for the people you love most.</p>
-                      </div>
+                      </blockquote>
                     );
                   }
 
@@ -311,7 +259,7 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
               })()}
 
               {relatedArticles.length > 0 && (
-                <nav aria-labelledby="related-articles-heading" style={{ marginTop: 40, paddingTop: 8, borderTop: '1px solid var(--border)' }}>
+                <nav aria-labelledby="related-articles-heading" style={{ marginTop: 32, paddingTop: 8, borderTop: '1px solid var(--border)' }}>
                   <h2 id="related-articles-heading" className="article-h2">Related articles</h2>
                   <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" style={{ padding: 0, listStyle: 'none' }}>
                     {relatedArticles.map(item => (

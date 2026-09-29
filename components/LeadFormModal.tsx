@@ -30,7 +30,20 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
   const [error,      setError]      = useState('');
   const nameRef    = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const startedRef = useRef<number>(Date.now());
+  useEffect(() => {
+    if (!mounted) return;
+    const trap = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return;
+      const items = Array.from(dialogRef.current?.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),input:not([tabindex="-1"]),select,textarea') ?? []).filter(element => element.offsetParent !== null);
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener('keydown', trap);
+    return () => { document.removeEventListener('keydown', trap); document.body.style.overflow = ''; };
+  }, [mounted]);
 
   useEffect(() => {
     if (isOpen) {
@@ -50,7 +63,8 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
     document.body.style.overflow = '';
     setTimeout(() => {
       setMounted(false); setClosing(false);
-      triggerRef.current?.focus();
+      const target = triggerRef.current?.offsetParent ? triggerRef.current : document.querySelector<HTMLElement>('.edition-menu-toggle');
+      target?.focus();
       onClose();
     }, 200);
   }
@@ -59,6 +73,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
     e.preventDefault();
 
     const form = e.currentTarget;
+    if (!form.reportValidity()) return;
     const consent = (form.querySelector('#m-consent') as HTMLInputElement)?.checked;
     if (!consent) {
       setError('Please confirm your consent to continue.');
@@ -104,6 +119,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="Will writing enquiry"
@@ -113,7 +129,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
       onKeyDown={e => e.key === 'Escape' && doClose()}
     >
       <div
-        className={`w-full sm:max-w-md sm:mx-4 sm:rounded-lg rounded-t-2xl max-h-[92vh] overflow-y-auto ${closing ? 'anim-mout' : 'anim-min'}`}
+        className={`edition-modal-panel w-full sm:max-w-md sm:mx-4 sm:rounded-lg rounded-t-2xl max-h-[92vh] overflow-y-auto ${closing ? 'anim-mout' : 'anim-min'}`}
         style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)' }}
       >
         {/* Mobile drag pill */}
@@ -124,7 +140,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
         {/* Header */}
         <div className="flex items-start justify-between px-6 pt-5 pb-4 sm:px-7" style={{ borderBottom: '0.5px solid var(--border)' }}>
           <div>
-            <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 22, fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', marginBottom: 3 }}>
+            <h2 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 22, fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', marginBottom: 3 }}>
               Find your specialist
             </h2>
             <p className="body-sm">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; We call you back within 24hrs</p>
@@ -144,7 +160,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                   <path d="M4 10l4.5 4.5L16 6" stroke="#D46919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', marginBottom: 8 }}>
+              <h3 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 22, fontStyle: 'normal', color: 'var(--ink)', marginBottom: 8 }}>
                 Thank you
               </h3>
               <p className="body-md">We will be in touch within 24 hours with a relevant introduction.</p>
@@ -180,7 +196,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                 <div>
                   <label className="field-label" htmlFor="m-svc">Type of service *</label>
                   <div style={{ position: 'relative' }}>
-                    <select id="m-svc" required className="field-select" defaultValue={defaultService}>
+                    <select id="m-svc" required className="field-select" defaultValue={defaultService ? serviceOptions.find(option => option.toLowerCase().startsWith(defaultService.toLowerCase())) ?? '' : ''}>
                       <option value="">Please select...</option>
                       {serviceOptions.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
@@ -192,7 +208,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
 
                 <div>
                   <label className="field-label" htmlFor="m-msg">
-                    Message <span style={{ fontWeight: 300, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
+                    Message <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>(optional)</span>
                   </label>
                   <textarea id="m-msg" rows={3} className="field-input resize-none"
                     placeholder="e.g. blended family, home visit needed, urgent..."
@@ -205,9 +221,9 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                     display: 'flex',
                     gap: 8,
                     alignItems: 'flex-start',
-                    fontFamily: 'var(--font-inter), system-ui, sans-serif',
+                    fontFamily: 'var(--font-inter), Arial, sans-serif',
                     fontSize: 12,
-                    fontWeight: 300,
+                    fontWeight: 400,
                     lineHeight: 1.5,
                     color: 'var(--stone)',
                     cursor: 'pointer',
@@ -228,7 +244,7 @@ export function LeadFormModal({ isOpen, onClose, defaultService = '', defaultCit
                 </label>
 
                 {error && (
-                  <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
+                  <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, color: '#c0392b' }}>{error}</p>
                 )}
 
                 <button type="submit" disabled={submitting} className="btn-primary w-full justify-center" style={{ marginTop: 4 }}>

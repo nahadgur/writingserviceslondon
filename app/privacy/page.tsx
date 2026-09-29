@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
@@ -5,13 +6,13 @@ import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/data/site';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/privacy/", {
   title: 'Privacy notice',
   description:
     'How Will Writing Services London collects, uses, and protects personal data submitted through this site. UK GDPR notice covering enquiry data, cookies, and your rights.',
   alternates: { canonical: '/privacy/' },
   robots: { index: true, follow: true },
-};
+});
 
 const LAST_REVIEWED = '4 May 2026';
 
@@ -19,13 +20,13 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
-        <section style={{ background: 'var(--ink)', color: '#fff' }}>
-          <div className="container-width pt-20 pb-12">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Legal — Privacy notice</p>
+      <main data-edition-page="privacy" id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
+        <section data-edition-hero style={{ background: 'var(--ink)', color: '#fff' }}>
+          <div className="container-width pt-8 pb-12">
+            <p className="eyebrow mb-4" style={{ color: "rgba(255,255,255,0.76)" }}>Legal — Privacy notice</p>
             <h1
               style={{
-                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 'clamp(36px, 5vw, 64px)',
                 fontWeight: 400,
                 letterSpacing: '-0.01em',
@@ -39,8 +40,8 @@ export default function PrivacyPage() {
             <p
               className="max-w-2xl"
               style={{
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                fontWeight: 300,
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
+                fontWeight: 400,
                 fontSize: 17,
                 lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.72)',
@@ -51,11 +52,11 @@ export default function PrivacyPage() {
             <p
               className="mt-4"
               style={{
-                fontFamily: 'var(--font-inter), sans-serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 11,
-                letterSpacing: '0.2em',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.4)',
+                color: "rgba(255,255,255,0.76)",
               }}
             >
               Last reviewed · {LAST_REVIEWED}
@@ -63,14 +64,14 @@ export default function PrivacyPage() {
           </div>
         </section>
 
-        <section className="container-width py-14">
+        <section className="container-width py-8">
           <Breadcrumbs items={[{ label: 'Privacy' }]} />
 
           <article
             className="max-w-3xl mx-auto"
             style={{
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontWeight: 300,
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
+              fontWeight: 400,
               fontSize: 16,
               lineHeight: 1.75,
               color: 'rgba(28,24,20,0.85)',
@@ -210,7 +211,7 @@ export default function PrivacyPage() {
               style={{
                 background: 'var(--parchment-2)',
                 border: '0.5px solid var(--border)',
-                borderRadius: 8,
+                borderRadius: 0,
               }}
             >
               <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Related</p>
@@ -238,7 +239,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <section className="mb-10">
       <h2
         style={{
-          fontFamily: 'var(--font-cormorant), Georgia, serif',
+          fontFamily: 'var(--font-inter), Arial, sans-serif',
           fontSize: 'clamp(22px, 3vw, 30px)',
           fontWeight: 400,
           letterSpacing: '-0.01em',
@@ -252,8 +253,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <div
         className="space-y-4"
         style={{
-          fontFamily: 'var(--font-inter), system-ui, sans-serif',
-          fontWeight: 300,
+          fontFamily: 'var(--font-inter), Arial, sans-serif',
+          fontWeight: 400,
         }}
       >
         {children}

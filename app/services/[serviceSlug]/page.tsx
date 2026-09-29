@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { services, getServiceBySlug } from '@/data/services';
@@ -26,7 +27,7 @@ export function generateMetadata({ params }: { params: { serviceSlug: string } }
   const description = service.description;
   const url = `${siteConfig.url}/services/${service.slug}/`;
 
-  return {
+  return withPageSeo('/services/' + service.slug + '/', {
     title,
     description,
     alternates: { canonical: `/services/${service.slug}/` },
@@ -40,7 +41,7 @@ export function generateMetadata({ params }: { params: { serviceSlug: string } }
     },
     twitter: { card: 'summary_large_image', title, description },
     robots: { index: true, follow: true },
-  };
+  });
 }
 
 export default function ServicePage({ params }: { params: { serviceSlug: string } }) {

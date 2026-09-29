@@ -1,29 +1,24 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
 import { getPricingSummary } from '@/data/pricing';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { LeadFormModal } from '@/components/LeadFormModal';
 
 export function ServicesIndexClient() {
-  const [modal, setModal] = useState(false);
 
   return (
     <>
-      <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
-      <Header onOpenModal={() => setModal(true)} />
+      <Header />
 
-      <main id="main-content">
+      <main data-edition-page="services" id="main-content">
         {/* Hero */}
-        <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
+        <section data-edition-hero data-directory-hero style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: "32px 0 32px" }}>
           <div className="container-width max-w-3xl">
             <p className="eyebrow mb-4">Estate planning services</p>
-            <h1 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
+            <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(32px,4vw,52px)', fontStyle: 'normal', color: 'var(--ink)', lineHeight: 1.12, marginBottom: 16 }}>
               Our Services
             </h1>
             <p className="body-lg max-w-xl">
@@ -41,70 +36,33 @@ export function ServicesIndexClient() {
               {services.map(s => {
                 const p = getPricingSummary(s.slug);
                 return (
-                  <Link key={s.id} href={`/services/${s.slug}/`} className="svc-row" style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
-                    {/* Mobile: image + title stacked */}
-                    <div className="flex gap-4 items-start mb-3 lg:hidden">
-                      <div style={{ width: 72, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)', position: 'relative' }}>
-                        <Image src={s.image} alt={s.title} fill sizes="72px" className="object-cover" />
-                      </div>
-                      <div>
-                        <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, color: 'var(--ink)', lineHeight: 1.2, marginBottom: 3 }}>
-                          {s.title}
-                        </h2>
-                        {p && (
-                          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 16, color: 'var(--brand)' }}>{p.range}</p>
-                        )}
-                      </div>
+                  <article key={s.id} className="directory-service">
+                    <div className="directory-service-image"><Image src={s.image} alt={s.title} fill sizes="(min-width:1000px) 180px, 88px" className="object-cover" /></div>
+                    <div className="directory-service-copy"><h2><Link href={'/services/' + s.slug + '/'}>{s.title}</Link></h2><p>{s.description}</p></div>
+                    <div className="directory-service-action">
+                      {p && <div><p className="directory-price">{p.range}</p><p className="directory-price-note">{p.note}</p></div>}
+                      <Link href="/contact/#enquiry" className="btn-secondary">Find a specialist</Link>
                     </div>
-                    <p className="body-md mb-4 lg:hidden">{s.description}</p>
-
-                    {/* Desktop: 4-col grid */}
-                    <div className="hidden lg:grid" style={{ gridTemplateColumns: '88px 1fr 1fr auto', gap: 24, alignItems: 'center' }}>
-                      <div style={{ width: 88, height: 60, borderRadius: 5, overflow: 'hidden', background: 'var(--parchment-2)', position: 'relative' }}>
-                        <Image src={s.image} alt={s.title} fill sizes="88px" className="object-cover" />
-                      </div>
-                      <div>
-                        <h2 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 22, color: 'var(--ink)', marginBottom: 4 }}>{s.title}</h2>
-                        <p className="body-md line-clamp-2">{s.description}</p>
-                      </div>
-                      {p && (
-                        <div>
-                          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, color: 'var(--ink)', marginBottom: 2 }}>{p.range}</p>
-                          <p className="body-sm">{p.note}</p>
-                        </div>
-                      )}
-                      <span className="btn-secondary" style={{ whiteSpace: 'nowrap' }}>
-                        Find a specialist <ArrowRight size={11} />
-                      </span>
-                    </div>
-
-                    {/* Mobile CTA */}
-                    <div className="flex flex-wrap gap-3 lg:hidden">
-                      <span className="btn-primary">
-                        Find a specialist <ArrowRight size={11} />
-                      </span>
-                      {p && <p className="body-sm self-center">{p.note}</p>}
-                    </div>
-                  </Link>
+                  </article>
                 );
               })}
             </div>
 
             {/* Bottom CTA */}
-            <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '32px 28px', marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16 }}
+            <div style={{ background: 'var(--ink)', borderRadius: 0, padding: "32px 28px", marginTop: 24, display: 'flex', flexDirection: 'column', gap: 16 }}
               className="md:flex-row md:items-center md:justify-between">
               <div>
-                <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 24, fontStyle: 'italic', color: '#fff', marginBottom: 4 }}>
+                <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 24, fontStyle: 'normal', color: '#fff', marginBottom: 4 }}>
                   Not sure what you need?
                 </p>
-                <p className="body-md" style={{ color: 'rgba(255,255,255,0.48)' }}>
+                <p className="body-md" style={{ color: "rgba(255,255,255,0.76)" }}>
                   Tell us your situation and we will advise which services apply
                 </p>
               </div>
-              <button onClick={() => setModal(true)}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 24px', borderRadius: 4, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
+              <Link href="/contact/#enquiry"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, padding: "13px 24px", borderRadius: 0, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
                 Speak to someone
-              </button>
+              </Link>
             </div>
           </div>
         </section>

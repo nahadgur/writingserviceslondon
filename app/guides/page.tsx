@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +11,7 @@ const TITLE = 'Estate Planning Guides | Will Writing Services London';
 const DESCRIPTION = 'Clear London guides to wills, inheritance tax, lasting power of attorney, trusts, probate and estate planning.';
 const SOCIAL_IMAGE = `${siteConfig.url}/images/guides/how-to-write-a-will-in-london.webp`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/guides/", {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: `${siteConfig.url}/guides/` },
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [SOCIAL_IMAGE] },
   robots: { index: true, follow: true },
-};
+});
 
 export default function GuidesPage() {
   const schema = {
@@ -48,10 +49,10 @@ export default function GuidesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
-      <main id="main-content">
-        <section style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: '56px 0 48px' }}>
+      <main data-edition-page="guides" id="main-content">
+        <section data-edition-hero data-directory-hero style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)', padding: "32px 0 32px" }}>
           <div className="container-width max-w-3xl">
-            <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(36px,5vw,56px)', fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.08, marginBottom: 18 }}>
+            <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(36px,5vw,56px)', fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.08, marginBottom: 18 }}>
               Estate planning guides for London residents
             </h1>
             <p className="body-lg max-w-2xl">
@@ -64,7 +65,7 @@ export default function GuidesPage() {
           <div className="container-width">
             <div className="flex items-end justify-between gap-6 mb-8 md:mb-10">
               <div>
-                <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(28px,3.5vw,40px)', fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.15, marginBottom: 6 }}>
+                <h2 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(28px,3.5vw,40px)', fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.15, marginBottom: 6 }}>
                   All London estate-planning guides
                 </h2>
                 <p className="body-md">Choose the question closest to the decision you are making.</p>
@@ -78,16 +79,16 @@ export default function GuidesPage() {
                   <div className="relative aspect-[3/2] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
                     <Image src={guide.featuredImage} alt={guide.featuredImageAlt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   </div>
-                  <div style={{ padding: '20px 20px 22px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <div style={{ padding: "20px 20px 22px", display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <div className="flex items-center justify-between gap-4 mb-3">
-                      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 500, color: 'var(--brand)' }}>{guideCategories[guide.category]}</span>
+                      <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, color: 'var(--brand)' }}>{guideCategories[guide.category]}</span>
                       <span className="body-sm" style={{ whiteSpace: 'nowrap' }}>{guide.readingTime} min</span>
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 21, fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.22, marginBottom: 9 }} className="group-hover:text-brand-500">
+                    <h3 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 21, fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.22, marginBottom: 9 }} className="group-hover:text-brand-500">
                       {guide.title}
                     </h3>
                     <p className="body-sm line-clamp-3" style={{ marginBottom: 14, flex: 1 }}>{guide.metaDescription}</p>
-                    <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, color: 'var(--brand)' }}>Read guide →</span>
+                    <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 500, color: 'var(--brand)' }}>Read guide →</span>
                   </div>
                 </Link>
               ))}

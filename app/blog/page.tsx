@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import { getPublishedArticles } from '@/data/blog';
 import { siteConfig } from '@/data/site';
@@ -5,7 +6,7 @@ import { BlogIndexClient } from './BlogIndexClient';
 
 const SOCIAL_IMAGE = `${siteConfig.url}/images/blog/will-writing-services-london-2026-guide-for-families.webp`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/blog/", {
   title: 'Will Writing and Estate Planning Guides | London',
   description: 'Practical guides for London residents on wills, LPAs, trusts, inheritance tax, and probate, written for people making these decisions for the first time.',
   alternates: { canonical: '/blog/' },
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     images: [SOCIAL_IMAGE],
   },
   robots: { index: true, follow: true },
-};
+});
 
 export default function BlogIndexPage() {
   const schema = {
@@ -49,7 +50,7 @@ export default function BlogIndexPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <BlogIndexClient />
+      <BlogIndexClient blogArticles={getPublishedArticles().map(({ slug, title, category, publishDate, featuredImage, featuredImageAlt, excerpt }) => ({ slug, title, category, publishDate, featuredImage, featuredImageAlt, excerpt }))} />
     </>
   );
 }

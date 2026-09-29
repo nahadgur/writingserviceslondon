@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
@@ -6,26 +7,26 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { siteConfig } from '@/data/site';
 import { editorialAuthorSchema } from '@/lib/schema';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageSeo("/about/", {
   title: 'About Us',
   description:
     'Will Writing Services London is a will writing and estate planning service for London families. Fixed fees, home visits across every borough, and the signing handled properly.',
   alternates: { canonical: '/about/' },
   robots: { index: true, follow: true },
-};
+});
 
 export default function AboutPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(editorialAuthorSchema()) }} />
       <Header />
-      <main id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
-        <section style={{ background: 'var(--ink)', color: '#fff' }}>
-          <div className="container-width pt-20 pb-12">
-            <p className="eyebrow mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>About us</p>
+      <main data-edition-page="about" id="main-content" className="flex-grow" style={{ background: 'var(--parchment)' }}>
+        <section data-edition-hero style={{ background: 'var(--ink)', color: '#fff' }}>
+          <div className="container-width pt-8 pb-12">
+            <p className="eyebrow mb-4" style={{ color: "rgba(255,255,255,0.76)" }}>About us</p>
             <h1
               style={{
-                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 'clamp(36px, 5vw, 64px)',
                 fontWeight: 400,
                 letterSpacing: '-0.01em',
@@ -39,8 +40,8 @@ export default function AboutPage() {
             <p
               className="max-w-2xl"
               style={{
-                fontFamily: 'var(--font-inter), system-ui, sans-serif',
-                fontWeight: 300,
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
+                fontWeight: 400,
                 fontSize: 17,
                 lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.72)',
@@ -51,14 +52,14 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="container-width py-14">
+        <section className="container-width py-8">
           <Breadcrumbs items={[{ label: 'About' }]} />
 
           <article
             className="max-w-3xl mx-auto"
             style={{
-              fontFamily: 'var(--font-inter), system-ui, sans-serif',
-              fontWeight: 300,
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
+              fontWeight: 400,
               fontSize: 16,
               lineHeight: 1.75,
               color: 'rgba(28,24,20,0.85)',
@@ -131,7 +132,7 @@ export default function AboutPage() {
               style={{
                 background: 'var(--parchment-2)',
                 border: '0.5px solid var(--border)',
-                borderRadius: 8,
+                borderRadius: 0,
               }}
             >
               <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Get started</p>
@@ -160,7 +161,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <section className="mb-10">
       <h2
         style={{
-          fontFamily: 'var(--font-cormorant), Georgia, serif',
+          fontFamily: 'var(--font-inter), Arial, sans-serif',
           fontSize: 'clamp(22px, 3vw, 30px)',
           fontWeight: 400,
           letterSpacing: '-0.01em',

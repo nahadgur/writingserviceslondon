@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { LeadFormModal } from '@/components/LeadFormModal';
 import { IHTCalculator } from '@/components/tools/IHTCalculator';
 import { IntestacyCalculator } from '@/components/tools/IntestacyCalculator';
 import { LPAEstimator } from '@/components/tools/LPAEstimator';
@@ -64,21 +62,19 @@ const tools = [
 ];
 
 export function ToolsPageClient() {
-  const [modal, setModal] = useState(false);
 
   const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-    fontFamily: 'var(--font-cormorant), Georgia, serif',
-    fontSize: size, fontStyle: 'italic', fontWeight: 400,
+    fontFamily: 'var(--font-inter), Arial, sans-serif',
+    fontSize: size, fontStyle: 'normal', fontWeight: 400,
     color: 'var(--ink)', lineHeight: 1.15, ...extra,
   });
 
   return (
     <>
-      <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
-      <Header onOpenModal={() => setModal(true)} />
-      <main id="main-content">
+      <Header />
+      <main data-edition-page="tools" id="main-content">
         {/* Dark hero */}
-        <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
+        <section data-edition-hero style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="240" height="160" viewBox="0 0 240 160" fill="none">
             <rect x="10"  y="80"  width="28" height="80"  fill="white"/>
             <rect x="46"  y="50"  width="32" height="110" fill="white"/>
@@ -92,14 +88,14 @@ export function ToolsPageClient() {
             <rect x="185" y="54"  width="6"  height="8"   fill="#1c1814"/>
             <rect x="208" y="60"  width="26" height="100" fill="white"/>
           </svg>
-          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 48, paddingBottom: 56 }}>
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#e8943a', marginBottom: 16 }}>
+          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 32, paddingBottom: 32 }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: "#f29264", marginBottom: 16 }}>
               Free tools
             </p>
-            <h1 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(30px,5vw,50px)', fontWeight: 400, fontStyle: 'italic', color: '#fff', lineHeight: 1.1, marginBottom: 16, maxWidth: 580 }}>
+            <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(30px,5vw,50px)', fontWeight: 400, fontStyle: 'normal', color: '#fff', lineHeight: 1.1, marginBottom: 16, maxWidth: 580 }}>
               Estate planning calculators for London residents
             </h1>
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.58)', lineHeight: 1.65, maxWidth: 500 }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.76)", lineHeight: 1.65, maxWidth: 500 }}>
               Six free tools covering inheritance tax, intestacy, LPA costs, probate fees, care cost protection, and will reviews. All figures current for 2026.
             </p>
           </div>
@@ -109,9 +105,9 @@ export function ToolsPageClient() {
         <div className="container-width py-12">
 
           {/* Jump links */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 48, paddingBottom: 20, borderBottom: '0.5px solid var(--border)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32, paddingBottom: 20, borderBottom: '0.5px solid var(--border)' }}>
             {tools.map(t => (
-              <a key={t.id} href={`#${t.id}`} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--stone)', textDecoration: 'none', padding: '5px 12px', borderRadius: 20, border: '0.5px solid var(--border)', background: 'var(--parchment)', transition: 'all 0.12s' }}
+              <a key={t.id} href={`#${t.id}`} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--stone)', textDecoration: 'none', padding: "5px 12px", borderRadius: 0, border: '0.5px solid var(--border)', background: 'var(--parchment)', transition: 'all 0.12s' }}
                 className="hover:text-brand-500">
                 {t.title}
               </a>
@@ -119,12 +115,12 @@ export function ToolsPageClient() {
           </div>
 
           {/* Tools */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 64 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
             {tools.map(t => (
               <section key={t.id} id={t.id} style={{ scrollMarginTop: 80 }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', marginBottom: 6 }}>
                   <h2 style={serif('clamp(20px,2.5vw,28px)')}>{t.title}</h2>
-                  <Link href={t.guide} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--brand)', textDecoration: 'none', whiteSpace: 'nowrap', padding: '4px 12px', border: '0.5px solid rgba(212,105,25,0.35)', borderRadius: 20, background: 'rgba(212,105,25,0.06)' }}>
+                  <Link href={t.guide} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 400, color: 'var(--brand)', textDecoration: 'none', whiteSpace: 'nowrap', padding: "4px 12px", border: '0.5px solid rgba(212,105,25,0.35)', borderRadius: 0, background: 'rgba(212,105,25,0.06)' }}>
                     Read {t.guideLabel} →
                   </Link>
                 </div>
@@ -135,16 +131,16 @@ export function ToolsPageClient() {
           </div>
 
           {/* Bottom CTA */}
-          <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '40px 36px', textAlign: 'center', marginTop: 56 }}>
+          <div style={{ background: 'var(--ink)', borderRadius: 0, padding: "32px 32px", textAlign: 'center', marginTop: 32 }}>
             <h2 style={serif('clamp(20px,3vw,30px)', { color: '#fff', marginBottom: 10 })}>
               Ready to speak to a specialist?
             </h2>
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.5)', marginBottom: 20, maxWidth: 400, margin: '0 auto 20px' }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: "rgba(255,255,255,0.76)", marginBottom: 20, maxWidth: 400, margin: '0 auto 20px' }}>
               Wills, lasting powers of attorney, trusts and probate support across London. Most wills are drafted within 3 to 7 working days.
             </p>
-            <button onClick={() => setModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+            <Link href="/contact/#enquiry" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, padding: "13px 28px", borderRadius: 0, border: 'none', cursor: 'pointer' }}>
               Get your free match
-            </button>
+            </Link>
           </div>
         </div>
       </main>

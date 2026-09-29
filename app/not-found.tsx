@@ -12,9 +12,9 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main id="main-content">
+      <main data-edition-page="home" id="main-content">
         {/* Dark hero — matches site pattern */}
-        <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
+        <section data-edition-hero style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
           {/* Decorative buildings — same as location pages */}
           <svg
             aria-hidden="true"
@@ -52,23 +52,23 @@ export default function NotFound() {
             <rect x="263" y="122" width="4" height="6"   fill="#1c1814"/>
           </svg>
 
-          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 60, paddingBottom: 68, textAlign: 'center' }}>
+          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 32, paddingBottom: 32, textAlign: 'center' }}>
             <p style={{
-              fontFamily: 'var(--font-inter), sans-serif',
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
               fontSize: 11,
               fontWeight: 500,
-              letterSpacing: '0.14em',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              color: '#e8943a',
+              color: "#f29264",
               marginBottom: 20,
             }}>
               404
             </p>
             <h1 style={{
-              fontFamily: 'var(--font-cormorant), Georgia, serif',
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
               fontSize: 'clamp(34px, 5vw, 56px)',
               fontWeight: 400,
-              fontStyle: 'italic',
+              fontStyle: 'normal',
               color: '#fff',
               lineHeight: 1.1,
               marginBottom: 16,
@@ -76,10 +76,10 @@ export default function NotFound() {
               Page not found
             </h1>
             <p style={{
-              fontFamily: 'var(--font-inter), sans-serif',
+              fontFamily: 'var(--font-inter), Arial, sans-serif',
               fontSize: 14,
-              fontWeight: 300,
-              color: 'rgba(255,255,255,0.55)',
+              fontWeight: 400,
+              color: "rgba(255,255,255,0.76)",
               lineHeight: 1.65,
               maxWidth: 420,
               margin: '0 auto 36px',
@@ -95,14 +95,14 @@ export default function NotFound() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  fontFamily: 'var(--font-inter), sans-serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 12,
                   fontWeight: 500,
                   color: 'rgba(255,255,255,0.7)',
                   textDecoration: 'none',
                   border: '0.5px solid rgba(255,255,255,0.2)',
-                  padding: '10px 20px',
-                  borderRadius: 4,
+                  padding: "10px 20px",
+                  borderRadius: 0,
                   transition: 'border-color 0.12s, color 0.12s',
                 }}
               >
@@ -114,14 +114,14 @@ export default function NotFound() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  fontFamily: 'var(--font-inter), sans-serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 12,
                   fontWeight: 500,
                   color: 'rgba(255,255,255,0.7)',
                   textDecoration: 'none',
                   border: '0.5px solid rgba(255,255,255,0.2)',
-                  padding: '10px 20px',
-                  borderRadius: 4,
+                  padding: "10px 20px",
+                  borderRadius: 0,
                   transition: 'border-color 0.12s, color 0.12s',
                 }}
               >
@@ -132,11 +132,11 @@ export default function NotFound() {
         </section>
 
         {/* Quick links body */}
-        <div className="container-width py-14" style={{ maxWidth: 680, textAlign: 'center' }}>
+        <div className="container-width py-8" style={{ maxWidth: 680, textAlign: 'center' }}>
           <p style={{
-            fontFamily: 'var(--font-cormorant), Georgia, serif',
+            fontFamily: 'var(--font-inter), Arial, sans-serif',
             fontSize: 20,
-            fontStyle: 'italic',
+            fontStyle: 'normal',
             color: 'var(--ink)',
             marginBottom: 24,
           }}>
@@ -158,7 +158,7 @@ export default function NotFound() {
                 style={{ display: 'block', textDecoration: 'none' }}
               >
                 <span style={{
-                  fontFamily: 'var(--font-cormorant), serif',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
                   fontSize: 15,
                   color: 'var(--ink)',
                   transition: 'color 0.12s',

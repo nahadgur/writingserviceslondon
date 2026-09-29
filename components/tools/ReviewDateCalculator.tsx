@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
-  fontSize: size, fontStyle: 'italic', fontWeight: 400,
+  fontFamily: 'var(--font-inter), Arial, sans-serif',
+  fontSize: size, fontStyle: 'normal', fontWeight: 400,
   color: 'var(--ink)', lineHeight: 1.2, ...extra,
 });
 
@@ -126,9 +126,9 @@ export function ReviewDateCalculator() {
   const others = primary ? selected.filter(t => t.id !== primary.id) : [];
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '24px 22px', marginTop: 20, marginBottom: 20 }}>
+    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(22, { marginBottom: 6 })}>Will review checker</p>
-      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 300, color: 'var(--dust)', marginBottom: 20 }}>
+      <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--dust)', marginBottom: 20 }}>
         Tick any events that have occurred since your will was last made or reviewed.
       </p>
 
@@ -136,7 +136,7 @@ export function ReviewDateCalculator() {
         {TRIGGERS.map(t => (
           <label key={t.id} style={{
             display: 'flex', alignItems: 'flex-start', gap: 12, cursor: 'pointer',
-            padding: '12px 16px', borderRadius: 6,
+            padding: "12px 16px", borderRadius: 0,
             background: checked.has(t.id) ? (t.urgent ? 'rgba(200,50,50,0.06)' : 'rgba(212,105,25,0.06)') : 'var(--parchment)',
             border: `0.5px solid ${checked.has(t.id) ? (t.urgent ? 'rgba(200,50,50,0.3)' : 'rgba(212,105,25,0.3)') : 'var(--border)'}`,
             transition: 'all 0.12s',
@@ -148,11 +148,11 @@ export function ReviewDateCalculator() {
               style={{ marginTop: 3, flexShrink: 0, accentColor: '#D46919', width: 15, height: 15 }}
             />
             <div>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)', marginBottom: checked.has(t.id) ? 5 : 0 }}>
+              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)', marginBottom: checked.has(t.id) ? 5 : 0 }}>
                 {t.label}
               </p>
               {checked.has(t.id) && (
-                <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: t.urgent ? '#c0392b' : 'var(--stone)', lineHeight: 1.6 }}>
+                <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: t.urgent ? '#c0392b' : 'var(--stone)', lineHeight: 1.6 }}>
                   {t.reason}
                 </p>
               )}
@@ -162,7 +162,7 @@ export function ReviewDateCalculator() {
       </div>
 
       {selected.length === 0 && (
-        <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 300, color: 'var(--dust)', textAlign: 'center' }}>
+        <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--dust)', textAlign: 'center' }}>
           Tick any events above to see what action is needed.
         </p>
       )}
@@ -171,30 +171,30 @@ export function ReviewDateCalculator() {
         <div style={{
           background: hasUrgent ? 'rgba(200,50,50,0.05)' : 'rgba(212,105,25,0.07)',
           border: `0.5px solid ${hasUrgent ? 'rgba(200,50,50,0.3)' : 'rgba(212,105,25,0.3)'}`,
-          borderRadius: 8, padding: '22px 22px',
+          borderRadius: 0, padding: "22px 22px",
         }}>
           {selected.length > 1 && (
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 8 }}>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 8 }}>
               {selected.length} triggers identified -- showing most urgent
             </p>
           )}
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 24, fontStyle: 'italic', fontWeight: 400, color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 10, lineHeight: 1.2 }}>
+          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 24, fontStyle: 'normal', fontWeight: 400, color: hasUrgent ? '#c0392b' : '#D46919', marginBottom: 10, lineHeight: 1.2 }}>
             {primary.verdict}
           </p>
-          <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 300, color: 'var(--stone)', lineHeight: 1.7, marginBottom: 18 }}>
+          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--stone)', lineHeight: 1.7, marginBottom: 18 }}>
             {primary.detail}
           </p>
-          <a href={primary.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 500, color: '#fff', background: hasUrgent ? '#c0392b' : '#D46919', padding: '11px 22px', borderRadius: 4 }}>
+          <a href={primary.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, color: '#fff', background: hasUrgent ? '#c0392b' : '#D46919', padding: "11px 22px", borderRadius: 0 }}>
             {primary.cta} →
           </a>
 
           {others.length > 0 && (
             <div style={{ marginTop: 18, paddingTop: 16, borderTop: `0.5px solid ${hasUrgent ? 'rgba(200,50,50,0.2)' : 'rgba(212,105,25,0.2)'}` }}>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500, color: 'var(--dust)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, color: 'var(--dust)', marginBottom: 8, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Also flagged
               </p>
               {others.map(t => (
-                <p key={t.id} style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'var(--stone)', lineHeight: 1.6, marginBottom: 4 }}>
+                <p key={t.id} style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 400, color: 'var(--stone)', lineHeight: 1.6, marginBottom: 4 }}>
                   · {t.verdict}
                 </p>
               ))}

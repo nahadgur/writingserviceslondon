@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, AlertTriangle } from 'lucide-react';
 import { services, type Service } from '@/data/services';
@@ -10,8 +9,8 @@ import { serviceContent } from '@/data/serviceContent';
 import { getPricingSummary } from '@/data/pricing';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { LeadFormModal } from '@/components/LeadFormModal';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
+import { MobileEnquiry } from '@/components/MobileEnquiry';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 
@@ -154,7 +153,6 @@ const COMMON_MISTAKES: Record<string, { headline: string; mistakes: { what: stri
 };
 
 export function ServiceDetailClient({ service }: { service: Service }) {
-  const [modal, setModal] = useState(false);
 
   const pricing = getPricingSummary(service.slug);
   const pair = PAIRS_WITH[service.slug];
@@ -166,7 +164,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
   const combinedFaqs = [...(service.faqs || []), ...FAQS_SERVICES];
 
   const h = (size: number | string, style?: React.CSSProperties) => ({
-    fontFamily: 'var(--font-cormorant), Georgia, serif',
+    fontFamily: 'var(--font-inter), Arial, sans-serif',
     fontSize: size,
     fontStyle: 'italic' as const,
     fontWeight: 400 as const,
@@ -177,54 +175,48 @@ export function ServiceDetailClient({ service }: { service: Service }) {
 
   return (
     <>
-      <LeadFormModal isOpen={modal} onClose={() => setModal(false)} defaultService={service.title} />
-      <Header onOpenModal={() => setModal(true)} />
+      <Header />
 
-      <main id="main-content">
+      <main data-edition-page="services" id="main-content">
         {/* ── Hero ──────────────────────────────────────────────── */}
-        <section className="hero-dark" style={{ minHeight: 360 }}>
+        <section data-edition-hero className="hero-dark" style={{ minHeight: 360 }}>
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${service.image}')`, opacity: 0.35 }}
           />
           <div className="g-bot" />
-          <div className="relative z-10 container-width py-12 md:py-16 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-10 items-end">
+          <div className="relative z-10 container-width py-12 md:py-10 w-full">
+            <div>
               <div>
                 <Breadcrumbs dark items={[{ label: 'Services', href: '/services/' }, { label: service.title }]} />
                 <h1 style={{ ...h('clamp(36px,5vw,60px)' as any), color: '#fff', marginTop: 20, marginBottom: 14 }}>
                   {service.title}
                 </h1>
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, color: 'rgba(255,255,255,0.93)', maxWidth: 420, lineHeight: 1.7, marginBottom: 22, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
+                <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, color: 'rgba(255,255,255,0.93)', maxWidth: 420, lineHeight: 1.7, marginBottom: 22, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
                   {service.description}
                 </p>
                 <div className="flex flex-col gap-2 mb-6">
                   {['Fixed fee quoted upfront', 'Home visits across London', 'Covering all London areas'].map((b, i) => (
                     <div key={i} className="flex items-center gap-2.5">
                       <CheckCircle size={13} style={{ color: 'var(--brand)', flexShrink: 0 }} />
-                      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13.5, fontWeight: 400, color: 'rgba(255,255,255,0.88)' }}>{b}</span>
+                      <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13.5, fontWeight: 400, color: 'rgba(255,255,255,0.88)' }}>{b}</span>
                     </div>
                   ))}
                 </div>
-                <button onClick={() => setModal(true)} className="btn-primary lg:hidden">
+                <Link href="/contact/#enquiry" className="btn-primary">
                   Find my specialist
-                </button>
-              </div>
-              <div className="hidden lg:block">
-                <HeroLeadForm service={service.title} />
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* Mobile form */}
-        <div className="lg:hidden px-5 py-6" style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)' }}>
-          <HeroLeadForm service={service.title} />
-        </div>
+        <MobileEnquiry service={service.title} />
 
         {/* ── Body ──────────────────────────────────────────────── */}
-        <div className="container-width py-14 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10 lg:gap-14">
+        <div className="container-width py-8 md:py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 lg:gap-8">
 
             {/* Main */}
             <div>
@@ -232,7 +224,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
               <h2 style={h('clamp(22px,2.5vw,30px)', { marginBottom: 16 })}>
                 {service.title}: what you need to know
               </h2>
-              <div className="space-y-4 mb-12">
+              <div className="space-y-4 mb-8">
                 {content.intro.map((p, i) => (
                   <p key={i} className="body-md">{p}</p>
                 ))}
@@ -242,7 +234,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
               <h2 style={h('clamp(20px,2vw,26px)', { marginBottom: 16 })}>
                 Why it matters for your estate
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {content.benefits.map((b, i) => (
                   <div key={i} className="benefit-card">
                     <h3 className="benefit-head">{b.title}</h3>
@@ -253,7 +245,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
 
               {/* Common mistakes — hand-written, high E-E-A-T value */}
               {mistakes && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <div className="flex items-center gap-2 mb-3">
                     <AlertTriangle size={16} style={{ color: 'var(--brand)', flexShrink: 0 }} />
                     <p className="eyebrow" style={{ color: 'var(--brand)', margin: 0 }}>Common mistakes</p>
@@ -269,15 +261,15 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                           background: 'var(--parchment-2)',
                           border: '0.5px solid var(--border)',
                           borderLeft: '3px solid var(--brand)',
-                          borderRadius: 6,
-                          padding: '18px 22px',
+                          borderRadius: 0,
+                          padding: "18px 22px",
                         }}
                       >
                         <p
                           style={{
-                            fontFamily: 'var(--font-cormorant), Georgia, serif',
+                            fontFamily: 'var(--font-inter), Arial, sans-serif',
                             fontSize: 18,
-                            fontStyle: 'italic',
+                            fontStyle: 'normal',
                             color: 'var(--ink)',
                             marginBottom: 8,
                             lineHeight: 1.3,
@@ -296,7 +288,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
 
               {/* Pairs well with — editorial cross-link */}
               {pairedService && pair && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <div
                     className="card-parchment p-6"
                     style={{ borderLeft: '3px solid var(--brand)' }}
@@ -312,7 +304,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                     <Link
                       href={`/services/${pairedService.slug}/`}
                       style={{
-                        fontFamily: 'var(--font-inter), sans-serif',
+                        fontFamily: 'var(--font-inter), Arial, sans-serif',
                         fontSize: 13,
                         fontWeight: 500,
                         color: 'var(--brand)',
@@ -333,7 +325,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 Is {service.title.toLowerCase()} right for you?
               </h2>
               <p className="body-md mb-4">{content.candidateIntro}</p>
-              <div className="card-parchment p-5 mb-12">
+              <div className="card-parchment p-5 mb-8">
                 <ul className="space-y-3">
                   {content.candidates.map((c, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -346,12 +338,12 @@ export function ServiceDetailClient({ service }: { service: Service }) {
 
               {/* Process */}
               <h2 style={h('clamp(20px,2vw,26px)', { marginBottom: 16 })}>How the process works</h2>
-              <div className="space-y-3 mb-12">
+              <div className="space-y-3 mb-8">
                 {content.process.map((step, i) => (
                   <div key={i} className="step-row">
                     <span className="step-num">{i + 1}</span>
                     <div>
-                      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, color: 'var(--ink)', marginBottom: 2 }}>{step.title}</p>
+                      <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, color: 'var(--ink)', marginBottom: 2 }}>{step.title}</p>
                       <p className="body-sm">{step.desc}</p>
                     </div>
                   </div>
@@ -366,7 +358,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 We cover {service.title.toLowerCase()} specialists across all major London areas.
                 Select your area to find specialists who serve your neighbourhood specifically.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-12">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8">
                 {AREA_HUBS.map(hub => (
                   <Link
                     key={hub.slug}
@@ -375,7 +367,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                     style={{ display: 'flex', alignItems: 'center', gap: 8 }}
                   >
                     <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 14, color: 'var(--ink)', transition: 'color 0.12s' }}
+                    <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, color: 'var(--ink)', transition: 'color 0.12s' }}
                       className="group-hover:text-brand-500">
                       {hub.name}
                     </span>
@@ -390,12 +382,13 @@ export function ServiceDetailClient({ service }: { service: Service }) {
             {/* Sidebar */}
             <aside>
               <div className="lg:sticky" style={{ top: 28 }}>
+                <div className="hidden lg:block mb-6"><HeroLeadForm service={service.title} /></div>
                 <div className="sidebar-box">
                   <h3 style={h(20, { color: 'var(--ink)', marginBottom: 6 })}>Book a consultation</h3>
                   <p className="body-sm mb-4">{service.title} covering your area, with home visits. Most wills drafted within 3 to 7 working days.</p>
-                  <button onClick={() => setModal(true)} className="btn-primary w-full justify-center">
+                  <Link href="/contact/#enquiry" className="btn-primary w-full justify-center">
                     Find a specialist
-                  </button>
+                  </Link>
                   <ul className="mt-4 space-y-2 pt-4" style={{ borderTop: '0.5px solid var(--border)' }}>
                     {['Drafted in 3 to 7 days', 'Fixed fees from £150', 'Home visits London-wide'].map((p, i) => (
                       <li key={i} className="flex items-center gap-2">
@@ -409,7 +402,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 {pricing && (
                   <div className="sidebar-box">
                     <p className="eyebrow mb-3">Typical cost</p>
-                    <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 26, color: 'var(--ink)', marginBottom: 3 }}>
+                    <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 26, color: 'var(--ink)', marginBottom: 3 }}>
                       {pricing.from} – {pricing.to}
                     </p>
                     <p className="body-sm">{pricing.note}</p>
@@ -417,16 +410,16 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                 )}
 
                 <div className="sidebar-dark p-5 rounded-lg">
-                  <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 20, fontStyle: 'italic', color: '#fff', marginBottom: 6 }}>
+                  <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 20, fontStyle: 'normal', color: '#fff', marginBottom: 6 }}>
                     Fixed fees, quoted upfront
                   </p>
-                  <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                  <p className="body-sm mb-4" style={{ color: "rgba(255,255,255,0.76)" }}>
                     No hourly billing and no charge for the first conversation.
                   </p>
-                  <button onClick={() => setModal(true)}
-                    style={{ width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+                  <Link href="/contact/#enquiry"
+                    style={{ width: '100%', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 500, padding: "10px", borderRadius: 0, border: 'none', cursor: 'pointer' }}>
                     Book a consultation
-                  </button>
+                  </Link>
                 </div>
 
                 <div className="sidebar-box mt-4">
@@ -444,7 +437,7 @@ export function ServiceDetailClient({ service }: { service: Service }) {
                     if (!article) return null;
                     return (
                       <Link href={`/blog/${article.slug}/`}
-                        style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
+                        style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 15, color: 'var(--stone)', textDecoration: 'none', lineHeight: 1.4, display: 'block', transition: 'color 0.12s' }}
                         className="hover:text-brand-500">
                         {article.title} →
                       </Link>

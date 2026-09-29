@@ -1,22 +1,19 @@
 'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, CheckCircle, ArrowRight, Shield, Clock, Star, Users } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { LeadFormModal } from '@/components/LeadFormModal';
 import { FAQ } from '@/components/FAQ';
+import { HomeDisclosure } from '@/components/HomeDisclosure';
 import { services } from '@/data/services';
 import { AREA_HUBS } from '@/data/locations';
 import { FAQS_HOME } from '@/data/site';
 
 const trustItems = [
-  { icon: <Clock size={13} style={{ color: 'var(--brand)' }} />, head: 'Fixed fees from £150',    body: 'Quoted in full before any work starts' },
-  { icon: <Shield size={13} style={{ color: 'var(--brand)' }} />, head: 'Drafted in 3 to 7 days',  body: 'Faster when the situation is urgent' },
-  { icon: <Star size={13} style={{ color: 'var(--brand)' }} />,   head: 'Signing done properly',   body: 'Two witnesses, in person, done right' },
-  { icon: <Users size={13} style={{ color: 'var(--brand)' }} />,  head: 'Home visits London-wide', body: 'Evenings and weekends included' },
+  { head: 'Fixed fees from £150',    body: 'Quoted in full before any work starts' },
+  { head: 'Drafted in 3 to 7 days',  body: 'Faster when the situation is urgent' },
+  { head: 'Signing done properly',   body: 'Two witnesses, in person, done right' },
+  { head: 'Home visits London-wide', body: 'Evenings and weekends included' },
 ];
 
 const urgencyCards = [
@@ -41,287 +38,69 @@ const processSteps = [
 const featuredAreas = AREA_HUBS.slice(0, 8);
 
 export function HomePageClient() {
-  const [modal, setModal] = useState(false);
-
-  const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-    fontFamily: 'var(--font-cormorant), Georgia, serif',
-    fontSize: size,
-    fontStyle: 'italic',
-    fontWeight: 400,
-    color: 'var(--ink)',
-    lineHeight: 1.15,
-    ...extra,
-  });
-
-  return (
-    <>
-      <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
-      <Header onOpenModal={() => setModal(true)} />
-
-      <main id="main-content">
-
-        {/* ── HERO ──────────────────────────────────────────────── */}
-        <section className="hero-dark flex flex-col" style={{ minHeight: 'clamp(520px, 85vh, 680px)' }}>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/hero-main.png')" }}
-            aria-hidden="true"
-          />
-          <div className="g-top" />
-          <div className="g-bot" />
-
-          <div className="relative z-10 mt-auto container-width py-14 md:py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-10 lg:gap-14 items-end">
-
-              {/* Copy */}
-              <div>
-                <p className="eyebrow anim-0" style={{ color: 'rgba(255,255,255,0.72)', marginBottom: 18 }}>
-                  Wills, LPAs and probate support &nbsp;·&nbsp; London
-                </p>
-                <h1 className="anim-1" style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(38px,5.5vw,66px)', fontStyle: 'italic', fontWeight: 400, lineHeight: 1.07, color: '#fff', marginBottom: 18, letterSpacing: '-0.01em' }}>
-                  Will Writing Services London
-                </h1>
-                <p className="anim-2" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 'clamp(15px,1.15vw,16px)', fontWeight: 400, lineHeight: 1.7, color: 'rgba(255,255,255,0.93)', maxWidth: 460, marginBottom: 28, textShadow: '0 1px 12px rgba(10,6,2,0.55)' }}>
-                  Wills, mirror wills, lasting powers of attorney, trusts and probate
-                  support for London families. Fixed fees from £150, home visits in every
-                  borough, and urgent appointments when time is short.
-                </p>
-                <div className="flex flex-wrap items-center gap-3 anim-3">
-                  <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
-                  <Link href="/services/" className="btn-ghost">See all services</Link>
-                </div>
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 11.5, fontWeight: 400, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.8 }}>
-                  Fixed fees from £150 &nbsp;&middot;&nbsp; Home visits London-wide &nbsp;&middot;&nbsp; Free first conversation
-                </p>
-              </div>
-
-              {/* Services card — SOLID dark background for legibility */}
-              <div
-                className="hidden lg:block anim-2"
-                style={{
-                  background: 'rgba(20,14,8,0.92)',
-                  border: '0.5px solid rgba(255,255,255,0.15)',
-                  borderRadius: 8,
-                  padding: '22px 20px',
-                  backdropFilter: 'blur(4px)',
-                }}
-              >
-                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 9, fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)', marginBottom: 16 }}>
-                  What we do
-                </p>
-                {[
-                  { label: 'Single & mirror wills',       href: '/services/single-will/' },
-                  { label: 'Lasting power of attorney',   href: '/services/lasting-power-of-attorney/' },
-                  { label: 'Trust & estate planning',     href: '/services/trust-planning/' },
-                  { label: 'Probate support',             href: '/services/probate-support/' },
-                ].map((s, i) => (
-                  <Link key={i} href={s.href} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, textDecoration: 'none', transition: 'opacity 0.15s' }}>
-                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 16, fontStyle: 'italic', color: '#fff' }}>
-                      {s.label}
-                    </span>
-                  </Link>
-                ))}
-                <div style={{ borderTop: '0.5px solid rgba(255,255,255,0.12)', marginTop: 16, paddingTop: 16 }}>
-                  <button
-                    onClick={() => setModal(true)}
-                    style={{ width: '100%', background: 'var(--brand)', color: '#fff', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4, border: 'none', cursor: 'pointer', letterSpacing: '0.02em' }}
-                  >
-                    See all services →
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── TRUST STRIP ──────────────────────────────────────── */}
-        <div className="trust-strip">
-          {trustItems.map((t, i) => (
-            <div key={i} className="trust-item">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                {t.icon}
-                <p className="trust-head">{t.head}</p>
-              </div>
-              <p className="trust-body">{t.body}</p>
-            </div>
-          ))}
+  return <>
+    <Header />
+    <main data-edition-page="home" className="edition-home container-width" id="main-content">
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="home-hero-copy">
+          <p className="eyebrow">Wills, LPAs and probate support &nbsp;·&nbsp; London</p>
+          <h1 id="home-title">Will Writing<br />Services London</h1>
+          <p className="home-intro">Wills, mirror wills, lasting powers of attorney, trusts and probate support for London families. Fixed fees from £150, home visits in every borough, and urgent appointments when time is short.</p>
+          <div className="home-actions"><Link href="/contact/#enquiry" className="btn-primary">Book a consultation</Link><Link href="/services/" className="btn-secondary">See all services</Link></div>
+          <p className="home-facts">Fixed fees from £150 &nbsp;·&nbsp; Home visits London-wide &nbsp;·&nbsp; Free first conversation</p>
         </div>
+        <div className="home-hero-media"><Image src="/images/london-edition.webp" alt="London townhouses" fill priority sizes="(min-width:1280px) 520px, (min-width:768px) 44vw, 100vw" className="object-cover" /></div>
+      </section>
 
-        {/* ── WHY IT MATTERS ───────────────────────────────────── */}
-        <section className="section-padding" style={{ background: '#fff' }}>
-          <div className="container-width">
-            <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-12 lg:gap-16 items-start">
-              <div>
-                <p className="eyebrow mb-3">Why this matters</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 16 })}>
-                  When to Make or Update Your Will
-                </h2>
-                <p className="body-lg mb-5">
-                  The triggers are predictable: buying a property, having a child,
-                  a parent's health declining. But most families act only after
-                  something has already gone wrong.
-                </p>
-                <p className="body-md mb-8">
-                  A will takes two weeks to complete. An LPA takes five months to register.
-                  A grant of probate on an intestate estate takes six months or more.
-                  Every day without the right documents in place is a risk your family carries for you.
-                </p>
-                <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {urgencyCards.map((card, i) => (
-                  <div key={i} style={{ background: 'var(--parchment)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '20px 18px', borderLeft: '2px solid var(--brand)' }}>
-                    <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 17, color: 'var(--ink)', marginBottom: 8 }}>{card.head}</h3>
-                    <p className="body-sm mb-4" style={{ lineHeight: 1.65 }}>{card.body}</p>
-                    <Link href={card.href} className="eyebrow-brand flex items-center gap-1" style={{ fontSize: 10 }}>
-                      {card.cta} <ArrowRight size={10} />
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <section className="home-section" id="services" aria-labelledby="home-services-title">
+        <div className="home-section-heading"><div><p className="eyebrow">Our services</p><h2 id="home-services-title">Will Writing and Estate Planning Services</h2></div><Link href="/services/" className="home-text-link">All services →</Link></div>
+        <div className="home-service-layout">
+          <div className="home-disclosures home-service-list">
+            {services.map(service => <HomeDisclosure key={service.id} title={service.title} exclusive>
+              <p>{service.description}</p>
+              <Link href={'/services/' + service.slug + '/'} className="btn-secondary">See the service</Link>
+            </HomeDisclosure>)}
           </div>
-        </section>
+          <aside className="home-process" id="process" aria-labelledby="home-process-title">
+            <p className="eyebrow">How it works</p><h2 id="home-process-title">Our Will Writing Process</h2>
+            {processSteps.map(step => <div className="home-process-step" key={step.n}><h3>{step.head}</h3><p>{step.body}</p></div>)}
+            <Link href="/contact/#enquiry" className="btn-primary">Book a consultation</Link>
+            <p className="home-process-note">The first conversation is free and there is no obligation to go ahead.</p>
+          </aside>
+        </div>
+      </section>
 
-        {/* ── SERVICES ─────────────────────────────────────────── */}
-        <section className="section-padding" style={{ background: 'var(--parchment)' }}>
-          <div className="container-width">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-              <div>
-                <p className="eyebrow mb-3">Our services</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Will Writing and Estate Planning Services</h2>
-              </div>
-              <Link href="/services/" className="btn-secondary self-start sm:self-auto">All services →</Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-              {services.map(s => (
-                <Link key={s.id} href={`/services/${s.slug}/`} className="card group overflow-hidden">
-                  <div style={{ height: 148, overflow: 'hidden', background: 'var(--parchment-2)', position: 'relative' }}>
-                    <Image
-                      src={s.image}
-                      alt={`${s.title} in London`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div style={{ padding: '16px 18px' }}>
-                    <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 19, color: 'var(--ink)', marginBottom: 5, transition: 'color 0.12s' }} className="group-hover:text-brand-500">
-                      {s.title}
-                    </h3>
-                    <p className="body-sm line-clamp-2 mb-3">{s.description}</p>
-                    <span className="eyebrow-brand flex items-center gap-1">See the service <ArrowRight size={10} /></span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+      <section className="home-section home-editorial" id="questions" aria-labelledby="home-questions-title">
+        <div><p className="eyebrow">Common questions</p><h2 id="home-questions-title">Will Writing in London: Common Questions</h2></div>
+        <FAQ faqs={FAQS_HOME} />
+      </section>
 
-        {/* ── WHY USE US ───────────────────────────────────────── */}
-        <section className="section-padding" style={{ background: '#fff' }}>
-          <div className="container-width">
-            <div className="max-w-2xl mb-12">
-              <p className="eyebrow mb-3">Why use this service</p>
-              <h2 style={serif('clamp(28px,3.5vw,42px)')}>Why Choose Us</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              {whyUs.map((w, i) => (
-                <div key={i} style={{ paddingLeft: 20, borderLeft: '2px solid var(--brand)' }}>
-                  <h3 style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 19, color: 'var(--ink)', marginBottom: 10 }}>{w.head}</h3>
-                  <p className="body-md">{w.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      <section className="home-section home-editorial" aria-labelledby="home-timing-title">
+        <div><p className="eyebrow">Why this matters</p><h2 id="home-timing-title">When to Make or Update Your Will</h2></div>
+        <div>
+          <p className="home-body">The triggers are predictable: buying a property, having a child, a parent's health declining. But most families act only after something has already gone wrong.</p>
+          <p className="home-body">A will takes two weeks to complete. An LPA takes five months to register. A grant of probate on an intestate estate takes six months or more. Every day without the right documents in place is a risk your family carries for you.</p>
+          <div className="home-disclosures">{urgencyCards.map(card => <HomeDisclosure key={card.head} title={card.head}><p>{card.body}</p><Link href={card.href} className="home-text-link">{card.cta}</Link></HomeDisclosure>)}</div>
+        </div>
+      </section>
 
-        {/* ── PROCESS + TESTIMONIALS ───────────────────────────── */}
-        <section className="section-padding" style={{ background: 'var(--parchment)' }}>
-          <div className="container-width">
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-3">How it works</p>
-              <h2 style={serif('clamp(28px,3.5vw,42px)', { marginBottom: 28 })}>Our Will Writing Process</h2>
-              <div className="space-y-4 mb-10">
-                {processSteps.map(step => (
-                  <div key={step.n} className="step-row">
-                    <span className="step-num">{step.n}</span>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, color: 'var(--ink)', marginBottom: 3 }}>{step.head}</p>
-                      <p className="body-sm leading-relaxed">{step.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <button onClick={() => setModal(true)} className="btn-primary">Book a consultation</button>
-              <p className="body-sm mt-3" style={{ color: 'var(--dust)' }}>The first conversation is free and there is no obligation to go ahead.</p>
-            </div>
-          </div>
-        </section>
+      <section className="home-section home-editorial" aria-labelledby="home-why-title">
+        <div><p className="eyebrow">Why use this service</p><h2 id="home-why-title">Why Choose Us</h2>
+          <div className="home-assurances">{trustItems.map(item => <div key={item.head}><p>{item.head}</p><span>{item.body}</span></div>)}</div>
+        </div>
+        <div className="home-disclosures">{whyUs.map(item => <HomeDisclosure key={item.head} title={item.head}><p>{item.body}</p></HomeDisclosure>)}</div>
+      </section>
 
-        {/* ── AREAS ────────────────────────────────────────────── */}
-        <section className="section-padding" style={{ background: '#fff' }}>
-          <div className="container-width">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-              <div>
-                <p className="eyebrow mb-3">London areas we cover</p>
-                <h2 style={serif('clamp(28px,3.5vw,42px)')}>Will Writing Across Every London Area</h2>
-              </div>
-              <Link href="/location/" className="btn-secondary self-start sm:self-auto">All 15 areas →</Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {featuredAreas.map(hub => (
-                <Link key={hub.slug} href={`/location/${hub.slug}/`} className="card p-4 group">
-                  <div className="flex items-start gap-2 mb-1.5">
-                    <MapPin size={11} style={{ color: 'var(--brand)', flexShrink: 0, marginTop: 2 }} />
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 16, color: 'var(--ink)', transition: 'color 0.12s', lineHeight: 1.2 }} className="group-hover:text-brand-500">
-                        {hub.name}
-                      </p>
-                      <p className="body-sm">{hub.postcode}</p>
-                    </div>
-                  </div>
-                  <p className="body-sm line-clamp-1 hidden sm:block" style={{ paddingLeft: 19 }}>
-                    {hub.subAreas.slice(0, 2).map(s => s.name).join(', ')}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+      <section className="home-section home-editorial" aria-labelledby="home-areas-title">
+        <div><p className="eyebrow">London areas we cover</p><h2 id="home-areas-title">Will Writing Across Every London Area</h2><Link href="/location/" className="home-text-link">All 15 areas →</Link></div>
+        <div className="home-area-list">{featuredAreas.map(hub => <Link key={hub.slug} href={'/location/' + hub.slug + '/'}><div><strong>{hub.name}</strong><span>{hub.postcode}</span></div><p>{hub.subAreas.slice(0,2).map(area => area.name).join(', ')}</p></Link>)}</div>
+      </section>
 
-        {/* ── FAQ ──────────────────────────────────────────────── */}
-        <section className="section-padding" style={{ background: 'var(--parchment)' }}>
-          <div className="container-width max-w-3xl">
-            <p className="eyebrow mb-3">Common questions</p>
-            <FAQ faqs={FAQS_HOME} title="Will Writing in London: Common Questions" />
-          </div>
-        </section>
-
-        {/* ── FINAL CTA ────────────────────────────────────────── */}
-        <section style={{ background: 'var(--ink)', padding: '80px 0' }}>
-          <div className="container-width text-center">
-            <p className="eyebrow mb-5" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              Wills, LPAs and probate support &nbsp;·&nbsp; London
-            </p>
-            <h2 style={{ fontFamily: 'var(--font-cormorant), Georgia, serif', fontSize: 'clamp(30px,4vw,50px)', fontStyle: 'italic', fontWeight: 400, color: '#fff', marginBottom: 16, lineHeight: 1.15 }}>
-              Book Your Will Writing Consultation
-            </h2>
-            <p className="mx-auto mb-8" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 14, fontWeight: 300, color: 'rgba(255,255,255,0.5)', maxWidth: 480, lineHeight: 1.78 }}>
-              Book Your Will Writing Consultation
-            </p>
-            <button onClick={() => setModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '14px 32px', borderRadius: 4, border: 'none', cursor: 'pointer', letterSpacing: '0.02em' }}>
-              Book a consultation
-            </button>
-            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, fontWeight: 300, color: 'rgba(255,255,255,0.22)', marginTop: 14 }}>
-              Fixed fees from £150 &nbsp;&middot;&nbsp; Home visits London-wide &nbsp;&middot;&nbsp; Free first conversation
-            </p>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
-  );
+      <section className="home-contact-band">
+        <div><p className="eyebrow">Wills, LPAs and probate support &nbsp;·&nbsp; London</p><h2>Book Your Will Writing Consultation</h2><p className="home-facts">Fixed fees from £150 &nbsp;·&nbsp; Home visits London-wide &nbsp;·&nbsp; Free first conversation</p></div>
+        <Link href="/contact/#enquiry" className="btn-primary">Book a consultation</Link>
+      </section>
+    </main>
+    <Footer />
+  </>;
 }

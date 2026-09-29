@@ -1,3 +1,4 @@
+import { withPageSeo } from '@/lib/pageMetadata';
 // SERVER COMPONENT — no 'use client'
 //
 // 2026-05-04 deepening: previously rendered only sub-areas grid +
@@ -24,6 +25,7 @@ import { locationProfiles } from '@/data/locationProfiles';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { HeroLeadForm } from '@/components/HeroLeadForm';
+import { MobileEnquiry } from '@/components/MobileEnquiry';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 import { siteConfig } from '@/data/site';
@@ -40,7 +42,7 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
   const description = `Will writing and estate planning covering ${hub.name} (${hub.postcode}) and surrounding areas including ${hub.subAreas.slice(0, 3).map(a => a.name).join(', ')}. Most wills drafted within 3 to 7 working days.`;
   const url = `${siteConfig.url}/location/${hub.slug}/`;
 
-  return {
+  return withPageSeo('/location/' + hub.slug + '/', {
     title,
     description,
     alternates: { canonical: `/location/${hub.slug}/` },
@@ -54,13 +56,13 @@ export function generateMetadata({ params }: { params: { city: string } }): Meta
     },
     twitter: { card: 'summary_large_image', title, description },
     robots: { index: true, follow: true },
-  };
+  });
 }
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
+  fontFamily: 'var(--font-inter), Arial, sans-serif',
   fontSize: size,
-  fontStyle: 'italic',
+  fontStyle: 'normal',
   fontWeight: 400,
   color: 'var(--ink)',
   lineHeight: 1.15,
@@ -147,10 +149,10 @@ export default function CityPage({ params }: { params: { city: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
 
-      <main id="main-content">
+      <main data-edition-page="location" id="main-content">
         {/* ── Hero ──────────────────────────────────────────────── */}
-        <section style={{ background: '#1c1814', position: 'relative', overflow: 'hidden', minHeight: 200 }}>
-          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 44, paddingBottom: 52 }}>
+        <section data-edition-hero style={{ background: '#1c1814', position: 'relative', overflow: 'hidden', minHeight: 200 }}>
+          <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 32, paddingBottom: 32 }}>
             <div style={{ marginBottom: 20 }}>
               <Breadcrumbs dark items={[{ label: 'Areas', href: '/location/' }, { label: hub.name }]} />
             </div>
@@ -164,13 +166,13 @@ export default function CityPage({ params }: { params: { city: string } }) {
                     alignItems: 'center',
                     background: 'rgba(212,105,25,0.18)',
                     border: '0.5px solid rgba(212,105,25,0.45)',
-                    color: '#e8943a',
-                    fontFamily: 'var(--font-inter), sans-serif',
+                    color: "#f29264",
+                    fontFamily: 'var(--font-inter), Arial, sans-serif',
                     fontSize: 12,
                     fontWeight: 500,
                     letterSpacing: '0.02em',
-                    padding: '5px 14px',
-                    borderRadius: 20,
+                    padding: "5px 14px",
+                    borderRadius: 0,
                   }}
                 >
                   {label}
@@ -180,7 +182,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
             <h1
               style={{
-                fontFamily: 'var(--font-cormorant), Georgia, serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 'clamp(34px, 5vw, 58px)',
                 fontWeight: 400,
                 color: '#ffffff',
@@ -195,9 +197,9 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
             <p
               style={{
-                fontFamily: 'var(--font-inter), sans-serif',
+                fontFamily: 'var(--font-inter), Arial, sans-serif',
                 fontSize: 15,
-                fontWeight: 300,
+                fontWeight: 400,
                 color: 'rgba(255,255,255,0.66)',
                 lineHeight: 1.7,
                 maxWidth: 640,
@@ -210,8 +212,8 @@ export default function CityPage({ params }: { params: { city: string } }) {
             {lp && (
               <p
                 style={{
-                  fontFamily: 'var(--font-cormorant), Georgia, serif',
-                  fontStyle: 'italic',
+                  fontFamily: 'var(--font-inter), Arial, sans-serif',
+                  fontStyle: 'normal',
                   fontSize: 16,
                   color: 'rgba(232,148,58,0.85)',
                   marginTop: 18,
@@ -226,9 +228,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
         </section>
 
         {/* Mobile form */}
-        <div className="lg:hidden px-5 py-6" style={{ background: 'var(--parchment)', borderBottom: '0.5px solid var(--border)' }}>
-          <HeroLeadForm city={hub.name} />
-        </div>
+        <MobileEnquiry city={hub.name} />
 
         {/* ── Trust strip ──────────────────────────────────────── */}
         <div className="trust-strip">
@@ -246,13 +246,13 @@ export default function CityPage({ params }: { params: { city: string } }) {
         </div>
 
         {/* ── Body ──────────────────────────────────────────────── */}
-        <div className="container-width py-12 md:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-14">
+        <div className="container-width py-12 md:py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-8">
 
             <div>
               {/* Local intro — from areaContent.introParagraphs */}
               {ac && ac.introParagraphs.length > 0 && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <h2 style={serif('clamp(22px,3vw,32px)' as any, { marginBottom: 16 })}>
                     {ac.introHeading}
                   </h2>
@@ -266,13 +266,13 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Why specialist matters here */}
               {ac?.whySpecialistMatters && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <div
                     className="card-parchment p-6"
                     style={{ borderLeft: '3px solid var(--brand)' }}
                   >
                     <p className="eyebrow mb-3" style={{ color: 'var(--brand)' }}>Why a specialist matters here</p>
-                    <p className="body-md" style={{ fontStyle: 'italic', color: 'var(--ink)' }}>
+                    <p className="body-md" style={{ fontStyle: 'normal', color: 'var(--ink)' }}>
                       {ac.whySpecialistMatters}
                     </p>
                   </div>
@@ -281,7 +281,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Estate profile band — from locationProfiles */}
               {lp && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
                     What estates in {hub.name} typically look like
                   </h2>
@@ -305,7 +305,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Who we work with here */}
               {ac?.clientProfile && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
                     {ac.clientProfile.heading}
                   </h2>
@@ -324,7 +324,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Common triggers */}
               {ac?.commonTriggers && ac.commonTriggers.length > 0 && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 12 })}>
                     Why people in {hub.name} engage us
                   </h2>
@@ -338,8 +338,8 @@ export default function CityPage({ params }: { params: { city: string } }) {
                         style={{
                           background: 'var(--parchment-2)',
                           border: '0.5px solid var(--border)',
-                          borderRadius: 6,
-                          padding: '12px 16px',
+                          borderRadius: 0,
+                          padding: "12px 16px",
                         }}
                       >
                         <span className="body-md">{t}</span>
@@ -350,7 +350,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
               )}
 
               {/* Sub-areas */}
-              <section className="mb-12">
+              <section className="mb-8">
                 <h2 style={serif('clamp(20px,2.5vw,28px)' as any, { marginBottom: 10 })}>
                   Areas we cover around {hub.name}
                 </h2>
@@ -366,9 +366,9 @@ export default function CityPage({ params }: { params: { city: string } }) {
                       {a.note && (
                         <p
                           style={{
-                            fontFamily: 'var(--font-inter), sans-serif',
+                            fontFamily: 'var(--font-inter), Arial, sans-serif',
                             fontSize: 11,
-                            fontWeight: 300,
+                            fontWeight: 400,
                             color: 'var(--stone)',
                             marginTop: 4,
                             lineHeight: 1.45,
@@ -383,19 +383,19 @@ export default function CityPage({ params }: { params: { city: string } }) {
               </section>
 
               {/* Services available — links to /services/{slug}/ NOT combo */}
-              <section className="mb-12">
+              <section className="mb-8">
                 <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 16 })}>
                   Services available in {hub.name}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {services.map(s => (
                     <Link key={s.id} href={`/services/${s.slug}/`} className="card group flex gap-3 p-4 items-start">
-                      <div style={{ width: 64, height: 52, borderRadius: 5, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)', position: 'relative' }}>
+                      <div style={{ width: 64, height: 52, borderRadius: 0, overflow: 'hidden', flexShrink: 0, background: 'var(--parchment-2)', position: 'relative' }}>
                         <Image src={s.image} alt={s.title} fill sizes="64px" className="object-cover" />
                       </div>
                       <div style={{ minWidth: 0 }}>
                         <h3
-                          style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', marginBottom: 3, transition: 'color 0.12s', lineHeight: 1.2 }}
+                          style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 15, color: 'var(--ink)', marginBottom: 3, transition: 'color 0.12s', lineHeight: 1.2 }}
                           className="group-hover:text-brand-500"
                         >
                           {s.title}
@@ -409,13 +409,13 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Local context — closing prose */}
               {ac?.localContext && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <div
                     style={{
                       background: 'var(--parchment-2)',
                       border: '0.5px solid var(--border)',
-                      borderRadius: 8,
-                      padding: '24px 28px',
+                      borderRadius: 0,
+                      padding: "24px 28px",
                     }}
                   >
                     <p className="eyebrow mb-3">{hub.name} in context</p>
@@ -428,7 +428,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
 
               {/* Nearby hubs */}
               {nearbyHubs.length > 0 && (
-                <section className="mb-12">
+                <section className="mb-8">
                   <h2 style={serif('clamp(20px,2.5vw,26px)' as any, { marginBottom: 12 })}>
                     Nearby areas we cover
                   </h2>
@@ -442,7 +442,7 @@ export default function CityPage({ params }: { params: { city: string } }) {
                       >
                         <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--brand)', flexShrink: 0 }} />
                         <span
-                          style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 15, color: 'var(--ink)', transition: 'color 0.12s' }}
+                          style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 15, color: 'var(--ink)', transition: 'color 0.12s' }}
                           className="group-hover:text-brand-500"
                         >
                           {h.name}
@@ -496,12 +496,12 @@ export default function CityPage({ params }: { params: { city: string } }) {
                   </div>
                 </div>
 
-                <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '20px 18px' }}>
+                <div style={{ background: 'var(--ink)', borderRadius: 0, padding: "20px 18px" }}>
                   <p style={serif(20, { color: '#fff', marginBottom: 4 })}>From £150</p>
-                  <p className="body-sm mb-4" style={{ color: 'rgba(255,255,255,0.45)' }}>Fixed-fee quotes, no hidden costs.</p>
+                  <p className="body-sm mb-4" style={{ color: "rgba(255,255,255,0.76)" }}>Fixed-fee quotes, no hidden costs.</p>
                   <a
-                    href="#book-consultation"
-                    style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 500, padding: '10px', borderRadius: 4 }}
+                    href="/contact/#enquiry"
+                    style={{ display: 'block', textAlign: 'center', textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 500, padding: "10px", borderRadius: 0 }}
                   >
                     Get free quotes
                   </a>
@@ -511,16 +511,16 @@ export default function CityPage({ params }: { params: { city: string } }) {
           </div>
 
           {/* Bottom CTA */}
-          <div style={{ background: 'var(--ink)', borderRadius: 8, padding: '40px 36px', textAlign: 'center', marginTop: 24 }}>
+          <div style={{ background: 'var(--ink)', borderRadius: 0, padding: "32px 32px", textAlign: 'center', marginTop: 24 }}>
             <h2 style={serif('clamp(22px,3vw,34px)' as any, { color: '#fff', marginBottom: 12 })}>
               Find a will writing specialist in {hub.name}
             </h2>
-            <p className="body-lg mb-6 mx-auto" style={{ maxWidth: 500, color: 'rgba(255,255,255,0.5)' }}>
+            <p className="body-lg mb-6 mx-auto" style={{ maxWidth: 500, color: "rgba(255,255,255,0.76)" }}>
               Covering {hub.name}, {hub.subAreas.slice(0, 3).map(s => s.name).join(', ')}, and all surrounding areas.
             </p>
             <a
-              href="#book-consultation"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), sans-serif', fontSize: 13, fontWeight: 500, padding: '13px 28px', borderRadius: 4 }}
+              href="/contact/#enquiry"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none', background: '#fff', color: 'var(--ink)', fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 13, fontWeight: 500, padding: "13px 28px", borderRadius: 0 }}
             >
               Book a consultation
             </a>

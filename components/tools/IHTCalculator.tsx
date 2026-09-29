@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 const serif = (size: number | string, extra?: React.CSSProperties): React.CSSProperties => ({
-  fontFamily: 'var(--font-cormorant), Georgia, serif',
-  fontSize: size, fontStyle: 'italic', fontWeight: 400,
+  fontFamily: 'var(--font-inter), Arial, sans-serif',
+  fontSize: size, fontStyle: 'normal', fontWeight: 400,
   color: 'var(--ink)', lineHeight: 1.2, ...extra,
 });
 
@@ -49,23 +49,23 @@ export function IHTCalculator() {
   const iht  = Math.round(taxable * rate);
 
   const fieldStyle: React.CSSProperties = {
-    width: '100%', padding: '9px 12px', fontSize: 13,
-    fontFamily: 'var(--font-inter), sans-serif', fontWeight: 300,
+    width: '100%', padding: "9px 12px", fontSize: 13,
+    fontFamily: 'var(--font-inter), Arial, sans-serif', fontWeight: 400,
     background: 'var(--parchment)', border: '0.5px solid var(--border)',
-    borderRadius: 4, color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
+    borderRadius: 0, color: 'var(--ink)', outline: 'none', boxSizing: 'border-box',
   };
   const labelStyle: React.CSSProperties = {
-    fontFamily: 'var(--font-inter), sans-serif', fontSize: 10, fontWeight: 400,
+    fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 10, fontWeight: 400,
     letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--dust)',
     display: 'block', marginBottom: 5,
   };
   const checkLabel: React.CSSProperties = {
-    fontFamily: 'var(--font-inter), sans-serif', fontSize: 12, fontWeight: 300,
+    fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 12, fontWeight: 400,
     color: 'var(--stone)', display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer',
   };
 
   return (
-    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 8, padding: '24px 22px', marginTop: 20, marginBottom: 20 }}>
+    <div style={{ background: 'var(--parchment-2)', border: '0.5px solid var(--border)', borderRadius: 0, padding: "24px 22px", marginTop: 20, marginBottom: 20 }}>
       <p style={serif(18, { marginBottom: 4 })}>Inheritance tax estimator</p>
       <p className="body-sm mb-5" style={{ color: 'var(--dust)' }}>2026 figures -- NRB £325,000, RNRB £175,000, rate 40%. For guidance only.</p>
 
@@ -114,33 +114,33 @@ export function IHTCalculator() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 20px', marginBottom: 16 }}>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Gross estate</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(gross)}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(gross)}</p>
           </div>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Net estate (after debts)</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(net)}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(net)}</p>
           </div>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Nil-rate band available</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(availNRB)}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(availNRB)}</p>
           </div>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Residence NRB available</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(effectiveRNRB)}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(effectiveRNRB)}</p>
           </div>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Taxable estate</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(taxable)}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{fmt(taxable)}</p>
           </div>
           <div>
             <p style={{ ...labelStyle, marginBottom: 2 }}>Rate applied</p>
-            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{(rate * 100).toFixed(0)}%{charityPct >= 0.10 ? ' (charitable rate)' : ''}</p>
+            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: 'var(--ink)' }}>{(rate * 100).toFixed(0)}%{charityPct >= 0.10 ? ' (charitable rate)' : ''}</p>
           </div>
         </div>
 
-        <div style={{ background: iht > 0 ? 'rgba(212,105,25,0.08)' : 'rgba(0,0,0,0.03)', border: `0.5px solid ${iht > 0 ? 'rgba(212,105,25,0.3)' : 'var(--border)'}`, borderRadius: 6, padding: '14px 18px', textAlign: 'center' }}>
+        <div style={{ background: iht > 0 ? 'rgba(212,105,25,0.08)' : 'rgba(0,0,0,0.03)', border: `0.5px solid ${iht > 0 ? 'rgba(212,105,25,0.3)' : 'var(--border)'}`, borderRadius: 0, padding: "14px 18px", textAlign: 'center' }}>
           <p style={labelStyle}>Estimated inheritance tax</p>
-          <p style={{ fontFamily: 'var(--font-cormorant), serif', fontSize: 36, fontWeight: 400, color: iht > 0 ? '#D46919' : 'var(--stone)', lineHeight: 1 }}>{fmt(iht)}</p>
+          <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 36, fontWeight: 400, color: iht > 0 ? '#D46919' : 'var(--stone)', lineHeight: 1 }}>{fmt(iht)}</p>
           {iht > 0 && (
             <p className="body-sm mt-2" style={{ color: 'var(--dust)' }}>
               Trust planning and gifting strategies could reduce this. Speak to a specialist.

@@ -1,21 +1,15 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
+import './edition.css';
+import './home-edition.css';
 import { siteConfig } from '@/data/site';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { AttributionCapture } from '@/components/AttributionCapture';
 
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
+const inter = localFont({
+  src: '../public/inter.woff2',
+  weight: '100 900',
   variable: '--font-inter',
   display: 'swap',
 });
@@ -75,7 +69,7 @@ const orgSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID ?? 'G-MKLSQNN51M';
   return (
-    <html lang="en-GB" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${inter.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />

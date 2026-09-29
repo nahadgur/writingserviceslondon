@@ -84,7 +84,7 @@ export default function GuidesPage() {
                       <span style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, color: 'var(--brand)' }}>{guideCategories[guide.category]}</span>
                       <span className="body-sm" style={{ whiteSpace: 'nowrap' }}>{guide.readingTime} min</span>
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 21, fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.22, marginBottom: 9 }} className="group-hover:text-brand-500">
+                    <h3 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 21, fontStyle: 'normal', fontWeight: 400, color: 'var(--ink)', lineHeight: 1.22, marginBottom: 9 }} className="directory-article-title group-hover:text-brand-500">
                       {guide.title}
                     </h3>
                     <p className="body-sm line-clamp-3" style={{ marginBottom: 14, flex: 1 }}>{guide.metaDescription}</p>

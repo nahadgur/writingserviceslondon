@@ -81,7 +81,7 @@ export function BlogIndexClient({ blogArticles }: { blogArticles: ArticleSummary
                 {filtered.length > 0 && (
                   <Link
                     href={`/blog/${filtered[0].slug}/`}
-                    className="card group"
+                    className="card group directory-featured-article"
                     style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', marginBottom: 20 }}
                   >
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
@@ -103,7 +103,7 @@ export function BlogIndexClient({ blogArticles }: { blogArticles: ArticleSummary
                           <span className="body-sm">{filtered[0].publishDate}</span>
                         </div>
                         <h2 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(20px,2.5vw,28px)', fontStyle: 'normal', color: 'var(--ink)', lineHeight: 1.2, marginBottom: 10, transition: 'color 0.12s' }}
-                          className="group-hover:text-brand-500">
+                          className="directory-article-title group-hover:text-brand-500">
                           {filtered[0].title}
                         </h2>
                         <p className="body-md line-clamp-2 mb-4">{filtered[0].excerpt}</p>
@@ -136,7 +136,7 @@ export function BlogIndexClient({ blogArticles }: { blogArticles: ArticleSummary
                             <span className="body-sm">{article.publishDate}</span>
                           </div>
                           <h2 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 18, fontStyle: 'normal', color: 'var(--ink)', lineHeight: 1.2, marginBottom: 6, transition: 'color 0.12s' }}
-                            className="group-hover:text-brand-500">
+                            className="directory-article-title group-hover:text-brand-500">
                             {article.title}
                           </h2>
                           <p className="body-sm line-clamp-2">{article.excerpt}</p>

@@ -25,7 +25,9 @@ export function Header() {
     return () => document.removeEventListener('keydown', escape);
   }, [open]);
   return <>
-    <header className="edition-header">
+    <header className="edition-header" onBlur={event => {
+      if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget as Node)) setOpen(false);
+    }}>
       <div className="container-width edition-header-row">
         <Link href="/" className="edition-logo" aria-label="Will Writing Services London">
           <Image src="/logo-transparent.webp" width={52} height={48} alt="" priority />
@@ -36,16 +38,19 @@ export function Header() {
           <Link href="/contact/#enquiry" onClick={() => setOpen(false)} className="btn-primary">Speak to someone</Link>
         </nav>
         <button ref={toggle} className="edition-menu-toggle" aria-controls="edition-mobile-menu" aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(value => !value)}>
-          {open ? 'Close' : 'Menu'}<span aria-hidden="true">{open ? '−' : '+'}</span>
+          <span className="edition-menu-label">Menu</span><span className="edition-menu-icon" aria-hidden="true" />
         </button>
       </div>
       <nav id="edition-mobile-menu" className={`edition-mobile-menu ${open ? 'is-open' : ''}`} aria-label="Mobile navigation" aria-hidden={!open}>
         <div className="container-width">
-          {links.map(link => <Link key={link.href} href={link.href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>{link.label}</Link>)}
-          <Link href="/contact/#enquiry" tabIndex={open ? 0 : -1} className="btn-primary" onClick={() => setOpen(false)}>Speak to someone</Link>
+          <div className="edition-mobile-links">
+            {links.map(link => <Link key={link.href} href={link.href} aria-current={pathname.startsWith(link.href) ? 'page' : undefined} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>{link.label}</Link>)}
+          </div>
+          <div className="edition-menu-contact"><Link href="/contact/#enquiry" tabIndex={open ? 0 : -1} className="btn-primary" onClick={() => setOpen(false)}>Speak to someone</Link></div>
         </div>
       </nav>
     </header>
+    <button className={`edition-menu-backdrop ${open ? 'is-open' : ''}`} type="button" tabIndex={-1} aria-label="Close menu" aria-hidden={!open} onClick={() => { setOpen(false); toggle.current?.focus(); }} />
     <div className="edition-mobile-action"><span>Will Writing Services London</span><Link href="/contact/#enquiry" className="btn-primary" onClick={() => setOpen(false)}>Book a consultation</Link></div>
   </>;
 }

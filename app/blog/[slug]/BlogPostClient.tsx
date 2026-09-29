@@ -150,8 +150,20 @@ function renderBlock(block: ContentBlock, index: number, onModal: () => void) {
   }
 }
 
-export function BlogPostClient({ article }: { article: BlogArticle; related?: BlogArticle[]; hub?: { slug: string; title: string } | null }) {
+export function BlogPostClient({ article, related = [], hub }: { article: BlogArticle; related?: BlogArticle[]; hub?: { slug: string; title: string } | null }) {
   const [modal, setModal] = useState(false);
+
+  // Keep hand-picked related-reading blocks without repeating their links below.
+  const embeddedRelatedSlugs = new Set(
+    article.content.flatMap(block => block.type === 'related-articles'
+      ? (block.articles || []).map(item => item.slug)
+      : []),
+  );
+  const relatedArticles = related.filter((item, index, items) =>
+    !item.draft && item.slug !== article.slug && item.hub === article.hub
+    && !embeddedRelatedSlugs.has(item.slug)
+    && items.findIndex(other => other.slug === item.slug) === index,
+  );
 
   // Find 2nd h2 to inject the mid-article CTA banner and pull quote
   let h2Count = 0;
@@ -211,6 +223,15 @@ export function BlogPostClient({ article }: { article: BlogArticle; related?: Bl
                 className="body-sm hover:text-ink">
                 <ArrowLeft size={12} /> All articles
               </Link>
+
+              {hub && (
+                <p className="body-sm" style={{ marginBottom: 24 }}>
+                  Part of our guide:{' '}
+                  <Link href={`/guides/${hub.slug}/`} style={{ color: 'var(--brand)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+                    {hub.title}
+                  </Link>
+                </p>
+              )}
 
               <p className="article-lede" style={{ marginBottom: 28 }}>{article.excerpt}</p>
 
@@ -288,6 +309,21 @@ export function BlogPostClient({ article }: { article: BlogArticle; related?: Bl
                 }
                 return rendered;
               })()}
+
+              {relatedArticles.length > 0 && (
+                <nav aria-labelledby="related-articles-heading" style={{ marginTop: 40, paddingTop: 8, borderTop: '1px solid var(--border)' }}>
+                  <h2 id="related-articles-heading" className="article-h2">Related articles</h2>
+                  <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" style={{ padding: 0, listStyle: 'none' }}>
+                    {relatedArticles.map(item => (
+                      <li key={item.slug}>
+                        <Link href={`/blog/${item.slug}/`} className="card-parchment body-md block h-full p-5 hover:underline" style={{ color: 'var(--ink)', textUnderlineOffset: 3 }}>
+                          {item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
             </article>
 
           </div>

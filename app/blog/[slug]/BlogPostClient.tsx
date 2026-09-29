@@ -140,25 +140,12 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
       <LeadFormModal isOpen={modal} onClose={() => setModal(false)} />
       <Header />
 
-      <main data-edition-page="blog" id="main-content">
-        {article.featuredImage && (
-          <div className="relative h-[320px] md:h-[460px] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
-            <Image
-              src={article.featuredImage}
-              alt={article.featuredImageAlt || article.title}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        )}
+      <main className="edition-reading-page" data-edition-page="blog" id="main-content">
         {/* Hero */}
-        <section data-edition-hero data-article-hero className="hero-dark" style={{ minHeight: 220 }}>
-          <div className="g-bot" />
+        <section data-edition-hero data-article-hero className="edition-reading-hero">
           <div className="relative z-10 container-width py-10 md:py-12 w-full">
-            <Breadcrumbs dark items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]} />
-            <div className="flex flex-wrap items-center gap-3 mt-4 mb-4">
+            <Breadcrumbs items={[{ label: 'Blog', href: '/blog/' }, { label: article.title }]} />
+            <div className="edition-article-meta">
               <span className="loc-pill">
                 <Tag size={10} /> {article.category}
               </span>
@@ -170,6 +157,9 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
             <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(28px,4vw,48px)', fontStyle: 'normal', fontWeight: 400, color: '#fff', lineHeight: 1.15, maxWidth: 680 }}>
               {article.title}
             </h1>
+            {article.featuredImage && <div className="edition-article-image">
+              <Image src={article.featuredImage} alt={article.featuredImageAlt || article.title} fill priority sizes="(min-width: 1104px) 1024px, 100vw" className="object-cover" />
+            </div>}
           </div>
         </section>
 
@@ -261,7 +251,7 @@ export function BlogPostClient({ article, related = [], hub }: { article: BlogAr
               {relatedArticles.length > 0 && (
                 <nav aria-labelledby="related-articles-heading" style={{ marginTop: 32, paddingTop: 8, borderTop: '1px solid var(--border)' }}>
                   <h2 id="related-articles-heading" className="article-h2">Related articles</h2>
-                  <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" style={{ padding: 0, listStyle: 'none' }}>
+                  <ul className="edition-related-list" style={{ padding: 0, listStyle: 'none' }}>
                     {relatedArticles.map(item => (
                       <li key={item.slug}>
                         <Link href={`/blog/${item.slug}/`} className="card-parchment body-md block h-full p-5 hover:underline" style={{ color: 'var(--ink)', textUnderlineOffset: 3 }}>

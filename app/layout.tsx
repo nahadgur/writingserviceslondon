@@ -4,6 +4,7 @@ import './globals.css';
 import './edition.css';
 import './home-edition.css';
 import './tools-edition.css';
+import './reading-edition.css';
 import { siteConfig } from '@/data/site';
 import { ConsentBanner } from '@/components/ConsentBanner';
 import { AttributionCapture } from '@/components/AttributionCapture';

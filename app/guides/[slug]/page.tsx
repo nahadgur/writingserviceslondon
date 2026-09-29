@@ -10,7 +10,6 @@ import { articleSchema, breadcrumbSchema, faqSchema, editorialAuthorSchema } fro
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { FAQ } from '@/components/FAQ';
 import { siteConfig } from '@/data/site';
 import { GuideBody } from './GuideBody';
 
@@ -84,39 +83,11 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
       ))}
       <Header />
 
-      <main data-edition-page="guides" id="main-content">
-        <div className="relative h-[320px] md:h-[460px] overflow-hidden" style={{ background: 'var(--parchment-2)' }}>
-          <Image
-            src={guide.featuredImage}
-            alt={guide.featuredImageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-        {/* Dark hero */}
-        <section data-edition-hero style={{ background: '#1c1814', position: 'relative', overflow: 'hidden' }}>
-          <svg aria-hidden="true" style={{ position: 'absolute', right: 0, bottom: 0, opacity: 0.12, pointerEvents: 'none' }} width="260" height="180" viewBox="0 0 260 180" fill="none">
-            <rect x="10"  y="100" width="28" height="80"  fill="white"/>
-            <rect x="46"  y="68"  width="32" height="112" fill="white"/>
-            <rect x="54"  y="82"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="64"  y="82"  width="6"  height="8"   fill="#1c1814"/>
-            <rect x="86"  y="40"  width="40" height="140" fill="white"/>
-            <rect x="96"  y="56"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="109" y="56"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="96"  y="74"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="134" y="90"  width="26" height="90"  fill="white"/>
-            <rect x="168" y="55"  width="36" height="125" fill="white"/>
-            <rect x="177" y="70"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="189" y="70"  width="7"  height="9"   fill="#1c1814"/>
-            <rect x="212" y="80"  width="30" height="100" fill="white"/>
-            <rect x="220" y="94"  width="5"  height="7"   fill="#1c1814"/>
-          </svg>
-
+      <main className="edition-reading-page" data-edition-page="guides" id="main-content">
+        <section data-edition-hero data-article-hero className="edition-reading-hero">
           <div className="container-width" style={{ position: 'relative', zIndex: 10, paddingTop: 32, paddingBottom: 32 }}>
-            <Breadcrumbs dark items={[{ label: 'Guides', href: '/guides/' }, { label: guideCategories[guide.category], href: '/guides/' }, { label: guide.title }]} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 16, marginBottom: 16, flexWrap: 'wrap' as const }}>
+            <Breadcrumbs items={[{ label: 'Guides', href: '/guides/' }, { label: guideCategories[guide.category], href: '/guides/' }, { label: guide.title }]} />
+            <div className="edition-article-meta">
               <span style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(212,105,25,0.18)', border: '0.5px solid rgba(212,105,25,0.45)', color: "#f29264", fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.02em', padding: "4px 12px", borderRadius: 0 }}>
                 {guideCategories[guide.category]}
               </span>
@@ -127,34 +98,37 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
             <h1 style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 'clamp(28px,4.5vw,50px)', fontWeight: 400, fontStyle: 'normal', color: '#fff', lineHeight: 1.1, marginBottom: 14, maxWidth: 640 }}>
               {guide.heroHeading}
             </h1>
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.76)", lineHeight: 1.65, maxWidth: 520 }}>
+            <p className="edition-article-intro">
               {guide.heroParagraph}
             </p>
             {/* YMYL byline. No fabricated named author per fleet rule —
                 the editorial team IS the publisher. */}
-            <p style={{ fontFamily: 'var(--font-inter), Arial, sans-serif', fontSize: 11, fontWeight: 400, letterSpacing: '0.08em', textTransform: 'uppercase', color: "rgba(255,255,255,0.76)", marginTop: 18, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            <p className="edition-article-byline">
               <span>Published and reviewed by WWSL, the {siteConfig.name} editorial team</span>
               <span aria-hidden="true">·</span>
               <span>
                 <time dateTime={guide.publishDate}>{new Date(guide.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </span>
             </p>
+            <div className="edition-article-image">
+              <Image src={guide.featuredImage} alt={guide.featuredImageAlt} fill priority sizes="(min-width: 1104px) 1024px, 100vw" className="object-cover" />
+            </div>
           </div>
         </section>
 
         {/* Body */}
-        <div className="container-width py-12 md:py-10">
+        <div className="container-width edition-reading-shell">
           <details className="edition-mobile-toc">
             <summary>In this guide</summary>
             <nav aria-label="In this guide">{guide.sections.map(section => <a key={section.id} href={`#${section.id}`}>{section.heading}</a>)}</nav>
           </details>
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10 lg:gap-8">
+          <div className="edition-reading-grid">
 
             {/* Main content — client component handles tool rendering */}
             <GuideBody guide={guide} />
 
             {/* Sidebar */}
-            <aside>
+            <aside className="edition-reading-sidebar">
               <div className="lg:sticky" style={{ top: 28 }}>
 
                 {/* In this guide */}
@@ -175,7 +149,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
                 <div className="sidebar-box">
                   <h3 style={serif(18, { marginBottom: 6 })}>Book a consultation</h3>
                   <p className="body-sm mb-4">Wills, LPAs and probate support across London. Fixed fees from £150.</p>
-                  <Link href={`/services/${guide.relatedService}/`} className="btn-primary w-full justify-center" style={{ display: 'flex', textDecoration: 'none' }}>
+                  <Link href="/contact/#enquiry" className="btn-primary w-full justify-center" style={{ display: 'flex', textDecoration: 'none' }}>
                     Find a specialist
                   </Link>
                 </div>
@@ -211,9 +185,9 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
 
           {/* Child spokes in this hub (drafts excluded) */}
           {spokes.length > 0 && (
-            <section style={{ marginTop: 8 }}>
+            <section className="edition-related-reading">
               <p className="eyebrow mb-4">More on {guide.title.toLowerCase()}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="edition-related-list">
                 {spokes.map(sp => (
                   <Link key={sp.slug} href={`/blog/${sp.slug}/`} className="card-parchment"
                     style={{ display: 'block', padding: "18px 18px", borderRadius: 0, textDecoration: 'none' }}>

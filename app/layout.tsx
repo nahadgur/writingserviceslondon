@@ -51,7 +51,8 @@ export const metadata: Metadata = {
 const websiteSchema = {
   '@context': 'https://schema.org', '@type': 'WebSite',
   '@id': `${siteConfig.url}/#website`,
-  name: siteConfig.name, url: siteConfig.url,
+  name: siteConfig.name,
+  alternateName: ['WillWritingServicesLondon'], url: siteConfig.url,
   potentialAction: {
     '@type': 'SearchAction',
     target: { '@type': 'EntryPoint', urlTemplate: `${siteConfig.url}/location/?q={search_term_string}` },
